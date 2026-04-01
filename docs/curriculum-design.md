@@ -136,11 +136,50 @@ CLAUDE.mdを用いてAIにプロジェクトの文脈とルールを理解させ
 
 1. **構成作成** → 進捗管理シート（本ドキュメントで完了）
 2. **台本作成** → NotebookLM/GEMS + 台本作成プロンプト → スプレッドシート
-3. **資料作成** → Nano Banana Pro + Yamlプロンプト → スライド生成 → Figmaデザイン調整
-4. **スライド完成** → デザインレビュー完了
+3. **資料（スライド）作成** → 下記「スライド生成ワークフロー」参照
+4. **スライド完成** → Figmaデザイン調整 → レビュー完了
 5. **撮影・動画編集** → HeyGenリップシンク等
 6. **クイズ・試験問題作成** → NotebookLM + クイズ作成プロンプト
-7. **完成** → WisdomBase LMSへ登録
+7. **完成** → WisdomBase LMSへ登録（/wb-* スキル群で自動化）
+
+### STEP 3 スライド生成ワークフロー（詳細）
+
+```
+台本xlsx の「スライド種別・名称・用途」（Row 13〜）
+  ↓ コピー
+[STEP 3.1-3.2] Gems（Gemini）でYAML形式に変換
+  資料作成/Nanobanana（最新）
+  https://gemini.google.com/gem/1VCJwTxC8jd_6cvYjRg9mIHlYfU8fR7g0?usp=sharing
+  ↓ 生成されたYAMLをコピー
+[STEP 3.3] NotebookLM「スライド」→「カスタムプロンプト」にYAMLペースト → 生成
+  ↓ スライド資料ダウンロード
+[STEP 3.4] ダウンロードした資料と台本の「スライド種別・名称・用途」にズレがないか確認
+  ↓
+[STEP 3.5] 資料ホルダーの格納庫に保存
+```
+
+| ステップ | やること | 使うツール |
+|---------|---------|-----------|
+| 3.1 | 台本xlsxからスライド情報（種別・名称・用途）をコピー | 台本スプレッドシート |
+| 3.2 | GemsでYAML形式に変換 | 資料作成/Nanobanana Gems |
+| 3.3 | NotebookLMでスライド資料を生成 | NotebookLM（カスタムプロンプト） |
+| 3.4 | ダウンロードして台本との整合性を確認 | 目視確認 |
+| 3.5 | 資料格納庫に保存 | Google Drive |
+
+### ツール・リソース一覧
+
+| ツール | 用途 | URL |
+|--------|------|-----|
+| 資料作成/Nanobanana Gems | 台本→YAML変換（スライド生成用） | https://gemini.google.com/gem/1VCJwTxC8jd_6cvYjRg9mIHlYfU8fR7g0?usp=sharing |
+| 教材開発Gems（台本作成） | 台本生成AI | Gems左サイドバーに存在 |
+| 教材開発Gems（M3クイズ作成） | クイズ生成 | Gems左サイドバーに存在 |
+| NotebookLM | スライド生成・クイズ生成 | https://notebooklm.google.com |
+| Figma | スライドデザイン調整 | - |
+| 教材開発_情報管理シート.xlsx | 全成果物のリンク管理 | Google Drive |
+| 教材開発_マニュアル・共通ファイル.xlsx | マニュアル・プロンプト集 | Google Drive |
+| ファイル検索チャットボット | 管理ファイル横断検索 | https://gemini.google.com/gem/1a5RyB0KJFOUqbGibv2fT_bh-mkA8Mfh0?usp=sharing |
+| WisdomBase LMS Skills | LMS登録自動化（/wb-*） | Claude Code plugin |
+| wisdombase-grading | AI採点＋マネージャーレビュー | Vercel上のWebアプリ |
 
 ## 体制
 
@@ -148,7 +187,19 @@ CLAUDE.mdを用いてAIにプロジェクトの文脈とルールを理解させ
 - **川島さん**: 台本生成、技術監修
 - Notion WBSでプロジェクト管理（M5テンプレベース）
 
+## 台本ファイル一覧（生成済み）
+
+| ファイル | シート数 | 内容 |
+|---------|---------|------|
+| scripts/CC_セクション1.xlsx | 5シート | 環境構築と魔法体験 |
+| scripts/CC_セクション2.xlsx | 4シート | AIの記憶とセキュリティの基礎 |
+| scripts/CC_セクション3.xlsx | 4シート | 業務自動化の武器を手に入れる |
+| scripts/CC_セクション4.xlsx | 5シート | 実務で使えるユースケースとマネタイズ |
+| scripts/CC_セクション5.xlsx | 7シート | GitHub＆スペック駆動開発 |
+| scripts/CC_セクション6.xlsx | 7シート | デプロイとプロの開発フロー |
+
 ---
 
 *作成日: 2026-04-01*
-*ステータス: カリキュラム構成確定*
+*最終更新: 2026-04-01*
+*ステータス: カリキュラム構成確定、台本ドラフト生成済み*

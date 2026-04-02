@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CC-S1-V1 | 講座の全体像</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --text: #000000;
+  --text-sub: #555555;
+  --text-light: #888888;
+  --accent-blue: #4A90D9;
+  --accent-purple: #7B61FF;
+  --gradient: linear-gradient(135deg, #4A90D9, #7B61FF);
+  --gray-bg: #F2F2F2;
+  --gray-border: #E0E0E0;
+  --gray-light: #EFEFEF;
+  --slide-w: 960px;
+  --slide-h: 540px;
+  --radius: 6px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #E8E8E8;
+  font-family: 'Noto Sans JP', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide-container {
+  width: var(--slide-w);
+  height: var(--slide-h);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* Common header/footer */
+.slide-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  font-size: 11px;
+  color: var(--text-light);
+  min-height: 44px;
+}
+
+.slide-top .category {
+  font-weight: 500;
+  color: var(--text-sub);
+  letter-spacing: 0.5px;
+}
+
+.slide-top .logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 1px;
+}
+
+.slide-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  font-size: 10px;
+  color: var(--text-light);
+  min-height: 36px;
+  border-top: 1px solid var(--gray-border);
+}
+
+.slide-body {
+  flex: 1;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ===== Slide 1: Cover ===== */
+.slide-1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.cover-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+.cover-right {
+  width: 38%;
+  background: linear-gradient(135deg, #4A90D9 0%, #7B61FF 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23fff' stop-opacity='0.06'/%3E%3Cstop offset='100%25' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='200' height='200' fill='url(%23g)'/%3E%3Ccircle cx='100' cy='100' r='80' fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='50' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+}
+
+.cover-right .terminal-mock {
+  position: absolute;
+  bottom: 40px;
+  left: 30px;
+  right: 30px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  backdrop-filter: blur(4px);
+}
+
+.terminal-mock .prompt { color: #7BF0B5; }
+.terminal-mock .ai { color: #A0D2FF; }
+
+.cover-left .section-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-blue);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.cover-left h1 {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.cover-left h1 .highlight {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cover-left .cover-sub {
+  font-size: 15px;
+  color: var(--text-sub);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.cover-left .cover-meta {
+  margin-top: 28px;
+  font-size: 11px;
+  color: var(--text-light);
+  display: flex;
+  gap: 20px;
+}
+
+.cover-left .cover-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== Slide 2: Claude Codeとは ===== */
+.slide-2 .slide-body { gap: 24px; }
+
+.slide-2 h2 {
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.card {
+  background: var(--gray-bg);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+
+.card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card h3 .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.card h3 .dot-blue { background: var(--accent-blue); }
+.card h3 .dot-purple { background: var(--accent-purple); }
+
+.card p {
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+
+/* ===== Slide 3: AI駆動開発 ===== */
+.slide-3 .slide-body { gap: 20px; }
+
+.slide-3 h2 {
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.compare-row {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.compare-box {
+  flex: 1;
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.compare-box.old-way {
+  background: var(--gray-bg);
+  border: 1px solid var(--gray-border);
+}
+
+.compare-box.new-way {
+  background: linear-gradient(135deg, rgba(74,144,217,0.06), rgba(123,97,255,0.06));
+  border: 1px solid rgba(74,144,217,0.2);
+}
+
+.compare-box .box-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.compare-box.old-way .box-label { color: var(--text-light); }
+.compare-box.new-way .box-label { color: var(--accent-blue); }
+
+.compare-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.compare-box ul {
+  list-style: none;
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 2;
+}
+
+.compare-box ul li::before {
+  content: '・';
+  color: var(--text-light);
+}
+
+.compare-box.new-way ul li::before {
+  content: '→ ';
+  color: var(--accent-blue);
+}
+
+.compare-arrow {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: var(--accent-blue);
+  padding: 0 4px;
+}
+
+/* ===== Slide 4: 3トラック ===== */
+.slide-4 .slide-body { gap: 20px; }
+
+.slide-4 h2 {
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.track-row {
+  display: flex;
+  gap: 14px;
+}
+
+.track-card {
+  flex: 1;
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.track-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.track-card.t-intro {
+  background: var(--gray-bg);
+  border: 1px solid var(--gray-border);
+}
+.track-card.t-intro::before { background: var(--accent-blue); }
+.track-card.t-intro h3 { color: var(--accent-blue); }
+
+.track-card.t-biz {
+  background: rgba(123,97,255,0.04);
+  border: 1px solid rgba(123,97,255,0.15);
+}
+.track-card.t-biz::before { background: var(--accent-purple); }
+.track-card.t-biz h3 { color: var(--accent-purple); }
+
+.track-card.t-dev {
+  background: rgba(74,144,217,0.04);
+  border: 1px solid rgba(74,144,217,0.15);
+}
+.track-card.t-dev::before { background: #2D7DD2; }
+.track-card.t-dev h3 { color: #2D7DD2; }
+
+.track-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.track-card .track-tag {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+
+.track-card .track-detail {
+  font-size: 11px;
+  color: var(--text-sub);
+  line-height: 1.8;
+  text-align: left;
+  background: rgba(0,0,0,0.02);
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+/* ===== Slide 5: 受講フロー ===== */
+.slide-5 .slide-body { gap: 20px; }
+
+.slide-5 h2 {
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.persona-row {
+  display: flex;
+  gap: 14px;
+}
+
+.persona-card {
+  flex: 1;
+  background: var(--gray-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.persona-card .p-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.persona-card .p-desc {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+
+.step-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-pill {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.step-pill.s-intro { background: rgba(74,144,217,0.1); color: var(--accent-blue); }
+.step-pill.s-biz { background: rgba(123,97,255,0.1); color: var(--accent-purple); }
+.step-pill.s-dev { background: rgba(45,125,210,0.1); color: #2D7DD2; }
+
+.step-arrow {
+  text-align: center;
+  font-size: 9px;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+/* ===== Slide 6: まとめ ===== */
+.slide-6 .slide-body {
+  gap: 20px;
+  align-items: center;
+}
+
+.slide-6 h2 {
+  font-size: 26px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.summary-list {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--gray-bg);
+  border-radius: var(--radius);
+  padding: 18px 24px;
+}
+
+.summary-row .s-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  min-width: 32px;
+}
+
+.summary-row .s-body {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-sub);
+}
+
+.summary-row .s-body strong {
+  color: var(--text);
+}
+
+.next-box {
+  margin-top: 8px;
+  padding: 14px 24px;
+  border: 1px solid var(--gray-border);
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: var(--text-sub);
+  text-align: center;
+}
+
+.next-box strong {
+  color: var(--accent-blue);
+}
+
+/* ===== Navigation ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.nav button {
+  background: #fff;
+  border: 1px solid var(--gray-border);
+  color: var(--text);
+  padding: 7px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px;
+  transition: all 0.15s;
+}
+
+.nav button:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.nav .counter {
+  font-size: 12px;
+  color: var(--text-light);
+  min-width: 50px;
+  text-align: center;
+}
+
+.progress-bar {
+  width: var(--slide-w);
+  height: 2px;
+  background: var(--gray-border);
+  margin-top: 10px;
+  border-radius: 1px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 1px;
+  transition: width 0.4s ease;
+}
+
+.key-hint {
+  font-size: 10px;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="slide-container">
+
+  <!-- Slide 1: Cover -->
+  <div class="slide slide-1 active" data-slide="1">
+    <div class="cover-left">
+      <div class="section-label">SECTION 1 &mdash; 環境構築と魔法体験</div>
+      <h1>Claude Codeがもたらす<br><span class="highlight">「AI駆動開発」</span>とは</h1>
+      <div class="cover-sub">日本語で指示を出すだけで、AIが自律的にコードを書き、<br>アプリを組み立てる。新しい開発体験の全体像をお伝えします。</div>
+      <div class="cover-meta">
+        <span>動画 1 / 5</span>
+        <span>5分</span>
+        <span>標準モード</span>
+      </div>
+    </div>
+    <div class="cover-right">
+      <div class="terminal-mock">
+        <span class="prompt">$</span> claude<br>
+        <span class="ai">Claude Code</span> &gt; TODOアプリを作って<br>
+        <span class="ai">...</span> ファイルを作成しています<br>
+        <span class="ai">...</span> index.html を生成しました<br>
+        <span class="ai">...</span> style.css を生成しました<br>
+        <span class="ai">✓</span> 完成しました
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2: Claude Codeとは -->
+  <div class="slide slide-2" data-slide="2">
+    <div class="slide-top">
+      <span class="category">Claude Code講座 &mdash; セクション1</span>
+      <span class="logo-text">AI+ School</span>
+    </div>
+    <div class="slide-body">
+      <h2>Claude Code とは</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3><span class="dot dot-blue"></span>CLIベースのAIエージェント</h3>
+          <p>ターミナル上で動作し、日本語の指示だけでコード生成・ファイル操作・エラー修正まで自律的に実行します。</p>
+        </div>
+        <div class="card">
+          <h3><span class="dot dot-purple"></span>コピペ不要の直接操作</h3>
+          <p>チャット型AIと違い、PCのファイルを直接操作。指示を出したら見ているだけで成果物が完成します。</p>
+        </div>
+        <div class="card">
+          <h3><span class="dot dot-blue"></span>Anthropic社の公式ツール</h3>
+          <p>Claude AIの開発元が提供する公式CLI。高い安全性とパフォーマンスを両立しています。</p>
+        </div>
+        <div class="card">
+          <h3><span class="dot dot-purple"></span>プログラミング経験不問</h3>
+          <p>「こういうものを作って」と日本語で伝えるだけ。コードが書けなくてもアプリが作れます。</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-bottom">
+      <span>&copy; WEIN / BACKSTAGE Group</span>
+      <span>2 / 6</span>
+    </div>
+  </div>
+
+  <!-- Slide 3: AI駆動開発 -->
+  <div class="slide slide-3" data-slide="3">
+    <div class="slide-top">
+      <span class="category">Claude Code講座 &mdash; セクション1</span>
+      <span class="logo-text">AI+ School</span>
+    </div>
+    <div class="slide-body">
+      <h2>AI駆動開発の概念</h2>
+      <div class="compare-row">
+        <div class="compare-box old-way">
+          <div class="box-label">従来の開発</div>
+          <h3>人間がすべて書く</h3>
+          <ul>
+            <li>コードを一行ずつ手書き</li>
+            <li>エラーを自分で探して修正</li>
+            <li>テストも手動で繰り返す</li>
+            <li>完成まで数日〜数週間</li>
+          </ul>
+        </div>
+        <div class="compare-arrow">→</div>
+        <div class="compare-box new-way">
+          <div class="box-label">AI駆動開発</div>
+          <h3>人間は「何を作るか」を伝える</h3>
+          <ul>
+            <li>AIがコードを自動生成</li>
+            <li>エラーもAIが自律的に修正</li>
+            <li>ファイル配置まで自動</li>
+            <li>数分で動くものが完成</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-bottom">
+      <span>&copy; WEIN / BACKSTAGE Group</span>
+      <span>3 / 6</span>
+    </div>
+  </div>
+
+  <!-- Slide 4: 3トラック構成 -->
+  <div class="slide slide-4" data-slide="4">
+    <div class="slide-top">
+      <span class="category">Claude Code講座 &mdash; セクション1</span>
+      <span class="logo-text">AI+ School</span>
+    </div>
+    <div class="slide-body">
+      <h2>3トラック構成</h2>
+      <div class="track-row">
+        <div class="track-card t-intro">
+          <h3>入門トラック</h3>
+          <div class="track-tag">全員必須</div>
+          <div class="track-detail">
+            S1: 環境構築と魔法体験<br>
+            S2: AIの記憶とセキュリティ
+          </div>
+        </div>
+        <div class="track-card t-biz">
+          <h3>営業・事務系</h3>
+          <div class="track-tag">業務自動化したい方</div>
+          <div class="track-detail">
+            S3: 業務自動化の武器<br>
+            S4: ユースケースとマネタイズ
+          </div>
+        </div>
+        <div class="track-card t-dev">
+          <h3>開発系</h3>
+          <div class="track-tag">アプリを作りたい方</div>
+          <div class="track-detail">
+            S5: GitHub＆スペック駆動開発<br>
+            S6: デプロイとプロの開発フロー
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-bottom">
+      <span>&copy; WEIN / BACKSTAGE Group</span>
+      <span>4 / 6</span>
+    </div>
+  </div>
+
+  <!-- Slide 5: 受講フロー -->
+  <div class="slide slide-5" data-slide="5">
+    <div class="slide-top">
+      <span class="category">Claude Code講座 &mdash; セクション1</span>
+      <span class="logo-text">AI+ School</span>
+    </div>
+    <div class="slide-body">
+      <h2>ペルソナ別 受講フロー</h2>
+      <div class="persona-row">
+        <div class="persona-card">
+          <div class="p-name">Aさん：全部やりたい</div>
+          <div class="p-desc">やる気も理解度も高い</div>
+          <div class="step-flow">
+            <div class="step-pill s-intro">S1 入門</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-intro">S2 入門</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-biz">S3 営業事務系</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-biz">S4 営業事務系</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-dev">S5 開発系</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-dev">S6 開発系</div>
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="p-name">Bさん：業務自動化</div>
+          <div class="p-desc">事務効率化に集中したい</div>
+          <div class="step-flow">
+            <div class="step-pill s-intro">S1 入門</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-intro">S2 入門</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-biz">S3 営業事務系</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-biz">S4 営業事務系</div>
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="p-name">Cさん：開発に興味</div>
+          <div class="p-desc">アプリを作ってみたい</div>
+          <div class="step-flow">
+            <div class="step-pill s-intro">S1 入門</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-intro">S2 入門</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-dev">S5 開発系</div>
+            <div class="step-arrow">▼</div>
+            <div class="step-pill s-dev">S6 開発系</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-bottom">
+      <span>&copy; WEIN / BACKSTAGE Group</span>
+      <span>5 / 6</span>
+    </div>
+  </div>
+
+  <!-- Slide 6: まとめ -->
+  <div class="slide slide-6" data-slide="6">
+    <div class="slide-top">
+      <span class="category">Claude Code講座 &mdash; セクション1</span>
+      <span class="logo-text">AI+ School</span>
+    </div>
+    <div class="slide-body">
+      <h2>まとめ</h2>
+      <div class="summary-list">
+        <div class="summary-row">
+          <span class="s-num">1</span>
+          <span class="s-body"><strong>Claude Code</strong>はターミナルから使うAIエージェント。日本語で指示を出すだけで、コード生成からファイル操作まで自律的に実行します。</span>
+        </div>
+        <div class="summary-row">
+          <span class="s-num">2</span>
+          <span class="s-body"><strong>AI駆動開発</strong>では、人間は「何を作るか」を伝える役割。AIが実装を担当し、開発スピードが大きく向上します。</span>
+        </div>
+        <div class="summary-row">
+          <span class="s-num">3</span>
+          <span class="s-body">講座は<strong>3トラック構成</strong>。入門は全員共通で、その後は目的に合わせて営業事務系または開発系を選択できます。</span>
+        </div>
+      </div>
+      <div class="next-box">
+        次の動画 → <strong>「黒い画面」の基本操作と怖がらない心得</strong>
+      </div>
+    </div>
+    <div class="slide-bottom">
+      <span>&copy; WEIN / BACKSTAGE Group</span>
+      <span>6 / 6</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="nav">
+  <button onclick="prev()">← 前へ</button>
+  <span class="counter"><span id="current">1</span> / 6</span>
+  <button onclick="next()">次へ →</button>
+</div>
+
+<div class="progress-bar">
+  <div class="progress-fill" id="progress" style="width: 16.67%"></div>
+</div>
+
+<div class="key-hint">← → キーでも操作できます</div>
+
+<script>
+let current = 1;
+const total = 6;
+
+function showSlide(n) {
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+  const target = document.querySelector(`[data-slide="${n}"]`);
+  if (target) {
+    target.classList.add('active');
+    document.getElementById('current').textContent = n;
+    document.getElementById('progress').style.width = (n / total * 100) + '%';
+  }
+}
+
+function next() { if (current < total) { current++; showSlide(current); } }
+function prev() { if (current > 1) { current--; showSlide(current); } }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+});
+</script>
+</body>
+</html>

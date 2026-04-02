@@ -1,0 +1,177 @@
+{
+  "metadata": {
+    "module": "Claude Code講座",
+    "section": "セクション5-動画2",
+    "title": "Claude Codeを使ったリポジトリの自動作成（ghコマンド連携）",
+    "duration": "8分",
+    "mode": "画面収録",
+    "goal": "Claude Codeからghコマンドでリポジトリを作成しpushできる",
+    "topics": "gh CLI、gh auth login、gh repo create、git操作自動化",
+    "stumbling": "gh CLIの認証フローの理解、gitコマンドとghコマンドの混同",
+    "screen_policy": "あり（gh CLIインストール、認証、リポジトリ作成の実演）",
+    "positioning": "導入のみ",
+    "references": "GitHub CLI公式ドキュメント、Claude Code公式ドキュメント"
+  },
+  "materials": [
+    {
+      "type": "スライド",
+      "name": "表紙",
+      "purpose": "動画の開始タイトル表示",
+      "timing": "0:00",
+      "filename": "CC_S5_02_表紙"
+    },
+    {
+      "type": "スライド",
+      "name": "gh CLIとは",
+      "purpose": "gh CLIの役割と位置付けを図解",
+      "timing": "0:30",
+      "filename": "CC_S5_02_概要"
+    },
+    {
+      "type": "スライド",
+      "name": "操作フロー図",
+      "purpose": "認証からpushまでの一連の流れを図示",
+      "timing": "1:30",
+      "filename": "CC_S5_02_フロー"
+    },
+    {
+      "type": "スライド",
+      "name": "まとめ",
+      "purpose": "要点の振り返り",
+      "timing": "7:10",
+      "filename": "CC_S5_02_まとめ"
+    },
+    {
+      "type": "ツール画面",
+      "name": "ターミナル（gh CLIインストールと認証）",
+      "purpose": "gh auth loginの実演",
+      "timing": "2:10",
+      "filename": "CC_S5_02_端末画面_認証"
+    },
+    {
+      "type": "ツール画面",
+      "name": "ターミナル（リポジトリ作成とpush）",
+      "purpose": "gh repo createからpushまでの実演",
+      "timing": "4:20",
+      "filename": "CC_S5_02_端末画面_リポジトリ"
+    },
+    {
+      "type": "配布資料",
+      "name": "ghコマンドチートシート",
+      "purpose": "受講者が手元で参照する早見表",
+      "timing": "配布",
+      "filename": "CC_S5_02_チートシート"
+    }
+  ],
+  "script": [
+    {
+      "start": "0:00",
+      "end": "0:10",
+      "topic": "切替",
+      "direction": "・スライド「表紙」を表示する。・講師は笑顔で画面中央に向かって立つ。",
+      "content": "前の動画でGitHubアカウントの作成ができましたね。お疲れ様でした。今日の動画では、さらに一歩進んで、Claude Codeを使ってGitHubリポジトリを自動で作成する方法をお伝えします。前回は「GitHubって何？」という概念の話でした。今回は「実際に手を動かして、AIにGitHub操作をやってもらう」という実践の話です。この動画を見終わった後には、ターミナルからコマンドひとつで、GitHubにリポジトリが作られてコードがアップロードされる体験ができます。では始めていきましょう。",
+      "reference": "GitHub CLI公式ドキュメント"
+    },
+    {
+      "start": "0:10",
+      "end": "0:30",
+      "topic": "導入",
+      "direction": "・スライド「gh CLIとは」へ移行する。・図を指で示しながら説明する。",
+      "content": "まず最初に、gh CLIというツールについてお話しします。gh CLIとは、GitHub公式が提供するコマンドラインツールです。名前の「gh」は「GitHub」の略です。通常、GitHubを使う時はブラウザを開いてWebサイトにアクセスしますよね。でも、gh CLIを使えば、ブラウザを開かずにターミナルからGitHubを操作できます。リポジトリの作成、プルリクエストの管理、issueの確認、こういったことがすべてコマンドひとつでできます。ここで、少し混乱しやすいポイントをお伝えします。gitコマンドとghコマンドは別物です。gitコマンドは、ファイルの変更記録など、バージョン管理の操作をするものです。ghコマンドは、GitHubというサービスを操作するものです。例えば、「git commit」はローカルの変更を記録する操作、「gh repo create」はGitHub上にリポジトリを新規作成する操作です。この違いを意識しながら使っていくと、混乱が減ります。",
+      "reference": "GitHub CLI公式ドキュメント"
+    },
+    {
+      "start": "0:30",
+      "end": "1:30",
+      "topic": "概念説明",
+      "direction": "・スライド「操作フロー図」へ移行する。・フローを上から下へ順番に指で示す。",
+      "content": "では、今日の動画で行う操作の全体フローを確認しておきましょう。ステップ1は、gh CLIのインストールです。まずターミナルでghコマンドが使えるようにします。ステップ2は、gh auth loginです。GitHubアカウントとgh CLIを連携させる認証作業です。最初に一度だけ行えばOKです。ステップ3は、プロジェクトフォルダの準備です。作業するフォルダを作り、Gitの初期化をします。ステップ4は、gh repo createコマンドでリポジトリを作成します。このコマンドひとつで、GitHub上にリポジトリが作られて、ローカルとの接続設定も完了します。ステップ5は、git add、git commit、git pushの3つの操作です。ファイルを変更記録に追加して、コミットして、GitHubにアップロードします。そして、このステップ3からステップ5を、Claude Codeに任せることができます。つまり、皆さんがやるのはステップ1と2のセットアップだけ。その後はClaude Codeに「GitHubにプッシュして」と伝えるだけでいいのです。これが今日の動画の最大のポイントです。",
+      "reference": "GitHub CLI公式ドキュメント"
+    },
+    {
+      "start": "1:30",
+      "end": "2:10",
+      "topic": "準備確認",
+      "direction": "・スライドは現状維持。・講師が事前準備の確認事項を列挙する。",
+      "content": "実演に入る前に、準備の確認をしましょう。まず、前の動画でGitHubアカウントが作成済みであることを確認してください。次に、Macの場合は、Homebrewがインストールされている必要があります。Homebrewとは、MacにアプリをインストールするためのツールでPythonやNode.jsなど様々なツールのインストールにも使います。もしHomebrewが入っていない場合は、brew.shのサイトからインストールしておいてください。Windowsの場合は、wingetコマンドが使えます。こちらはWindowsに標準で入っていることがほとんどです。では、実演を始めます。ターミナルを開いてください。",
+      "reference": "GitHub CLI公式ドキュメント"
+    },
+    {
+      "start": "2:10",
+      "end": "4:20",
+      "topic": "実演①",
+      "direction": "・ターミナル画面「gh CLIインストールと認証」へ切り替える。・実際のコマンド入力を見せながら説明する。",
+      "content": "まず、gh CLIをインストールします。Macの場合は「brew install gh」と入力してEnterを押します。少し待つとインストールが完了します。「gh --version」と入力して、バージョン番号が表示されればインストール成功です。次に、gh auth loginを実行します。「gh auth login」と入力してEnterを押します。最初に「Where do you use GitHub?」という質問が出ます。「GitHub.com」を選択してEnterを押します。次に「What is your preferred protocol for Git operations?」という質問が出ます。「HTTPS」を選択します。次に「Authenticate Git with your GitHub credentials?」という質問が出ます。「Yes」を選択します。次に「How would you like to authenticate GitHub CLI?」という質問が出ます。「Login with a web browser」を選択します。すると、「First copy your one-time code:」と表示されて、数字と文字の組み合わせコードが出てきます。このコードをコピーしておいてください。次に「Press Enter to open github.com in your browser...」と表示されたらEnterを押します。ブラウザが開いて、GitHubのページが表示されます。コードを入力する欄に先ほどコピーしたコードを貼り付けて、Authorizeボタンを押します。ブラウザで認証が完了したら、ターミナルに戻ると「Logged in as ユーザー名」と表示されているはずです。これで認証完了です。",
+      "reference": "GitHub CLI公式ドキュメント"
+    },
+    {
+      "start": "4:20",
+      "end": "6:30",
+      "topic": "実演②",
+      "direction": "・ターミナル画面「リポジトリ作成とpush」へ切り替える。・操作を一つずつ見せながら説明する。",
+      "content": "では次に、リポジトリを作成してpushするまでを実演します。まず、プロジェクト用のフォルダを作ります。「mkdir my-first-repo」と入力してEnterを押します。「cd my-first-repo」でフォルダの中に移動します。次に、「git init」でGitの初期化をします。これで、このフォルダでGitが使えるようになりました。続いて、gh repo createコマンドでGitHub上にリポジトリを作成します。「gh repo create my-first-repo --public --source=. --remote=origin」と入力します。少し説明すると、「--public」は公開リポジトリにするオプション、「--source=.」は現在のフォルダをソースにするオプション、「--remote=origin」はリモート名をoriginにするオプションです。このコマンドひとつで、GitHub上にリポジトリが作られて、ローカルとの接続設定まで完了します。次に、テスト用にファイルを1つ作ります。「echo Hello GitHub > README.md」と入力します。それから3つのコマンドを実行します。「git add README.md」でファイルを変更記録に追加、「git commit -m 最初のコミット」で変更を記録、「git push -u origin main」でGitHubにアップロードです。プッシュが完了したら、ブラウザでGitHubを開いてみてください。作成したリポジトリにファイルがアップロードされているはずです。この一連の操作が、Claude Codeへの指示ひとつで自動化できます。",
+      "reference": "GitHub CLI公式ドキュメント"
+    },
+    {
+      "start": "6:30",
+      "end": "7:10",
+      "topic": "Claude Code活用",
+      "direction": "・スライドへ戻す。・Claude Codeとの連携部分を強調して説明する。",
+      "content": "今、皆さんに手動でコマンドを実行してもらいましたが、これをClaude Codeに任せることができます。Claude Codeのターミナルで、「このプロジェクトをGitHubにプッシュしてください」と日本語で伝えるだけです。するとClaude Codeが、git addからgit commitそしてgit pushまでを自動で実行してくれます。でも、なぜ今日は手動でやってもらったかというと、仕組みを知ったうえで自動化に任せることが大切だからです。何をしているのかわからないまま自動化に頼ると、問題が起きた時に対処できません。仕組みを理解してから自動化することで、トラブル時の対応力も上がります。これが、この動画で手動操作を見せた理由です。",
+      "reference": "Claude Code公式ドキュメント"
+    },
+    {
+      "start": "7:10",
+      "end": "7:40",
+      "topic": "まとめ",
+      "direction": "・スライド「まとめ」へ切り替える。・スライドの要点を、講師が口頭でも繰り返す。",
+      "content": "では、この動画をまとめます。今日学んだことを整理しましょう。gh CLIとは、GitHub公式のコマンドラインツールです。ブラウザを開かずにターミナルからGitHubを操作できます。gitコマンドはバージョン管理、ghコマンドはGitHubサービス操作、この2つは別物です。gh auth loginで認証を行えば、gh repo createコマンドひとつでGitHub上にリポジトリを作成できます。そして、git add、git commit、git pushの3ステップでコードをGitHubにアップロードできます。最も大切なのは、この一連の流れをClaude Codeに任せることができるという点です。仕組みを理解したうえでAIに委ねる、これがこの講座のスタンスです。次の動画では、ファイルの参照機能である@インポートと、権限管理について学びます。Claude Codeをより安全に、より効率的に使うための設定です。",
+      "reference": "GitHub CLI公式ドキュメント"
+    },
+    {
+      "start": "7:40",
+      "end": "8:00",
+      "topic": "クロージング",
+      "direction": "・スライドは「まとめ」のまま。・講師が笑顔でカメラに向かって話す。",
+      "content": "お疲れ様でした。リポジトリの作成とプッシュ、うまくできましたか？最初はコマンドが多くて大変に感じるかもしれませんが、これも慣れていくものです。配布資料のghコマンドチートシートを手元に置いておくと、いざという時に参照できて便利です。次の動画もお楽しみに。それでは、次の動画でお会いしましょう。",
+      "reference": "GitHub CLI公式ドキュメント"
+    }
+  ],
+  "actions": [
+    {
+      "action": "gh CLIとgitコマンドの違いを明確に区別して説明する",
+      "done": "□",
+      "memo": "「バージョン管理用のgit」と「GitHubサービス操作用のgh」という整理を繰り返す"
+    },
+    {
+      "action": "gh auth loginの認証フローをステップごとに実演する",
+      "done": "□",
+      "memo": "ワンタイムコードのコピーとブラウザ認証を実際の画面で見せる"
+    },
+    {
+      "action": "gh repo createコマンドのオプションを一つひとつ解説する",
+      "done": "□",
+      "memo": "--public、--source=.、--remote=originの意味を説明しておく"
+    },
+    {
+      "action": "git add→git commit→git pushの3ステップを実演する",
+      "done": "□",
+      "memo": "それぞれのコマンドの役割を説明しながら順番に実行する"
+    },
+    {
+      "action": "Claude Codeによる自動化の実演を行う",
+      "done": "□",
+      "memo": "日本語の指示ひとつで一連の操作が自動化される様子を見せる"
+    },
+    {
+      "action": "手動操作を先に学んでから自動化に移行する理由を説明する",
+      "done": "□",
+      "memo": "「仕組みを知ったうえで自動化に任せる」という講座のスタンスを明言する"
+    },
+    {
+      "action": "次動画（@インポートとパーミッション管理）へのブリッジを作る",
+      "done": "□",
+      "memo": "安全で効率的な使い方という文脈で次動画への期待感を高める"
+    }
+  ]
+}

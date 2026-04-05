@@ -91,6 +91,13 @@
   .video-script .script-label { font-size: 0.7rem; color: #999; margin-bottom: 0.4rem; }
   .video-points { font-size: 0.78rem; color: #666; margin-top: 0.4rem; line-height: 1.5; }
   .video-points .ref { color: #4a90d9; font-weight: 600; font-size: 0.7rem; }
+  .video-comments { margin-top: 0.5rem; }
+  .comment { font-size: 0.75rem; padding: 0.3rem 0.5rem; border-radius: 4px; margin-bottom: 0.3rem; line-height: 1.4; }
+  .comment .comment-name { font-weight: 700; margin-right: 0.3rem; }
+  .comment.tsuchiya { background: #fff8e1; border-left: 2px solid #f9a825; }
+  .comment.kawashima { background: #e8f5e9; border-left: 2px solid #43a047; }
+  .comment.oikawa { background: #e3f2fd; border-left: 2px solid #1e88e5; }
+  .comment.kanno { background: #fce4ec; border-left: 2px solid #e53935; }
 
   .summary { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
   .summary h2 { font-size: 1.1rem; margin-bottom: 1rem; }
@@ -115,7 +122,7 @@
 <div class="layout">
 
 <nav class="sidebar">
-  <h1>Claude Code講座</h1>
+  <h1>Claude Code実践講座</h1>
   <div class="sub">カリキュラムv3 | 31本 / 約2.5時間</div>
 
   <div class="nav-group">
@@ -125,29 +132,25 @@
   </div>
 
   <div class="nav-group">
-    <div class="nav-label">営業・事務系トラック</div>
+    <div class="nav-label">業務自動化・コンサルティングトラック</div>
     <a href="#s3" class="biz">S3 業務自動化の武器庫 <span class="badge">4本</span></a>
     <a href="#s4" class="biz">S4 ユースケース実践 <span class="badge">5本</span></a>
   </div>
 
   <div class="nav-group">
-    <div class="nav-label">開発系トラック</div>
+    <div class="nav-label">アプリ開発トラック</div>
     <a href="#s5" class="dev">S5 GitHub&スペック駆動 <span class="badge">7本</span></a>
     <a href="#s6" class="dev">S6 デプロイ&プロ開発 <span class="badge">7本</span></a>
   </div>
 
   <div class="nav-extra">
     <a href="#summary">動画数サマリー</a>
-    <a href="#policy">22ポイント反映マップ</a>
+    <a href="#policy">Context Map</a>
   </div>
 </nav>
 
 <div class="main-content">
 
-<div class="header">
-  <h1>カリキュラムv3 レビュー</h1>
-  <p>教育方針22ポイント反映 | 川島さんレビュー待ち</p>
-</div>
 
 <div class="container">
 
@@ -155,11 +158,11 @@
     <h2>講座コンセプト</h2>
     <p style="margin-bottom:0.5rem;font-size:0.85rem;"><strong>表テーマ：</strong>Claude Codeを使えるようになる<br><strong>裏テーマ：</strong>AI DXコンサルタントとして動けるレベルまで持っていく</p>
     <div class="tags">
-      <span class="tag">箱から出したまま→自分の道具に</span>
-      <span class="tag">概念より先に動きを見せる</span>
-      <span class="tag">ローカル便利ツール量産=青チャート</span>
-      <span class="tag">スライド最小限・公式画面収録</span>
-      <span class="tag">情報源は公式+Borisだけ</span>
+      <span class="tag">Claude Codeは箱から出したままでも十分使える</span>
+      <span class="tag">概念を教えるより先にプロトタイプで動くものを見せる</span>
+      <span class="tag">ローカルで使う社内用便利ツールを量産</span>
+      <span class="tag">スライドは最小限でOK・Claude公式ドキュメントを引用した画面収録をメインに</span>
+      <span class="tag">情報源はClaude公式と開発者Borisだけで十分</span>
     </div>
   </div>
 
@@ -169,7 +172,7 @@
       <tr><th>ペルソナ</th><th>特徴</th><th>受講フロー</th></tr>
       <tr><td><strong>A</strong></td><td>やる気+理解度高い</td><td>S1→S2→S3→S4→S5→S6（全部）</td></tr>
       <tr><td><strong>B</strong></td><td>業務自動化したい</td><td>S1→S2→S3→S4</td></tr>
-      <tr><td><strong>C</strong></td><td>開発系に興味</td><td>S1→S2→S5→S6</td></tr>
+      <tr><td><strong>C</strong></td><td>アプリ開発に興味</td><td>S1→S2→S5→S6</td></tr>
     </table>
   </div>
 
@@ -196,6 +199,9 @@
         <div class="video-content">
           <div class="video-title">講座の全体像：Claude Codeがもたらす「AI駆動開発」とは </div>
           <div class="video-points">Boris語録「箱から出したまま」引用。冒頭で魔法体験チラ見せ映像。3トラック構成。「まだやらなくていいこと」も明示。情報源は公式+Borisだけ<br><span class="ref">#1 #16</span></div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>ClaudeCodeは「箱から出したままでも使える」と言われているので試してもらいたい。細かい設定をする前に。</div>
+          </div>
         </div>
       </div>
       <div class="video">
@@ -210,6 +216,10 @@
         <div class="video-content">
           <div class="video-title">Claude Codeのインストールと初期設定 </div>
           <div class="video-points">ネイティブインストーラー（公式推奨）で一気通貫。認証フロー。料金（無料で十分）。ccusageもインストール<br><span class="ref">#12</span></div>
+          <div class="video-comments">
+            <div class="comment kawashima"><span class="comment-name">川島:</span>CLI版インストール後にパスが通らないことがよくある。パスを通す作業も入れると迷子にならない</div>
+            <div class="comment kanno"><span class="comment-name">菅野:</span>公式ドキュメント上はネイティブインストーラーが推奨（npm方式は非推奨）。Windowsの前提条件はGit for Windowsのみ。「Node.js等」は要確認</div>
+          </div>
         </div>
       </div>
       <div class="video">
@@ -246,6 +256,9 @@
         <div class="video-content">
           <div class="video-title">基本コマンドとPlanモード — 「考えてから動く」習慣 </div>
           <div class="video-points">/help, /cost, /clear, rewind, --resume/--continue。トークン概念（雪だるま式増加）。/usage, /context, Webダッシュボード。Planモード（探索→計画→実装）。/compactは非推奨。2回修正してダメなら/clearして再スタート<br><span class="ref">#5 #15 #20</span></div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>auto-compact入る前に/clearしていくのが大事。1つの作業ができたらなるべく/clearする</div>
+          </div>
         </div>
       </div>
       <div class="video">
@@ -253,6 +266,10 @@
         <div class="video-content">
           <div class="video-title">AIの「記憶」を司るCLAUDE.mdの書き方 </div>
           <div class="video-points">/initで自動生成→改善。「削除するとClaudeが間違うか？→Noなら削除」。200行以下。Boris語録。具体的に書くほど従う<br><span class="ref">#7 #22</span></div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>ClaudeCode開発者のBoris氏のベスト・プラクティスを紹介したい</div>
+            <div class="comment kanno"><span class="comment-name">菅野:</span>CLAUDE.mdは実運用上はドキュメントのリンク集（インデックス）として活用するのが最適。ルールを書きすぎるとAIの注意力を削ぐし、AIは必ずルールを守るわけではない</div>
+          </div>
         </div>
       </div>
       <div class="video">
@@ -267,6 +284,10 @@
         <div class="video-content">
           <div class="video-title">【重要】セキュリティの基本とサンドボックス </div>
           <div class="video-points">サンドボックス（Seatbelt）が箱から出したまま動く。/permissionsで安全に。Return連打、rm-rf、プロンプトインジェクション。失敗パターン5つの紹介<br><span class="ref">#14 #20 #21</span></div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>環境変数を理解してもらいたい</div>
+            <div class="comment kanno"><span class="comment-name">菅野:</span>Return連打は気をつける、rm -rfとか、fetch→プロンプトインジェクションなど。Ctrl+Eで簡単な解説が出る。万が一の利用金額の上限設定も教える</div>
+          </div>
         </div>
       </div>
     </div>
@@ -276,7 +297,7 @@
   <div class="section biz" id="s3">
     <div class="section-header">
       <div><h2>S3：業務自動化の武器庫を作る</h2><div class="meta">4本 / 20分</div></div>
-      <span class="badge">営業・事務系</span>
+      <span class="badge">業務自動化・コンサルティング</span>
     </div>
     <div class="section-purpose">
       <div class="purpose-label">目的</div>
@@ -302,6 +323,10 @@
         <div class="video-content">
           <div class="video-title">Skillsで自社業務を資産化する — skill-creatorの使い方 </div>
           <div class="video-points">核心。ドキュメントは読まれないがSkillsはClaudeが直接使う。skill-creatorインストール必須。自社業務スキル化→社内横展開。企業間の競争力の源泉<br><span class="ref">#8</span></div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Skills自体もClaudeに作らせる。1日1回やることはSkill化</div>
+            <div class="comment kawashima"><span class="comment-name">川島:</span>公式skill-creatorの紹介 https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md</div>
+          </div>
         </div>
       </div>
       <div class="video">
@@ -316,6 +341,11 @@
         <div class="video-content">
           <div class="video-title">GUIポチポチからの脱却 — MCP/CLIで外部ツールを自然言語操作 </div>
           <div class="video-points">「毎日GUIで5分→一言で完了」。freee、WordPress等。本質は「自然言語でAPI操作」<br><span class="ref">#9</span></div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Playwrightは紹介したい</div>
+            <div class="comment kawashima"><span class="comment-name">川島:</span>CLIツールの紹介も。Playwright CLI、WordPress CLI。MCPからCLIの流れもある。Agent Browserも軽くて早い</div>
+            <div class="comment kanno"><span class="comment-name">菅野:</span>Playwrightは高橋さんがAI自動テストで知見あり。ただしGUI操作は不安定で暴走の危険あり</div>
+          </div>
         </div>
       </div>
     </div>
@@ -325,7 +355,7 @@
   <div class="section biz" id="s4">
     <div class="section-header">
       <div><h2>S4：ユースケース実践とマネタイズ</h2><div class="meta">5本 / 25分</div></div>
-      <span class="badge">営業・事務系</span>
+      <span class="badge">業務自動化・コンサルティング</span>
     </div>
     <div class="section-purpose">
       <div class="purpose-label">目的</div>
@@ -344,12 +374,15 @@
         <div class="video-content">
           <div class="video-title">【営業向け】顧客リストのスクレイピング＆広告文の大量生成 </div>
           <div class="video-points">ローカル完結→セキュリティ安心<br><span class="ref">#3</span></div>
+          <div class="video-comments">
+            <div class="comment kanno"><span class="comment-name">菅野:</span>パワポも入れる</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">2</div>
         <div class="video-content">
-          <div class="video-title">【バックオフィス向け】請求書PDF化・Excel処理ツール作り </div>
+          <div class="video-title">【バックオフィス向け】請求書PDF化・Excel処理ツール作り</div>
           <div class="video-points">「御社専用ツールをサクッと作れます」<br><span class="ref">#4</span></div>
         </div>
       </div>
@@ -381,7 +414,7 @@
   <div class="section dev" id="s5">
     <div class="section-header">
       <div><h2>S5：GitHub＆スペック駆動開発</h2><div class="meta">7本 / 35分</div></div>
-      <span class="badge">開発系</span>
+      <span class="badge">アプリ開発</span>
     </div>
     <div class="section-purpose">
       <div class="purpose-label">目的</div>
@@ -402,6 +435,9 @@
         <div class="video-content">
           <div class="video-title">【超入門】GitHubとは？ — 「セーブポイントを作るだけ」 </div>
           <div class="video-points">概念より先にgit commit→pushの動きを見せる<br><span class="ref">#2</span></div>
+          <div class="video-comments">
+            <div class="comment kanno"><span class="comment-name">菅野:</span>エンジニアチームでも同様の課題（非エンジニアにGit操作をどう教えるか）を抱えている</div>
+          </div>
         </div>
       </div>
       <div class="video">
@@ -423,6 +459,9 @@
         <div class="video-content">
           <div class="video-title">「スペック駆動開発」とは？ — Vibe Codingの限界を超える </div>
           <div class="video-points">探索→計画→実装の3ステップ。Plan mode深掘り<br><span class="ref">#15</span></div>
+          <div class="video-comments">
+            <div class="comment kanno"><span class="comment-name">菅野:</span>AI上流工程は永澤さんが知見があるかも</div>
+          </div>
         </div>
       </div>
       <div class="video">
@@ -435,8 +474,11 @@
       <div class="video">
         <div class="video-num">6</div>
         <div class="video-content">
-          <div class="video-title">設計書・タスクリストの自動生成とタスクごとの実装 </div>
+          <div class="video-title">設計書・タスクリストの自動生成とタスクごとの実装</div>
           <div class="video-points"></div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>docsを作って参照することで人間もAIもやるべきことが整理される（仕様書、プロジェクト毎のルールなど）</div>
+          </div>
         </div>
       </div>
       <div class="video">
@@ -444,6 +486,9 @@
         <div class="video-content">
           <div class="video-title">エラーの自動対処とセルフコードレビュー </div>
           <div class="video-points">検証ループで品質2-3倍（Boris語録）。テスト・スクショ・出力検証<br><span class="ref">#19</span></div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>/simplify、プルリクの/reviewコマンド紹介</div>
+          </div>
         </div>
       </div>
     </div>
@@ -453,7 +498,7 @@
   <div class="section dev" id="s6">
     <div class="section-header">
       <div><h2>S6：デプロイとプロの開発フロー</h2><div class="meta">7本 / 35分</div></div>
-      <span class="badge">開発系</span>
+      <span class="badge">アプリ開発</span>
     </div>
     <div class="section-purpose">
       <div class="purpose-label">目的</div>
@@ -472,22 +517,32 @@
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
-          <div class="video-title">BACKSTAGE社エンジニアチームのリアル活用事例 </div>
+          <div class="video-title">BACKSTAGE社エンジニアチームのリアル活用事例</div>
           <div class="video-points"></div>
+          <div class="video-comments">
+            <div class="comment oikawa"><span class="comment-name">及川:</span>仕様駆動+AI駆動の組み合わせ。ドキュメント生成→画面生成→プロトタイプ確認→レビュー→ドキュメント反映→プログラム生成→Codexコードレビュー</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">2</div>
         <div class="video-content">
-          <div class="video-title">BACKSTAGE社独自のCLAUDE.mdテンプレート大公開 </div>
+          <div class="video-title">BACKSTAGE社独自のCLAUDE.mdテンプレート大公開</div>
           <div class="video-points">CLAUDE.mdの実運用例<br><span class="ref">#7</span></div>
+          <div class="video-comments">
+            <div class="comment oikawa"><span class="comment-name">及川:</span>プログラムを作るためのドキュメントをどう生成するかのskill（公開できる範囲で）の工夫が大事</div>
+            <div class="comment kanno"><span class="comment-name">菅野:</span>CLAUDE.mdはドキュメントのリンク集（インデックス）として活用が最適。ルール書きすぎはAIの注意力を削ぐ</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">Webアプリの動作確認とauto modeの紹介 </div>
+          <div class="video-title">Webアプリの動作確認とauto modeの紹介</div>
           <div class="video-points"></div>
+          <div class="video-comments">
+            <div class="comment kanno"><span class="comment-name">菅野:</span>auto modeの紹介も入れる --enable-auto-mode</div>
+          </div>
         </div>
       </div>
       <div class="video">
@@ -514,8 +569,12 @@
       <div class="video">
         <div class="video-num">7</div>
         <div class="video-content">
-          <div class="video-title">重い処理を切り分ける「サブエージェント」の活用法 </div>
+          <div class="video-title">重い処理を切り分ける「サブエージェント」の活用法</div>
           <div class="video-points">Boris語録：5セッション並行</div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>/btw</div>
+            <div class="comment kanno"><span class="comment-name">菅野:</span>Mainのコンテキストを汚したくない時、自然言語でタスク設定して実行。サブエージェントの結果を使ってメインで実装を続ける使い方</div>
+          </div>
         </div>
       </div>
     </div>
@@ -538,7 +597,7 @@
 
   <!-- Policy Map -->
   <div class="policy-map" id="policy">
-    <h2>教育方針22ポイント反映マップ</h2>
+    <h2>Context Map</h2>
     <div class="policy-item"><div class="policy-num">1</div><div class="policy-text">箱から出したまま→自分の道具に <span class="policy-where">S1-V1, S1-V4</span></div></div>
     <div class="policy-item"><div class="policy-num">2</div><div class="policy-text">概念より先に動きを見せる <span class="policy-where">全セクション</span></div></div>
     <div class="policy-item"><div class="policy-num">3</div><div class="policy-text">ローカル便利ツール量産 <span class="policy-where">S1-V4, S4全体</span></div></div>

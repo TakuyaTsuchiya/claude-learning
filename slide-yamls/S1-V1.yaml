@@ -1,0 +1,84 @@
+slide_deck:
+  design_binding:
+    template_file_name: "wein_ai_school_slide_design.yaml"
+    style_label: "standard_tech"
+    concept_label: "generative_ai_basic"
+    logo_spec:
+      logo_text: "AI+ School"
+      font_style: "太めのセリフ体で高級感を演出"
+      logo_color: "白または黒で背景とのコントラストを確保"
+      base_background: "白を基調とした清潔感のあるトーン"
+      placement_policy:
+        cover_slide: "中央寄せで余白を多めに取り、タイトルとの調和を重視"
+        inner_slides: "右上に小さく固定表示"
+        size_policy: "カバーは大きめ、中面は控えめなサイズで統一"
+  slides:
+    - id: "slide_01"
+      layout_key: "表紙"
+      original_title: "表紙"
+      title: "講座の全体像：Claude Codeがもたらす「AI駆動開発」とは"
+      subtitle: "セクション1 — 環境構築と魔法体験"
+      body:
+        type: "list"
+        item_example:
+          - "動画の開始タイトルを視覚的に提示する"
+          - "講座名とセクション名を明示する"
+          - "受講者に今回のテーマを伝え期待感を高める"
+      visual_instruction: "白を基調とした背景に、右側に抽象的なテクノロジーを連想させるイメージを配置するスプリットレイアウト。ロゴは中央寄せで余白を多めに取る。タイトルを特大フォントで中央に配置する。"
+    - id: "slide_02"
+      layout_key: "詳細"
+      original_title: "Claude Codeとは"
+      title: "Claude Codeとは"
+      body:
+        type: "list"
+        item_example:
+          - "Claude Codeの概要を図解で提示する"
+          - "CLIベースのAIエージェントとしての特徴を示す"
+          - "ターミナル上で自律的に動作する仕組みを説明する"
+          - "従来のチャット型AIとの違いを対比する"
+      visual_instruction: "白背景に左側テキスト、右側に概要を示す図解を配置する。ロゴは右上に小さく表示。箇条書きはシンプルな中黒を使用し、重要事項はグレーの背景ボックスで囲む。"
+    - id: "slide_03"
+      layout_key: "詳細"
+      original_title: "AI駆動開発の概念図"
+      title: "AI駆動開発の概念"
+      body:
+        type: "list"
+        item_example:
+          - "AI駆動開発の流れを図で示す"
+          - "従来の開発手法との工程の違いを対比する"
+          - "人間が担う役割とAIが担う役割を明確にする"
+          - "作業スピードと手軽さの向上を視覚化する"
+      visual_instruction: "白背景に左右対比のレイアウト。左側に従来の開発フロー、右側にAI駆動開発フローを配置し、矢印で変化を示す。ロゴは右上に小さく表示。対比図はモノトーンにブルーのアクセントを加える。"
+    - id: "slide_04"
+      layout_key: "詳細（3カラム/ポイント列挙）"
+      original_title: "3トラック構成図"
+      title: "3トラック構成"
+      body:
+        type: "list"
+        item_example:
+          - "入門トラック：全員必須の共通基礎を提示する"
+          - "営業事務系トラック：業務自動化を目指す受講者向けの内容を提示する"
+          - "開発系トラック：本格的な開発を目指す受講者向けの内容を提示する"
+      visual_instruction: "白背景に3つの要素を横並びに配置する3カラムレイアウト。各カラムに見出しと本文を記述し、論理的な並列構造を可視化する。ロゴは右上に小さく表示。各トラックはブルー系のアクセントカラーで区別する。"
+    - id: "slide_05"
+      layout_key: "詳細"
+      original_title: "受講フロー図"
+      title: "ペルソナ別 受講フロー"
+      body:
+        type: "list"
+        item_example:
+          - "ペルソナ別の学習ルートを図示する"
+          - "入門トラックから専門トラックへの分岐を示す"
+          - "受講者が自分に合った学習パスを選択できるよう可視化する"
+      visual_instruction: "白背景にフローチャート形式の図を中央に大きく配置する。分岐点を明確にし、各ルートを色分けで区別する。ロゴは右上に小さく表示。矢印とボックスで流れを示す。"
+    - id: "slide_06"
+      layout_key: "詳細"
+      original_title: "まとめ"
+      title: "まとめ"
+      body:
+        type: "list"
+        item_example:
+          - "セクションの要点を振り返る"
+          - "学習した主要ポイントを箇条書きで整理する"
+          - "次のステップへの期待感を持たせる"
+      visual_instruction: "白背景にテキスト中心のシンプルなレイアウト。要点を3つ程度に絞り、大きめのフォントで配置する。ロゴは右上に小さく表示。余白を広く取り、すっきりとした印象を維持する。"

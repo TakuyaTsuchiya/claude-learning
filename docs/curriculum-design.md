@@ -207,6 +207,7 @@ Figma「AI School Slide」プロジェクトに配置
 | NotebookLM | スライド生成・クイズ生成 | https://notebooklm.google.com |
 | Figma | スライドデザイン調整 | - |
 | 教材開発_情報管理シート.xlsx | 全成果物のリンク管理 | Google Drive |
+| Claude Code入門・実践（構成スプシ） | カリキュラム構成管理 | https://docs.google.com/spreadsheets/d/1Vn5__E90BiM6IK3f8ESdIo3FfaM7t91bLpACZVy3M4M/edit?gid=1639955670#gid=1639955670 |
 | 教材開発_マニュアル・共通ファイル.xlsx | マニュアル・プロンプト集 | Google Drive |
 | ファイル検索チャットボット | 管理ファイル横断検索 | https://gemini.google.com/gem/1a5RyB0KJFOUqbGibv2fT_bh-mkA8Mfh0?usp=sharing |
 | WisdomBase LMS Skills | LMS登録自動化（/wb-*） | Claude Code plugin |

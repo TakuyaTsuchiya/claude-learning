@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code講座 カリキュラムv3 レビュー</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.6; }
+
+  .header { background: #1a1a2e; color: #fff; padding: 2rem; position: sticky; top: 0; z-index: 100; }
+  .header h1 { font-size: 1.5rem; font-weight: 600; }
+  .header p { color: #a0a0b0; font-size: 0.85rem; margin-top: 0.3rem; }
+
+  .nav { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 0.8rem 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; position: sticky; top: 72px; z-index: 99; }
+  .nav a { text-decoration: none; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500; transition: all 0.2s; }
+  .nav a.intro { background: #e8f4fd; color: #2d7dd2; }
+  .nav a.biz { background: #f3eeff; color: #7b61ff; }
+  .nav a.dev { background: #e8fdf0; color: #2d9d5e; }
+  .nav a:hover { filter: brightness(0.9); }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+
+  .concept { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; border-left: 4px solid #4a90d9; }
+  .concept h2 { font-size: 1.1rem; margin-bottom: 0.8rem; }
+  .concept .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .concept .tag { background: #f0f0f0; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.75rem; }
+
+  .persona-table { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+  .persona-table h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+  .persona-table table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .persona-table th { text-align: left; padding: 0.5rem; background: #f5f5f7; border-bottom: 2px solid #e0e0e0; }
+  .persona-table td { padding: 0.5rem; border-bottom: 1px solid #f0f0f0; }
+
+  .section { background: #fff; border-radius: 12px; margin-bottom: 1.5rem; overflow: hidden; }
+  .section-header { padding: 1.2rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .section-header h2 { font-size: 1.1rem; }
+  .section-header .badge { font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 10px; font-weight: 600; }
+  .section-header .meta { font-size: 0.75rem; color: #888; }
+  .section.intro .section-header { border-left: 4px solid #4a90d9; }
+  .section.intro .badge { background: #e8f4fd; color: #2d7dd2; }
+  .section.biz .section-header { border-left: 4px solid #7b61ff; }
+  .section.biz .badge { background: #f3eeff; color: #7b61ff; }
+  .section.dev .section-header { border-left: 4px solid #2d9d5e; }
+  .section.dev .badge { background: #e8fdf0; color: #2d9d5e; }
+
+  .section-purpose { padding: 0 1.5rem 1rem; font-size: 0.85rem; color: #555; border-bottom: 1px solid #f0f0f0; }
+
+  .video-list { padding: 0; }
+  .video { padding: 1rem 1.5rem; border-bottom: 1px solid #f5f5f7; display: flex; gap: 1rem; align-items: flex-start; }
+  .video:last-child { border-bottom: none; }
+  .video-num { background: #f0f0f0; color: #555; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+  .video-content { flex: 1; }
+  .video-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .video-mode { font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 3px; background: #f0f0f0; color: #666; }
+  .video-mode.rec { background: #fef3e2; color: #c77d00; }
+  .video-points { font-size: 0.78rem; color: #666; margin-top: 0.4rem; line-height: 1.5; }
+  .video-points .ref { color: #4a90d9; font-weight: 600; font-size: 0.7rem; }
+
+  .summary { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+  .summary h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+  .summary table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .summary th { text-align: left; padding: 0.5rem; background: #f5f5f7; border-bottom: 2px solid #e0e0e0; }
+  .summary td { padding: 0.5rem; border-bottom: 1px solid #f0f0f0; }
+  .summary .total { font-weight: 700; background: #f5f5f7; }
+
+  .policy-map { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+  .policy-map h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+  .policy-item { display: flex; gap: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid #f8f8f8; font-size: 0.8rem; }
+  .policy-item:last-child { border-bottom: none; }
+  .policy-num { background: #4a90d9; color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; flex-shrink: 0; }
+  .policy-text { flex: 1; }
+  .policy-where { color: #888; font-size: 0.72rem; }
+
+  .footer { text-align: center; padding: 2rem; color: #888; font-size: 0.75rem; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Claude Code講座 カリキュラムv3</h1>
+  <p>31本 / 全5分 / 約2.5時間 | 教育方針22ポイント反映 | 川島さんレビュー待ち</p>
+</div>
+
+<div class="nav">
+  <a href="#s1" class="intro">S1 環境構築</a>
+  <a href="#s2" class="intro">S2 記憶と基礎</a>
+  <a href="#s3" class="biz">S3 業務自動化</a>
+  <a href="#s4" class="biz">S4 ユースケース</a>
+  <a href="#s5" class="dev">S5 GitHub</a>
+  <a href="#s6" class="dev">S6 デプロイ</a>
+</div>
+
+<div class="container">
+
+  <div class="concept">
+    <h2>講座コンセプト</h2>
+    <p style="margin-bottom:0.5rem;font-size:0.85rem;"><strong>表テーマ：</strong>Claude Codeを使えるようになる<br><strong>裏テーマ：</strong>AI DXコンサルタントとして動けるレベルまで持っていく</p>
+    <div class="tags">
+      <span class="tag">箱から出したまま→自分の道具に</span>
+      <span class="tag">概念より先に動きを見せる</span>
+      <span class="tag">ローカル便利ツール量産=青チャート</span>
+      <span class="tag">スライド最小限・公式画面収録</span>
+      <span class="tag">情報源は公式+Borisだけ</span>
+    </div>
+  </div>
+
+  <div class="persona-table">
+    <h2>ペルソナと受講フロー</h2>
+    <table>
+      <tr><th>ペルソナ</th><th>特徴</th><th>受講フロー</th></tr>
+      <tr><td><strong>A</strong></td><td>やる気+理解度高い</td><td>S1→S2→S3→S4→S5→S6（全部）</td></tr>
+      <tr><td><strong>B</strong></td><td>業務自動化したい</td><td>S1→S2→S3→S4</td></tr>
+      <tr><td><strong>C</strong></td><td>開発系に興味</td><td>S1→S2→S5→S6</td></tr>
+    </table>
+  </div>
+
+  <!-- S1 -->
+  <div class="section intro" id="s1">
+    <div class="section-header">
+      <div><h2>S1：環境構築と魔法体験</h2><div class="meta">4本 / 20分</div></div>
+      <span class="badge">入門</span>
+    </div>
+    <div class="section-purpose">Claude Codeをインストールし、自然言語で指示するだけで動くアプリが完成する「魔法」を体感する。箱から出したままでも使えることを実感し、学習意欲に火をつける。</div>
+    <div class="video-list">
+      <div class="video">
+        <div class="video-num">1</div>
+        <div class="video-content">
+          <div class="video-title">講座の全体像：Claude Codeがもたらす「AI駆動開発」とは <span class="video-mode">標準</span></div>
+          <div class="video-points">Boris語録「箱から出したまま」引用。冒頭で魔法体験チラ見せ映像。3トラック構成。「まだやらなくていいこと」も明示。情報源は公式+Borisだけ<br><span class="ref">#1 #16</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">2</div>
+        <div class="video-content">
+          <div class="video-title">「黒い画面」の基本操作 — mkdirとcdだけ覚えよう <span class="video-mode">標準</span></div>
+          <div class="video-points">mkdir+cd最重要。「フォルダを分ける＝話題を分ける＝AIが賢く動く」<br><span class="ref">#11</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">3</div>
+        <div class="video-content">
+          <div class="video-title">Claude Codeのインストールと初期設定 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">ネイティブインストーラー（公式推奨）で一気通貫。認証フロー。料金（無料で十分）。ccusageもインストール<br><span class="ref">#12</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">4</div>
+        <div class="video-content">
+          <div class="video-title">【魔法体験】自然言語で「動くアプリ」を作らせてみよう！ <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">個人情報マスキングツール実演。スクショでフィードバック（検証ループ入門）。音声入力デモ<br><span class="ref">#1 #3 #5 #13 #19</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S2 -->
+  <div class="section intro" id="s2">
+    <div class="section-header">
+      <div><h2>S2：AIの「記憶」と使いこなしの基礎</h2><div class="meta">4本 / 20分</div></div>
+      <span class="badge">入門</span>
+    </div>
+    <div class="section-purpose">CLAUDE.mdでAIに記憶を持たせ、Planモードで「考えてから動く」習慣を身につける。トークン管理とセキュリティの基本を学び、Claude Codeを安全に使いこなせるようになる。</div>
+    <div class="video-list">
+      <div class="video">
+        <div class="video-num">1</div>
+        <div class="video-content">
+          <div class="video-title">基本コマンドとPlanモード — 「考えてから動く」習慣 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">/help, /cost, /clear, rewind, --resume/--continue。トークン概念（雪だるま式増加）。/usage, /context, Webダッシュボード。Planモード（探索→計画→実装）。/compactは非推奨。2回修正してダメなら/clearして再スタート<br><span class="ref">#5 #15 #20</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">2</div>
+        <div class="video-content">
+          <div class="video-title">AIの「記憶」を司るCLAUDE.mdの書き方 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">/initで自動生成→改善。「削除するとClaudeが間違うか？→Noなら削除」。200行以下。Boris語録。具体的に書くほど従う<br><span class="ref">#7 #22</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">3</div>
+        <div class="video-content">
+          <div class="video-title">CLAUDE.mdの階層構造と自動メモリ <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">パソコン全体/プロジェクト/フォルダの3層。MEMORY.md。読み込みタイミング。Skillsとの使い分け（広く適用→CLAUDE.md、たまに→Skills）<br><span class="ref">#7</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">4</div>
+        <div class="video-content">
+          <div class="video-title">【重要】セキュリティの基本とサンドボックス <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">サンドボックス（Seatbelt）が箱から出したまま動く。/permissionsで安全に。Return連打、rm-rf、プロンプトインジェクション。失敗パターン5つの紹介<br><span class="ref">#14 #20 #21</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <div class="section biz" id="s3">
+    <div class="section-header">
+      <div><h2>S3：業務自動化の武器庫を作る</h2><div class="meta">4本 / 20分</div></div>
+      <span class="badge">営業・事務系</span>
+    </div>
+    <div class="section-purpose">Skills・MCP・CLIを使って定型作業を自動化する。自社の業務をスキル化して社内に横展開できる力を身につけ、「自分専用のAIアシスタント」を構築する。</div>
+    <div class="video-list">
+      <div class="video">
+        <div class="video-num">1</div>
+        <div class="video-content">
+          <div class="video-title">カスタムスラッシュコマンドで「自分だけのショートカット」を作る <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">繰り返す操作をコマンド化。実演中心<br><span class="ref">#2</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">2</div>
+        <div class="video-content">
+          <div class="video-title">Skillsで自社業務を資産化する — skill-creatorの使い方 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">核心。ドキュメントは読まれないがSkillsはClaudeが直接使う。skill-creatorインストール必須。自社業務スキル化→社内横展開。企業間の競争力の源泉<br><span class="ref">#8</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">3</div>
+        <div class="video-content">
+          <div class="video-title">【実践】スライド自動生成 — 提案資料を自然言語で作る <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">Nanobanana+PPTX。この講座自体がClaude Codeでスライド作ってる実例<br><span class="ref">#10</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">4</div>
+        <div class="video-content">
+          <div class="video-title">GUIポチポチからの脱却 — MCP/CLIで外部ツールを自然言語操作 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">「毎日GUIで5分→一言で完了」。freee、WordPress等。本質は「自然言語でAPI操作」<br><span class="ref">#9</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S4 -->
+  <div class="section biz" id="s4">
+    <div class="section-header">
+      <div><h2>S4：ユースケース実践とマネタイズ</h2><div class="meta">5本 / 25分</div></div>
+      <span class="badge">営業・事務系</span>
+    </div>
+    <div class="section-purpose">職種別の便利ツールを量産する「青チャート」。社内評価を上げるだけでなく、他社にも横展開できるAI DXコンサルタントへの第一歩を踏み出す。</div>
+    <div class="video-list">
+      <div class="video">
+        <div class="video-num">1</div>
+        <div class="video-content">
+          <div class="video-title">【営業向け】顧客リストのスクレイピング＆広告文の大量生成 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">ローカル完結→セキュリティ安心<br><span class="ref">#3</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">2</div>
+        <div class="video-content">
+          <div class="video-title">【バックオフィス向け】請求書PDF化・Excel処理ツール作り <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">「御社専用ツールをサクッと作れます」<br><span class="ref">#4</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">3</div>
+        <div class="video-content">
+          <div class="video-title">【法務・人事向け】社内規程Q&Aツール・プロトタイプ爆速作成 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">個人情報を外部に出さない<br><span class="ref">#3</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">4</div>
+        <div class="video-content">
+          <div class="video-title">副業・案件獲得の攻め方：「動くモック」を即提示する営業術 <span class="video-mode">標準</span></div>
+          <div class="video-points">横展開ビジネス価値。どの会社も同じ悩み。Claude Codeサブスクだけで達成<br><span class="ref">#4 #18</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">5</div>
+        <div class="video-content">
+          <div class="video-title">講座のまとめ：社内でAI化を推進し、自分の評価を上げるステップ <span class="video-mode">標準</span></div>
+          <div class="video-points">コンサルタント的な動き。青チャートの次は自分で量産<br><span class="ref">#4 #18</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="section dev" id="s5">
+    <div class="section-header">
+      <div><h2>S5：GitHub＆スペック駆動開発</h2><div class="meta">7本 / 35分</div></div>
+      <span class="badge">開発系</span>
+    </div>
+    <div class="section-purpose">バージョン管理を「セーブポイント」として体感し、いきなりコードを書かせない「スペック駆動開発」で実務レベルの開発フローを身につける。</div>
+    <div class="video-list">
+      <div class="video">
+        <div class="video-num">1</div>
+        <div class="video-content">
+          <div class="video-title">【超入門】GitHubとは？ — 「セーブポイントを作るだけ」 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">概念より先にgit commit→pushの動きを見せる<br><span class="ref">#2</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">2</div>
+        <div class="video-content">
+          <div class="video-title">Claude Codeでリポジトリ自動作成（ghコマンド連携） <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points"></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">3</div>
+        <div class="video-content">
+          <div class="video-title">ファイル参照（@インポート）と権限（パーミッション）管理 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points"></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">4</div>
+        <div class="video-content">
+          <div class="video-title">「スペック駆動開発」とは？ — Vibe Codingの限界を超える <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">探索→計画→実装の3ステップ。Plan mode深掘り<br><span class="ref">#15</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">5</div>
+        <div class="video-content">
+          <div class="video-title">AIと一緒に「何を作るか」を決める（要件定義の壁打ち） <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">具体的なコンテキストを提供するほど精度が上がる<br><span class="ref">#22</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">6</div>
+        <div class="video-content">
+          <div class="video-title">設計書・タスクリストの自動生成とタスクごとの実装 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points"></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">7</div>
+        <div class="video-content">
+          <div class="video-title">エラーの自動対処とセルフコードレビュー <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">検証ループで品質2-3倍（Boris語録）。テスト・スクショ・出力検証<br><span class="ref">#19</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S6 -->
+  <div class="section dev" id="s6">
+    <div class="section-header">
+      <div><h2>S6：デプロイとプロの開発フロー</h2><div class="meta">7本 / 35分</div></div>
+      <span class="badge">開発系</span>
+    </div>
+    <div class="section-purpose">作ったアプリをVercelで世界に公開し、サブエージェント・auto mode等を活用したプロの開発ワークフローを習得する。</div>
+    <div class="video-list">
+      <div class="video">
+        <div class="video-num">1</div>
+        <div class="video-content">
+          <div class="video-title">BACKSTAGE社エンジニアチームのリアル活用事例 <span class="video-mode">標準</span></div>
+          <div class="video-points"></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">2</div>
+        <div class="video-content">
+          <div class="video-title">BACKSTAGE社独自のCLAUDE.mdテンプレート大公開 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">CLAUDE.mdの実運用例<br><span class="ref">#7</span></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">3</div>
+        <div class="video-content">
+          <div class="video-title">Webアプリの動作確認とauto modeの紹介 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points"></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">4</div>
+        <div class="video-content">
+          <div class="video-title">Vercelとは？ 作成したアプリを無料で世界に公開 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points"></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">5</div>
+        <div class="video-content">
+          <div class="video-title">Claude Codeを使ったVercelへの直接デプロイ <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points"></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">6</div>
+        <div class="video-content">
+          <div class="video-title">【重要】APIキー漏洩を防ぐ！ .envと.gitignoreの仕組み <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points"></div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">7</div>
+        <div class="video-content">
+          <div class="video-title">重い処理を切り分ける「サブエージェント」の活用法 <span class="video-mode rec">画面収録</span></div>
+          <div class="video-points">Boris語録：5セッション並行</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary">
+    <h2>動画数サマリー</h2>
+    <table>
+      <tr><th>セクション</th><th>本数</th><th>合計</th></tr>
+      <tr><td>S1 環境構築と魔法体験</td><td>4本</td><td>20分</td></tr>
+      <tr><td>S2 AIの記憶と使いこなし</td><td>4本</td><td>20分</td></tr>
+      <tr><td>S3 業務自動化の武器庫</td><td>4本</td><td>20分</td></tr>
+      <tr><td>S4 ユースケースとマネタイズ</td><td>5本</td><td>25分</td></tr>
+      <tr><td>S5 GitHub＆スペック駆動</td><td>7本</td><td>35分</td></tr>
+      <tr><td>S6 デプロイとプロの開発</td><td>7本</td><td>35分</td></tr>
+      <tr class="total"><td>合計</td><td>31本</td><td>約2.5時間</td></tr>
+    </table>
+  </div>
+
+  <!-- Policy Map -->
+  <div class="policy-map">
+    <h2>教育方針22ポイント反映マップ</h2>
+    <div class="policy-item"><div class="policy-num">1</div><div class="policy-text">箱から出したまま→自分の道具に <span class="policy-where">S1-V1, S1-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">2</div><div class="policy-text">概念より先に動きを見せる <span class="policy-where">全セクション</span></div></div>
+    <div class="policy-item"><div class="policy-num">3</div><div class="policy-text">ローカル便利ツール量産 <span class="policy-where">S1-V4, S4全体</span></div></div>
+    <div class="policy-item"><div class="policy-num">4</div><div class="policy-text">横展開ビジネス価値 <span class="policy-where">S4-V4, S4-V5</span></div></div>
+    <div class="policy-item"><div class="policy-num">5</div><div class="policy-text">トークン管理とスクショ活用 <span class="policy-where">S1-V4, S2-V1</span></div></div>
+    <div class="policy-item"><div class="policy-num">6</div><div class="policy-text">ペルソナ別ゴール <span class="policy-where">全体構成</span></div></div>
+    <div class="policy-item"><div class="policy-num">7</div><div class="policy-text">CLAUDE.md階層構造 <span class="policy-where">S2-V2, S2-V3, S6-V2</span></div></div>
+    <div class="policy-item"><div class="policy-num">8</div><div class="policy-text">Skills=自社業務の資産化 <span class="policy-where">S3-V2</span></div></div>
+    <div class="policy-item"><div class="policy-num">9</div><div class="policy-text">GUIからの脱却（MCP/CLI） <span class="policy-where">S3-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">10</div><div class="policy-text">スライド生成自動化 <span class="policy-where">S3-V3</span></div></div>
+    <div class="policy-item"><div class="policy-num">11</div><div class="policy-text">mkdir+cd、1セッション1話題 <span class="policy-where">S1-V2, S2-V1</span></div></div>
+    <div class="policy-item"><div class="policy-num">12</div><div class="policy-text">ccusageインストール <span class="policy-where">S1-V3</span></div></div>
+    <div class="policy-item"><div class="policy-num">13</div><div class="policy-text">音声入力 <span class="policy-where">S1-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">14</div><div class="policy-text">サンドボックス=安全 <span class="policy-where">S2-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">15</div><div class="policy-text">Planモード=探索→計画→実装 <span class="policy-where">S2-V1, S5-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">16</div><div class="policy-text">「まだやらなくていいこと」を明示 <span class="policy-where">S1-V1</span></div></div>
+    <div class="policy-item"><div class="policy-num">17</div><div class="policy-text">スライド最小限・公式画面収録 <span class="policy-where">制作方針</span></div></div>
+    <div class="policy-item"><div class="policy-num">18</div><div class="policy-text">裏テーマ：AI DXコンサルへ <span class="policy-where">S4-V4, S4-V5</span></div></div>
+    <div class="policy-item"><div class="policy-num">19</div><div class="policy-text">検証ループ=最もレバレッジが高い <span class="policy-where">S1-V4, S2-V1, S5-V7</span></div></div>
+    <div class="policy-item"><div class="policy-num">20</div><div class="policy-text">2回ダメなら/clearして再スタート <span class="policy-where">S2-V1, S2-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">21</div><div class="policy-text">失敗パターン5つ <span class="policy-where">S2-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">22</div><div class="policy-text">具体的なコンテキストを提供する <span class="policy-where">S2-V2, S5-V5</span></div></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Claude Code講座 カリキュラムv3 | 作成日: 2026-04-05 | 川島さんレビュー待ち
+</div>
+
+</body>
+</html>

@@ -370,7 +370,7 @@ var SCRIPTS = {
         "end": "0:50",
         "topic": "必要なコンポーネントの確認",
         "direction": "・スライド。・話す。",
-        "content": "必要なものは3つ。1つ目はNode.js。公式サイトからLTS版（安定版）をダウンロードします。2つ目はnpm。Node.jsと一緒に自動インストールされます。3つ目はGit for Windows（Windowsのみ。Macには標準搭載）。",
+        "content": "Windowsの方はGit for Windowsが必要です。git-scm.comからダウンロードしてインストールしてください。Macの方はGitが標準搭載なので不要です。Node.jsやnpmは不要です。",
         "reference": ""
       },
       {
@@ -378,63 +378,63 @@ var SCRIPTS = {
         "end": "1:30",
         "topic": "パスを通す概念の説明",
         "direction": "・スライド。・話す。",
-        "content": "『パスを通す』とは、ソフトの場所をターミナルに教える作業です。公式インストーラーなら自動設定されます。『command not found』が出たらターミナルを再起動してください。では、Mac版から実際の手順をお見せします。"
+        "content": "インストーラーが自動でパスを設定してくれるので、特別な操作は不要です。もし「command not found」と出たら、ターミナルを一度閉じて開き直してください。"
       },
       {
         "start": "1:30",
         "end": "2:30",
-        "topic": "Mac版：Node.jsのダウンロード手順",
+        "topic": "Mac版：Claude Codeのインストール",
         "direction": "・画面収録。・話す。",
-        "content": "Mac版です。nodejs.orgにアクセスし、LTS版のダウンロードボタンをクリック。必ずLTS版を選んでください。"
+        "content": "Mac版です。ターミナルを開いて、次のコマンドを入力します。curl -fsSL https://claude.ai/install.sh | bash。これだけでClaude Codeがインストールされます。"
       },
       {
         "start": "2:30",
         "end": "3:30",
-        "topic": "Mac版：Node.jsのインストール実行",
+        "topic": "Mac版：インストール完了の確認",
         "direction": "・スライド。・話す。",
-        "content": "ダウンロードしたpkgファイルをダブルクリック。インストーラーの指示に従い『続ける』→『同意する』→『インストール』と進めます。デフォルト設定のままで大丈夫です。"
+        "content": "インストールが終わったら、claude --versionと入力してバージョン番号が表示されれば成功です。"
       },
       {
         "start": "3:30",
         "end": "4:20",
-        "topic": "Mac版：インストール完了の確認",
+        "topic": "Mac版：初回起動と認証",
         "direction": "・スライド。・話す。",
-        "content": "ターミナルを開いて確認します。『node --version』でバージョン番号が出ればNode.js成功。『npm --version』でnpmも確認できます。"
+        "content": "claudeと入力して起動します。初回は認証が必要です。画面の指示に従ってAnthropicアカウントでログインしてください。"
       },
       {
         "start": "4:20",
         "end": "5:00",
-        "topic": "Mac版：Claude Codeのインストール",
+        "topic": "Mac版：完了",
         "direction": "・画面収録。・話す。",
-        "content": "『npm install -g claude』でClaude Code本体をインストール。『added XXX packages』と表示されれば完了です。Mac版はここで終了です。"
+        "content": "認証が完了すればMac版のセットアップは終了です。"
       },
       {
         "start": "5:00",
         "end": "6:00",
         "topic": "Windows版：Git for Windowsのインストール",
         "direction": "・画面収録。・話す。",
-        "content": "Windows版です。まず『git-scm.com』からGit for Windowsをダウンロード。ダブルクリックでインストーラーを起動します。"
+        "content": "Windows版です。まずgit-scm.comからGit for Windowsをダウンロードしてインストールします。設定はすべてデフォルトのまま進めてください。"
       },
       {
         "start": "6:00",
         "end": "7:00",
-        "topic": "Windows版：Git for Windowsの設定",
+        "topic": "Windows版：Claude Codeのインストール",
         "direction": "・スライド。・話す。",
-        "content": "インストーラーはすべてデフォルト設定のまま『Next』→『Install』→『Finish』で完了です。"
+        "content": "PowerShellを開いて、次のコマンドを入力します。irm https://claude.ai/install.ps1 | iex。これでClaude Codeがインストールされます。"
       },
       {
         "start": "7:00",
         "end": "8:00",
-        "topic": "Windows版：Node.jsとnpmのインストール",
+        "topic": "Windows版：動作確認と初回起動",
         "direction": "・画面収録。・話す。",
-        "content": "次にnodejs.orgからLTS版をダウンロード。インストーラーを起動し、利用規約に同意してデフォルト設定のまま進めます。『NPM package manager』にチェックが入っていることを確認して『Install』。"
+        "content": "claude --versionでバージョンが表示されれば成功です。claudeと入力して起動し、Macと同じく認証を完了してください。"
       },
       {
         "start": "8:00",
         "end": "8:30",
-        "topic": "Windows版：動作確認とClaude Codeのインストール",
+        "topic": "Windows版：完了",
         "direction": "・画面収録。・話す。",
-        "content": "コマンドプロンプトで『node --version』『npm --version』を確認。最後に『npm install -g claude』でClaude Codeをインストール。『added XXX packages』が出れば完了です。"
+        "content": "認証が完了すればWindows版も終了です。"
       },
       {
         "start": "8:30",
@@ -534,7 +534,7 @@ var SCRIPTS = {
         "end": "1:25",
         "topic": "ターミナルの準備とコマンド紹介",
         "direction": "・画面収録。・話す。",
-        "content": "ターミナルを開いて、『npm install -g @anthropic-ai/claude-code』を入力してください。これがClaude Codeの正式なインストールコマンドです。",
+        "content": "ターミナルを開いて、『claudeと入力してClaude Codeを起動します。",
         "reference": ""
       },
       {

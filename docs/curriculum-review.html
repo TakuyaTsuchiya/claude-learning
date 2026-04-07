@@ -151,7 +151,8 @@
   .gantt-months { display: flex; }
   .gantt-month { text-align: center; font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.5); padding: 0.3rem 0; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .gantt-days { display: flex; }
-  .gantt-day { flex: 1; text-align: center; font-size: 0.6rem; color: rgba(255,255,255,0.3); padding: 0.25rem 0; min-width: 28px; }
+  .gantt-day { flex: 1; text-align: center; font-size: 0.6rem; color: rgba(255,255,255,0.3); padding: 0.15rem 0; min-width: 28px; line-height: 1.3; }
+  .g-dow { font-size: 0.5rem; opacity: 0.6; }
   .gantt-day.weekend { color: rgba(255,255,255,0.15); }
   .gantt-day.today { color: #ff9f43; font-weight: 700; position: relative; }
   .gantt-day.today::after { content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: #ff9f43; border-radius: 50%; }
@@ -173,17 +174,25 @@
   .gantt-phase.p3 .g-phase-label { color: #68d391; }
   .gantt-phase.p4 { background: linear-gradient(90deg, rgba(183,148,244,0.15), transparent 60%); }
   .gantt-phase.p4 .g-phase-label { color: #b794f4; }
+  .gantt-phase.p5 { background: linear-gradient(90deg, rgba(246,173,85,0.15), transparent 60%); }
+  .gantt-phase.p5 .g-phase-label { color: #f6ad55; }
   .gantt-phase.p6 { background: linear-gradient(90deg, rgba(252,129,129,0.15), transparent 60%); }
   .gantt-phase.p6 .g-phase-label { color: #fc8181; }
+  .gantt-phase.p7 { background: linear-gradient(90deg, rgba(246,224,94,0.15), transparent 60%); }
+  .gantt-phase.p7 .g-phase-label { color: #f6e05e; }
   .gantt-phase.extra { background: linear-gradient(90deg, rgba(246,224,94,0.15), transparent 60%); }
   .gantt-phase.extra .g-phase-label { color: #f6e05e; }
   .gantt-bar { position: absolute; top: 7px; bottom: 7px; border-radius: 4px; z-index: 1; transition: opacity 0.15s, transform 0.15s; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
   .gantt-bar:hover { opacity: 1 !important; transform: scaleY(1.3); z-index: 5; }
+  .gantt-bar[data-detail] { cursor: pointer; }
+  .gantt-bar[data-detail]:hover::after { content: attr(data-detail); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #1a202c; color: #e2e8f0; font-size: 0.7rem; padding: 0.4rem 0.7rem; border-radius: 6px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); z-index: 100; pointer-events: none; }
   .gantt-bar.p1 { background: linear-gradient(135deg, #63b3ed, #4299e1); }
   .gantt-bar.p2 { background: linear-gradient(135deg, #edb063, #dd9a3c); }
   .gantt-bar.p3 { background: linear-gradient(135deg, #68d391, #48bb78); }
   .gantt-bar.p4 { background: linear-gradient(135deg, #b794f4, #9f7aea); }
+  .gantt-bar.p5 { background: linear-gradient(135deg, #f6ad55, #ed8936); }
   .gantt-bar.p6 { background: linear-gradient(135deg, #fc8181, #f56565); }
+  .gantt-bar.p7 { background: linear-gradient(135deg, #f6e05e, #ecc94b); }
   .gantt-bar.extra { background: linear-gradient(135deg, #f6e05e, #ecc94b); }
   .gantt-bar.done { opacity: 0.5; }
   .gantt-row.done .g-done-badge { font-size: 0.5rem; color: #fff; background: #48bb78; padding: 0.05rem 0.3rem; border-radius: 3px; margin-left: 0.3rem; white-space: nowrap; flex-shrink: 0; }
@@ -195,7 +204,9 @@
   .gantt-legend .l2::before { background: linear-gradient(135deg, #edb063, #dd9a3c); }
   .gantt-legend .l3::before { background: linear-gradient(135deg, #68d391, #48bb78); }
   .gantt-legend .l4::before { background: linear-gradient(135deg, #b794f4, #9f7aea); }
+  .gantt-legend .l5::before { background: linear-gradient(135deg, #f6ad55, #ed8936); }
   .gantt-legend .l6::before { background: linear-gradient(135deg, #fc8181, #f56565); }
+  .gantt-legend .l7::before { background: linear-gradient(135deg, #f6e05e, #ecc94b); }
   .gantt-legend .lx::before { background: linear-gradient(135deg, #f6e05e, #ecc94b); }
 
   .footer { text-align: center; padding: 2rem; color: #888; font-size: 0.75rem; }
@@ -692,9 +703,10 @@
       <span class="l1">Phase 1 準備・企画</span>
       <span class="l2">Phase 2 台本・スライド</span>
       <span class="l3">Phase 3 収録・生成</span>
-      <span class="l4">Phase 4-5 編集・LMS</span>
-      <span class="l6">Phase 6 提供開始</span>
-      <span class="lx">追加タスク</span>
+      <span class="l4">Phase 4 クイズ・課題</span>
+      <span class="l5">Phase 5 動画編集</span>
+      <span class="l6">Phase 6 LMSアップロード</span>
+      <span class="l7">Phase 7 提供開始</span>
     </div>
   </div>
 
@@ -720,17 +732,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var phases = [
       { label: 'Phase 1  準備・企画', cls: 'p1', tasks: [
         { name: '動画構成FIX', who: '土屋+川島', s: '4/5', e: '4/7' },
-        { name: '制作ワークフロー確定', who: '土屋', s: '4/5', e: '4/6' },
+        { name: '制作ワークフロー確定', who: '土屋', s: '4/5', e: '4/6', done: true, detail: '台本xlsx → Claude Code(pptxgenjs) → pptx → 音声収録+アバター生成 → LMS登録' },
         { name: '川島さんGitHub招待', who: '土屋', s: '4/5', e: '4/5', done: true },
-        { name: '技術仕様確認', who: '川島', s: '4/5', e: '4/7' },
-        { name: 'S1構成レビュー', who: '土屋+川島', s: '4/7', e: '4/9' },
-        { name: 'Backstageエンジニアに一部依頼', who: '土屋', s: '4/5', e: '4/7' }
+        { name: 'Backstageエンジニアに一部依頼', who: '土屋', s: '4/5', e: '4/7' },
+        { name: 'Windows画面収録を依頼', who: '土屋', s: '4/7', e: '4/9' }
       ]},
       { label: 'Phase 2  台本FIX・スライド', cls: 'p2', tasks: [
-        { name: 'S1 台本レビュー＆FIX', who: '土屋+川島', s: '4/8', e: '4/10' },
-        { name: 'S1 スライド生成', who: 'CC', s: '4/10', e: '4/10' },
-        { name: 'S2 台本レビュー＆FIX', who: '土屋+川島', s: '4/9', e: '4/11' },
-        { name: 'S2 スライド生成', who: 'CC', s: '4/11', e: '4/11' },
+        { name: 'S1-2 台本レビュー＆FIX', who: '土屋+川島', s: '4/8', e: '4/11' },
+        { name: 'S1-2 スライド生成', who: 'CC', s: '4/11', e: '4/11' },
         { name: 'S3-4 台本レビュー＆FIX', who: '土屋+川島', s: '4/11', e: '4/13' },
         { name: 'S3-4 スライド生成', who: 'CC', s: '4/13', e: '4/13' },
         { name: 'S5-6 台本レビュー＆FIX', who: '土屋+川島', s: '4/13', e: '4/16' },
@@ -744,20 +753,27 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'S5-6 音声収録', who: '川端', s: '4/18', e: '4/19' },
         { name: 'S5-6 アバター生成', who: '川端', s: '4/19', e: '4/19' }
       ]},
-      { label: 'Phase 4-5  編集・LMS', cls: 'p4', tasks: [
-        { name: 'クイズ・課題作成', who: '土屋', s: '4/14', e: '4/19' },
-        { name: '動画編集・最終チェック', who: '川端/土屋', s: '4/16', e: '4/21' },
-        { name: '動画パッケージ完成', who: '土屋', s: '4/21', e: '4/21' },
+      { label: 'Phase 4  クイズ・課題', cls: 'p4', tasks: [
+        { name: 'S1-2 クイズ・課題作成', who: '土屋', s: '4/14', e: '4/16' },
+        { name: 'S3-4 クイズ・課題作成', who: '土屋', s: '4/16', e: '4/18' },
+        { name: 'S5-6 クイズ・課題作成', who: '土屋', s: '4/18', e: '4/19' }
+      ]},
+      { label: 'Phase 5  動画編集', cls: 'p5', tasks: [
+        { name: 'S1 動画編集・納品', who: '動画編集会社', s: '4/16', e: '4/17' },
+        { name: 'S2 動画編集・納品', who: '動画編集会社', s: '4/17', e: '4/18' },
+        { name: 'S3 動画編集・納品', who: '動画編集会社', s: '4/18', e: '4/19' },
+        { name: 'S4 動画編集・納品', who: '動画編集会社', s: '4/19', e: '4/20' },
+        { name: 'S5 動画編集・納品', who: '動画編集会社', s: '4/20', e: '4/21' },
+        { name: 'S6 動画編集・納品', who: '動画編集会社', s: '4/21', e: '4/21' }
+      ]},
+      { label: 'Phase 6  LMSアップロード', cls: 'p6', tasks: [
         { name: 'LMSへ動画アップ', who: '土屋', s: '4/21', e: '4/22' },
-        { name: 'LMSへクイズアップ', who: '土屋', s: '4/22', e: '4/23' }
+        { name: 'LMSへクイズ・課題アップ', who: '土屋', s: '4/22', e: '4/23' }
       ]},
-      { label: 'Phase 6  提供開始', cls: 'p6', tasks: [
-        { name: '提供準備・最終確認', who: '土屋', s: '4/24', e: '4/24' },
-        { name: '講座提供開始', who: '-', s: '5/1', e: '5/1' }
+      { label: 'Phase 7  提供開始', cls: 'p7', tasks: [
+        { name: '提供準備・最終確認', who: '土屋', s: '4/24', e: '5/1' },
+        { name: '講座の提供開始', who: '-', s: '5/1', e: '5/1' }
       ]},
-      { label: '追加タスク', cls: 'extra', tasks: [
-        { name: 'Windows画面収録を依頼', who: '土屋', s: '', e: '' }
-      ]}
     ];
 
     function parseDate(str) {
@@ -777,20 +793,8 @@ document.addEventListener('DOMContentLoaded', function() {
     html += '<div class="gantt-header-left" style="display:flex;align-items:flex-end;padding-bottom:0.3rem;font-size:0.65rem;color:rgba(255,255,255,0.3);">タスク / 担当</div>';
     html += '<div class="gantt-header-right">';
 
-    // Month labels
-    html += '<div class="gantt-months">';
-    var curMonth = -1;
-    var monthRuns = [];
-    days.forEach(function(d, i) {
-      var m = d.getMonth();
-      if (m !== curMonth) { monthRuns.push({ month: m, count: 1 }); curMonth = m; }
-      else { monthRuns[monthRuns.length - 1].count++; }
-    });
-    var monthNames = ['','','','4月','5月'];
-    monthRuns.forEach(function(r) {
-      html += '<div class="gantt-month" style="flex:' + r.count + ';">' + monthNames[r.month] + '</div>';
-    });
-    html += '</div>';
+    // Month labels — placeholder, positioned via JS after render
+    html += '<div class="gantt-months" style="position:relative;height:1.4rem;"></div>';
 
     // Day labels
     html += '<div class="gantt-days">';
@@ -799,7 +803,8 @@ document.addEventListener('DOMContentLoaded', function() {
       var isWe = dow === 0 || dow === 6;
       var isTd = d.getTime() === TODAY.getTime();
       var cls = 'gantt-day' + (isWe ? ' weekend' : '') + (isTd ? ' today' : '');
-      html += '<div class="' + cls + '">' + d.getDate() + '</div>';
+      var dowNames = ['日','月','火','水','木','金','土'];
+      html += '<div class="' + cls + '">' + d.getDate() + '<br><span class="g-dow">' + dowNames[dow] + '</span></div>';
     });
     html += '</div></div></div>';
 
@@ -816,7 +821,7 @@ document.addEventListener('DOMContentLoaded', function() {
         html += '<div class="gantt-row-right">';
 
         // Grid cells
-        days.forEach(function(d) {
+        days.forEach(function(d, i) {
           var dow = d.getDay();
           var isWe = dow === 0 || dow === 6;
           html += '<div class="gantt-cell' + (isWe ? ' weekend' : '') + '"></div>';
@@ -830,7 +835,7 @@ document.addEventListener('DOMContentLoaded', function() {
           var ei = dayIdx(ed);
           var leftPct = (si / days.length * 100).toFixed(2);
           var widthPct = ((ei - si + 1) / days.length * 100).toFixed(2);
-          html += '<div class="gantt-bar ' + phase.cls + (t.done ? ' done' : '') + '" style="position:absolute;left:' + leftPct + '%;width:' + widthPct + '%;"></div>';
+          html += '<div class="gantt-bar ' + phase.cls + (t.done ? ' done' : '') + '"' + (t.detail ? ' data-detail="' + t.detail + '"' : '') + ' style="position:absolute;left:' + leftPct + '%;width:' + widthPct + '%;"></div>';
         }
 
         // Today line — positioned after DOM render via JS
@@ -842,27 +847,47 @@ document.addEventListener('DOMContentLoaded', function() {
     html += '</div>';
     document.getElementById('gantt-container').innerHTML = html;
 
-    // Today line — セルのDOM位置から正確に配置
+    // Month labels — DOMベースで1日セルの位置に配置
     (function() {
-      var rows = document.querySelectorAll('.gantt-row-right');
+      var monthsRow = document.querySelector('.gantt-months');
+      var dayCells = document.querySelectorAll('.gantt-days .gantt-day');
+      var monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+      var monthsRect = monthsRow.getBoundingClientRect();
+      dayCells.forEach(function(cell, i) {
+        var dateNum = parseInt(cell.textContent);
+        if (dateNum === 1) {
+          var cellRect = cell.getBoundingClientRect();
+          var leftPx = cellRect.left - monthsRect.left;
+          var label = document.createElement('div');
+          label.className = 'gantt-month';
+          label.style.position = 'absolute';
+          label.style.left = leftPx + 'px';
+          // 月を特定: START月 + 何回1日が出たか
+          var d = new Date(START.getTime() + i * 86400000);
+          label.textContent = monthNames[d.getMonth()];
+          monthsRow.appendChild(label);
+        }
+      });
+    })();
+
+    // Today line — チャート全体を貫通する1本の縦線
+    (function() {
+      var chart = document.querySelector('.gantt-chart');
       var headerRight = document.querySelector('.gantt-header-right');
-      if (!headerRight) return;
+      if (!chart || !headerRight) return;
       var dayCells = headerRight.querySelectorAll('.gantt-days .gantt-day');
       var todayCell = null;
       for (var i = 0; i < dayCells.length; i++) {
         if (dayCells[i].classList.contains('today')) { todayCell = dayCells[i]; break; }
       }
       if (!todayCell) return;
-      var headerRect = headerRight.getBoundingClientRect();
+      var chartRect = chart.getBoundingClientRect();
       var cellRect = todayCell.getBoundingClientRect();
-      var leftPx = cellRect.left - headerRect.left + cellRect.width / 2;
-
-      rows.forEach(function(row) {
-        var line = document.createElement('div');
-        line.className = 'gantt-today-line';
-        line.style.left = leftPx + 'px';
-        row.appendChild(line);
-      });
+      var leftPx = cellRect.left - chartRect.left + cellRect.width / 2;
+      var line = document.createElement('div');
+      line.className = 'gantt-today-line';
+      line.style.left = leftPx + 'px';
+      chart.appendChild(line);
     })();
   })();
   // Process each section - render structured scripts

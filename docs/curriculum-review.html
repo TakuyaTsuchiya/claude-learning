@@ -146,7 +146,7 @@
   .gantt { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .gantt-chart { position: relative; }
   .gantt-header { display: flex; border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .gantt-header-left { width: 220px; min-width: 220px; padding: 0.5rem 0; }
+  .gantt-header-left { width: 280px; min-width: 280px; padding: 0.5rem 0; position: sticky; left: 0; background: #1a1a2e; z-index: 2; }
   .gantt-header-right { flex: 1; display: flex; flex-direction: column; min-width: 500px; }
   .gantt-months { display: flex; }
   .gantt-month { text-align: center; font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.5); padding: 0.3rem 0; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -157,8 +157,8 @@
   .gantt-day.today::after { content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: #ff9f43; border-radius: 50%; }
   .gantt-row { display: flex; align-items: stretch; min-height: 32px; transition: background 0.1s; }
   .gantt-row:hover { background: rgba(255,255,255,0.03); }
-  .gantt-row-left { width: 220px; min-width: 220px; display: flex; align-items: center; gap: 0.5rem; padding: 0 0.8rem; border-right: 1px solid rgba(255,255,255,0.05); }
-  .gantt-row-left .g-name { font-size: 0.73rem; color: rgba(255,255,255,0.8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+  .gantt-row-left { width: 280px; min-width: 280px; display: flex; align-items: center; gap: 0.5rem; padding: 0 0.8rem; border-right: 1px solid rgba(255,255,255,0.05); position: sticky; left: 0; background: #1a1a2e; z-index: 2; }
+  .gantt-row-left .g-name { font-size: 0.73rem; color: rgba(255,255,255,0.8); white-space: nowrap; flex: 1; }
   .gantt-row-left .g-who { font-size: 0.58rem; color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); padding: 0.1rem 0.4rem; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
   .gantt-row-right { flex: 1; position: relative; display: flex; min-width: 500px; }
   .gantt-cell { flex: 1; min-width: 28px; border-right: 1px solid rgba(255,255,255,0.03); position: relative; }
@@ -185,6 +185,8 @@
   .gantt-bar.p4 { background: linear-gradient(135deg, #b794f4, #9f7aea); }
   .gantt-bar.p6 { background: linear-gradient(135deg, #fc8181, #f56565); }
   .gantt-bar.extra { background: linear-gradient(135deg, #f6e05e, #ecc94b); }
+  .gantt-bar.done { opacity: 0.5; }
+  .gantt-row.done .g-done-badge { font-size: 0.5rem; color: #fff; background: #48bb78; padding: 0.05rem 0.3rem; border-radius: 3px; margin-left: 0.3rem; white-space: nowrap; flex-shrink: 0; }
   .gantt-today-line { position: absolute; top: 0; bottom: 0; width: 2px; background: #ff9f43; z-index: 3; pointer-events: none; box-shadow: 0 0 8px rgba(255,159,67,0.5); }
   .gantt-legend { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.68rem; color: rgba(255,255,255,0.5); }
   .gantt-legend span { display: flex; align-items: center; gap: 0.35rem; }
@@ -240,6 +242,7 @@
     <a href="https://zenn.dev/lv/books/f611cdfe8a6e1a" target="_blank">0から分かる Claude Code 完全ガイド（Zenn） <span class="ext">↗</span></a>
     <a href="https://zenn.dev/aun_phonogram/articles/4be2f4745726fb" target="_blank">Claude Codeですぐ制限にかからないようにするコツ（Zenn） <span class="ext">↗</span></a>
     <a href="https://x.com/bcherny" target="_blank">Boris Xアカウント <span class="ext">↗</span></a>
+    <a href="https://git-ready.easegis.jp/" target="_blank">Git Ready <span class="ext">↗</span></a>
   </div>
 </nav>
 
@@ -698,7 +701,7 @@
 </div>
 
 <div class="footer">
-  Claude Code講座 カリキュラムv3 | 作成日: 2026-04-05 | 川島さんレビュー待ち
+  Claude Code講座 カリキュラムv3 | 作成日: 2026-04-05
 </div>
 
 </div><!-- .main-content -->
@@ -709,7 +712,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // === ガントチャート生成（ダークモダン） ===
   (function() {
-    var START = new Date(2026, 3, 5);
+    var START = new Date(2026, 3, 1);
     var END   = new Date(2026, 4, 1);
     var TODAY = new Date(); TODAY.setHours(0,0,0,0);
     var totalDays = Math.round((END - START) / 86400000);
@@ -718,8 +721,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { label: 'Phase 1  準備・企画', cls: 'p1', tasks: [
         { name: '動画構成FIX', who: '土屋+川島', s: '4/5', e: '4/7' },
         { name: '制作ワークフロー確定', who: '土屋', s: '4/5', e: '4/6' },
-        { name: '川島さんGitHub招待', who: '土屋', s: '4/5', e: '4/5' },
-        { name: '川端さんスケジュール確保', who: '土屋', s: '4/5', e: '4/7' },
+        { name: '川島さんGitHub招待', who: '土屋', s: '4/5', e: '4/5', done: true },
         { name: '技術仕様確認', who: '川島', s: '4/5', e: '4/7' },
         { name: 'S1構成レビュー', who: '土屋+川島', s: '4/7', e: '4/9' },
         { name: 'Backstageエンジニアに一部依頼', who: '土屋', s: '4/5', e: '4/7' }
@@ -809,8 +811,8 @@ document.addEventListener('DOMContentLoaded', function() {
       html += '<div class="gantt-phase ' + phase.cls + '"><span class="g-phase-label">' + phase.label + '</span></div>';
 
       phase.tasks.forEach(function(t) {
-        html += '<div class="gantt-row">';
-        html += '<div class="gantt-row-left"><span class="g-name" title="' + t.name + '">' + t.name + '</span><span class="g-who">' + t.who + '</span></div>';
+        html += '<div class="gantt-row' + (t.done ? ' done' : '') + '">';
+        html += '<div class="gantt-row-left"><span class="g-name" title="' + t.name + '">' + t.name + '</span>' + (t.done ? '<span class="g-done-badge">完了</span>' : '') + '<span class="g-who">' + t.who + '</span></div>';
         html += '<div class="gantt-row-right">';
 
         // Grid cells
@@ -828,14 +830,10 @@ document.addEventListener('DOMContentLoaded', function() {
           var ei = dayIdx(ed);
           var leftPct = (si / days.length * 100).toFixed(2);
           var widthPct = ((ei - si + 1) / days.length * 100).toFixed(2);
-          html += '<div class="gantt-bar ' + phase.cls + '" style="position:absolute;left:' + leftPct + '%;width:' + widthPct + '%;"></div>';
+          html += '<div class="gantt-bar ' + phase.cls + (t.done ? ' done' : '') + '" style="position:absolute;left:' + leftPct + '%;width:' + widthPct + '%;"></div>';
         }
 
-        // Today line
-        if (todayIdx >= 0 && todayIdx <= totalDays) {
-          var tPct = ((todayIdx + 0.5) / days.length * 100).toFixed(2);
-          html += '<div class="gantt-today-line" style="left:' + tPct + '%;"></div>';
-        }
+        // Today line — positioned after DOM render via JS
 
         html += '</div></div>';
       });
@@ -843,6 +841,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     html += '</div>';
     document.getElementById('gantt-container').innerHTML = html;
+
+    // Today line — セルのDOM位置から正確に配置
+    (function() {
+      var rows = document.querySelectorAll('.gantt-row-right');
+      var headerRight = document.querySelector('.gantt-header-right');
+      if (!headerRight) return;
+      var dayCells = headerRight.querySelectorAll('.gantt-days .gantt-day');
+      var todayCell = null;
+      for (var i = 0; i < dayCells.length; i++) {
+        if (dayCells[i].classList.contains('today')) { todayCell = dayCells[i]; break; }
+      }
+      if (!todayCell) return;
+      var headerRect = headerRight.getBoundingClientRect();
+      var cellRect = todayCell.getBoundingClientRect();
+      var leftPx = cellRect.left - headerRect.left + cellRect.width / 2;
+
+      rows.forEach(function(row) {
+        var line = document.createElement('div');
+        line.className = 'gantt-today-line';
+        line.style.left = leftPx + 'px';
+        row.appendChild(line);
+      });
+    })();
   })();
   // Process each section - render structured scripts
   document.querySelectorAll('.section').forEach(function(sec) {

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回転寿司大手3社 IR比較分析</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; background: #f0f2f5; color: #333; }
+
+    header { background: linear-gradient(135deg, #1a1a2e, #16213e); color: #fff; padding: 2rem 2rem 1.5rem; }
+    header h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    header p { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+
+    .summary-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .card { background: #fff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem; }
+    .card-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; font-weight: 700; }
+    .card-name { font-weight: 700; font-size: 0.95rem; }
+    .card-sub { font-size: 0.7rem; color: #999; }
+    .card-stats { display: flex; flex-direction: column; gap: 0.5rem; }
+    .stat { display: flex; justify-content: space-between; align-items: center; }
+    .stat-label { font-size: 0.75rem; color: #888; }
+    .stat-value { font-size: 0.9rem; font-weight: 700; }
+    .card.sushiro { border-top: 3px solid #e94560; }
+    .card.sushiro .card-icon { background: #e94560; }
+    .card.kura { border-top: 3px solid #4361ee; }
+    .card.kura .card-icon { background: #4361ee; }
+    .card.hama { border-top: 3px solid #2ec4b6; }
+    .card.hama .card-icon { background: #2ec4b6; }
+
+    .section { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 1.5rem; overflow: hidden; }
+    .section h2 { font-size: 1rem; padding: 1rem 1.2rem; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 0.5rem; }
+    .section h2 .emoji { font-size: 1.1rem; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th { background: #f8f9fa; text-align: left; padding: 0.7rem 1rem; font-weight: 600; color: #555; }
+    td { padding: 0.7rem 1rem; border-top: 1px solid #f0f0f0; vertical-align: top; }
+    tr:hover { background: #fafbfc; }
+    .col-company { width: 18%; }
+    .highlight { font-weight: 600; }
+    .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
+    .tag-red { background: #fde8ec; color: #e94560; }
+    .tag-blue { background: #e8eeff; color: #4361ee; }
+    .tag-green { background: #e0f7f4; color: #2ec4b6; }
+
+    .insight-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 1.2rem; }
+    .insight { padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #4361ee; }
+    .insight h3 { font-size: 0.85rem; margin-bottom: 0.4rem; color: #333; }
+    .insight p { font-size: 0.8rem; color: #666; line-height: 1.6; }
+
+    .strategy-visual { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 1.2rem; }
+    .strategy-card { text-align: center; padding: 1.2rem; border-radius: 10px; }
+    .strategy-card.sushiro { background: linear-gradient(135deg, #fde8ec, #fff); }
+    .strategy-card.kura { background: linear-gradient(135deg, #e8eeff, #fff); }
+    .strategy-card.hama { background: linear-gradient(135deg, #e0f7f4, #fff); }
+    .strategy-card h3 { font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .strategy-card .keyword { font-size: 1.1rem; font-weight: 800; margin: 0.5rem 0; }
+    .strategy-card .detail { font-size: 0.75rem; color: #666; line-height: 1.5; }
+    .strategy-card.sushiro .keyword { color: #e94560; }
+    .strategy-card.kura .keyword { color: #4361ee; }
+    .strategy-card.hama .keyword { color: #2ec4b6; }
+
+    .footer { text-align: center; padding: 1.5rem; font-size: 0.7rem; color: #bbb; }
+
+    .bar-chart { padding: 1.2rem; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 0.8rem; }
+    .bar-label { width: 120px; font-size: 0.8rem; font-weight: 600; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 28px; background: #f0f0f0; border-radius: 6px; overflow: hidden; position: relative; }
+    .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 0.75rem; color: #fff; font-weight: 600; transition: width 0.6s ease; }
+    .bar-fill.sushiro { background: linear-gradient(90deg, #e94560, #ff6b81); }
+    .bar-fill.kura { background: linear-gradient(90deg, #4361ee, #6c83f7); }
+    .bar-fill.hama { background: linear-gradient(90deg, #2ec4b6, #5ad8cf); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>回転寿司大手3社 IR比較分析</h1>
+    <p>スシロー / くら寿司 / はま寿司 — 戦略・業績・海外展開の比較マトリクス</p>
+  </header>
+
+  <div class="container">
+
+    <!-- サマリーカード -->
+    <div class="summary-cards">
+      <div class="card sushiro">
+        <div class="card-header">
+          <div class="card-icon">S</div>
+          <div><div class="card-name">スシロー</div><div class="card-sub">FOOD & LIFE COMPANIES</div></div>
+        </div>
+        <div class="card-stats">
+          <div class="stat"><span class="stat-label">売上高</span><span class="stat-value">約3,300億円</span></div>
+          <div class="stat"><span class="stat-label">営業利益率</span><span class="stat-value">約6%</span></div>
+          <div class="stat"><span class="stat-label">海外店舗</span><span class="stat-value">130店超</span></div>
+        </div>
+      </div>
+      <div class="card kura">
+        <div class="card-header">
+          <div class="card-icon">K</div>
+          <div><div class="card-name">くら寿司</div><div class="card-sub">KURA SUSHI, INC.</div></div>
+        </div>
+        <div class="card-stats">
+          <div class="stat"><span class="stat-label">売上高</span><span class="stat-value">約2,100億円</span></div>
+          <div class="stat"><span class="stat-label">営業利益率</span><span class="stat-value">約2.5〜3%</span></div>
+          <div class="stat"><span class="stat-label">海外店舗</span><span class="stat-value">60〜70店</span></div>
+        </div>
+      </div>
+      <div class="card hama">
+        <div class="card-header">
+          <div class="card-icon">H</div>
+          <div><div class="card-name">はま寿司</div><div class="card-sub">ゼンショーHD傘下</div></div>
+        </div>
+        <div class="card-stats">
+          <div class="stat"><span class="stat-label">売上高</span><span class="stat-value">非公開</span></div>
+          <div class="stat"><span class="stat-label">営業利益率</span><span class="stat-value">推定3〜4%</span></div>
+          <div class="stat"><span class="stat-label">海外店舗</span><span class="stat-value">数店規模</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 売上高バーチャート -->
+    <div class="section">
+      <h2><span class="emoji">📊</span> 売上高比較</h2>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">スシロー</div>
+          <div class="bar-track"><div class="bar-fill sushiro" style="width: 100%;">3,300億円</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">くら寿司</div>
+          <div class="bar-track"><div class="bar-fill kura" style="width: 64%;">2,100億円</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">はま寿司</div>
+          <div class="bar-track"><div class="bar-fill hama" style="width: 45%;">推定1,500億円（非公開）</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 戦略ポジショニング -->
+    <div class="section">
+      <h2><span class="emoji">🎯</span> 戦略ポジショニング — 同じ回転寿司、まったく違う勝ち方</h2>
+      <div class="strategy-visual">
+        <div class="strategy-card sushiro">
+          <h3>スシロー</h3>
+          <div class="keyword">アジア制覇</div>
+          <div class="detail">韓国・台湾・香港・シンガポール・タイに130店超。海外の利益率が国内より高い。「アジアNo.1回転寿司チェーン」を目指す</div>
+        </div>
+        <div class="strategy-card kura">
+          <h3>くら寿司</h3>
+          <div class="keyword">米国×エンタメ</div>
+          <div class="detail">KURA SUSHI USAとしてNASDAQ上場（日本の回転寿司で唯一）。ビッくらポン等のエンタメ要素で「体験」を売る</div>
+        </div>
+        <div class="strategy-card hama">
+          <h3>はま寿司</h3>
+          <div class="keyword">調達力で低価格死守</div>
+          <div class="detail">ゼンショーグループ（すき家・なか卯・ココス等）の共同調達でコスト競争力を確保。国内ドミナント戦略に集中</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 詳細比較テーブル -->
+    <div class="section">
+      <h2><span class="emoji">📋</span> 詳細比較マトリクス</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="col-company">項目</th>
+            <th><span class="tag tag-red">スシロー</span></th>
+            <th><span class="tag tag-blue">くら寿司</span></th>
+            <th><span class="tag tag-green">はま寿司</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">親会社</td>
+            <td>FOOD & LIFE COMPANIES</td>
+            <td>くら寿司 Inc.</td>
+            <td>ゼンショーHD</td>
+          </tr>
+          <tr>
+            <td class="highlight">国内店舗数</td>
+            <td>約640店</td>
+            <td>約540店</td>
+            <td>約580店</td>
+          </tr>
+          <tr>
+            <td class="highlight">海外店舗数</td>
+            <td>130店超</td>
+            <td>60〜70店</td>
+            <td>数店</td>
+          </tr>
+          <tr>
+            <td class="highlight">海外展開地域</td>
+            <td>韓国・台湾・香港・シンガポール・タイ等</td>
+            <td>米国（NASDAQ上場）・台湾</td>
+            <td>台湾に若干</td>
+          </tr>
+          <tr>
+            <td class="highlight">客単価</td>
+            <td>約1,100〜1,200円（上昇傾向）</td>
+            <td>約1,000〜1,100円</td>
+            <td>約1,000円前後</td>
+          </tr>
+          <tr>
+            <td class="highlight">価格戦略</td>
+            <td>一皿120円〜。都市型高価格帯も展開</td>
+            <td>エンタメで付加価値訴求</td>
+            <td>低価格維持路線</td>
+          </tr>
+          <tr>
+            <td class="highlight">DX・テクノロジー</td>
+            <td>アプリ予約・テイクアウト強化</td>
+            <td>自動皿カウント・AI需要予測</td>
+            <td>ゼンショーグループの共通システム</td>
+          </tr>
+          <tr>
+            <td class="highlight">その他ブランド</td>
+            <td>京樽・杉玉（居酒屋業態）</td>
+            <td>—</td>
+            <td>すき家・なか卯・ココス等（グループ）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- インサイト -->
+    <div class="section">
+      <h2><span class="emoji">💡</span> 分析から見えたインサイト</h2>
+      <div class="insight-grid">
+        <div class="insight">
+          <h3>戦略の三極分化が鮮明</h3>
+          <p>同じ「回転寿司」でも、スシローはアジア、くら寿司は米国、はま寿司は国内と、完全に棲み分けが成立。競合というより「別ゲーム」を戦っている。</p>
+        </div>
+        <div class="insight">
+          <h3>くら寿司のNASDAQ上場は異色</h3>
+          <p>日本の回転寿司チェーンが米国市場に直接上場。「寿司×エンタメ」を武器に、米国で日本食体験を売るユニークな戦略。</p>
+        </div>
+        <div class="insight">
+          <h3>はま寿司の「見えない強さ」</h3>
+          <p>単体業績非公開で過小評価されがちだが、ゼンショーの仕入れスケールメリットは最強クラス。原材料高騰局面でこの調達力が効く。</p>
+        </div>
+        <div class="insight">
+          <h3>海外展開 = 利益率の鍵</h3>
+          <p>スシローの営業利益率6%はくら寿司の倍以上。海外事業の利益率が国内より高く、先行者メリットが利益に直結している。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      ※ 数値はFY2024ベースの概算値です。正確な最新数値は各社IRページをご確認ください。<br>
+      Claude Codeで自動生成 — S2-V5 デモ用
+    </div>
+  </div>
+</body>
+</html>

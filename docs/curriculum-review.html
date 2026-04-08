@@ -222,13 +222,13 @@
 
   <div class="nav-group">
     <div class="nav-label">入門トラック（全員必須）</div>
-    <a href="#s1" class="intro">S1 環境構築と魔法体験 <span class="badge">4本</span></a>
-    <a href="#s2" class="intro">S2 記憶と使いこなし <span class="badge">4本</span></a>
+    <a href="#s1" class="intro">S1 挫折しない環境構築とClaude Codeの魔法体験 <span class="badge">5本</span></a>
+    <a href="#s2" class="intro">S2 知らないと損するClaude Codeの裏側 <span class="badge">5本</span></a>
   </div>
 
   <div class="nav-group">
     <div class="nav-label">業務自動化・コンサルティングトラック</div>
-    <a href="#s3" class="biz">S3 業務自動化の武器庫 <span class="badge">4本</span></a>
+    <a href="#s3" class="biz">S3 コンサルティングで喜ばれる提案 <span class="badge">7本</span></a>
     <a href="#s4" class="biz">S4 ユースケース実践 <span class="badge">7本</span></a>
   </div>
 
@@ -253,6 +253,7 @@
     <a href="https://zenn.dev/lv/books/f611cdfe8a6e1a" target="_blank">0から分かる Claude Code 完全ガイド（Zenn） <span class="ext">↗</span></a>
     <a href="https://zenn.dev/aun_phonogram/articles/4be2f4745726fb" target="_blank">Claude Codeですぐ制限にかからないようにするコツ（Zenn） <span class="ext">↗</span></a>
     <a href="https://x.com/bcherny" target="_blank">Boris Xアカウント <span class="ext">↗</span></a>
+    <a href="https://qiita.com/uno_ha07/items/5820d195510861b5be71" target="_blank">Boris氏の知見で理解するCLAUDE.md（Qiita） <span class="ext">↗</span></a>
     <a href="https://git-ready.easegis.jp/" target="_blank">Git Ready <span class="ext">↗</span></a>
   </div>
 </nav>
@@ -278,7 +279,7 @@
   <!-- S1 -->
   <div class="section intro" id="s1">
     <div class="section-header">
-      <div><h2>S1：環境構築と魔法体験</h2><div class="meta">4本 / 20分</div></div>
+      <div><h2>S1：挫折しない環境構築とClaude Codeの魔法体験</h2><div class="meta">5本 / 25分</div></div>
       <span class="badge">入門</span>
     </div>
     <div class="section-purpose">
@@ -286,42 +287,59 @@
       <div>Claude Codeをインストールし、自然言語で指示するだけで動くアプリが完成する「魔法」を体感する。箱から出したままでも使えることを実感し、学習意欲に火をつける。</div>
       <div class="purpose-label" style="margin-top:0.8rem;">学べる内容</div>
       <ul class="learns">
-        <li><strong>V1</strong> 講座の全体像とAI駆動開発</li>
-        <li><strong>V2</strong> ターミナルの基本操作（mkdir、cd）</li>
-        <li><strong>V3</strong> Claude Codeのインストールと初期設定</li>
-        <li><strong>V4</strong> 自然言語でアプリを自動生成させる体験</li>
+        <li><strong>V1</strong> 超実践的なClaude Code講座の全体像</li>
+        <li><strong>V2</strong> Claude Desktopの「コード」タブで魔法体験（インストール不要）</li>
+        <li><strong>V3</strong> Claude Code・VS Codeのインストールとmkdir/cd（PATH設定含む）</li>
+        <li><strong>V4</strong> 【実践】営業の自動見積りツールを作ってみよう</li>
+        <li><strong>V5</strong> 【実践】会議スライドはもう作らない — アジェンダからHTML静的サイトを生成</li>
       </ul>
     </div>
     <div class="video-list">
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
-          <div class="video-title">講座の全体像：Claude Codeがもたらす「AI駆動開発」とは </div>
+          <div class="video-title">超実践的なClaude Code講座の全体像 </div>
           <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>ClaudeCodeは「箱から出したままでも使える」と言われているので試してもらいたい。細かい設定をする前に。</div>
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>AIが営業・採用・経理・経営・Web開発・コンサルティングの現場でどう業務を効率化するかを紹介。「自分の仕事でも使える」と思わせて講座への期待値を上げる。核心メッセージ：「Claude Codeを使いこなすコツは、自分の眼の前にある問題を解決していくこと」。台本に入れる：「この講座で作るものは教材のためのデモじゃないです。全部そのまま実務で使えるものを作ります」。モデルは基本Opus 4.6を使え。</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">2</div>
         <div class="video-content">
-          <div class="video-title">「黒い画面」の基本操作 — mkdirとcdだけ覚えよう </div>
+          <div class="video-title">Claude Desktopの「コード」タブで魔法体験（インストール不要） </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>インストール不要。Claudeアカウントさえあればすぐ動く。挫折ゼロで「Claude Codeってこういうものか」を体感させる。デモ：匿名ジェネレーターをサクッと作る。動機＝「AIに個人情報を入れたくない → ローカルで匿名データ生成ツールを自作する」。V1の「目の前の問題を解決する」をそのまま実演。</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">Claude Codeのインストールと初期設定 </div>
+          <div class="video-title">Claude Code・VS Codeのインストールとmkdir/cd（PATH設定含む） </div>
           <div class="video-comments">
             <div class="comment kawashima"><span class="comment-name">川島:</span>CLI版インストール後にパスが通らないことがよくある。パスを通す作業も入れると迷子にならない</div>
             <div class="comment kanno"><span class="comment-name">菅野:</span>公式ドキュメント上はネイティブインストーラーが推奨（npm方式は非推奨）。Windowsの前提条件はGit for Windowsのみ。「Node.js等」は要確認</div>
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Mac：ネイティブインストーラー / Windows：Git for Windows。VS Code + 拡張機能も一気にやる。Mac/Windows両方カバー。PATHを通す作業も丁寧に見せる（みんなここで詰まる）。mkdir→cd→claude起動の流れで自然にターミナル操作も覚える。</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
-          <div class="video-title">【魔法体験】自然言語で「動くアプリ」を作らせてみよう！ </div>
+          <div class="video-title">【実践】営業の自動見積りツールを作ってみよう </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>自社の製品カタログや過去の見積もりを食わせて、自動見積りツールをCLIで作る。環境構築セクションなのにもう実務で使えるものが完成する体験。</div>
+          </div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">5</div>
+        <div class="video-content">
+          <div class="video-title">【実践】会議スライドはもう作らない — アジェンダからHTML静的サイトを生成 </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>スライドはレイアウト調整が地獄、情報量も少ない。会議のアジェンダを渡してHTML静的サイトを一発生成する方が圧倒的に早い。URLを送るだけで共有完了。この講座のレビューサイト自体がその証明。</div>
+          </div>
         </div>
       </div>
     </div>
@@ -330,7 +348,7 @@
   <!-- S2 -->
   <div class="section intro" id="s2">
     <div class="section-header">
-      <div><h2>S2：AIの「記憶」と使いこなしの基礎</h2><div class="meta">4本 / 20分</div></div>
+      <div><h2>S2：知らないと損するClaude Codeの裏側</h2><div class="meta">5本 / 25分</div>
       <span class="badge">入門</span>
     </div>
     <div class="section-purpose">
@@ -338,10 +356,11 @@
       <div>CLAUDE.mdでAIに記憶を持たせ、Planモードで「考えてから動く」習慣を身につける。トークン管理とセキュリティの基本を学び、Claude Codeを安全に使いこなせるようになる。</div>
       <div class="purpose-label" style="margin-top:0.8rem;">学べる内容</div>
       <ul class="learns">
-        <li><strong>V1</strong> 基本コマンドとPlanモード</li>
-        <li><strong>V2</strong> CLAUDE.mdの書き方と階層構造</li>
-        <li><strong>V3</strong> 自動メモリ（MEMORY.md）の仕組み</li>
-        <li><strong>V4</strong> セキュリティの基本とサンドボックス</li>
+        <li><strong>V1</strong> 基本コマンド（/init, /clear, /compact）とPlanモード</li>
+        <li><strong>V2</strong> CLAUDE.mdの書き方</li>
+        <li><strong>V3</strong> 【実践】顧客リストから広告文を大量生成 → トークン消費を体感 → ccusage・料金</li>
+        <li><strong>V4</strong> 承認画面をちゃんと読め — セキュリティの基本</li>
+        <li><strong>V5</strong> 【実践】回転寿司3社のIR比較分析 → 比較マトリクスHTML生成</li>
       </ul>
     </div>
     <div class="video-list">
@@ -359,7 +378,7 @@
         <div class="video-content">
           <div class="video-title">AIの「記憶」を司るCLAUDE.mdの書き方 </div>
           <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>ClaudeCode開発者のBoris氏のベスト・プラクティスを紹介したい</div>
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>入門では非エンジニアでも書けるレベルで教える。「あなたは○○のアシスタントです」「出力は日本語で」「よく使うファイルの場所」程度でOK。開発向けの詳細（技術スタック・コーディング規約等）はS5-S6で紹介。参考: https://ai.salesnow.jp/seo/blog/claude-code-claude-md-guide（開発者向け）。Boris氏のCLAUDE.md（Planモード基本・サブエージェント戦略・自己改善ループ・完了前検証・エレガントさ追求・自律バグ修正）は開発者向けなのでS5-S6で詳細紹介する。土屋もほぼコピペで使ってる実績あり</div>
             <div class="comment kanno"><span class="comment-name">菅野:</span>CLAUDE.mdは実運用上はドキュメントのリンク集（インデックス）として活用するのが最適。ルールを書きすぎるとAIの注意力を削ぐし、AIは必ずルールを守るわけではない</div>
           </div>
         </div>
@@ -367,16 +386,28 @@
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">CLAUDE.mdの階層構造と自動メモリ </div>
+          <div class="video-title">【実践】顧客リストから広告文を大量生成 → トークン消費を体感 </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>まず営業向けに顧客リストCSVから広告文を大量生成させる実践。終わったらccusageで「今ので○○トークン使いました」と見せる。先にやらせてから種明かし。コンテキストウィンドウとは何か、/clearとauto-compactの重要性。業務で使うならおすすめはいったん月100ドルのMaxプラン。核心メッセージ：「Claude Codeで業務するってのは、コンテキストウィンドウとトークンのマネジメントだ」。</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
-          <div class="video-title">【重要】セキュリティの基本とサンドボックス </div>
+          <div class="video-title">【重要】承認画面をちゃんと読め — セキュリティの基本 </div>
           <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>環境変数を理解してもらいたい</div>
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Claude Codeの権限管理は3段階（デフォルト/Auto-accept edits/フルオート）。普段はデフォルトのままで十分。大事なのは承認画面をちゃんと読むこと。Return連打で全部承認するな。rm -rfが来たら止めろ。環境変数にAPIキーを入れる方法も教える（コードにベタ書きするな）。</div>
             <div class="comment kanno"><span class="comment-name">菅野:</span>Return連打は気をつける、rm -rfとか、fetch→プロンプトインジェクションなど。Ctrl+Eで簡単な解説が出る。万が一の利用金額の上限設定も教える</div>
+          </div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">5</div>
+        <div class="video-content">
+          <div class="video-title">【実践】回転寿司3社のIR比較分析 → 比較マトリクスHTML生成 </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>スシロー/くら寿司/はま寿司のIRを比較分析。プロンプト1回で比較マトリクスHTMLを生成。マーケターのリサーチをClaude Codeでやるとこうなる、という実演。デモHTML: demos/sushi-ir-comparison.html</div>
           </div>
         </div>
       </div>
@@ -386,7 +417,7 @@
   <!-- S3 -->
   <div class="section biz" id="s3">
     <div class="section-header">
-      <div><h2>S3：業務自動化の武器庫を作る</h2><div class="meta">4本 / 20分</div></div>
+      <div><h2>S3：コンサルティングで喜ばれる提案</h2><div class="meta">7本 / 35分</div></div>
       <span class="badge">業務自動化・コンサルティング</span>
     </div>
     <div class="section-purpose">
@@ -394,25 +425,31 @@
       <div>Skills・MCP・CLIを使って定型作業を自動化する。自社の業務をスキル化して社内に横展開できる力を身につけ、「自分専用のAIアシスタント」を構築する。</div>
       <div class="purpose-label" style="margin-top:0.8rem;">学べる内容</div>
       <ul class="learns">
-        <li><strong>V1</strong> カスタムスラッシュコマンドの作り方</li>
-        <li><strong>V2</strong> skill-creatorで自社業務をスキル化</li>
-        <li><strong>V3</strong> スライド自動生成（Nanobanana + PPTX）</li>
-        <li><strong>V4</strong> MCP/CLIで外部ツール連携</li>
+        <li><strong>V1</strong> Skillsとは — shinkoku（確定申告スキル）をデモ</li>
+        <li><strong>V2</strong> 自分の業務をSkill化する — Skills Creatorの使い方</li>
+        <li><strong>V3</strong> MCP① Slack連携 — チャンネル横断で日報・週報を自動生成</li>
+        <li><strong>V4</strong> MCP② Notion連携 — 議事録・タスク管理をAIで自動化</li>
+        <li><strong>V5</strong> MCP③ マネーフォワード連携 — 経理業務の自動化</li>
+        <li><strong>V6</strong> API① X（Twitter）投稿 — SNSマーケティングの自動化</li>
+        <li><strong>V7</strong> API② LINE送信 — 顧客への一斉通知・Bot自動返信</li>
       </ul>
     </div>
     <div class="video-list">
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
-          <div class="video-title">カスタムスラッシュコマンドで「自分だけのショートカット」を作る </div>
+          <div class="video-title">Skillsとは — shinkoku（確定申告スキル）をデモ </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>shinkokuスキルで確定申告の一連の流れを実演。「Skillsを入れるだけでClaude Codeが専門家になる」というインパクトを見せる。</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">2</div>
         <div class="video-content">
-          <div class="video-title">Skillsで自社業務を資産化する — skill-creatorの使い方 </div>
+          <div class="video-title">自分の業務をSkill化する — Skills Creatorの使い方 </div>
           <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Skills自体もClaudeに作らせる。1日1回やることはSkill化</div>
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Skills自体もClaudeに作らせる。1日1回やることはSkill化。自分の業務ノウハウをSkillにすれば、チーム全員が同じ品質で作業できる。</div>
             <div class="comment kawashima"><span class="comment-name">川島:</span>公式skill-creatorの紹介 https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md</div>
           </div>
         </div>
@@ -420,17 +457,45 @@
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">【実践】スライド自動生成 — 提案資料を自然言語で作る </div>
+          <div class="video-title">MCP① Slack連携 — チャンネル横断で日報・週報を自動生成 </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>全チャンネルを横断クロールして今日の動きを日報に自動生成。上司向けのチーム活動サマリーも一発。「毎日30分かけてた日報が30秒になる」。</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
-          <div class="video-title">GUIポチポチからの脱却 — MCP/CLIで外部ツールを自然言語操作 </div>
+          <div class="video-title">MCP② Notion連携 — 議事録・タスク管理をAIで自動化 </div>
           <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Playwrightは紹介したい</div>
-            <div class="comment kawashima"><span class="comment-name">川島:</span>CLIツールの紹介も。Playwright CLI、WordPress CLI。MCPからCLIの流れもある。Agent Browserも軽くて早い</div>
-            <div class="comment kanno"><span class="comment-name">菅野:</span>Playwrightは高橋さんがAI自動テストで知見あり。ただしGUI操作は不安定で暴走の危険あり</div>
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Notionのデータベースに直接読み書き。議事録からアクションアイテムを抽出してNotionタスクに自動登録、進捗の一覧取得など。「Notionを開かずにNotionを操作する」体験。</div>
+          </div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">5</div>
+        <div class="video-content">
+          <div class="video-title">MCP③ マネーフォワード連携 — 経理業務の自動化 </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>レシート画像→仕訳登録、残高確認、月次締めをClaude Codeから直接操作。「経理の人が毎月やってる作業をAIが巻き取る」コンサル提案の実例。</div>
+          </div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">6</div>
+        <div class="video-content">
+          <div class="video-title">API① X（Twitter）投稿 — SNSマーケティングの自動化 </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>X APIを使ってClaude Codeから直接投稿。投稿文の生成→投稿→反応分析まで一気通貫。MCPとの違い＝「プラグインを入れるだけ」vs「自分でAPIを叩く」を体感。</div>
+          </div>
+        </div>
+      </div>
+      <div class="video">
+        <div class="video-num">7</div>
+        <div class="video-content">
+          <div class="video-title">API② LINE送信 — 顧客への一斉通知・Bot自動返信 </div>
+          <div class="video-comments">
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>LINE Messaging APIで顧客への一斉通知やBot自動返信を実装。日本のビジネスはSlackよりLINEの現場が多い。「LINEで顧客対応を自動化します」はコンサル提案として即戦力。</div>
           </div>
         </div>
       </div>
@@ -900,7 +965,8 @@ document.addEventListener('DOMContentLoaded', function() {
       var numEl = v.querySelector('.video-num');
       numEl.textContent = 'V' + vNum;
 
-      // Add script button
+      // Add script button (skip if already exists)
+      if (v.querySelector('.script-btn')) return;
       var btn = document.createElement('button');
       btn.className = 'script-btn';
       btn.textContent = '台本を表示';

@@ -532,16 +532,16 @@
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">顧客リストから広告文を大量生成 → トークン消費を体感 </div>
+          <div class="video-title">事例ページからアタックリストを自動生成 → トークン消費を体感</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>トークン消費を体感し、コンテキストウィンドウ管理の重要性を理解する</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>顧客リストCSVから広告文を大量生成／ccusageでトークン確認／コンテキストウィンドウの概念／/clearとauto-compact／Maxプラン（月100ドル）推奨／核心「Claude Codeで業務するってのはコンテキストウィンドウとトークンのマネジメントだ」</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>トークンの概念がわからない（→先にやらせて体感させてから種明かし）</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。CSV読み込み→広告文生成→ccusageで確認</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践→種明かし（先にやらせてからトークンを解説）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>サンプル顧客リストCSV／ccusage</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 顧客リストCSVで広告文を大量生成 → Step 2 ccusageで「今ので○○トークン使いました」→ Step 3 コンテキストウィンドウとは → Step 4 /clearとauto-compactの重要性 → Step 5 プラン選択の推奨</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>営業向けアタックリストの自動生成を体験し、トークン消費とコンテキストウィンドウ管理の重要性に気づく</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>アタックリストとは何か（営業の現場感）／事例ページURLからの2段階スクレイピング（一覧→個別ページ）／LLMが自律的にURLを抽出する仕組み／URLパターン（case, cases, customers等）をプロンプトに入れると精度が上がる＝人間のドメイン知識の価値／ccusageでトークン確認／コンテキストウィンドウの概念／/clearとauto-compact／核心「Claude Codeで業務するってのはコンテキストウィンドウとトークンのマネジメントだ」</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>アタックリストの業務価値がピンとこない（→手作業との比較で体感させる）／トークンの概念がわからない（→先にやらせて体感させてから種明かし）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。口頭＋ターミナル画面のみ（スライドなし）。Sansan事例ページURL→一覧取得→個別ページスクレイピング→CSV出力→ccusageで確認</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践→種明かし（先にアタックリストを作って「便利！」→裏でこれだけトークン使ってるよ→だからccusageチェックしようね）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>Sansan事例ページURL（https://jp.sansan.com/case/）／ccusage／デモ用出力: demo/s2v3/attack_list.csv</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 アタックリストとは？営業の現場で誰がどう使うか（1分）→ Step 2 手作業だと100社分で丸1日、これをClaude Codeで数分に（30秒）→ Step 3 実演：Sansan事例ページURLを入力→一覧ページをスクレイピング→LLMが個別事例URLを抽出→個別ページをスクレイピング→会社名・部署・役職・氏名をCSV出力（5分）→ Step 4 ポイント解説：URLに case, customers等が含まれるという条件をプロンプトに入れた＝人間の業務知識がAIの精度を上げる（1分）→ Step 5 ccusageで「今ので○○トークン使いましたよ」→コンテキストウィンドウとは→/clearとauto-compact（2分）</div>
           </div>
         </div>
       </div>

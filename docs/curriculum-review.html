@@ -135,10 +135,13 @@
   .pipeline-card ol, .pipeline-card ul { margin: 0; padding-left: 1.2rem; font-size: 0.75rem; line-height: 1.5; }
   .pipeline-card li { margin-bottom: 0.2rem; }
 
-  .video-structure { margin-top: 0.5rem; background: #f0f4f8; border-left: 3px solid #3b82f6; padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.8rem; line-height: 1.6; }
+  .video-structure { display: none; margin-top: 0.5rem; background: #f0f4f8; border-left: 3px solid #3b82f6; padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.8rem; line-height: 1.6; }
+  .video.open .video-structure { display: block; }
   .video-structure ol { margin: 0.4rem 0 0 1.2rem; padding: 0; }
   .video-structure li { margin-bottom: 0.3rem; }
   .structure-label { font-weight: 700; color: #3b82f6; font-size: 0.75rem; margin-bottom: 0.3rem; }
+  .structure-item { margin-bottom: 0.2rem; padding-left: 0.2rem; }
+  .structure-item .s-key { font-weight: 700; color: #1e40af; }
   .video-comments { margin-top: 0.5rem; }
   .comment { font-size: 0.75rem; padding: 0.3rem 0.5rem; border-radius: 4px; margin-bottom: 0.3rem; line-height: 1.4; }
   .comment .comment-name { font-weight: 700; margin-right: 0.3rem; }
@@ -243,19 +246,19 @@
   <div class="sub">カリキュラムv3 | 31本 / 約2.5時間</div>
 
   <div class="nav-group">
-    <div class="nav-label">入門トラック（全員必須）</div>
+    <div class="nav-label">入門トラック</div>
     <a href="#s1" class="intro">S1 挫折しない環境構築とClaude Codeの魔法体験 <span class="badge">5本</span></a>
     <a href="#s2" class="intro">S2 知らないと損するClaude Codeの裏側 <span class="badge">5本</span></a>
   </div>
 
   <div class="nav-group">
-    <div class="nav-label">業務自動化・コンサルティングトラック</div>
-    <a href="#s3" class="biz">S3 コンサルティングで喜ばれる提案 <span class="badge">7本</span></a>
-    <a href="#s4" class="biz">S4 ユースケース実践 <span class="badge">6本</span></a>
+    <div class="nav-label">業務自動化・コンサルティング</div>
+    <a href="#s3" class="biz">S3 業務効率化に役立つ道具 <span class="badge">7本</span></a>
+    <a href="#s4" class="biz">S4 業務効率化の実践 <span class="badge">6本</span></a>
   </div>
 
   <div class="nav-group">
-    <div class="nav-label">アプリ開発トラック</div>
+    <div class="nav-label">アプリ開発</div>
     <a href="#s5" class="dev">S5 GitHub&スペック駆動 <span class="badge">7本</span></a>
     <a href="#s6" class="dev">S6 デプロイ&プロ開発 <span class="badge">7本</span></a>
   </div>
@@ -288,14 +291,7 @@
 
   <div class="concept">
     <h2>講座コンセプト</h2>
-    <p style="margin-bottom:0.5rem;font-size:0.85rem;"><strong>表テーマ：</strong>Claude Codeを実践で使えるようになる、Claude Codeでできる業務効率化の事例をたくさん紹介して引き出しを増やしてもらう<br><strong>裏テーマ：</strong>AI DXコンサルタントとして動けるレベルまで持っていく</p>
-    <div class="tags">
-      <span class="tag">Claude Codeは箱から出したままでも十分使える</span>
-      <span class="tag">概念を教えるより先にプロトタイプで動くものを見せる</span>
-      <span class="tag">ローカルで使う社内用便利ツールを量産</span>
-      <span class="tag">スライドは最小限でOK・Claude公式ドキュメントを引用した画面収録をメインに</span>
-      <span class="tag">情報源はClaude公式と開発者Borisだけで十分</span>
-    </div>
+    <p style="font-size:0.85rem;">Claude Codeを実践で使えるようになる／業務効率化の事例をたくさん紹介して引き出しを増やす／AI DXコンサルタントのスタートラインに立てるようにする／Backstage社の事例を紹介する</p>
   </div>
 
   <!-- 制作パイプライン -->
@@ -386,31 +382,44 @@
     </div>
   </div>
 
+  <!-- WBS ガントチャート -->
+  <div class="tasks-section" id="tasks">
+    <h2>WBS / ガントチャート</h2>
+    <div class="tasks-sub">提供開始: 2026/5/1</div>
+
+    <div class="gantt" id="gantt-container"></div>
+
+    <div class="gantt-legend">
+      <span class="l1">Phase 1 準備・企画</span>
+      <span class="l2">Phase 2 台本・スライド</span>
+      <span class="l3">Phase 3 画面収録</span>
+      <span class="l4">Phase 4 音声収録・アバター生成</span>
+      <span class="l5">Phase 5 動画編集</span>
+      <span class="l6">Phase 6 LMSアップロード</span>
+      <span class="l7">Phase 7 提供開始</span>
+    </div>
+  </div>
+
   <!-- S1 -->
   <div class="section intro" id="s1">
     <div class="section-header">
       <div><h2>S1：挫折しない環境構築とClaude Codeの魔法体験</h2><div class="meta">5本 / 25分</div></div>
       <span class="badge">入門</span>
     </div>
-    <div class="section-purpose">
-      <div class="purpose-label">目的</div>
-      <div>Claude Codeをインストールし、自然言語で指示するだけで動くアプリが完成する「魔法」を体感する。箱から出したままでも使えることを実感し、学習意欲に火をつける。</div>
-      <div class="purpose-label" style="margin-top:0.8rem;">学べる内容</div>
-      <ul class="learns">
-        <li><strong>V1</strong> 超実践的なClaude Code講座の全体像</li>
-        <li><strong>V2</strong> Claude Desktopの「コード」タブで魔法体験（インストール不要）</li>
-        <li><strong>V3</strong> Claude Code・Cursorのインストールとmkdir/cd（PATH設定含む）</li>
-        <li><strong>V4</strong> 【実践】営業の自動見積りツールを作ってみよう</li>
-        <li><strong>V5</strong> 【実践】会議スライドはもう作らない — アジェンダからHTML静的サイトを生成</li>
-      </ul>
-    </div>
     <div class="video-list">
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
           <div class="video-title">超実践的なClaude Code講座の全体像 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>AIが営業・採用・経理・経営・Web開発・コンサルティングの現場でどう業務を効率化するかを紹介。「自分の仕事でも使える」と思わせて講座への期待値を上げる。核心メッセージ：「Claude Codeを使いこなすコツは、自分の眼の前にある問題を解決していくこと」。これは業務だけでなく生活の小さな不便にも言える。使う頻度が上がれば自然と上達し、「これもCCでできるかも」という思考回路が身につく。台本に入れる：「この講座で作るものは教材のためのデモじゃないです。全部そのまま実務で使えるものを作ります」。もう一つの核心メッセージ：「あなたのドメイン知識、日々の業務をそのまま自動化してプロダクト化すると組織的インパクトがデカい」。実例：人事担当者が面談対策Skill・ジョブ自動化・オンボーディング支援ツールを自作。技術力ではなくドメイン知識が価値の源泉。本人の声：「アプリ開発よりも日々の作業自動化の方が組織的インパクトが大きい」。モデルは基本Opus 4.6を使え。</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>講座の全体像を理解し「自分の仕事でもClaude Codeが使える」と確信する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>AI×業務効率化の具体例（営業・採用・経理・経営・Web開発・コンサル）／核心メッセージ①「目の前の問題を解決していく」／核心メッセージ②「ドメイン知識をプロダクト化すると組織的インパクトがデカい」／モデルはOpus 4.6推奨／「この講座で作るものは全部そのまま実務で使えるものを作ります」</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「エンジニアじゃないと使えない」という先入観</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライド中心。業務活用シーンを紹介</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>導入（講座への期待値を上げる）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 講座で作るものは実務でそのまま使える宣言 → Step 2 AI×業務効率化の実例紹介 → Step 3 核心「目の前の問題を解決する」→ Step 4 ドメイン知識＝価値の源泉（人事担当者の実例：面談対策Skill・オンボーディング支援ツール自作）→ Step 5 講座の進め方</div>
           </div>
         </div>
       </div>
@@ -418,8 +427,15 @@
         <div class="video-num">2</div>
         <div class="video-content">
           <div class="video-title">Claude Desktopの「コード」タブで魔法体験（インストール不要） </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>インストール不要。Claudeアカウントさえあればすぐ動く。挫折ゼロで「Claude Codeってこういうものか」を体感させる。デモ：匿名ジェネレーターをサクッと作る。動機＝「AIに個人情報を入れたくない → ローカルで匿名データ生成ツールを自作する」。V1の「目の前の問題を解決する」をそのまま実演。</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>インストール不要でClaude Codeの動作を体感する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>Claude Desktopの「コード」タブ／匿名データ生成ツールのデモ／V1の「目の前の問題を解決する」をそのまま実演</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>環境構築で挫折するリスク（→だからインストール不要で先に体験）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。Claude Desktop画面で匿名ジェネレーターを作成</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（挫折ゼロで魔法体験）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Claude Desktopを開く → Step 2 「コード」タブの紹介 → Step 3 動機「AIに個人情報を入れたくない→ローカルで匿名データ生成ツールを自作する」→ Step 4 匿名ジェネレーターをデモ</div>
           </div>
         </div>
       </div>
@@ -427,28 +443,47 @@
         <div class="video-num">3</div>
         <div class="video-content">
           <div class="video-title">Claude Code・Cursorのインストールとmkdir/cd（PATH設定含む） </div>
-          <div class="video-comments">
-            <div class="comment kawashima"><span class="comment-name">川島:</span>CLI版インストール後にパスが通らないことがよくある。パスを通す作業も入れると迷子にならない</div>
-            <div class="comment kanno"><span class="comment-name">菅野:</span>公式ドキュメント上はネイティブインストーラーが推奨（npm方式は非推奨）。Windowsの前提条件はGit for Windowsのみ。「Node.js等」は要確認</div>
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Mac：ネイティブインストーラー / Windows：Git for Windows。Cursor（無料プラン）をインストール。Claude CodeはProプランを契約してもらう。Mac/Windows両方カバー。PATHを通す作業も丁寧に見せる（みんなここで詰まる）。mkdir→cd→claude起動の流れで自然にターミナル操作も覚える。</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Claude CodeとCursorをインストールし、mkdir→cd→claude起動ができる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>ネイティブインストーラー推奨（npm非推奨）／Mac・Windows両対応／PATHを通す作業を丁寧に／Cursor無料プラン／Claude Code Proプラン契約／mkdir→cd→claude起動</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>PATHが通らない（みんなここで詰まる）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。Mac・Windowsそれぞれのインストール手順を画面収録</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（環境構築）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>公式ドキュメント（インストール手順）／Git for Windows（Windows前提条件）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 インストーラーのダウンロード → Step 2 PATHを通す（Mac・Win両方）→ Step 3 Cursorインストール → Step 4 Claude Code Proプラン契約 → Step 5 mkdir→cd→claude起動</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
-          <div class="video-title">【実践】営業の自動見積りツールを作ってみよう </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>自社の製品カタログや過去の見積もりを食わせて、自動見積りツールをCLIで作る。環境構築セクションなのにもう実務で使えるものが完成する体験。</div>
+          <div class="video-title">営業の自動見積りツールを作ってみよう </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>自社データを使った実務ツールをClaude Codeで作れることを体験する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>製品カタログ・過去見積もりの活用／CLIでの自動見積りツール構築／環境構築セクションなのにもう実務で使えるものが完成する</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「環境構築セクションで実用ツールが作れるの？」という意外性</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。製品カタログCSVを食わせて見積りツールを生成</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（環境構築なのに実務ツールが完成する体験）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>サンプル製品カタログCSV／サンプル過去見積もりデータ</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 課題設定「見積り作成に時間がかかる」→ Step 2 データ準備（製品カタログ・過去見積もり）→ Step 3 Claude Codeでツール生成 → Step 4 動作確認</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">5</div>
         <div class="video-content">
-          <div class="video-title">【実践】会議スライドはもう作らない — アジェンダからHTML静的サイトを生成 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>スライドはレイアウト調整が地獄、情報量も少ない。会議のアジェンダを渡してHTML静的サイトを一発生成する方が圧倒的に早い。URLを送るだけで共有完了。この講座のレビューサイト自体がその証明。</div>
+          <div class="video-title">会議スライドはもう作らない — アジェンダからHTML静的サイトを生成 </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>アジェンダからHTML静的サイトを一発生成できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>スライドの問題点（レイアウト調整が地獄・情報量が少ない）／HTML静的サイトの優位性／URL共有で完了／この講座のレビューサイト自体が証明</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「HTMLは難しそう」→Claude Codeが全部書くので知識不要</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。会議アジェンダからHTMLサイトを生成</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（スライド作成の代替手段）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>サンプル会議アジェンダ／この講座のレビューサイト</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 スライドの問題点を提示 → Step 2 HTMLサイト生成のデモ → Step 3 URL共有で完了 → Step 4 レビューサイト自体が証明</div>
           </div>
         </div>
       </div>
@@ -461,63 +496,84 @@
       <div><h2>S2：知らないと損するClaude Codeの裏側</h2><div class="meta">5本 / 25分</div></div>
       <span class="badge">入門</span>
     </div>
-    <div class="section-purpose">
-      <div class="purpose-label">目的</div>
-      <div>CLAUDE.mdでAIに記憶を持たせ、Planモードで「考えてから動く」習慣を身につける。トークン管理とセキュリティの基本を学び、Claude Codeを安全に使いこなせるようになる。</div>
-      <div class="purpose-label" style="margin-top:0.8rem;">学べる内容</div>
-      <ul class="learns">
-        <li><strong>V1</strong> 基本コマンド（/init, /clear, /compact）とPlanモード</li>
-        <li><strong>V2</strong> CLAUDE.mdの書き方</li>
-        <li><strong>V3</strong> 【実践】顧客リストから広告文を大量生成 → トークン消費を体感 → ccusage・料金</li>
-        <li><strong>V4</strong> 承認画面をちゃんと読め — セキュリティの基本</li>
-        <li><strong>V5</strong> 【実践】回転寿司3社のIR比較分析 → 比較マトリクスHTML生成</li>
-      </ul>
-    </div>
     <div class="video-list">
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
           <div class="video-title">基本コマンドとPlanモード — 「考えてから動く」習慣 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>auto-compact入る前に/clearしていくのが大事。1つの作業ができたらなるべく/clearする</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>/init, /clear, /compact, Planモードの使い分けができるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>/init, /clear, /compact, Planモード／auto-compact入る前に/clearが大事／1つの作業ができたらなるべく/clear</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>/clearのタイミングがわからない（→作業が終わったらすぐ/clear）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。各コマンドの実行と効果を見せる</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（基本操作の定着）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 /initでプロジェクト初期化 → Step 2 /clearの重要性（auto-compact前にやる）→ Step 3 /compactの使い所 → Step 4 Planモード「考えてから動く」の紹介</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">2</div>
         <div class="video-content">
-          <div class="video-title">AIの「記憶」を司るCLAUDE.mdの書き方 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>入門では非エンジニアでも書けるレベルで教える。「あなたは○○のアシスタントです」「出力は日本語で」「よく使うファイルの場所」程度でOK。開発向けの詳細（技術スタック・コーディング規約等）はS5-S6で紹介。参考: https://ai.salesnow.jp/seo/blog/claude-code-claude-md-guide（開発者向け）。Boris氏のCLAUDE.md（Planモード基本・サブエージェント戦略・自己改善ループ・完了前検証・エレガントさ追求・自律バグ修正）は開発者向けなのでS5-S6で詳細紹介する。土屋もほぼコピペで使ってる実績あり</div>
-            <div class="comment kanno"><span class="comment-name">菅野:</span>CLAUDE.mdは実運用上はドキュメントのリンク集（インデックス）として活用するのが最適。ルールを書きすぎるとAIの注意力を削ぐし、AIは必ずルールを守るわけではない</div>
+          <div class="video-title">CLAUDE.mdの書き方 — AIが毎回読む取扱説明書 </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>非エンジニアでも書けるCLAUDE.mdを作成できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>入門レベルの書き方（「あなたは○○のアシスタント」「出力は日本語」「よく使うファイルの場所」）／ドキュメントのリンク集（インデックス）としての活用が最適／ルール書きすぎはAIの注意力を削ぐ／開発向け詳細（Boris氏のCLAUDE.md等）はS5-S6で紹介</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>何を書けばいいかわからない（→まず3行でOK）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。実際にCLAUDE.mdを作成・編集</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（入門レベル。開発向け詳細はS5-S6）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>https://ai.salesnow.jp/seo/blog/claude-code-claude-md-guide（開発者向け参考）／Boris氏のCLAUDE.md（S5-S6で詳細紹介）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 CLAUDE.mdとは → Step 2 入門レベルの3行テンプレ → Step 3 リンク集としての活用法 → Step 4 注意点「書きすぎない」</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">【実践】顧客リストから広告文を大量生成 → トークン消費を体感 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>まず営業向けに顧客リストCSVから広告文を大量生成させる実践。終わったらccusageで「今ので○○トークン使いました」と見せる。先にやらせてから種明かし。コンテキストウィンドウとは何か、/clearとauto-compactの重要性。業務で使うならおすすめはいったん月100ドルのMaxプラン。核心メッセージ：「Claude Codeで業務するってのは、コンテキストウィンドウとトークンのマネジメントだ」。</div>
+          <div class="video-title">顧客リストから広告文を大量生成 → トークン消費を体感 </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>トークン消費を体感し、コンテキストウィンドウ管理の重要性を理解する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>顧客リストCSVから広告文を大量生成／ccusageでトークン確認／コンテキストウィンドウの概念／/clearとauto-compact／Maxプラン（月100ドル）推奨／核心「Claude Codeで業務するってのはコンテキストウィンドウとトークンのマネジメントだ」</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>トークンの概念がわからない（→先にやらせて体感させてから種明かし）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。CSV読み込み→広告文生成→ccusageで確認</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践→種明かし（先にやらせてからトークンを解説）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>サンプル顧客リストCSV／ccusage</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 顧客リストCSVで広告文を大量生成 → Step 2 ccusageで「今ので○○トークン使いました」→ Step 3 コンテキストウィンドウとは → Step 4 /clearとauto-compactの重要性 → Step 5 プラン選択の推奨</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
-          <div class="video-title">【重要】承認画面をちゃんと読め — セキュリティの基本 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Claude Codeの権限管理は3段階（デフォルト/Auto-accept edits/フルオート）。普段はデフォルトのままで十分。大事なのは承認画面をちゃんと読むこと。Return連打で全部承認するな。rm -rfが来たら止めろ。環境変数にAPIキーを入れる方法も教える（コードにベタ書きするな）。</div>
-            <div class="comment kanno"><span class="comment-name">菅野:</span>Return連打は気をつける、rm -rfとか、fetch→プロンプトインジェクションなど。Ctrl+Eで簡単な解説が出る。万が一の利用金額の上限設定も教える</div>
+          <div class="video-title">承認画面をちゃんと読め — セキュリティの基本 </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>承認画面の読み方と権限管理を理解し、安全にClaude Codeを使えるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>権限3段階（デフォルト/Auto-accept edits/フルオート）／承認画面の読み方／rm -rf等の危険コマンド／環境変数でAPIキー管理（ベタ書きするな）／Ctrl+Eで解説表示／利用金額の上限設定</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>Return連打で全承認してしまう癖</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。承認画面の実例、Ctrl+Eの操作、危険コマンドの例</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>重要（セキュリティ基礎）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 権限3段階の紹介 → Step 2 承認画面の読み方 → Step 3 危険な操作例（rm -rf、fetch→プロンプトインジェクション）→ Step 4 環境変数でAPIキー管理 → Step 5 Ctrl+Eと利用上限設定</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">5</div>
         <div class="video-content">
-          <div class="video-title">【実践】回転寿司3社のIR比較分析 → 比較マトリクスHTML生成 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>スシロー/くら寿司/はま寿司のIRを比較分析。プロンプト1回で比較マトリクスHTMLを生成。マーケターのリサーチをClaude Codeでやるとこうなる、という実演。デモHTML: demos/sushi-ir-comparison.html</div>
+          <div class="video-title">回転寿司3社のIR比較分析 → 比較マトリクスHTML生成 </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>IRデータからHTML比較マトリクスを一発生成できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>スシロー・くら寿司・はま寿司のIR比較分析／プロンプト1回で比較マトリクスHTML生成／マーケターのリサーチ活用</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「IRデータの分析は専門スキルが必要」→Claude Codeなら一発</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。3社IRデータ→比較マトリクスHTML生成</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（マーケター向けリサーチの実演）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>demos/sushi-ir-comparison.html／3社IRデータ</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 3社のIRデータ準備 → Step 2 プロンプト1回で比較マトリクス生成 → Step 3 生成されたHTMLの確認 → Step 4 応用可能性</div>
           </div>
         </div>
       </div>
@@ -527,30 +583,23 @@
   <!-- S3 -->
   <div class="section biz" id="s3">
     <div class="section-header">
-      <div><h2>S3：コンサルティングで喜ばれる提案</h2><div class="meta">7本 / 35分</div></div>
+      <div><h2>S3：業務効率化に役立つ道具</h2><div class="meta">7本 / 35分</div></div>
       <span class="badge">業務自動化・コンサルティング</span>
-    </div>
-    <div class="section-purpose">
-      <div class="purpose-label">目的</div>
-      <div>Skills・MCP・CLIを使って定型作業を自動化する。自社の業務をスキル化して社内に横展開できる力を身につけ、「自分専用のAIアシスタント」を構築する。</div>
-      <div class="purpose-label" style="margin-top:0.8rem;">学べる内容</div>
-      <ul class="learns">
-        <li><strong>V1</strong> Skillsとは — shinkoku（確定申告スキル）をデモ</li>
-        <li><strong>V2</strong> 自分の業務をSkill化する — Skills Creatorの使い方</li>
-        <li><strong>V3</strong> MCP① Slack連携 — チャンネル横断で日報・週報を自動生成</li>
-        <li><strong>V4</strong> MCP② Notion連携 — 議事録・タスク管理をAIで自動化</li>
-        <li><strong>V5</strong> MCP③ マネーフォワード連携 — 経理業務の自動化</li>
-        <li><strong>V6</strong> API① X（Twitter）投稿 — SNSマーケティングの自動化</li>
-        <li><strong>V7</strong> API② LINE送信 — 顧客への一斉通知・Bot自動返信</li>
-      </ul>
     </div>
     <div class="video-list">
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
           <div class="video-title">Skillsとは — shinkoku（確定申告スキル）をデモ </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>shinkokuスキルで確定申告の一連の流れを実演。「Skillsを入れるだけでClaude Codeが専門家になる」というインパクトを見せる。</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Skillsの概念を理解し、スキルの追加・実行ができるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>Skillsとは何か／shinkoku（確定申告スキル）のデモ／「入れるだけでClaude Codeが専門家になる」</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>Skillsの存在自体を知らない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。shinkokuスキルで確定申告の一連の流れを実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>導入（Skills概念の紹介）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>shinkokuスキル</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Skillsとは → Step 2 shinkokuスキルのインストール → Step 3 確定申告デモ → Step 4 Skillsの可能性</div>
           </div>
         </div>
       </div>
@@ -558,9 +607,15 @@
         <div class="video-num">2</div>
         <div class="video-content">
           <div class="video-title">自分の業務をSkill化する — Skills Creatorの使い方 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Skills自体もClaudeに作らせる。1日1回やることはSkill化。自分の業務ノウハウをSkillにすれば、チーム全員が同じ品質で作業できる。</div>
-            <div class="comment kawashima"><span class="comment-name">川島:</span>公式skill-creatorの紹介 https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>自分の業務をSkill化し、チーム全員で使えるようにできる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>Skills Creatorの使い方／Skills自体もClaudeに作らせる／1日1回やること→Skill化／チーム全員が同じ品質で作業できる横展開</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>何をSkill化すればいいかわからない（→1日1回やることから）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。実際にSkillを作成する工程を見せる</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（Skills作成）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>公式skill-creator https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Skill化の対象を選ぶ（1日1回やること）→ Step 2 Skills Creatorで作成 → Step 3 テスト実行 → Step 4 チームへの共有方法</div>
           </div>
         </div>
       </div>
@@ -568,8 +623,15 @@
         <div class="video-num">3</div>
         <div class="video-content">
           <div class="video-title">MCP① Slack連携 — チャンネル横断で日報・週報を自動生成 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>全チャンネルを横断クロールして今日の動きを日報に自動生成。上司向けのチーム活動サマリーも一発。「毎日30分かけてた日報が30秒になる」。</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Slack MCPを接続し、日報・週報を自動生成できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>MCP接続方法／Slack全チャンネル横断クロール／日報・週報の自動生成／上司向けチーム活動サマリー</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>MCPの接続設定でつまずく</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。Slack MCP接続→日報生成を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（MCP第1弾）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>Slack MCP</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 MCPとは → Step 2 Slack MCPの接続設定 → Step 3 全チャンネル横断で日報生成 → Step 4 「毎日30分→30秒」の効果</div>
           </div>
         </div>
       </div>
@@ -577,8 +639,15 @@
         <div class="video-num">4</div>
         <div class="video-content">
           <div class="video-title">MCP② Notion連携 — 議事録・タスク管理をAIで自動化 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Notionのデータベースに直接読み書き。議事録からアクションアイテムを抽出してNotionタスクに自動登録、進捗の一覧取得など。「Notionを開かずにNotionを操作する」体験。</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Notion MCPで議事録からタスク自動登録ができるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>Notion MCPの接続／Notionのデータベースに直接読み書き／議事録→アクションアイテム抽出→タスク自動登録／「Notionを開かずにNotionを操作する」</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>Notion APIの権限設定が複雑</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。議事録からNotionタスク自動登録を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（MCP第2弾）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>Notion MCP</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Notion MCPの接続設定 → Step 2 議事録からアクションアイテム抽出 → Step 3 Notionタスクに自動登録 → Step 4 進捗一覧取得</div>
           </div>
         </div>
       </div>
@@ -586,8 +655,15 @@
         <div class="video-num">5</div>
         <div class="video-content">
           <div class="video-title">MCP③ マネーフォワード連携 — 経理業務の自動化 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>レシート画像→仕訳登録、残高確認、月次締めをClaude Codeから直接操作。「経理の人が毎月やってる作業をAIが巻き取る」コンサル提案の実例。</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>マネーフォワードMCPで経理業務を自動化できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>レシート画像→仕訳登録／残高確認／月次締めの自動化／「経理の作業をAIが巻き取る」コンサル提案の実例</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>マネーフォワードのAPI設定</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。レシート画像→仕訳登録を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（MCP第3弾、コンサル提案の実例）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>マネーフォワードMCP</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 マネーフォワードMCPの接続設定 → Step 2 レシート画像→仕訳登録 → Step 3 残高確認・月次締め → Step 4 コンサル提案としての価値</div>
           </div>
         </div>
       </div>
@@ -595,8 +671,15 @@
         <div class="video-num">6</div>
         <div class="video-content">
           <div class="video-title">API① X（Twitter）投稿 — SNSマーケティングの自動化 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>X APIを使ってClaude Codeから直接投稿。投稿文の生成→投稿→反応分析まで一気通貫。MCPとの違い＝「プラグインを入れるだけ」vs「自分でAPIを叩く」を体感。</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>X APIを使ってClaude Codeから投稿・分析ができるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>X APIの設定／投稿文生成→投稿→反応分析の一気通貫／MCPとAPIの違い（「プラグインを入れるだけ」vs「自分でAPIを叩く」）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>APIキーの取得手順が複雑</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。投稿文生成→X投稿→反応分析を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（API第1弾、MCPとの違いを体感）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>X API</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 X APIキーの取得 → Step 2 投稿文の生成 → Step 3 Claude Codeから直接投稿 → Step 4 反応分析 → Step 5 MCPとの違いまとめ</div>
           </div>
         </div>
       </div>
@@ -604,8 +687,15 @@
         <div class="video-num">7</div>
         <div class="video-content">
           <div class="video-title">API② LINE送信 — 顧客への一斉通知・Bot自動返信 </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>LINE Messaging APIで顧客への一斉通知やBot自動返信を実装。日本のビジネスはSlackよりLINEの現場が多い。「LINEで顧客対応を自動化します」はコンサル提案として即戦力。</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>LINE Messaging APIで顧客通知・Bot自動返信を実装できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>LINE Messaging APIの設定／一斉通知・Bot自動返信の実装／日本のビジネスはSlackよりLINEの現場が多い／「LINEで顧客対応を自動化します」はコンサル提案として即戦力</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>LINE Developers設定が複雑</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。一斉通知とBot自動返信を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（API第2弾、コンサル提案の実例）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>LINE Messaging API</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 LINE Messaging APIの設定 → Step 2 顧客への一斉通知 → Step 3 Bot自動返信の実装 → Step 4 コンサル提案としての価値</div>
           </div>
         </div>
       </div>
@@ -615,80 +705,103 @@
   <!-- S4 -->
   <div class="section biz" id="s4">
     <div class="section-header">
-      <div><h2>S4：ユースケース実践とマネタイズ</h2><div class="meta">6本 / 30分</div></div>
+      <div><h2>S4：業務効率化の実践</h2><div class="meta">6本 / 30分</div></div>
       <span class="badge">業務自動化・コンサルティング</span>
-    </div>
-    <div class="section-purpose">
-      <div class="purpose-label">目的</div>
-      <div>社内評価を上げるだけでなく、他社にも横展開できるAI DXコンサルタントへの第一歩を踏み出す。</div>
-      <div class="purpose-label" style="margin-top:0.8rem;">学べる内容</div>
-      <ul class="learns">
-        <li><strong>V1</strong> 社内eラーニングシステムをHTMLで自作</li>
-        <li><strong>V2</strong> 請求書PDF化・Excel処理ツール</li>
-        <li><strong>V3</strong> 入社手続き→オンボーディングチェックリスト自動生成</li>
-        <li><strong>V4</strong> Slack＋LINE＋議事録→経営者向け週次サマリーHTML</li>
-        <li><strong>V5</strong> LINE Harnessで顧客CRMを構築（サーバー代0円）</li>
-        <li><strong>V6</strong> 高品質SEOコンテンツ生成ワークフロー</li>
-      </ul>
     </div>
     <div class="video-list">
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
-          <div class="video-title">【教育・研修向け】社内eラーニングシステムをHTMLで自作</div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>動画を置いて再生ページ＋進捗管理をHTMLで自作する。LMSに月額を払うより自作した方が早いし安い。ドメイン知識をそのままプロダクト化する好例。社内研修担当・教育事業者にとって即戦力になるユースケース。</div>
+          <div class="video-title">社内eラーニングシステムをHTMLで自作</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>社内eラーニングシステムをHTML一枚で自作できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>動画再生ページ＋進捗管理のHTML自作／LMS月額 vs 自作のコスト比較／ドメイン知識のプロダクト化の好例</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「eラーニングシステムは高額ツールが必要」→HTMLで十分</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。eラーニングHTMLの生成と動作確認</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：教育・研修向け）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 課題「LMSは高い」→ Step 2 HTMLで自作するデモ → Step 3 進捗管理機能の確認 → Step 4 社内研修・教育事業での活用</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">2</div>
         <div class="video-content">
-          <div class="video-title">【バックオフィス向け】請求書PDF化・Excel処理ツール作り</div>
+          <div class="video-title">請求書PDF化・Excel処理ツール作り</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>請求書PDF化とExcel処理の自動化ツールを作れるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>請求書のPDF化／Excel処理の自動化／バックオフィス業務の効率化</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「PDF生成は難しそう」→Claude Codeに任せれば一発</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。請求書データ→PDF生成を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：バックオフィス向け）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 課題設定 → Step 2 請求書PDF化デモ → Step 3 Excel処理ツールデモ → Step 4 業務への組み込み</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">【人事向け】入社手続き→オンボーディングチェックリスト自動生成</div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>新入社員の情報（名前・部署・職種・入社日）をCSVで渡すと、部署別のオンボーディングチェックリストHTMLを自動生成。どの会社にもある業務で業種を選ばない。S1「ドメイン知識をプロダクト化」の実例。</div>
+          <div class="video-title">入社手続き→オンボーディングチェックリスト自動生成</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>新入社員情報CSVからオンボーディングチェックリストを自動生成できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>CSV入力→部署別チェックリストHTML生成／どの会社にもある業務で業種を選ばない／S1「ドメイン知識をプロダクト化」の実例</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「人事業務は定型なのに毎回手作業」→自動化のインパクト</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。CSVから部署別チェックリストHTML生成</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：人事向け）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>サンプル新入社員情報CSV</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 課題「部署ごとにチェックリストが違う」→ Step 2 CSVデータ準備 → Step 3 チェックリスト自動生成デモ → Step 4 S1の「ドメイン知識＝プロダクト」の実証</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
-          <div class="video-title">【経営者向け】Slack＋LINE＋議事録→週次サマリーHTML一枚にまとめ</div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>S3で学んだMCPの応用編。複数ソースを横断して1枚にまとめる。「社長が月曜朝にこれ1枚見れば先週の全体像がわかる」がゴール。S3の個別MCP連携との違い＝組み合わせて使う力。</div>
+          <div class="video-title">Slack＋LINE＋議事録→週次サマリーHTML一枚にまとめ</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>複数ソースを横断して経営者向け週次サマリーHTMLを生成できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>S3のMCP応用編／複数ソース（Slack＋LINE＋議事録）の横断／経営者向け1枚サマリー／個別MCPとの違い＝組み合わせて使う力</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>複数MCPの同時活用のイメージがわかない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。Slack＋LINE＋議事録→サマリーHTML生成</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：経営者向け、S3の応用編）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 「社長が月曜朝にこれ1枚で先週の全体像がわかる」→ Step 2 Slack・LINE・議事録からデータ収集 → Step 3 週次サマリーHTML生成 → Step 4 S3の個別MCP vs 組み合わせの力</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">5</div>
         <div class="video-content">
-          <div class="video-title">【マーケティング向け】LINE Harnessで顧客CRMを構築（サーバー代0円）</div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>OSSのLINE CRM「LINE Harness」をCloudflare無料枠にデプロイ。ステップ配信・セグメント配信・スコアリング・リッチメニュー切替まで全部入り。L社月額2万円の機能が0円。Claude Codeから全操作可能。https://github.com/Shudesu/line-harness-oss</div>
+          <div class="video-title">LINE Harnessで顧客CRMを構築（サーバー代0円）</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>LINE HarnessをCloudflareにデプロイし、無料で顧客CRMを運用できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>LINE Harness OSS／Cloudflare無料枠デプロイ／ステップ配信・セグメント配信・スコアリング・リッチメニュー切替まで全部入り／L社月額2万円→0円／Claude Codeから全操作可能</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>Cloudflareの設定が初めての人</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。LINE Harnessのデプロイと各機能を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：マーケティング向け、サーバー代0円）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>https://github.com/Shudesu/line-harness-oss</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 LINE Harnessの紹介と機能一覧 → Step 2 Cloudflare無料枠にデプロイ → Step 3 ステップ配信・セグメント配信のデモ → Step 4 「月額2万円→0円」のインパクト</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">6</div>
         <div class="video-content">
-          <div class="video-title">【マーケティング向け】高品質SEOコンテンツ生成ワークフロー</div>
+          <div class="video-title">高品質SEOコンテンツ生成ワークフロー</div>
           <div class="video-structure">
-            <div class="structure-label">レクチャー構成</div>
-            <ol>
-              <li><strong>導入</strong>：「一発で記事書いて」だと浅い。工程を分割すると各ステップの品質が上がる（S2の/clear思想の実践）</li>
-              <li><strong>Step 1 — 競合分析</strong>：対策キーワードを入力→WebSearchで上位10記事を取得→目次情報を抽出し比較表を作成→共通点・相違点を明確化</li>
-              <li><strong>Step 2 — ユーザーニーズ分析</strong>：比較表からユーザーニーズを推測→典型的なペルソナを作成→コンテンツギャップを特定→改善提案をまとめる</li>
-              <li><strong>Step 3 — 構成案作成</strong>：分析結果を基にH2/H3構成案を作成（前ステップの出力ファイルを引き継ぐ）</li>
-              <li><strong>Step 4 — 本文執筆</strong>：構成案に沿って本文を作成</li>
-              <li><strong>Step 5 — タイトル・メタ生成</strong>：本文からSEO最適化されたタイトル・メタディスクリプションを生成</li>
-              <li><strong>まとめ</strong>：各工程でファイル出力→次の工程で読み込む。前の出力を引き継ぎ次の指示に渡すことで最終成果物が生成される。これをSkill化すれば「/seo [キーワード]」一発で毎回同じ品質で回せる</li>
-            </ol>
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>SEOコンテンツ生成を工程分割し、再現性のある高品質ワークフローを構築できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>「一発で記事書いて」だと浅い→工程分割で品質UP（S2の/clear思想の実践）／競合分析→ニーズ分析→構成案→本文→メタ生成の5ステップ／各工程でファイル出力→次工程で読み込み／Skill化で「/seo [キーワード]」一発で毎回同品質</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「一発で記事書いて」で済ませてしまう → 工程分割の発想がない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。5ステップのワークフローを実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：マーケティング向け）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 導入「一発だと浅い。工程分割で品質UP」→ Step 2 競合分析（WebSearchで上位10記事→比較表）→ Step 3 ユーザーニーズ分析（ペルソナ・ギャップ特定）→ Step 4 構成案作成（H2/H3）→ Step 5 本文執筆 → Step 6 タイトル・メタ生成 → Step 7 まとめ「Skill化で毎回同品質」</div>
           </div>
         </div>
       </div>
@@ -701,27 +814,20 @@
       <div><h2>S5：GitHub＆スペック駆動開発</h2><div class="meta">7本 / 35分</div></div>
       <span class="badge">アプリ開発</span>
     </div>
-    <div class="section-purpose">
-      <div class="purpose-label">目的</div>
-      <div>バージョン管理を「セーブポイント」として体感し、いきなりコードを書かせない「スペック駆動開発」で実務レベルの開発フローを身につける。</div>
-      <div class="purpose-label" style="margin-top:0.8rem;">学べる内容</div>
-      <ul class="learns">
-        <li><strong>V1</strong> GitHubの基本（アカウント作成、リポジトリ）</li>
-        <li><strong>V2</strong> ghコマンドでリポジトリ自動作成</li>
-        <li><strong>V3</strong> @インポートと権限管理</li>
-        <li><strong>V4</strong> スペック駆動開発とVibe Codingの限界</li>
-        <li><strong>V5</strong> AIとの要件定義壁打ち</li>
-        <li><strong>V6</strong> 設計書・タスクリストの自動生成</li>
-        <li><strong>V7</strong> エラー自動対処とセルフコードレビュー</li>
-      </ul>
-    </div>
     <div class="video-list">
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
-          <div class="video-title">【超入門】GitHubとは？ — 「セーブポイントを作るだけ」 </div>
-          <div class="video-comments">
-            <div class="comment kanno"><span class="comment-name">菅野:</span>エンジニアチームでも同様の課題（非エンジニアにGit操作をどう教えるか）を抱えている</div>
+          <div class="video-title">GitHubとは？ — 「セーブポイントを作るだけ」 </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>GitHubを「セーブポイント」として理解し、恐怖心をなくす</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>GitHubとは「セーブポイント」／非エンジニアでも使える／バージョン管理の基本概念／エンジニアチームでも「非エンジニアにGitをどう教えるか」は課題</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「Gitは難しい」「エンジニアのもの」という先入観</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライド＋デモ。GitHubの画面を見せながら概念を説明</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>導入（GitHub概念の理解）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 「GitHubってなに？」→ Step 2 「セーブポイントを作るだけ」の説明 → Step 3 GitHub画面の紹介</div>
           </div>
         </div>
       </div>
@@ -729,20 +835,47 @@
         <div class="video-num">2</div>
         <div class="video-content">
           <div class="video-title">Claude Codeでリポジトリ自動作成（ghコマンド連携） </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>ghコマンドでリポジトリの作成・操作ができるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>ghコマンドの基本／リポジトリ自動作成／Claude Codeとの連携</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>CLIでのGitHub操作に慣れていない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。ghコマンドでリポジトリ作成を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（GitHub操作の基本）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 ghコマンドのインストール → Step 2 gh auth login → Step 3 リポジトリ自動作成のデモ</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
           <div class="video-title">ファイル参照（@インポート）と権限（パーミッション）管理 </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>@インポートでファイルを参照し、適切な権限設定ができるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>@インポートの使い方／ファイル参照の方法／パーミッション管理</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>どのファイルを参照すべきかの判断</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。@インポートと権限設定を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（開発効率化）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 @インポートとは → Step 2 ファイル参照のデモ → Step 3 権限設定の確認</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
           <div class="video-title">「スペック駆動開発」とは？ — Vibe Codingの限界を超える </div>
-          <div class="video-comments">
-            <div class="comment kanno"><span class="comment-name">菅野:</span>AI上流工程は永澤さんが知見があるかも</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Vibe Codingの限界を理解し、スペック駆動開発の考え方を身につける</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>Vibe Codingとは何か・その限界／スペック駆動開発の概念／「いきなりコードを書かせない」の重要性</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「とりあえず作って」でうまくいかない理由がわからない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。Vibe Coding失敗例 vs スペック駆動の成功例を比較</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>導入（開発アプローチの転換）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Vibe Codingの紹介と限界 → Step 2 スペック駆動開発とは → Step 3 失敗例 vs 成功例の比較</div>
           </div>
         </div>
       </div>
@@ -750,14 +883,31 @@
         <div class="video-num">5</div>
         <div class="video-content">
           <div class="video-title">AIと一緒に「何を作るか」を決める（要件定義の壁打ち） </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>AIと壁打ちしながら要件定義をまとめられるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>AIとの対話で要件を整理／「何を作るか」を明確にするプロセス</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>何を作りたいかが曖昧なまま開発を始めてしまう</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。AIとの要件定義の対話を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（スペック駆動開発の第1ステップ）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 要件定義の重要性 → Step 2 AIとの壁打ちデモ → Step 3 要件定義ドキュメントの完成</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">6</div>
         <div class="video-content">
           <div class="video-title">設計書・タスクリストの自動生成とタスクごとの実装</div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>docsを作って参照することで人間もAIもやるべきことが整理される（仕様書、プロジェクト毎のルールなど）</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>要件定義から設計書とタスクリストを自動生成し、タスクごとに実装できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>docsフォルダでドキュメント管理（仕様書・プロジェクトルール等）／設計書の自動生成／タスクリスト分割と逐次実装／docsを作って参照すると人間もAIもやるべきことが整理される</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>設計書を書く習慣がない（→AIに書かせればいい）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。要件定義→設計書→タスクリスト生成→実装を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（スペック駆動開発の第2ステップ）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 docsフォルダの作成 → Step 2 設計書の自動生成 → Step 3 タスクリスト分割 → Step 4 タスクごとの実装デモ</div>
           </div>
         </div>
       </div>
@@ -765,8 +915,15 @@
         <div class="video-num">7</div>
         <div class="video-content">
           <div class="video-title">エラーの自動対処とセルフコードレビュー </div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>/simplify、プルリクの/reviewコマンド紹介</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>エラーの自動対処と/review・/simplifyによるセルフレビューができるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>エラー自動対処／/simplifyコマンド／プルリクの/reviewコマンド</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>エラーが出たときにパニックになる（→Claude Codeが自動で直す）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。エラー発生→自動修正→/review・/simplifyを実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（開発の品質管理）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 エラー発生時のClaude Codeの自動対処 → Step 2 /simplifyでコード簡素化 → Step 3 /reviewでセルフコードレビュー</div>
           </div>
         </div>
       </div>
@@ -779,27 +936,20 @@
       <div><h2>S6：デプロイとプロの開発フロー</h2><div class="meta">7本 / 35分</div></div>
       <span class="badge">アプリ開発</span>
     </div>
-    <div class="section-purpose">
-      <div class="purpose-label">目的</div>
-      <div>作ったアプリをVercelで世界に公開し、サブエージェント・auto mode等を活用したプロの開発ワークフローを習得する。</div>
-      <div class="purpose-label" style="margin-top:0.8rem;">学べる内容</div>
-      <ul class="learns">
-        <li><strong>V1</strong> BACKSTAGE社のリアル活用事例</li>
-        <li><strong>V2</strong> BACKSTAGE社のCLAUDE.mdテンプレート</li>
-        <li><strong>V3</strong> Webアプリの動作確認とauto mode</li>
-        <li><strong>V4</strong> Vercelへの直接デプロイ</li>
-        <li><strong>V5</strong> Vercel CLIで本格デプロイ</li>
-        <li><strong>V6</strong> .envと.gitignoreでAPIキー保護</li>
-        <li><strong>V7</strong> サブエージェントによる並列処理</li>
-      </ul>
-    </div>
     <div class="video-list">
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
           <div class="video-title">BACKSTAGE社エンジニアチームのリアル活用事例</div>
-          <div class="video-comments">
-            <div class="comment oikawa"><span class="comment-name">及川:</span>仕様駆動+AI駆動の組み合わせ。ドキュメント生成→画面生成→プロトタイプ確認→レビュー→ドキュメント反映→プログラム生成→Codexコードレビュー</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>プロのエンジニアチームがClaude Codeをどう活用しているかを理解する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>仕様駆動＋AI駆動の組み合わせ／ドキュメント生成→画面生成→プロトタイプ確認→レビュー→ドキュメント反映→プログラム生成→Codexコードレビュー</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「プロはどう使ってるの？」のイメージがわかない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライド＋事例紹介</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>導入（プロの開発フローの紹介）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 BACKSTAGE社の紹介 → Step 2 仕様駆動＋AI駆動フローの全体像 → Step 3 各ステップの詳細（ドキュメント→画面→プロト→レビュー→プログラム→Codexレビュー）</div>
           </div>
         </div>
       </div>
@@ -807,9 +957,15 @@
         <div class="video-num">2</div>
         <div class="video-content">
           <div class="video-title">BACKSTAGE社独自のCLAUDE.mdテンプレート大公開</div>
-          <div class="video-comments">
-            <div class="comment oikawa"><span class="comment-name">及川:</span>プログラムを作るためのドキュメントをどう生成するかのskill（公開できる範囲で）の工夫が大事</div>
-            <div class="comment kanno"><span class="comment-name">菅野:</span>CLAUDE.mdはドキュメントのリンク集（インデックス）として活用が最適。ルール書きすぎはAIの注意力を削ぐ</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>プロ水準のCLAUDE.mdテンプレートを理解し、自分のプロジェクトに適用できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>BACKSTAGE社のCLAUDE.mdテンプレート／ドキュメント生成Skillの工夫（公開可能範囲）／CLAUDE.md＝リンク集（インデックス）が最適／ルール書きすぎはAIの注意力を削ぐ</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>CLAUDE.mdに何をどれくらい書くべきかの判断</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。テンプレートの解説と適用を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（S2-V2の上級版）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>BACKSTAGE社CLAUDE.mdテンプレート（公開可能範囲）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 BACKSTAGE社のCLAUDE.md紹介 → Step 2 テンプレートの解説 → Step 3 ドキュメント生成Skillの工夫 → Step 4 自分のプロジェクトへの適用</div>
           </div>
         </div>
       </div>
@@ -817,8 +973,15 @@
         <div class="video-num">3</div>
         <div class="video-content">
           <div class="video-title">Webアプリの動作確認とauto modeの紹介</div>
-          <div class="video-comments">
-            <div class="comment kanno"><span class="comment-name">菅野:</span>auto modeの紹介も入れる --enable-auto-mode</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Webアプリの動作確認方法とauto modeを理解する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>Webアプリの動作確認フロー／auto mode（--enable-auto-mode）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>動作確認の手順がわからない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。Webアプリの動作確認とauto modeを実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（開発効率化）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Webアプリの動作確認方法 → Step 2 auto modeの紹介（--enable-auto-mode）→ Step 3 auto modeの実演</div>
           </div>
         </div>
       </div>
@@ -826,27 +989,63 @@
         <div class="video-num">4</div>
         <div class="video-content">
           <div class="video-title">Vercelとは？ 作成したアプリを無料で世界に公開 </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Vercelの概要を理解し、無料でアプリを公開できることを知る</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>Vercelとは何か／無料プランでの公開／デプロイの概念</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「デプロイ」の概念自体がわからない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。Vercelの画面を見せながら概念を説明</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>導入（デプロイ概念の理解）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 「デプロイ」とは → Step 2 Vercelの紹介 → Step 3 無料プランでの公開デモ</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">5</div>
         <div class="video-content">
           <div class="video-title">Claude Codeを使ったVercelへの直接デプロイ </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Claude Codeから直接Vercelにデプロイできるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>Vercel CLIの使い方／Claude Codeからの直接デプロイ</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>CLIでのデプロイ操作</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。Claude Codeからのデプロイを実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（デプロイ実行）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Vercel CLIのセットアップ → Step 2 Claude Codeからデプロイ実行 → Step 3 公開されたアプリの確認</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">6</div>
         <div class="video-content">
-          <div class="video-title">【重要】APIキー漏洩を防ぐ！ .envと.gitignoreの仕組み </div>
+          <div class="video-title">APIキー漏洩を防ぐ！ .envと.gitignoreの仕組み </div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>.envと.gitignoreを使ってAPIキーを安全に管理できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>.envファイルの使い方／.gitignoreの設定／APIキー漏洩の防止</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>APIキーをコードにベタ書きしてしまう</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。.env作成→.gitignore設定を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>重要（セキュリティ）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 APIキー漏洩のリスク → Step 2 .envファイルの作成 → Step 3 .gitignoreの設定 → Step 4 環境変数の読み込み方</div>
+          </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">7</div>
         <div class="video-content">
           <div class="video-title">重い処理を切り分ける「サブエージェント」の活用法</div>
-          <div class="video-comments">
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>/btw</div>
-            <div class="comment kanno"><span class="comment-name">菅野:</span>Mainのコンテキストを汚したくない時、自然言語でタスク設定して実行。サブエージェントの結果を使ってメインで実装を続ける使い方</div>
+          <div class="video-structure">
+            <div class="structure-label">構成</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>サブエージェントを使って重い処理を並列化し、メインのコンテキストを汚さずに開発できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>サブエージェントの概念／/btwコマンド／Mainのコンテキストを汚さない／自然言語でタスク設定→結果をメインで活用</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>サブエージェントの使いどころがわからない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。サブエージェントでの並列処理を実演</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（上級テクニック）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 サブエージェントとは → Step 2 /btwコマンドの紹介 → Step 3 並列処理のデモ → Step 4 メインのコンテキスト管理</div>
           </div>
         </div>
       </div>
@@ -879,25 +1078,9 @@
     <div class="policy-item"><div class="policy-num">20</div><div class="policy-text">2回ダメなら/clearして再スタート <span class="policy-where">S2-V1, S2-V4</span></div></div>
     <div class="policy-item"><div class="policy-num">21</div><div class="policy-text">失敗パターン5つ <span class="policy-where">S2-V4</span></div></div>
     <div class="policy-item"><div class="policy-num">22</div><div class="policy-text">具体的なコンテキストを提供する <span class="policy-where">S2-V2, S5-V5</span></div></div>
+    <div class="policy-item"><div class="policy-num">23</div><div class="policy-text">情報源はClaude公式と開発者Borisだけで十分 <span class="policy-where">制作方針</span></div></div>
   </div>
 
-  <!-- WBS ガントチャート -->
-  <div class="tasks-section" id="tasks">
-    <h2>WBS / ガントチャート</h2>
-    <div class="tasks-sub">提供開始: 2026/5/1 | 今日のラインはオレンジ</div>
-
-    <div class="gantt" id="gantt-container"></div>
-
-    <div class="gantt-legend">
-      <span class="l1">Phase 1 準備・企画</span>
-      <span class="l2">Phase 2 台本・スライド</span>
-      <span class="l3">Phase 3 画面収録</span>
-      <span class="l4">Phase 4 音声収録・アバター生成</span>
-      <span class="l5">Phase 5 動画編集</span>
-      <span class="l6">Phase 6 LMSアップロード</span>
-      <span class="l7">Phase 7 提供開始</span>
-    </div>
-  </div>
 
 </div>
 
@@ -1095,7 +1278,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (v.querySelector('.script-btn')) return;
       var btn = document.createElement('button');
       btn.className = 'script-btn';
-      btn.textContent = '台本を表示';
+      btn.textContent = '構成と台本を表示';
       v.appendChild(btn);
 
       // Create script area
@@ -1167,8 +1350,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Global fixed close button
   var closeBtn = document.createElement('button');
   closeBtn.className = 'script-close-fixed';
-  closeBtn.textContent = '台本を閉じる';
-  closeBtn.title = '台本を閉じる';
+  closeBtn.textContent = '閉じる';
+  closeBtn.title = '構成と台本を閉じる';
   document.body.appendChild(closeBtn);
 
   function updateCloseBtn() {

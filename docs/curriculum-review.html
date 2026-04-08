@@ -289,7 +289,7 @@
       <ul class="learns">
         <li><strong>V1</strong> 超実践的なClaude Code講座の全体像</li>
         <li><strong>V2</strong> Claude Desktopの「コード」タブで魔法体験（インストール不要）</li>
-        <li><strong>V3</strong> Claude Code・VS Codeのインストールとmkdir/cd（PATH設定含む）</li>
+        <li><strong>V3</strong> Claude Code・Cursorのインストールとmkdir/cd（PATH設定含む）</li>
         <li><strong>V4</strong> 【実践】営業の自動見積りツールを作ってみよう</li>
         <li><strong>V5</strong> 【実践】会議スライドはもう作らない — アジェンダからHTML静的サイトを生成</li>
       </ul>
@@ -316,11 +316,11 @@
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">Claude Code・VS Codeのインストールとmkdir/cd（PATH設定含む） </div>
+          <div class="video-title">Claude Code・Cursorのインストールとmkdir/cd（PATH設定含む） </div>
           <div class="video-comments">
             <div class="comment kawashima"><span class="comment-name">川島:</span>CLI版インストール後にパスが通らないことがよくある。パスを通す作業も入れると迷子にならない</div>
             <div class="comment kanno"><span class="comment-name">菅野:</span>公式ドキュメント上はネイティブインストーラーが推奨（npm方式は非推奨）。Windowsの前提条件はGit for Windowsのみ。「Node.js等」は要確認</div>
-            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Mac：ネイティブインストーラー / Windows：Git for Windows。VS Code + 拡張機能も一気にやる。Mac/Windows両方カバー。PATHを通す作業も丁寧に見せる（みんなここで詰まる）。mkdir→cd→claude起動の流れで自然にターミナル操作も覚える。</div>
+            <div class="comment tsuchiya"><span class="comment-name">土屋:</span>Mac：ネイティブインストーラー / Windows：Git for Windows。Cursor（無料プラン）をインストール。Claude CodeはProプランを契約してもらう。Mac/Windows両方カバー。PATHを通す作業も丁寧に見せる（みんなここで詰まる）。mkdir→cd→claude起動の流れで自然にターミナル操作も覚える。</div>
           </div>
         </div>
       </div>
@@ -767,8 +767,8 @@
     <div class="gantt-legend">
       <span class="l1">Phase 1 準備・企画</span>
       <span class="l2">Phase 2 台本・スライド</span>
-      <span class="l3">Phase 3 収録・生成</span>
-      <span class="l4">Phase 4 クイズ・課題</span>
+      <span class="l3">Phase 3 画面収録</span>
+      <span class="l4">Phase 4 音声収録・アバター生成</span>
       <span class="l5">Phase 5 動画編集</span>
       <span class="l6">Phase 6 LMSアップロード</span>
       <span class="l7">Phase 7 提供開始</span>
@@ -810,7 +810,15 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'S5-6 台本レビュー＆FIX', who: '土屋+川島', s: '4/13', e: '4/16' },
         { name: 'S5-6 スライド生成', who: 'CC', s: '4/16', e: '4/16' }
       ]},
-      { label: 'Phase 3  収録・生成', cls: 'p3', tasks: [
+      { label: 'Phase 3  画面収録', cls: 'p3', tasks: [
+        { name: 'S1 画面収録', who: '土屋', s: '4/11', e: '4/12' },
+        { name: 'S2 画面収録', who: '土屋', s: '4/12', e: '4/13' },
+        { name: 'S3 画面収録', who: '土屋', s: '4/13', e: '4/14' },
+        { name: 'S4 画面収録', who: '土屋', s: '4/14', e: '4/15' },
+        { name: 'S5 画面収録', who: '土屋', s: '4/16', e: '4/17' },
+        { name: 'S6 画面収録', who: '土屋', s: '4/17', e: '4/18' }
+      ]},
+      { label: 'Phase 4  音声収録・アバター生成', cls: 'p4', tasks: [
         { name: 'S1-2 音声収録', who: '川端', s: '4/14', e: '4/15' },
         { name: 'S1-2 アバター生成', who: '川端', s: '4/15', e: '4/16' },
         { name: 'S3-4 音声収録', who: '川端', s: '4/16', e: '4/17' },
@@ -818,25 +826,19 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'S5-6 音声収録', who: '川端', s: '4/18', e: '4/19' },
         { name: 'S5-6 アバター生成', who: '川端', s: '4/19', e: '4/19' }
       ]},
-      { label: 'Phase 4  クイズ・課題', cls: 'p4', tasks: [
-        { name: 'S1-2 クイズ・課題作成', who: '土屋', s: '4/14', e: '4/16' },
-        { name: 'S3-4 クイズ・課題作成', who: '土屋', s: '4/16', e: '4/18' },
-        { name: 'S5-6 クイズ・課題作成', who: '土屋', s: '4/18', e: '4/19' }
-      ]},
       { label: 'Phase 5  動画編集', cls: 'p5', tasks: [
-        { name: 'S1 動画編集・納品', who: '動画編集会社', s: '4/16', e: '4/17' },
-        { name: 'S2 動画編集・納品', who: '動画編集会社', s: '4/17', e: '4/18' },
-        { name: 'S3 動画編集・納品', who: '動画編集会社', s: '4/18', e: '4/19' },
-        { name: 'S4 動画編集・納品', who: '動画編集会社', s: '4/19', e: '4/20' },
-        { name: 'S5 動画編集・納品', who: '動画編集会社', s: '4/20', e: '4/21' },
-        { name: 'S6 動画編集・納品', who: '動画編集会社', s: '4/21', e: '4/21' }
+        { name: 'S1 動画編集・納品', who: '動画編集会社', s: '4/16', e: '4/20' },
+        { name: 'S2 動画編集・納品', who: '動画編集会社', s: '4/17', e: '4/21' },
+        { name: 'S3 動画編集・納品', who: '動画編集会社', s: '4/18', e: '4/22' },
+        { name: 'S4 動画編集・納品', who: '動画編集会社', s: '4/19', e: '4/23' },
+        { name: 'S5 動画編集・納品', who: '動画編集会社', s: '4/20', e: '4/24' },
+        { name: 'S6 動画編集・納品', who: '動画編集会社', s: '4/21', e: '4/25' }
       ]},
       { label: 'Phase 6  LMSアップロード', cls: 'p6', tasks: [
-        { name: 'LMSへ動画アップ', who: '土屋', s: '4/21', e: '4/22' },
-        { name: 'LMSへクイズ・課題アップ', who: '土屋', s: '4/22', e: '4/23' }
+        { name: 'LMSへ動画アップ', who: '土屋', s: '4/25', e: '4/27' }
       ]},
       { label: 'Phase 7  提供開始', cls: 'p7', tasks: [
-        { name: '提供準備・最終確認', who: '土屋', s: '4/24', e: '5/1' },
+        { name: '提供準備・最終確認', who: '土屋', s: '4/27', e: '5/1' },
         { name: '講座の提供開始', who: '-', s: '5/1', e: '5/1' }
       ]},
     ];

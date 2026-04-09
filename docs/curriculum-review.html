@@ -248,7 +248,7 @@
   <div class="nav-group">
     <div class="nav-label">入門トラック</div>
     <a href="#s1" class="intro">S1 挫折しない環境構築とClaude Codeの魔法体験 <span class="badge">5本</span></a>
-    <a href="#s2" class="intro">S2 Claude Codeを使う上で知っておくべき基本 <span class="badge">5本</span></a>
+    <a href="#s2" class="intro">S2 Claude Codeの基本 <span class="badge">5本</span></a>
   </div>
 
   <div class="nav-group">
@@ -442,16 +442,16 @@
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">Claude Code・Cursorのインストールとmkdir/cd（PATH設定含む） </div>
+          <div class="video-title">Claude Code・Cursorのインストールと初期設定</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>Claude CodeとCursorをインストールし、mkdir→cd→claude起動ができる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>ネイティブインストーラー推奨（npm非推奨）／Mac・Windows両対応／PATHを通す作業を丁寧に／Cursor無料プラン／Claude Code Proプラン契約／mkdir→cd→claude起動</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Claude CodeとCursorをインストールし、mkdir→cd→claude起動＋ステータスライン設定ができる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>ネイティブインストーラー推奨（npm非推奨）／Mac・Windows両対応／PATHを通す作業を丁寧に／Cursor無料プラン／Claude Code Proプラン契約／mkdir→cd→claude起動／ステータスライン設定（コンテキスト使用率・レート制限・gitブランチをリアルタイム表示）</div>
             <div class="structure-item"><span class="s-key">受講者のつまずき：</span>PATHが通らない（みんなここで詰まる）</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。Mac・Windowsそれぞれのインストール手順</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（環境構築）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>公式ドキュメント（インストール手順）／Git for Windows（Windows前提条件）</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 インストーラーのダウンロード → Step 2 PATHを通す（Mac・Win両方）→ Step 3 Cursorインストール → Step 4 Claude Code Proプラン契約 → Step 5 mkdir→cd→claude起動</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。Mac・Windowsそれぞれのインストール手順＋/statuslineコマンドでステータスライン設定</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（環境構築＋初期設定）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>公式ドキュメント（インストール手順）／Git for Windows（Windows前提条件）／公式ドキュメント（ステータスライン: https://code.claude.com/docs/ja/statusline）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 インストーラーのダウンロード → Step 2 PATHを通す（Mac・Win両方）→ Step 3 Cursorインストール → Step 4 Claude Code Proプラン契約 → Step 5 mkdir→cd→claude起動 → Step 6 /statuslineでステータスライン設定（git情報＋コンテキスト使用率＋レート制限リセット時間の2行表示）</div>
           </div>
         </div>
       </div>
@@ -493,7 +493,7 @@
   <!-- S2 -->
   <div class="section intro" id="s2">
     <div class="section-header">
-      <div><h2>S2：Claude Codeを使う上で知っておくべき基本</h2><div class="meta">5本 / 25分</div></div>
+      <div><h2>S2：Claude Codeの基本</h2><div class="meta">5本 / 25分</div></div>
       <span class="badge">入門</span>
     </div>
     <div class="video-list">
@@ -536,12 +536,12 @@
           <div class="video-structure">
             <div class="structure-label">構成</div>
             <div class="structure-item"><span class="s-key">ゴール：</span>トークン消費を体感し、コンテキストウィンドウ管理の重要性を理解する</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>ccusageでトークン確認／コンテキストウィンドウの概念／/clearとauto-compact／Proプラン推奨／核心「Claude Codeで業務するってのはコンテキストウィンドウとトークンのマネジメントだ」</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>ステータスラインでトークン・レート制限をリアルタイム確認／コンテキストウィンドウの概念／/clearとauto-compact／Proプラン推奨／核心「Claude Codeで業務するってのはコンテキストウィンドウとトークンのマネジメントだ」</div>
             <div class="structure-item"><span class="s-key">受講者のつまずき：</span>トークンの概念がわからない（→先にやらせて体感させてから種明かし）</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。OpenAI Tokenizer（https://platform.openai.com/tokenizer）でトークンを体験→ccusageで確認</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。OpenAI Tokenizer（https://platform.openai.com/tokenizer）でトークンを体験→ステータスラインでリアルタイム確認</div>
             <div class="structure-item"><span class="s-key">位置付け方針：</span>実践→種明かし（先にやらせてからトークンを解説）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>ccusage</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 前の動画で使ったトークンをccusageで確認「○○トークン使ってました」→ Step 2 コンテキストウィンドウとは → Step 3 /clearとauto-compactの重要性 → Step 4 プラン選択の推奨</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>公式ドキュメント（ステータスライン: https://code.claude.com/docs/ja/statusline）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 ステータスラインを見せて「前の動画でこれだけコンテキスト使ってました」→ Step 2 コンテキストウィンドウとは → Step 3 /clearとauto-compactの重要性 → Step 4 プラン選択の推奨</div>
           </div>
         </div>
       </div>
@@ -1035,7 +1035,7 @@
     <div class="policy-item"><div class="policy-num">9</div><div class="policy-text">GUIからの脱却（MCP/CLI） <span class="policy-where">S3-V4</span></div></div>
     <div class="policy-item"><div class="policy-num">10</div><div class="policy-text">スライド生成自動化 <span class="policy-where">S3-V3</span></div></div>
     <div class="policy-item"><div class="policy-num">11</div><div class="policy-text">mkdir+cd、1セッション1話題 <span class="policy-where">S1-V2, S2-V1</span></div></div>
-    <div class="policy-item"><div class="policy-num">12</div><div class="policy-text">ccusageインストール <span class="policy-where">S1-V3</span></div></div>
+    <div class="policy-item"><div class="policy-num">12</div><div class="policy-text">ステータスライン設定（/statusline） <span class="policy-where">S1-V3</span></div></div>
     <div class="policy-item"><div class="policy-num">13</div><div class="policy-text">音声入力 <span class="policy-where">S1-V4</span></div></div>
     <div class="policy-item"><div class="policy-num">14</div><div class="policy-text">サンドボックス=安全 <span class="policy-where">S2-V4</span></div></div>
     <div class="policy-item"><div class="policy-num">15</div><div class="policy-text">Planモード=探索→計画→実装 <span class="policy-where">S2-V1</span></div></div>

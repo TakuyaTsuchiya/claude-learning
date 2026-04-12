@@ -88,5 +88,31 @@ var SCRIPTS = {
       { start: "10:15", end: "10:35", topic: "Excelエクスポート", direction: "ブラウザ操作：エクスポートボタン→Excelで開く", content: "最後に「Excelエクスポート」ボタンを押すと、<strong>見積書がExcelファイルとして出力されます。</strong>これでお客様にすぐ提出できますね。", reference: "" },
       { start: "10:35", end: "11:10", topic: "まとめ・核心メッセージ", direction: "スライド：表紙に戻す", content: "環境構築セクションなのに、実務で使える自動見積もりツールが完成しました。<strong>皆さんの会社のデータを使えば、明日からこれと同じことができます。</strong>ドメイン知識＝価値の源泉、この講座のコアメッセージをまず体感していただきました。次のビデオでお会いしましょう。", reference: "" }
     ]
+  },
+  "S1-V5": {
+    meta: {
+      duration: "約7分45秒",
+      mode: "画面収録（エディタ＋Claude Code＋ブラウザ）",
+      goal: "アジェンダMarkdown1枚からHTML静的サイトを一発生成できるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "サンプルデータ", name: "demo/s1v5/agenda.md", purpose: "架空企業『驚安堂』の2026年夏新商品リリース説明会アジェンダ（PB『マジ価格NEO』10商品・販路・SNS施策・KPI・スケジュール）", timing: "Step 2〜3" },
+      { type: "画面収録", name: "Claude CodeでHTML生成", purpose: "アジェンダを投げる→frontend-designスキル自動選択→コード生成", timing: "Step 4" },
+      { type: "画面収録", name: "完成HTMLをブラウザで確認", purpose: "1ページに整理された会議資料サイトを上から下まで見せる", timing: "Step 5" },
+      { type: "出力成果物", name: "index.html（社内会議用ワンページサイト）", purpose: "ブラウザで開くだけ／URL1本で配布できる会議資料", timing: "Step 5〜6" }
+    ],
+    script: [
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、<strong>社内会議用の資料を、HTMLサイトでサクッと作る方法</strong>をお伝えします。スライド作成からの解放、と言ってもいいかもしれません。", reference: "" },
+      { start: "0:25", end: "1:15", topic: "スライドの問題提起", direction: "表紙のまま", content: "会議資料って、皆さんスライドで作ること多いですよね。でも、けっこう大変じゃないですか？<strong>テキストボックスのレイアウト調整、表のセル幅合わせ、画像の位置決め、色の統一</strong>――気がつくと内容より体裁に時間を使っている。しかも1スライドに入る情報量って、すごく限られているんですよ。", reference: "" },
+      { start: "1:15", end: "1:45", topic: "HTMLサイトという選択肢", direction: "表紙のまま", content: "そこで提案したいのが、<strong>HTMLサイトで作るという選択肢</strong>です。「HTMLは難しそう…」と思うかもしれませんが、大丈夫。Claude Codeが全部書きます。皆さんは、会議のアジェンダさえ用意すればOKです。", reference: "" },
+      { start: "1:45", end: "2:30", topic: "題材紹介", direction: "画面収録：エディタでdemo/s1v5/agenda.mdを開く", content: "今回は架空のディスカウントストア<strong>『驚安堂』の夏の新商品リリース説明会</strong>、これを題材にしてみます。マーケ部から営業・店舗運営・海外事業部に向けた、PB新商品10品目のお披露目会、というシナリオです。", reference: "demo/s1v5/agenda.md" },
+      { start: "2:30", end: "3:30", topic: "アジェンダの中身を見せる", direction: "画面収録：agenda.mdをゆっくりスクロール", content: "これがアジェンダのMarkdownです。日時、参加者、市場背景、<strong>新商品10品目の表、販路、SNS施策、KPI、スケジュール、各部へのお願い</strong>――けっこう情報量ありますよね。これをスライドで作ったら、20枚は超えちゃう。レイアウト調整だけで半日仕事です。", reference: "demo/s1v5/agenda.md" },
+      { start: "3:30", end: "4:15", topic: "Claude Codeに投げる", direction: "画面収録：Claude Codeのチャット欄に入力", content: "Claude Codeにこう投げます。「<strong>demo/s1v5/agenda.md をもとに、社内会議用のHTMLサイトを作って。frontend-designスキルを使って、見やすく整理して。</strong>」これだけです。アジェンダのファイルパスとお願いを伝えるだけ。", reference: "" },
+      { start: "4:15", end: "5:30", topic: "frontend-designスキル＋生成", direction: "画面収録：frontend-designスキル読み込み→コード生成（タイムラプス）", content: "<strong>frontend-designスキルが自動で読み込まれます。</strong>これはAnthropic公式のスキルで、見やすいウェブページを作るための専門知識が詰まっています。商品10品目の表、販路、KPIの数字、スケジュール――それぞれを見やすいセクションに分けてレイアウトしてくれます。この間、他の仕事をしていてOKです。", reference: "" },
+      { start: "5:30", end: "6:30", topic: "完成HTMLをブラウザで確認", direction: "画面収録：ブラウザでindex.htmlを開く→上から下までスクロール", content: "出来上がりました。ブラウザで開きます。トップに会議名と日時、目次。スクロールすると、市場背景、商品ラインアップは見やすい表、販路はカード型、KPIは数字を大きく見せる、スケジュールはタイムライン――<strong>スライドだったら20枚以上必要だった内容が、1ページにまとまっています。</strong>", reference: "" },
+      { start: "6:30", end: "7:00", topic: "URL共有で配布完了", direction: "画面収録：URLバーをハイライト／Slackに貼り付ける想定", content: "あとはこのHTMLをどこかに置いてURLを発行するだけ。Slackやメールで「これ見ておいてください」とURLを貼れば、<strong>配布完了です。</strong>ファイル添付・バージョン違い・印刷配布、そういう手間はもうゼロ。", reference: "" },
+      { start: "7:00", end: "7:45", topic: "まとめ・クロージング", direction: "スライド：表紙に戻す", content: "スライド作成にかけていた時間を、本来やりたい仕事に取り戻しましょう。<strong>アジェンダをClaude Codeに投げて、URLを共有する。</strong>今日から皆さんの会議資料の作り方を変えるのに、追加スキルは何も要りません。それでは、次のビデオでお会いしましょう。", reference: "" }
+    ]
   }
 };

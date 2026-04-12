@@ -117,29 +117,36 @@ var SCRIPTS = {
   },
   "S2-V1": {
     meta: {
-      duration: "約5分45秒",
+      duration: "約8分20秒",
       mode: "画面収録（ターミナル＋Claude Code）",
       goal: "mkdir/cd, /init, /clear, /compact, --resume, Planモードを使い分けられるようになる"
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "画面収録", name: "ターミナル操作", purpose: "mkdir/cd→claude起動→各コマンド実行", timing: "Step 1〜5" },
-      { type: "画面収録", name: "Planモード実演", purpose: "Shift+Tab×2で切替→計画表示→承認で実装", timing: "Step 6" }
+      { type: "画面収録", name: "ターミナル操作", purpose: "exit→mkdir→cd→claude起動→/init", timing: "Step 1〜2" },
+      { type: "画面収録", name: "/clear・/compact・--resume", purpose: "各コマンドの実行と効果、auto-compactの説明", timing: "Step 3〜5" },
+      { type: "画面収録", name: "Planモード実演", purpose: "Shift+Tab×2で切替→plan mode on→計画表示→承認で実装", timing: "Step 6" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、Claude Codeの<strong>基本コマンドとPlanモードの使い方</strong>をお伝えします。/init、/clear、/compact、それと、まず計画させてから動かすPlanモード。この4つを押さえれば、日々の作業が一段安定します。", reference: "" },
-      { start: "0:20", end: "0:50", topic: "mkdir/cdでプロジェクト開始", direction: "画面収録：ターミナル", content: "まずはプロジェクト用のフォルダを作って、そこに移動します。<strong>mkdir my-project</strong>でフォルダ作成、<strong>cd my-project</strong>で中に入る。Claude Codeは<strong>今いるフォルダの中で働く道具</strong>なので、新しい仕事を始めるときはまずフォルダを切る、と覚えてください。", reference: "" },
-      { start: "0:50", end: "1:30", topic: "/initでプロジェクト初期化", direction: "画面収録：claude起動→/init実行", content: "次に<strong>claude</strong>で起動して、<strong>/init</strong>と打ちます。これで何が起きるか――<strong>CLAUDE.mdというファイルが自動で作られる</strong>んです。これはClaude Codeが毎回読み込む「このプロジェクトの取扱説明書」。プロジェクトのルール・構成・注意点を書いておくと、以降ずっと守ってくれます。書き方の詳細は次の動画で扱います。", reference: "" },
-      { start: "1:30", end: "2:05", topic: "/clearはこの講座で一番大事", direction: "画面収録：作業終了後の画面→/clear実行", content: "次が今日いちばん大事な話。<strong>/clearです</strong>。1つの作業が終わったら、すぐに/clear。これで会話履歴が全部リセットされます。「せっかく話した文脈が消えちゃうのもったいない」と思うかもしれませんが、逆です。<strong>文脈を溜めたままだとClaude Codeの精度がどんどん落ちます。この講座では/clearを強く推奨します。</strong>", reference: "" },
-      { start: "2:05", end: "2:40", topic: "なぜ/clearが効くか①毎回全履歴を送り直している", direction: "画面収録：会話履歴のイメージ図／トークン累積を示唆", content: "そもそもなぜ/clearが効くのか、仕組みをお話しします。実はClaude Codeは、皆さんがメッセージを送るたびに<strong>これまでの会話全文を毎回まるごと送り直している</strong>んです。過去のやりとり全部＋今回の入力、を一緒にまとめて投げている。だから<strong>履歴が長くなるほど、1ターンごとに読む量が累積して重くなっていく</strong>わけです。", reference: "" },
-      { start: "2:40", end: "3:20", topic: "なぜ/clearが効くか②空き回復＋精度・速度", direction: "画面収録：コンテキストウィンドウのゲージ図", content: "ここで大事なのが、<strong>コンテキストウィンドウの上限は固定</strong>ということ。Opusなら200K、1Mのモデルもあります。/clearは<strong>ウィンドウを広げるんじゃなくて、空きを取り戻す</strong>動作です。副次効果も大きくて――<strong>精度が戻る</strong>。長い履歴だと注意力が薄まって、関係ない昔の話に引っ張られるんです。そして<strong>速度が戻る</strong>。毎ターン送り直す量が減るから応答も速い。この3つが一気に戻るのが/clearです。", reference: "" },
-      { start: "3:20", end: "3:45", topic: "auto-compact前に/clear", direction: "画面収録：ステータスライン強調", content: "Claude Codeには<strong>auto-compact</strong>という機能があって、コンテキストが埋まってくると勝手に要約されます。ただ、要約されるときに情報がぼやけるんですよ。<strong>auto-compactが入る前に自分で/clearする</strong>――これが上級者の使い方です。", reference: "" },
-      { start: "3:45", end: "4:10", topic: "/compactの使い所", direction: "画面収録：/compact実行", content: "似たコマンドに<strong>/compact</strong>があります。違いは、<strong>/clearは完全リセット、/compactは要約を残す</strong>。長い調査の途中で「今の文脈は残したいけどトークンは減らしたい」ときに/compact。基本は/clear、要約を残したい時だけ/compact、と覚えてください。", reference: "" },
-      { start: "4:10", end: "4:25", topic: "--resumeで前回の続きから", direction: "画面収録：claude --resume実行→セッション選択", content: "/clearした後で「やっぱりさっきの続きをやりたい」というときは、<strong>claude --resume</strong>で前のセッションを復元できます。過去のセッションから選んで戻れるので、安心して/clearできます。", reference: "" },
-      { start: "4:25", end: "4:50", topic: "Planモード入口", direction: "画面収録：Shift+Tabを2回押す", content: "ここからがもう一つの主役、<strong>Planモード</strong>です。入り方は簡単、<strong>Shift+Tabを2回</strong>押すだけ。画面下に「plan mode」と表示されます。この状態でお願いをすると、Claude Codeは<strong>実装せずに計画だけ立てて</strong>返してきます。", reference: "" },
-      { start: "4:50", end: "5:10", topic: "なぜPlanモードが効くか", direction: "画面収録：計画が表示される画面", content: "なぜこれが効くのか。<strong>Claude Codeの開発者であるBoris氏も「まずPlanしてから実装すると手戻りが少ない」</strong>と言っています。世界のトップ開発者、しかもClaude Code自身を作った人の推奨ですから、これは素直に真似したほうが得です。", reference: "Boris氏（Claude Code開発者）の発言" },
-      { start: "5:10", end: "5:30", topic: "Planモードの安心感と使い分け", direction: "同上", content: "Planモードのいいところは、<strong>この間ファイルは一切変更されない</strong>こと。読み取りだけなので気軽に試せます。出てきた計画を見て「Step 3はこうして」と直せば再計画してくれるし、OKなら承認すれば実装に進みます。小さい修正には要りませんが、<strong>3ステップ以上の作業、アーキに関わる作業は必ずPlanモード</strong>、と決めておくのがおすすめです。", reference: "" },
-      { start: "5:30", end: "5:45", topic: "まとめ・クロージング", direction: "スライド：表紙", content: "/initで始めて、作業ごとに/clear、大きな仕事はPlanモードから。この基本動作がセクション2全体の土台になります。<strong>のちほど学ぶスペック駆動開発</strong>も、この「先に考える」の延長線にあります。次の動画は、CLAUDE.mdの書き方です。", reference: "" }
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、Claude Codeの<strong>基本コマンドとPlanモードの使い方</strong>をお伝えします。", reference: "" },
+      { start: "0:20", end: "0:50", topic: "フォルダ作りはClaude Codeの外でやる", direction: "画面収録：Claude Codeから exit して抜ける", content: "まずはプロジェクト用のフォルダを作って、そこに移動します。<strong>これが一番大事です</strong>。ちなみにこの作業は<strong>Claude Codeの外で行います</strong>。もしClaude Codeが起動していたら、一旦 <strong>exit</strong> で抜けてください。", reference: "" },
+      { start: "0:50", end: "1:35", topic: "mkdir / cd でプロジェクト作成・移動", direction: "画面収録：Documents配下でmkdir→cd", content: "Documentsの配下で <strong>mkdir my-project</strong>。これで「my-project」というフォルダが作れました。そこに移動しましょう。<strong>cd my-project</strong> で、今このプロジェクトフォルダの中に入った状態です。", reference: "" },
+      { start: "1:35", end: "1:55", topic: "claudeコマンドで起動", direction: "画面収録：ターミナルで claude 実行", content: "ここで <strong>claude</strong> というコマンドを打つと、このディレクトリの中で作業ができるようになります。Claude Codeは<strong>今いるフォルダの中で働く道具</strong>なので、新しい仕事を始めるときはまずフォルダを作る、と覚えてください。", reference: "" },
+      { start: "1:55", end: "2:15", topic: "/init でプロジェクト初期化", direction: "画面収録：Claude Code内で /init 実行", content: "起動したClaude Codeの中で、まず <strong>/init</strong> を打ちます。これで何が起きるかというと、<strong>CLAUDE.md というマークダウンファイルが自動で作られる</strong>んです。", reference: "" },
+      { start: "2:15", end: "2:40", topic: "CLAUDE.mdはプロジェクトの取扱説明書", direction: "画面収録：生成されたCLAUDE.mdを開く", content: "このファイルはとても重要で、Claude Codeが<strong>毎回読み込む「このプロジェクトの取扱説明書」</strong>です。プロジェクトのルール・構成・注意点を書いておくと、以降ずっと守ってくれます。書き方の詳細は、次の動画で扱います。", reference: "" },
+      { start: "2:40", end: "3:20", topic: "/clear はこの講座で一番大事", direction: "画面収録：/clear 実行", content: "さて、次が<strong>今日いちばん大事な話</strong>です。<strong>/clear</strong> というコマンドがあります。/clearを押すと、これまでの内容が全部消えます。<strong>1つの作業が終わったら、すぐに/clear</strong>することを推奨しています。", reference: "" },
+      { start: "3:20", end: "3:50", topic: "文脈を貯めると精度が落ちる", direction: "画面収録：/clear 実行後の画面", content: "これで会話の履歴が全部リセットされます。「せっかく話した文脈が消えちゃうのもったいない」と思うかもしれませんが、<strong>実は逆</strong>で、文脈を貯めたままだとClaude Codeの精度がどんどん落ちます。なので、<strong>この講座では/clearを強く推奨します</strong>。", reference: "" },
+      { start: "3:50", end: "4:17", topic: "なぜ/clearが効くか①毎回全履歴を送り直している", direction: "画面収録：会話履歴のイメージ図", content: "なぜ/clearが効くのか、仕組みをお話しします。実はClaude Codeは、皆さんがメッセージを送るたびに<strong>これまでの会話全文を毎回丸ごと送り直している</strong>んです。Claude Code自身は過去のやり取りを覚えていないので、過去のやり取り全部＋今回の入力、を一緒にまとめて投げている。だから<strong>履歴が長くなるほど、1ターンごとに読む量が累積して重くなっていく</strong>わけです。", reference: "" },
+      { start: "4:17", end: "4:45", topic: "なぜ/clearが効くか②上限固定・空きを取り戻す", direction: "画面収録：コンテキストウィンドウのゲージ", content: "ここで大事なのが、<strong>コンテキストウィンドウには上限がある</strong>ということ。/clearは、その<strong>コンテキストウィンドウの空きを取り戻す</strong>動作です。", reference: "" },
+      { start: "4:45", end: "5:05", topic: "精度と速度も戻る", direction: "同上", content: "空きを取り戻すことによって、<strong>精度も元に戻ります</strong>。Claude Codeは長い会話履歴を抱えると、注意力が薄まって関係ない昔の話に引っ張られるんですね。そして<strong>スピードも戻ります</strong>。毎ターン送り直す量が減るから応答も早い。この3つが一気に戻るのが/clearです。", reference: "" },
+      { start: "5:05", end: "5:40", topic: "/compact と auto-compact の前に/clear", direction: "画面収録：auto-compactが走るイメージ", content: "Claude Codeには他に <strong>/compact</strong> という機能もあります。コンテキストが埋まってくると、実はClaude Codeが自動でこの/compactをしてくれて、これまでの内容を要約してくれます。ただ、<strong>要約するときに情報がかなりぼやける</strong>ので、<strong>auto-compactが入る前に自分で/clearする</strong>――これが上級者の使い方です。", reference: "" },
+      { start: "5:40", end: "6:35", topic: "--resume で前回のセッションを復元", direction: "画面収録：claude --resume 実行→セッション選択", content: "/clearした後で「やっぱりさっきの続きをやりたい」というときは、<strong>--resume</strong> を使うと前のセッションを復元できます。過去のセッションから戻れるので、<strong>安心して/clearできます</strong>。", reference: "" },
+      { start: "6:35", end: "6:57", topic: "Planモードの入り方（Shift+Tab×2）", direction: "画面収録：Shift+Tabを2回押す→「plan mode on」表示", content: "さて、ここからがもう一つの主役、<strong>Planモード</strong>です。入り方は簡単、<strong>Shift+Tabを2回</strong>押すだけ。すると「plan mode on」という状態になります。Shift+Tabを押すとモードがくるくる切り替わるので、2回でPlanモードに入ります。", reference: "" },
+      { start: "6:57", end: "7:10", topic: "Planモードは計画だけを返す", direction: "画面収録：お願い→計画だけが返る", content: "この状態でClaudeにお願いをすると、<strong>Claude Codeはまず実装せずに、計画だけ立てて返してきます</strong>。", reference: "" },
+      { start: "7:10", end: "7:30", topic: "Boris氏（Claude Code開発者）の推奨", direction: "画面収録：計画が表示される画面", content: "なぜこれが効くのか。<strong>Claude Codeの開発者であるBoris氏も「まずPlanしてから実装すると手戻りが少ない」</strong>と言っています。世界のトップ開発者、しかもClaude Code自身を作った人の推奨ですから、これは素直に真似した方が得です。", reference: "Boris氏（Claude Code開発者）の発言" },
+      { start: "7:30", end: "7:50", topic: "Planモードの安心感（読み取り専用・再計画・承認）", direction: "同上", content: "Planモードのいいところは、<strong>この間ファイルは一切変更されない</strong>こと。読み取りだけなので気軽に試せます。出てきた計画を見て「Step 3はこうして」と直せば再計画してくれますし、OKならその計画を承認することで実装に進みます。", reference: "" },
+      { start: "7:50", end: "8:00", topic: "使い分け（3ステップ以上は必ずPlan）", direction: "同上", content: "軽微な修正には要りませんが、<strong>3ステップ以上の作業は必ずPlanモードから</strong>、と決めておくのがおすすめです。", reference: "" },
+      { start: "8:00", end: "8:20", topic: "まとめ・スペック駆動開発への布石", direction: "スライド：表紙", content: "/initで始めて、作業ごとに/clear、大きな仕事はPlanモードから。この基本動作が<strong>セクション2全体の土台</strong>になります。後ほど学ぶ<strong>スペック駆動開発</strong>も、この「先に考える、先にプランする」の延長線にあります。次の動画は、CLAUDE.mdの書き方です。", reference: "" }
     ]
   }
 };

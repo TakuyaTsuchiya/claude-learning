@@ -148,5 +148,32 @@ var SCRIPTS = {
       { start: "7:50", end: "8:00", topic: "使い分け（3ステップ以上は必ずPlan）", direction: "同上", content: "軽微な修正には要りませんが、<strong>3ステップ以上の作業は必ずPlanモードから</strong>、と決めておくのがおすすめです。", reference: "" },
       { start: "8:00", end: "8:20", topic: "まとめ・スペック駆動開発への布石", direction: "スライド：表紙", content: "/initで始めて、作業ごとに/clear、大きな仕事はPlanモードから。この基本動作が<strong>セクション2全体の土台</strong>になります。後ほど学ぶ<strong>スペック駆動開発</strong>も、この「先に考える、先にプランする」の延長線にあります。次の動画は、CLAUDE.mdの書き方です。", reference: "" }
     ]
+  },
+  "S2-V2": {
+    meta: {
+      duration: "約6:30",
+      mode: "画面収録（エディタ＋Claude Code。スライドは表紙のみ）",
+      goal: "非エンジニアでも書けるCLAUDE.mdを自分仕様に育てて、Claude Codeを『取扱説明書付き』で動かせるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "画面収録", name: "CLAUDE.md編集", purpose: "3行テンプレから育てた版まで実編集", timing: "Step 2〜5" },
+      { type: "画面収録", name: "Claude Codeで効果確認", purpose: "CLAUDE.md反映後に振る舞いが変わるのを見せる", timing: "Step 3" },
+      { type: "サンプルファイル", name: "demo/s2v2/CLAUDE_lv1.md", purpose: "3行テンプレ版（書き始めの見本）", timing: "Step 3" },
+      { type: "サンプルファイル", name: "demo/s2v2/CLAUDE_lv2.md", purpose: "業務に馴染ませた育てた版（参照・リンク集・禁止事項）", timing: "Step 5" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、<strong>Claude Codeに毎回読み込ませる取扱説明書『CLAUDE.md』の書き方</strong>をお伝えします。", reference: "" },
+      { start: "0:20", end: "0:50", topic: "前動画の復習と位置付け", direction: "画面収録：エディタでCLAUDE.mdを開く", content: "前回 <strong>/init</strong> を打ったら自動で生成された、このCLAUDE.mdというファイル。今回はこれを<strong>自分の仕事用に育てていく</strong>話です。", reference: "" },
+      { start: "0:50", end: "1:30", topic: "CLAUDE.mdは毎ターン送信される", direction: "画面収録：CLAUDE.md→会話欄のイメージ図", content: "まず大事なポイント。CLAUDE.mdは<strong>セッションの最初に一度読み込まれて、そのあと毎ターンの会話と一緒にAIへ送信され続ける</strong>ファイルです。前動画で「Claude Codeは毎ターン会話全文を送り直してる」と話しましたが、<strong>CLAUDE.mdもその先頭に毎回乗っかる</strong>イメージ。だからClaude Codeは毎回ちゃんと覚えてる風に動いてくれるんです。", reference: "" },
+      { start: "1:30", end: "1:55", topic: "書きすぎ注意の伏線", direction: "同上", content: "裏を返すと、CLAUDE.mdに書きすぎると<strong>毎ターンの入力コストがずっと大きくなる</strong>ということ。これはあとで効いてくるので、頭の片隅に入れておいてください。", reference: "" },
+      { start: "1:55", end: "2:10", topic: "まずは3行から", direction: "画面収録：CLAUDE.mdを空にして書き始める", content: "では書いていきます。<strong>結論、最初は3行でOK</strong>です。", reference: "" },
+      { start: "2:10", end: "3:00", topic: "Lv.1 3行テンプレを書く", direction: "画面収録：3行を実際に打ち込む", content: "この3行をまず書いてみましょう。<br><br><code>- あなたは経営コンサルタントの業務アシスタントです。<br>- 出力は常に日本語、敬体（です・ます）で。<br>- よく使うファイル置き場：docs/clients/（クライアント資料）、docs/templates/（提案書・議事録の雛形）</code><br><br>書いたら保存。<strong>役割・出力スタイル・ファイルの地図</strong>、この3つが入ってればClaude Codeの振る舞いは明確に変わります。", reference: "demo/s2v2/CLAUDE_lv1.md" },
+      { start: "3:00", end: "3:40", topic: "効果を体感する", direction: "画面収録：Claude Codeに「議事録テンプレを見せて」と頼む→docs/templates/を自分で見に行く挙動", content: "試しに「議事録のテンプレを開いて」と頼んでみます。CLAUDE.mdに<strong>ファイルの地図を書いておいた</strong>ので、Claude Codeは迷わず <strong>docs/templates/</strong> を見に行ってくれる。書いてなかったら「どこにありますか？」と聞き返される所ですね。", reference: "" },
+      { start: "3:40", end: "4:20", topic: "CLAUDE.mdは『リンク集』として使うのが最適", direction: "画面収録：CLAUDE.mdに『参照リンク集』セクションを追加", content: "ここがBoris氏（Claude Code開発者）の発想で大事な所。<strong>CLAUDE.mdは長文マニュアルではなく『インデックス＝資料への地図』として使うのが一番効く</strong>。「この案件のルールは docs/client-rules.md に書いてあります」と<strong>リンクを貼って中身は別ファイル</strong>に逃がす。こうすると本文は軽いまま、必要なときだけ詳細が読み込まれます。", reference: "Boris氏（Claude Code開発者）の運用" },
+      { start: "4:20", end: "5:30", topic: "Lv.2 業務に馴染ませた版を見せる", direction: "画面収録：完成版を上からスクロールして見せる", content: "1〜2週間使うと、こんな感じに育ちます。<br><br><code># CLAUDE.md<br><br>## 私について<br>- 役割：中堅製造業向けの業務改善コンサルタント<br>- よく扱うデータ：クライアントの売上CSV、業務フロー図、議事録、請求書<br>- 出力は日本語・敬体。箇条書きは「・」ではなく「-」。<br><br>## よく使うファイルの場所<br>- クライアント一覧：docs/clients.csv<br>- 議事録テンプレ：docs/templates/meeting.md（命名は YYYY-MM-DD_クライアント名.md）<br>- 提案書テンプレ：docs/templates/proposal.pptx<br>- 過去の請求書：docs/invoices/<br><br>## 出力の好み<br>- Markdownは見出し ## から始める（# は使わない）。<br>- 外部に出す文書ではクライアント名は「A社」「B社」と伏字に。<br><br>## 参照リンク集<br>- 社内ナレッジ（NotionはMCPで接続済み）：運用ルールは docs/notion-rules.md<br>- よく使う統計：e-Stat（https://www.e-stat.go.jp/）<br>- Boris氏のCLAUDE.md（開発者向け参考）：S5-V4で詳しく扱う<br><br>## やらないでほしいこと<br>- クライアント固有名詞入りデータを外部APIに勝手に送らない。<br>- Excelは上書きせず別名保存（_v2.xlsx など）で。<br>- git push --force や rm -rf は必ず確認してから。</code><br><br>ポイントは<strong>「役割／ファイルの地図／出力ルール／リンク集／やらないこと」の5ブロック</strong>。これ以上は書かない。", reference: "demo/s2v2/CLAUDE_lv2.md" },
+      { start: "5:30", end: "6:00", topic: "書きすぎない（毎ターン入力コストに乗る）", direction: "画面収録：書きすぎた悪い例をチラ見", content: "冒頭の伏線に戻ります。CLAUDE.mdは<strong>毎ターン先頭に乗っかる</strong>ので、書きすぎると<strong>毎ターンのコストと精度の両方が悪化</strong>します。細かいルールは本体に書かず<strong>外部ファイルにリンクを貼る</strong>。これが長く運用するコツです。", reference: "" },
+      { start: "6:00", end: "6:30", topic: "まとめ→次回『トークン管理』", direction: "スライド：表紙", content: "まとめます。<strong>役割・ファイルの地図・リンク集、の3本柱で書く</strong>。書きすぎない、育てながら整える。次の動画では、今話した<strong>『毎ターンの入力コスト＝トークン』をどう管理するか</strong>を扱います。", reference: "" }
+    ]
   }
 };

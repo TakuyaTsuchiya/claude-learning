@@ -57,5 +57,36 @@ var SCRIPTS = {
       { start: "11:00", end: "11:30", topic: "習うより慣れる", direction: "画面収録：Cursorエディターに戻す", content: "細かいスキルや設定についてはこのあとの動画で説明していきますが、まず大事なことは<strong>「習うより慣れる」</strong>です。どんどん手を動かして覚えていきましょう。", reference: "" },
       { start: "11:30", end: "12:00", topic: "核心メッセージ＋クロージング", direction: "同上", content: "いろいろな設定や便利なツールが出てきますが、<strong>本質は、皆さんの生活や仕事の中で目の前の問題をどんどん解決していくこと</strong>です。それを繰り返すうちに、Claude Codeの使い方はどんどん上手くなっていきます。それでは、実践的に手を動かしていきましょう。今回の動画はこれでおしまいです。", reference: "" }
     ]
+  },
+  "S1-V4": {
+    meta: {
+      duration: "約11分",
+      mode: "画面収録（Finder＋ターミナル＋エディタ＋ブラウザ）",
+      goal: "自社データを使った実務ツールをClaude Codeで作れることを体験する（ホテル営業向け自動見積りHTMLツール）"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "サンプルデータ", name: "demo/s1v4/product_catalog.csv", purpose: "ホテル営業向け製品カタログ（TV 5メーカー・Wi-Fi機器・配線部材・工事費 全33品目／原価＋単価）", timing: "Step 2" },
+      { type: "サンプルデータ", name: "demo/s1v4/meeting_memo.md", purpose: "商談メモ（ザ・パークビューホテル東京／82室／2026年秋リニューアル／予算1200万円）", timing: "Step 2" },
+      { type: "サンプルデータ", name: "demo/s1v4/past_quote.xlsx", purpose: "過去の成約見積書（フォーマットのお手本）", timing: "Step 2" },
+      { type: "画面収録", name: "Claude Codeでツール生成", purpose: "要件を投げる→Planモード→実装→完成", timing: "Step 3〜4" },
+      { type: "画面収録", name: "自動見積りツール操作", purpose: "商談メモ貼付→自動生成→商品変更→備考チェック→利益率アラート→値引き調整→Excelエクスポート", timing: "Step 5" },
+      { type: "出力成果物", name: "index.html（シングルHTMLツール）", purpose: "ブラウザで開くだけで動作する自動見積りツール", timing: "Step 4〜5" },
+      { type: "出力成果物", name: "見積書.xlsx（エクスポート結果）", purpose: "ツールから出力される見積書Excel", timing: "Step 5末" }
+    ],
+    script: [
+      { start: "0:00", end: "0:25", topic: "オープニング・意外性フック", direction: "スライド：表紙", content: "この動画では「営業マン向けの自動見積り作成ツール」を作っていきます。<strong>環境構築セクションなのに、もう明日から実務で使えるツールが完成します。</strong>", reference: "" },
+      { start: "0:25", end: "1:15", topic: "課題設定", direction: "画面収録：Finderでdemo/s1v4/を開く", content: "今回は<strong>ホテルに備品を提案しているBtoB営業マン</strong>の業務を想定します。テレビ、Wi-Fi機器、工事費など品目が多く、商談のたびに製品カタログを掘って見積書を手打ち…時間がかかる作業ですよね。これをClaude Codeで自動化していきます。", reference: "" },
+      { start: "1:15", end: "2:45", topic: "サンプルデータ紹介", direction: "画面収録：3ファイルを順番にエディタで開いて見せる", content: "用意したのは3つのファイルです。①<strong>製品カタログCSV</strong>：テレビ5メーカー、Wi-Fi機器、配線部材、工事費まで全33品目。<strong>原価と単価の両方</strong>が入っています。②<strong>商談メモ</strong>：ザ・パークビューホテル東京への訪問メモ。82室、2026年秋リニューアル、予算1200万円という内容です。③<strong>過去の成約見積書Excel</strong>：フォーマットのお手本として使います。", reference: "demo/s1v4/product_catalog.csv / meeting_memo.md / past_quote.xlsx" },
+      { start: "2:45", end: "3:45", topic: "要件をClaude Codeに投げる", direction: "画面収録：ターミナルでClaude Code起動→要件入力", content: "Claude Codeに要件を伝えます。「この3ファイルを食わせて、商談メモから見積書を自動生成する<strong>シングルHTMLツール</strong>を作って。商品はプルダウン変更可能、備考欄は定型文のチェックボックス、利益率を常時表示して<strong>20%を下回ったらアラート</strong>、最終的にExcelエクスポートできるように」と伝えます。", reference: "" },
+      { start: "3:45", end: "7:00", topic: "Claude Code実装", direction: "画面収録：Planモード→コード生成（タイムラプス）", content: "Claude Codeが要件を理解して、まずPlanモードで設計を立ててから実装に入ります。待っている間に他の仕事ができますね。", reference: "" },
+      { start: "7:00", end: "7:45", topic: "実装完了・ブラウザで起動", direction: "画面収録：index.htmlをダブルクリック", content: "出来上がりました。<strong>index.htmlをダブルクリックするだけ</strong>、サーバーも何も起動しません。ブラウザで開きます。", reference: "" },
+      { start: "7:45", end: "8:30", topic: "商談メモから自動生成", direction: "ブラウザ操作：商談メモ貼付→生成ボタン", content: "商談メモを貼り付けて「見積書を生成」をクリック。ザ・パークビューホテルの要望に合わせて、テレビ、Wi-Fi機器、配線、工事費まで、<strong>商談内容に合った製品が自動で選ばれて見積書ができあがります。</strong>", reference: "" },
+      { start: "8:30", end: "9:00", topic: "商品変更・数量調整", direction: "ブラウザ操作：プルダウンで商品差し替え", content: "商品はプルダウンで変更できます。「スイート用は有機ELに変えたいな」と思ったらポチポチ変更。数量も自由に調整できます。", reference: "" },
+      { start: "9:00", end: "9:30", topic: "備考チェックボックス", direction: "ブラウザ操作：チェックボックスを順に選択", content: "備考欄は定型文から選ぶチェックボックス形式。「配送費は弊社負担」「1年保証」「支払いは翌月末」といったパターンが用意されているので、<strong>選ぶだけで見積書に反映されます。</strong>", reference: "" },
+      { start: "9:30", end: "10:15", topic: "利益率アラート・値引き調整", direction: "ブラウザ操作：利益率表示の拡大・値引き入力", content: "ここがポイント。<strong>利益率が常に表示されていて、20%を下回ると赤いアラートが出ます。</strong>値引きしすぎたらすぐにわかる。値引き額を調整して、ちょうどいいバランスに追い込めます。", reference: "" },
+      { start: "10:15", end: "10:35", topic: "Excelエクスポート", direction: "ブラウザ操作：エクスポートボタン→Excelで開く", content: "最後に「Excelエクスポート」ボタンを押すと、<strong>見積書がExcelファイルとして出力されます。</strong>これでお客様にすぐ提出できますね。", reference: "" },
+      { start: "10:35", end: "11:10", topic: "まとめ・核心メッセージ", direction: "スライド：表紙に戻す", content: "環境構築セクションなのに、実務で使える自動見積もりツールが完成しました。<strong>皆さんの会社のデータを使えば、明日からこれと同じことができます。</strong>ドメイン知識＝価値の源泉、この講座のコアメッセージをまず体感していただきました。次のビデオでお会いしましょう。", reference: "" }
+    ]
   }
 };

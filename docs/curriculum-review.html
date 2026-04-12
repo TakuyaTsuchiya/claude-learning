@@ -86,9 +86,11 @@
   .video:last-child { border-bottom: none; }
   .video-num { background: #f0f0f0; color: #555; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 0.15rem; }
   .video-content { flex: 1; }
-  .video-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
-  .script-btn { font-size: 0.65rem; color: #4a90d9; background: #e8f4fd; border: none; padding: 0.2rem 0.5rem; border-radius: 4px; cursor: pointer; flex-shrink: 0; margin-left: auto; transition: all 0.15s; }
-  .script-btn:hover { background: #d0e8f8; }
+  .video-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; cursor: pointer; padding: 0.25rem 0.4rem; border-radius: 4px; transition: background 0.15s; user-select: none; }
+  .video-title:hover { background: #eef2ff; }
+  .video-chevron { font-size: 0.7rem; color: #94a3b8; transition: transform 0.2s, color 0.2s; flex-shrink: 0; }
+  .video.open .video-chevron { transform: rotate(180deg); color: #4a90d9; }
+  .video.open .video-title { background: #e8f2ff; }
   .script-close-fixed { display: none; position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 200; font-size: 0.6rem; color: #fff; background: #e53935; border: none; padding: 0.5rem 0.9rem; border-radius: 20px; cursor: pointer; font-weight: 700; transition: all 0.15s; box-shadow: 0 3px 12px rgba(229,57,53,0.5); align-items: center; justify-content: center; line-height: 1; white-space: nowrap; }
   .script-close-fixed:hover { background: #c62828; transform: translateY(-50%) scale(1.08); box-shadow: 0 4px 16px rgba(229,57,53,0.6); }
   .script-close-fixed.visible { display: flex; }
@@ -1301,12 +1303,13 @@ document.addEventListener('DOMContentLoaded', function() {
       var numEl = v.querySelector('.video-num');
       numEl.textContent = 'V' + vNum;
 
-      // Add script button (skip if already exists)
-      if (v.querySelector('.script-btn')) return;
-      var btn = document.createElement('button');
-      btn.className = 'script-btn';
-      btn.textContent = '構成と台本を表示';
-      v.appendChild(btn);
+      // Add chevron to title (skip if already added)
+      var titleEl = v.querySelector('.video-title');
+      if (!titleEl || titleEl.querySelector('.video-chevron')) return;
+      var chev = document.createElement('span');
+      chev.className = 'video-chevron';
+      chev.textContent = '▼';
+      titleEl.appendChild(chev);
 
       // Create script area
       var scriptDiv = document.createElement('div');
@@ -1366,7 +1369,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       v.parentNode.insertBefore(scriptDiv, v.nextSibling);
 
-      btn.addEventListener('click', function(e) {
+      titleEl.addEventListener('click', function(e) {
         e.stopPropagation();
         v.classList.toggle('open');
         updateCloseBtn();

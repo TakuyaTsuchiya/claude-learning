@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>マジ価格 NEO ／ 2026年 夏 新商品リリース説明会</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reggae+One&family=RocknRoll+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Archivo+Black&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#F2EDDE;
+    --paper:#FAF5E6;
+    --ink:#0A0807;
+    --ink-2:#2A2522;
+    --ink-soft:#524A3F;
+    --yellow:#FFCD00;
+    --yellow-hot:#FFE500;
+    --red:#D42028;
+    --red-hot:#E4002B;
+    --blue:#002E6E;
+    --teal:#0E7C66;
+    --line:rgba(10,8,7,.16);
+    --line-2:rgba(10,8,7,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Zen Kaku Gothic New",sans-serif;
+    background:var(--canvas);
+    color:var(--ink);
+    line-height:1.75;
+    font-weight:500;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.14;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.2 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+  /* ================= TOP NAV ================= */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:150;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;
+    background:linear-gradient(180deg,rgba(10,8,7,.85),rgba(10,8,7,.65) 70%,rgba(10,8,7,0));
+    color:var(--paper);
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    pointer-events:none;
+  }
+  .topbar > *{pointer-events:auto}
+  .topbar .brand{display:flex;align-items:center;gap:10px}
+  .topbar .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--red-hot);box-shadow:0 0 0 3px rgba(228,0,43,.25);animation:pulse 1.6s infinite ease-in-out}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.55}}
+  .topbar .meta{display:flex;gap:22px;align-items:center}
+  .topbar .meta span{opacity:.8}
+  .topbar .meta .live{color:var(--yellow-hot)}
+  @media(max-width:720px){
+    .topbar{padding:10px 14px;font-size:10px;letter-spacing:.14em}
+    .topbar .meta{gap:12px}
+    .topbar .meta .hide-sm{display:none}
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:
+      radial-gradient(1200px 700px at 70% 20%, rgba(212,32,40,.28), transparent 60%),
+      radial-gradient(900px 600px at 20% 80%, rgba(0,46,110,.35), transparent 60%),
+      linear-gradient(180deg,#0A0807 0%, #151110 60%, #0A0807 100%);
+    color:var(--paper);
+    padding:120px 48px 80px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero::before{
+    /* dotted spotlight grid */
+    content:"";position:absolute;inset:0;z-index:0;
+    background-image:radial-gradient(circle,rgba(255,205,0,.18) 1.2px, transparent 1.5px);
+    background-size:28px 28px;
+    mask-image:radial-gradient(700px 500px at 50% 40%, #000 20%, transparent 80%);
+    -webkit-mask-image:radial-gradient(700px 500px at 50% 40%, #000 20%, transparent 80%);
+  }
+  .hero::after{
+    /* scanline */
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(0,0,0,.18) 3px 4px);
+    opacity:.35;
+  }
+  .hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%}
+  .hero .eyebrow{
+    font-family:"JetBrains Mono",monospace;
+    font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--yellow-hot);
+    display:flex;align-items:center;gap:14px;margin-bottom:38px;
+  }
+  .hero .eyebrow .bar{flex:0 0 56px;height:1px;background:var(--yellow-hot)}
+  .hero .eyebrow .rt{color:#fff;opacity:.7}
+
+  .title-stack{position:relative}
+  .title-ja{
+    font-family:"Reggae One",cursive;
+    font-size:clamp(80px,13vw,200px);
+    line-height:.9;letter-spacing:-.02em;
+    color:var(--paper);
+    display:inline-block;
+    text-shadow:6px 6px 0 var(--red-hot);
+  }
+  .title-ja .kaomoji{
+    display:inline-block;font-size:.55em;vertical-align:top;margin-left:.1em;color:var(--yellow-hot);transform:translateY(-.1em);
+  }
+  .title-neo{
+    display:block;margin-top:6px;
+    font-family:"Archivo Black",sans-serif;
+    font-size:clamp(110px,18vw,280px);
+    line-height:.82;letter-spacing:-.04em;
+    color:transparent;-webkit-text-stroke:2px var(--paper);
+    position:relative;
+  }
+  .title-neo::after{
+    content:"NEO";position:absolute;inset:0;
+    color:var(--yellow-hot);-webkit-text-stroke:0;
+    clip-path:polygon(0 62%,100% 45%,100% 100%,0 100%);
+    mix-blend-mode:screen;
+  }
+  .title-neo .tm{
+    font-family:"JetBrains Mono",monospace;
+    font-size:.12em;vertical-align:super;letter-spacing:0;
+    color:var(--yellow-hot);-webkit-text-stroke:0;margin-left:.08em;
+  }
+
+  .hero-sub{
+    font-family:"Noto Serif JP",serif;font-weight:900;
+    font-size:clamp(20px,2.4vw,30px);
+    margin:32px 0 4px;letter-spacing:.04em;
+  }
+  .hero-sub .mark{
+    background:var(--yellow-hot);color:var(--ink);padding:2px 10px;margin-right:8px;border-radius:2px;
+    box-shadow:3px 3px 0 rgba(255,255,255,.18);
+  }
+  .hero-tagline{
+    font-family:"JetBrains Mono",monospace;
+    color:#ECE0C8;opacity:.75;font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+  }
+
+  .hero-meta{
+    margin-top:56px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .hero-meta .cell{
+    padding:22px 22px 22px 0;
+    border-right:1px solid rgba(255,255,255,.12);
+  }
+  .hero-meta .cell:last-child{border-right:none}
+  .hero-meta .lbl{
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--yellow-hot);margin-bottom:10px;
+  }
+  .hero-meta .val{font-size:16px;font-weight:700;line-height:1.5;color:var(--paper)}
+  .hero-meta .val strong{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:28px;letter-spacing:.02em;display:block}
+  @media(max-width:900px){
+    .hero{padding:110px 20px 60px}
+    .hero-meta{grid-template-columns:repeat(2,1fr)}
+    .hero-meta .cell{padding:18px 14px;border-bottom:1px solid rgba(255,255,255,.12)}
+    .hero-meta .cell:nth-child(2){border-right:none}
+  }
+
+  /* marquee bottom */
+  .marquee{
+    position:relative;z-index:3;margin:70px -48px -80px;
+    background:var(--yellow-hot);
+    color:var(--ink);
+    padding:14px 0;
+    border-top:4px solid var(--ink);
+    border-bottom:4px solid var(--ink);
+    overflow:hidden;
+    font-family:"Reggae One",cursive;
+    font-size:26px;letter-spacing:.04em;
+    white-space:nowrap;
+  }
+  .marquee-track{display:inline-flex;gap:44px;animation:slide 42s linear infinite;padding-left:44px}
+  .marquee span{display:inline-flex;align-items:center;gap:44px}
+  .marquee .sep{color:var(--red-hot);font-family:"Archivo Black",sans-serif;font-size:22px;transform:translateY(-2px)}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(max-width:900px){
+    .marquee{margin:60px -20px -60px;font-size:20px}
+  }
+
+  /* ================= CONTAINER ================= */
+  .wrap{max-width:1280px;margin:0 auto;padding:0 48px}
+  @media(max-width:900px){.wrap{padding:0 20px}}
+
+  /* ================= SECTION HEADER ================= */
+  section{padding:120px 0;position:relative}
+  section + section{border-top:1px solid var(--line)}
+  .sec-head{
+    display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:end;
+    border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:56px;
+  }
+  .sec-num{
+    font-family:"Archivo Black",sans-serif;
+    font-size:clamp(80px,11vw,140px);
+    line-height:.85;letter-spacing:-.04em;
+    color:transparent;-webkit-text-stroke:2px var(--ink);
+  }
+  .sec-num.filled{color:var(--ink);-webkit-text-stroke:0}
+  .sec-titles{}
+  .sec-kicker{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;
+  }
+  .sec-title{
+    font-family:"Reggae One",cursive;
+    font-size:clamp(28px,4.4vw,56px);line-height:1.05;letter-spacing:-.01em;
+  }
+  .sec-sub{
+    font-family:"Bebas Neue",sans-serif;letter-spacing:.08em;font-size:14px;
+    color:var(--ink-soft);padding-bottom:6px;
+  }
+  @media(max-width:720px){
+    section{padding:80px 0}
+    .sec-head{grid-template-columns:auto 1fr;gap:18px}
+    .sec-sub{grid-column:1/-1;padding-top:6px}
+  }
+
+  /* ================= TOC ================= */
+  .toc-sec{background:var(--paper);border-bottom:1px solid var(--line)}
+  .toc-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+    border:2px solid var(--ink);
+  }
+  .toc-item{
+    position:relative;padding:26px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    display:flex;flex-direction:column;justify-content:space-between;min-height:180px;
+    transition:background .2s ease,color .2s ease;
+  }
+  .toc-item:nth-child(5n){border-right:none}
+  .toc-item:nth-last-child(-n+5){border-bottom:none}
+  .toc-item:hover{background:var(--ink);color:var(--paper)}
+  .toc-item:hover .toc-num{color:var(--yellow-hot);-webkit-text-stroke:0}
+  .toc-num{
+    font-family:"Archivo Black",sans-serif;
+    font-size:52px;line-height:1;letter-spacing:-.04em;
+    color:transparent;-webkit-text-stroke:1.5px var(--ink);
+    transition:color .2s,-webkit-text-stroke .2s;
+  }
+  .toc-label{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;font-size:15px;line-height:1.4;margin-top:16px}
+  .toc-caret{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;opacity:.5;margin-top:10px}
+  @media(max-width:900px){
+    .toc-grid{grid-template-columns:repeat(2,1fr)}
+    .toc-item{min-height:150px}
+    .toc-item:nth-child(5n){border-right:1px solid var(--line)}
+    .toc-item:nth-child(2n){border-right:none}
+    .toc-item:nth-last-child(-n+5){border-bottom:1px solid var(--line)}
+    .toc-item:nth-last-child(-n+2){border-bottom:none}
+  }
+
+  /* ================= SEC 1: 開会 ================= */
+  .open-card{
+    display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:stretch;
+  }
+  .open-quote{
+    background:var(--paper);border:2px solid var(--ink);padding:48px;position:relative;
+  }
+  .open-quote::before{
+    content:"“";position:absolute;top:-20px;left:24px;
+    font-family:"Noto Serif JP",serif;font-size:140px;line-height:1;color:var(--red-hot);
+  }
+  .open-quote p{
+    font-family:"Noto Serif JP",serif;font-weight:700;font-size:22px;line-height:1.9;
+  }
+  .open-quote .hl{background:linear-gradient(transparent 55%,var(--yellow-hot) 55%);padding:0 4px}
+  .open-speaker{
+    background:var(--ink);color:var(--paper);padding:32px;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .open-speaker .role{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.24em;color:var(--yellow-hot);text-transform:uppercase}
+  .open-speaker .name{font-family:"Reggae One",cursive;font-size:40px;line-height:1.1;margin:14px 0 4px}
+  .open-speaker .sub{font-size:13px;opacity:.7}
+  .open-speaker .stamp{
+    align-self:flex-end;margin-top:24px;
+    border:2px solid var(--yellow-hot);color:var(--yellow-hot);
+    padding:8px 14px;font-family:"Bebas Neue",sans-serif;letter-spacing:.12em;font-size:14px;
+    transform:rotate(-4deg);border-radius:3px;
+  }
+  @media(max-width:900px){.open-card{grid-template-columns:1fr}.open-quote{padding:36px 22px}.open-quote p{font-size:18px}}
+
+  /* ================= SEC 2: 市場背景 ================= */
+  .market-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:48px;
+  }
+  .m-card{border:1.5px solid var(--ink);padding:32px;background:var(--paper);position:relative}
+  .m-card h4{
+    font-family:"Bebas Neue",sans-serif;letter-spacing:.14em;font-size:18px;
+    display:flex;align-items:center;gap:10px;margin-bottom:20px;
+  }
+  .m-card h4 .sq{width:12px;height:12px;background:var(--ink)}
+  .m-card.accent h4 .sq{background:var(--red-hot)}
+  .m-card ul{list-style:none}
+  .m-card li{
+    padding:14px 0;border-bottom:1px dashed var(--line);display:grid;grid-template-columns:auto 1fr;gap:14px;font-size:15px;line-height:1.6;
+  }
+  .m-card li:last-child{border-bottom:none}
+  .m-card li .bullet{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--red-hot);font-weight:700;padding-top:3px;
+  }
+  .m-card li strong{font-weight:900}
+
+  .strategy{
+    margin-top:56px;
+    background:var(--ink);color:var(--paper);
+    padding:56px;position:relative;overflow:hidden;
+  }
+  .strategy::before{
+    content:"STRATEGY";position:absolute;right:-30px;top:-30px;
+    font-family:"Archivo Black",sans-serif;font-size:220px;letter-spacing:-.05em;line-height:.8;
+    color:rgba(255,255,255,.05);pointer-events:none;
+  }
+  .strategy-lbl{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.3em;color:var(--yellow-hot);text-transform:uppercase;margin-bottom:14px}
+  .strategy h3{
+    font-family:"Reggae One",cursive;font-size:clamp(28px,4vw,44px);line-height:1.25;max-width:820px;position:relative;
+  }
+  .strategy h3 .neo{
+    background:var(--yellow-hot);color:var(--ink);padding:2px 16px;margin:0 4px;
+    box-shadow:4px 4px 0 var(--red-hot);border-radius:2px;display:inline-block;transform:rotate(-1.2deg);
+  }
+  .strategy-stats{
+    margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+    border-top:1px solid rgba(255,255,255,.18);padding-top:32px;position:relative;
+  }
+  .strategy-stats .s{border-left:1px solid rgba(255,255,255,.15);padding-left:22px}
+  .strategy-stats .s:first-child{border-left:none;padding-left:0}
+  .strategy-stats .s-lbl{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;opacity:.6;text-transform:uppercase}
+  .strategy-stats .s-val{font-family:"Bebas Neue",sans-serif;font-size:64px;letter-spacing:-.01em;line-height:1;margin:8px 0 4px}
+  .strategy-stats .s-val .u{font-size:24px;margin-left:4px;opacity:.8}
+  .strategy-stats .s-sub{font-size:12px;color:var(--yellow-hot);font-weight:700}
+  @media(max-width:900px){
+    .market-grid{grid-template-columns:1fr;gap:28px}
+    .strategy{padding:40px 24px}
+    .strategy-stats{grid-template-columns:1fr;gap:18px}
+    .strategy-stats .s{border-left:none;padding-left:0;border-top:1px solid rgba(255,255,255,.12);padding-top:14px}
+    .strategy-stats .s:first-child{border-top:none;padding-top:0}
+    .strategy-stats .s-val{font-size:54px}
+  }
+
+  /* ================= SEC 3: 商品ラインナップ ================= */
+  .products-head{
+    display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;gap:24px;flex-wrap:wrap;
+  }
+  .products-head .note{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .products-head .note b{color:var(--red-hot)}
+  .products{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:2px solid var(--ink);background:var(--paper);
+  }
+  .p-card{
+    padding:26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:start;
+    position:relative;transition:background .25s;
+  }
+  .p-card:hover{background:#fff}
+  .p-card:nth-child(2n){border-right:none}
+  .p-card:nth-last-child(-n+2){border-bottom:none}
+  .p-idx{
+    font-family:"Archivo Black",sans-serif;font-size:44px;line-height:.9;letter-spacing:-.04em;
+    color:transparent;-webkit-text-stroke:1.4px var(--ink);
+  }
+  .p-body h5{
+    font-family:"Reggae One",cursive;font-size:22px;line-height:1.25;letter-spacing:-.005em;margin-bottom:8px;
+  }
+  .p-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  .p-meta .tag{
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    padding:3px 8px;border:1px solid var(--ink);background:transparent;
+  }
+  .p-meta .cat{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .p-target{font-size:13px;color:var(--ink-soft);line-height:1.5}
+  .p-price{
+    text-align:right;min-width:110px;
+  }
+  .p-price .yen{
+    display:inline-block;background:var(--yellow-hot);color:var(--ink);
+    padding:6px 10px 4px;font-family:"Bebas Neue",sans-serif;font-size:30px;letter-spacing:.01em;line-height:1;
+    border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);
+    transform:rotate(-2deg);white-space:nowrap;
+  }
+  .p-price .yen .u{font-size:14px;margin-left:2px}
+  .p-price .cost{
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-soft);margin-top:14px;
+  }
+  .p-card.hot::after{
+    content:"注目";position:absolute;top:14px;right:14px;
+    background:var(--red-hot);color:#fff;font-family:"Reggae One",cursive;font-size:14px;
+    padding:4px 10px;border-radius:999px;letter-spacing:.02em;transform:rotate(4deg);
+    box-shadow:2px 2px 0 var(--ink);
+  }
+  @media(max-width:780px){
+    .products{grid-template-columns:1fr}
+    .p-card{border-right:none}
+    .p-card:nth-child(2n){border-right:none}
+    .p-card:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+    .p-card:last-child{border-bottom:none}
+  }
+
+  .picks{
+    margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  .pick{
+    padding:28px;background:var(--paper);border:1.5px solid var(--ink);position:relative;
+  }
+  .pick .no{
+    font-family:"Bebas Neue",sans-serif;font-size:14px;letter-spacing:.22em;color:var(--red-hot);
+  }
+  .pick h6{
+    font-family:"Reggae One",cursive;font-size:22px;line-height:1.3;margin:8px 0 12px;
+  }
+  .pick p{font-size:14px;line-height:1.7;color:var(--ink-2)}
+  .pick::after{
+    content:"";position:absolute;top:-8px;right:26px;width:50px;height:20px;
+    background:repeating-linear-gradient(45deg,var(--yellow-hot) 0 6px,var(--ink) 6px 12px);
+    transform:rotate(8deg);
+  }
+  @media(max-width:780px){.picks{grid-template-columns:1fr}}
+
+  /* ================= SEC 4: 販売チャネル ================= */
+  .channel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink)}
+  .ch{padding:36px;background:var(--paper);border-right:1px solid var(--line);position:relative}
+  .ch:last-child{border-right:none}
+  .ch .flag{
+    font-family:"Bebas Neue",sans-serif;font-size:14px;letter-spacing:.28em;color:var(--red-hot);
+    display:flex;align-items:center;gap:8px;margin-bottom:14px;
+  }
+  .ch .flag::before{content:"";width:24px;height:2px;background:var(--red-hot)}
+  .ch h4{font-family:"Reggae One",cursive;font-size:26px;margin-bottom:18px}
+  .ch ul{list-style:none}
+  .ch li{
+    padding:12px 0;border-bottom:1px dashed var(--line);font-size:14px;line-height:1.65;
+    display:grid;grid-template-columns:14px 1fr;gap:10px;
+  }
+  .ch li:last-child{border-bottom:none}
+  .ch li::before{content:"▸";color:var(--red-hot);font-weight:700;font-size:14px}
+  .ch li strong{font-weight:900;background:linear-gradient(transparent 60%,rgba(255,205,0,.6) 60%);padding:0 2px}
+  @media(max-width:900px){
+    .channel-grid{grid-template-columns:1fr}
+    .ch{border-right:none;border-bottom:1px solid var(--line)}
+    .ch:last-child{border-bottom:none}
+  }
+
+  /* ================= SEC 5: プロモ / SNS ================= */
+  .promo-table{
+    width:100%;border-collapse:collapse;background:var(--paper);
+    border:2px solid var(--ink);
+  }
+  .promo-table thead th{
+    background:var(--ink);color:var(--yellow-hot);text-align:left;
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    padding:16px 20px;
+  }
+  .promo-table tbody td{
+    padding:20px;border-bottom:1px solid var(--line);vertical-align:top;
+  }
+  .promo-table tbody tr:last-child td{border-bottom:none}
+  .promo-table tbody tr:hover{background:#fff}
+  .promo-table .t{font-family:"Reggae One",cursive;font-size:18px;line-height:1.3}
+  .promo-table .d{font-size:13px;color:var(--ink-soft);line-height:1.55}
+  .promo-table .owner{
+    display:inline-block;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;
+    padding:3px 10px;border:1px solid var(--ink);
+  }
+  .promo-table .start{font-family:"Bebas Neue",sans-serif;font-size:22px;letter-spacing:.03em;color:var(--red-hot)}
+  @media(max-width:780px){
+    .promo-table,.promo-table thead,.promo-table tbody,.promo-table tr,.promo-table td{display:block;width:100%}
+    .promo-table thead{display:none}
+    .promo-table tr{border-bottom:2px solid var(--ink);padding:14px}
+    .promo-table tbody td{border-bottom:1px dashed var(--line);padding:10px 2px}
+    .promo-table td::before{
+      content:attr(data-l);display:block;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red-hot);margin-bottom:4px;
+    }
+  }
+
+  /* ================= SEC 6: KPI ================= */
+  .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:2px solid var(--ink);background:var(--ink)}
+  .kpi{padding:36px 26px;background:var(--paper);border-right:1px solid var(--line);position:relative;min-height:230px;display:flex;flex-direction:column;justify-content:space-between}
+  .kpi:last-child{border-right:none}
+  .kpi .lbl{
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .kpi .val{
+    font-family:"Bebas Neue",sans-serif;font-size:60px;line-height:.95;letter-spacing:-.01em;margin:16px 0 4px;
+  }
+  .kpi .val .u{font-size:22px;margin-left:2px;color:var(--ink-soft)}
+  .kpi .delta{
+    font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;
+  }
+  .kpi .delta.up{color:var(--teal)}
+  .kpi .delta.new{color:var(--red-hot)}
+  .kpi.accent{background:var(--yellow-hot)}
+  .kpi.accent .val{color:var(--ink)}
+  @media(max-width:1000px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.kpi{border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.kpi:nth-child(2n){border-right:none}.kpi:nth-last-child(-n+1){border-bottom:none}}
+  @media(max-width:480px){.kpi-grid{grid-template-columns:1fr}.kpi{border-right:none;border-bottom:1px solid var(--line)}.kpi:last-child{border-bottom:none}.kpi .val{font-size:50px}}
+
+  /* ================= SEC 7: スケジュール ================= */
+  .timeline{position:relative;padding-left:0}
+  .timeline::before{
+    content:"";position:absolute;left:140px;top:20px;bottom:20px;width:2px;background:var(--ink);
+  }
+  .tl{
+    position:relative;display:grid;grid-template-columns:140px 1fr;gap:40px;align-items:baseline;padding:22px 0;
+  }
+  .tl::before{
+    content:"";position:absolute;left:134px;top:30px;width:14px;height:14px;background:var(--paper);border:3px solid var(--ink);border-radius:50%;
+  }
+  .tl.milestone::before{background:var(--red-hot);border-color:var(--red-hot)}
+  .tl.milestone::after{
+    content:"";position:absolute;left:126px;top:22px;width:30px;height:30px;border-radius:50%;
+    border:2px dashed var(--red-hot);animation:spin 14s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .tl-date{
+    font-family:"Bebas Neue",sans-serif;font-size:32px;letter-spacing:.02em;line-height:1;color:var(--ink);
+    text-align:right;padding-right:24px;
+  }
+  .tl-date .y{display:block;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;color:var(--ink-soft);margin-bottom:6px}
+  .tl-body{padding-left:36px}
+  .tl-body h5{
+    font-family:"Reggae One",cursive;font-size:22px;line-height:1.3;
+  }
+  .tl.milestone .tl-body h5{color:var(--red-hot)}
+  .tl-body p{font-size:13px;color:var(--ink-soft);margin-top:4px}
+  @media(max-width:720px){
+    .timeline::before{left:70px}
+    .tl{grid-template-columns:70px 1fr;gap:16px}
+    .tl::before{left:64px}
+    .tl.milestone::after{left:56px}
+    .tl-date{font-size:22px;padding-right:12px}
+    .tl-body{padding-left:20px}
+    .tl-body h5{font-size:18px}
+  }
+
+  /* ================= SEC 8: アクション ================= */
+  .actions{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:2px solid var(--ink)}
+  .act{
+    padding:30px;background:var(--paper);border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;
+  }
+  .act:nth-child(2n){border-right:none}
+  .act:nth-last-child(-n+2){border-bottom:none}
+  .act .dept{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red-hot);margin-bottom:8px;
+  }
+  .act h6{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;font-size:17px;line-height:1.55}
+  .act h6 .kw{background:linear-gradient(transparent 60%,var(--yellow-hot) 60%);padding:0 3px}
+  .act .due{
+    text-align:center;min-width:100px;border-left:1px dashed var(--line);padding-left:20px;
+  }
+  .act .due-lbl{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.22em;color:var(--ink-soft);text-transform:uppercase}
+  .act .due-date{font-family:"Bebas Neue",sans-serif;font-size:32px;line-height:1;letter-spacing:.02em;color:var(--ink);margin-top:6px}
+  .act .due-date .m{font-size:14px;display:block;color:var(--ink-soft);margin-top:2px}
+  @media(max-width:780px){
+    .actions{grid-template-columns:1fr}
+    .act{border-right:none;grid-template-columns:1fr;gap:14px}
+    .act .due{text-align:left;border-left:none;border-top:1px dashed var(--line);padding-left:0;padding-top:10px;min-width:0;display:flex;align-items:baseline;gap:14px}
+    .act:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+    .act:last-child{border-bottom:none}
+  }
+
+  /* ================= SEC 9 + 10 ================= */
+  .qa-box{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);
+  }
+  .qa-box .side{padding:48px;background:var(--paper)}
+  .qa-box .side + .side{border-left:1px solid var(--line)}
+  .qa-box h4{font-family:"Reggae One",cursive;font-size:28px;margin-bottom:10px}
+  .qa-box p{font-size:14px;color:var(--ink-soft);line-height:1.7}
+  .qa-box .note{
+    margin-top:24px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--red-hot);
+  }
+  .qa-box.dark .side{background:var(--ink);color:var(--paper)}
+  .qa-box.dark .note{color:var(--yellow-hot)}
+  @media(max-width:720px){.qa-box{grid-template-columns:1fr}.qa-box .side + .side{border-left:none;border-top:1px solid var(--line)}.qa-box.dark .side + .side{border-top-color:rgba(255,255,255,.15)}.qa-box .side{padding:30px 22px}}
+
+  /* ================= FOOTER ================= */
+  footer{
+    background:var(--ink);color:var(--paper);
+    padding:70px 48px 40px;position:relative;overflow:hidden;
+  }
+  footer::before{
+    content:"マジ価格NEO";position:absolute;right:-40px;bottom:-40px;
+    font-family:"Reggae One",cursive;font-size:220px;line-height:.8;letter-spacing:-.02em;
+    color:rgba(255,205,0,.08);pointer-events:none;white-space:nowrap;
+  }
+  .f-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:40px;margin-bottom:30px;position:relative}
+  .f-top h5{font-family:"Reggae One",cursive;font-size:36px;line-height:1.15}
+  .f-top .next{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.22em;color:var(--yellow-hot);text-transform:uppercase;
+  }
+  .f-top .next b{display:block;font-family:"Bebas Neue",sans-serif;letter-spacing:.04em;font-size:24px;color:var(--paper);margin-top:6px}
+  .f-bot{display:flex;justify-content:space-between;gap:20px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);position:relative}
+  @media(max-width:720px){
+    footer{padding:50px 20px 30px}
+    .f-top{flex-direction:column;align-items:flex-start;gap:20px}
+    .f-bot{flex-direction:column;gap:10px}
+  }
+
+  /* ================= BACK TO TOP ================= */
+  .totop{
+    position:fixed;right:24px;bottom:24px;z-index:140;
+    width:54px;height:54px;border:2px solid var(--ink);background:var(--yellow-hot);
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:"Bebas Neue",sans-serif;font-size:12px;letter-spacing:.12em;
+    box-shadow:3px 3px 0 var(--ink);transform:translateY(80px);opacity:0;transition:all .3s;
+  }
+  .totop.show{transform:translateY(0);opacity:1}
+  .totop:hover{background:var(--red-hot);color:#fff}
+
+  /* ================= REVEAL ANIM ================= */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span><span>驚安堂 ／ Internal Briefing</span></div>
+    <div class="meta">
+      <span class="hide-sm">DOC-ID // 2026-S-BRIEF-05</span>
+      <span class="hide-sm">CONFIDENTIAL</span>
+      <span class="live">● LIVE 2026.05.20</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">
+        <span class="bar"></span>
+        <span>Internal Briefing / 2026 Summer Launch</span>
+        <span class="rt">/// vol.05</span>
+      </div>
+
+      <div class="title-stack">
+        <span class="title-ja">マジ価格<span class="kaomoji">☆</span></span>
+        <span class="title-neo">NEO<span class="tm">™</span></span>
+      </div>
+
+      <div class="hero-sub"><span class="mark">特報</span>2026年 夏 新商品リリース説明会</div>
+      <div class="hero-tagline">PB NEW LINE × 10 ITEMS / SUMMER 2026 / GO LIVE 7.01</div>
+
+      <div class="hero-meta">
+        <div class="cell">
+          <div class="lbl">Date ／ 日時</div>
+          <div class="val"><strong>2026.05.20</strong>水 14:00 – 16:00</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Venue ／ 場所</div>
+          <div class="val"><strong>HQ 9F</strong>本社 大会議室<br>＋ Zoom 併用</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Host ／ 主催</div>
+          <div class="val"><strong>PB BU</strong>マーケティング本部<br>PB商品企画部</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Audience ／ 対象</div>
+          <div class="val"><strong>ALL DIV.</strong>営業／店舗運営／海外事業<br>物流／広報</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>PB 10 ITEMS <i class="sep">✦</i> 売上 18.0億円 <i class="sep">✦</i> インバウンド比率 22% <i class="sep">✦</i> 570 STORES <i class="sep">✦</i> 客単価 1,400円 <i class="sep">✦</i> 光るぞ☆オシキン <i class="sep">✦</i> ジェットコーラ 88円 <i class="sep">✦</i> 猛暑特需 +1.2℃ <i class="sep">✦</i> </span>
+        <span>PB 10 ITEMS <i class="sep">✦</i> 売上 18.0億円 <i class="sep">✦</i> インバウンド比率 22% <i class="sep">✦</i> 570 STORES <i class="sep">✦</i> 客単価 1,400円 <i class="sep">✦</i> 光るぞ☆オシキン <i class="sep">✦</i> ジェットコーラ 88円 <i class="sep">✦</i> 猛暑特需 +1.2℃ <i class="sep">✦</i> </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <section class="toc-sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num">00</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Table of Contents</div>
+          <div class="sec-title">本日のアジェンダ</div>
+        </div>
+        <div class="sec-sub">10 Sections / 120 min</div>
+      </div>
+
+      <div class="toc-grid reveal">
+        <a class="toc-item" href="#sec1"><div class="toc-num">01</div><div class="toc-label">開会の挨拶</div><div class="toc-caret">— 05 min</div></a>
+        <a class="toc-item" href="#sec2"><div class="toc-num">02</div><div class="toc-label">市場背景と今夏の方針</div><div class="toc-caret">— 15 min</div></a>
+        <a class="toc-item" href="#sec3"><div class="toc-num">03</div><div class="toc-label">新商品ラインアップ 10品</div><div class="toc-caret">— 25 min</div></a>
+        <a class="toc-item" href="#sec4"><div class="toc-num">04</div><div class="toc-label">販売チャネル戦略</div><div class="toc-caret">— 15 min</div></a>
+        <a class="toc-item" href="#sec5"><div class="toc-num">05</div><div class="toc-label">プロモ・SNS 施策</div><div class="toc-caret">— 15 min</div></a>
+        <a class="toc-item" href="#sec6"><div class="toc-num">06</div><div class="toc-label">KPI と目標値</div><div class="toc-caret">— 10 min</div></a>
+        <a class="toc-item" href="#sec7"><div class="toc-num">07</div><div class="toc-label">スケジュール</div><div class="toc-caret">— 10 min</div></a>
+        <a class="toc-item" href="#sec8"><div class="toc-num">08</div><div class="toc-label">各部へのお願い</div><div class="toc-caret">— 10 min</div></a>
+        <a class="toc-item" href="#sec9"><div class="toc-num">09</div><div class="toc-label">質疑応答</div><div class="toc-caret">— 10 min</div></a>
+        <a class="toc-item" href="#sec10"><div class="toc-num">10</div><div class="toc-label">閉会</div><div class="toc-caret">— 05 min</div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 1 -->
+  <section id="sec1">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">01</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Opening Remarks</div>
+          <div class="sec-title">開会の挨拶</div>
+        </div>
+        <div class="sec-sub">— 05 min</div>
+      </div>
+
+      <div class="open-card reveal">
+        <div class="open-quote">
+          <p>「マジ価格 NEO」は、我々が<span class="hl">この夏、驚安堂という看板を再定義する</span>ためのプロジェクトです。猛暑、訪日客、Z世代——<span class="hl">機を逃さず一気に獲りに行く</span>。そのための号砲が、本日のこの場です。</p>
+        </div>
+        <div class="open-speaker">
+          <div>
+            <div class="role">Speaker</div>
+            <div class="name">矢島</div>
+            <div class="sub">マーケティング本部 本部長</div>
+          </div>
+          <div class="stamp">Go Live ／ Summer 26</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 2 -->
+  <section id="sec2">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">02</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Market &amp; Strategy</div>
+          <div class="sec-title">市場背景と今夏の方針</div>
+        </div>
+        <div class="sec-sub">— 15 min</div>
+      </div>
+
+      <div class="market-grid reveal">
+        <div class="m-card">
+          <h4><span class="sq"></span>マクロ環境 ／ Macro</h4>
+          <ul>
+            <li><span class="bullet">01</span><div>訪日客数は2025年通期で<strong>過去最高の3,800万人</strong>を突破見込み</div></li>
+            <li><span class="bullet">02</span><div>円安基調の継続により、<strong>客単価アップのチャンス</strong>が拡大</div></li>
+            <li><span class="bullet">03</span><div>気象庁発表「平年比 <strong>+1.2℃</strong>」の猛暑予報、夏物特需を想定</div></li>
+          </ul>
+        </div>
+        <div class="m-card accent">
+          <h4><span class="sq"></span>当社の課題 ／ Pain Points</h4>
+          <ul>
+            <li><span class="bullet">01</span><div>夏物カテゴリの伸びが鈍化（<strong>前年比+2%</strong>）</div></li>
+            <li><span class="bullet">02</span><div>インバウンド客の<strong>購買単価は上昇</strong>する一方、リピートが弱い</div></li>
+            <li><span class="bullet">03</span><div>SNS発信は<strong>店舗任せ</strong>でバラつきが大きい</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="strategy reveal">
+        <div class="strategy-lbl">Strategic Thesis ／ 今夏の戦略方針</div>
+        <h3>PB 新ライン<span class="neo">10商品</span>を一斉投入し、<br>夏3ヶ月でインバウンド比率を <span class="neo">+4pt</span> 引き上げる。</h3>
+        <div class="strategy-stats">
+          <div class="s"><div class="s-lbl">Sales Target</div><div class="s-val">18.0<span class="u">億円</span></div><div class="s-sub">夏3ヶ月売上</div></div>
+          <div class="s"><div class="s-lbl">Inbound Ratio</div><div class="s-val">22<span class="u">%</span></div><div class="s-sub">前年 18% → +4pt</div></div>
+          <div class="s"><div class="s-lbl">New Line</div><div class="s-val">10<span class="u">品目</span></div><div class="s-sub">PB 一斉投入</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 3 -->
+  <section id="sec3">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">03</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Product Lineup</div>
+          <div class="sec-title">新商品ラインアップ／10品目</div>
+        </div>
+        <div class="sec-sub">— 25 min</div>
+      </div>
+
+      <div class="products-head reveal">
+        <div></div>
+        <div class="note">NOTE ／ 想定売価・原価率は 2026.04 時点の暫定値。<b>注目</b>はSNS起爆剤・目玉商品。</div>
+      </div>
+
+      <div class="products reveal">
+        <div class="p-card">
+          <div class="p-idx">01</div>
+          <div class="p-body">
+            <h5>ジェットコーラ 500ml</h5>
+            <div class="p-meta"><span class="tag cat">飲料</span><span class="tag">原価 62%</span></div>
+            <div class="p-target">学生 ／ 現場作業者</div>
+          </div>
+          <div class="p-price"><div class="yen">88<span class="u">円</span></div><div class="cost">COST 62%</div></div>
+        </div>
+
+        <div class="p-card hot">
+          <div class="p-idx">02</div>
+          <div class="p-body">
+            <h5>シャイニー10秒パック<br><span style="font-size:13px;color:var(--ink-soft);font-family:'Zen Kaku Gothic New'">（5枚入）</span></h5>
+            <div class="p-meta"><span class="tag cat">美容</span><span class="tag">原価 41%</span></div>
+            <div class="p-target">20〜30代女性／訪日女性客</div>
+          </div>
+          <div class="p-price"><div class="yen">398<span class="u">円</span></div><div class="cost">COST 41%</div></div>
+        </div>
+
+        <div class="p-card hot">
+          <div class="p-idx">03</div>
+          <div class="p-body">
+            <h5>光るぞ☆オシキン</h5>
+            <div class="p-meta"><span class="tag cat">雑貨・推し活</span><span class="tag">原価 38%</span></div>
+            <div class="p-target">Z世代／推し活層</div>
+          </div>
+          <div class="p-price"><div class="yen">580<span class="u">円</span></div><div class="cost">COST 38%</div></div>
+        </div>
+
+        <div class="p-card">
+          <div class="p-idx">04</div>
+          <div class="p-body">
+            <h5>カラカラT（吸水速乾Tシャツ）</h5>
+            <div class="p-meta"><span class="tag cat">アパレル</span><span class="tag">原価 45%</span></div>
+            <div class="p-target">男性全般／現場作業者</div>
+          </div>
+          <div class="p-price"><div class="yen">980<span class="u">円</span></div><div class="cost">COST 45%</div></div>
+        </div>
+
+        <div class="p-card">
+          <div class="p-idx">05</div>
+          <div class="p-body">
+            <h5>氷点下フウ太郎<br><span style="font-size:13px;color:var(--ink-soft);font-family:'Zen Kaku Gothic New'">ハンディファン</span></h5>
+            <div class="p-meta"><span class="tag cat">家電</span><span class="tag">原価 52%</span></div>
+            <div class="p-target">通勤層／訪日客</div>
+          </div>
+          <div class="p-price"><div class="yen">1,480<span class="u">円</span></div><div class="cost">COST 52%</div></div>
+        </div>
+
+        <div class="p-card">
+          <div class="p-idx">06</div>
+          <div class="p-body">
+            <h5>噛みごたえ侍グミ</h5>
+            <div class="p-meta"><span class="tag cat">食品</span><span class="tag">原価 48%</span></div>
+            <div class="p-target">中高生／男性</div>
+          </div>
+          <div class="p-price"><div class="yen">158<span class="u">円</span></div><div class="cost">COST 48%</div></div>
+        </div>
+
+        <div class="p-card">
+          <div class="p-idx">07</div>
+          <div class="p-body">
+            <h5>ヒエヒエ砲<br><span style="font-size:13px;color:var(--ink-soft);font-family:'Zen Kaku Gothic New'">USB扇風機</span></h5>
+            <div class="p-meta"><span class="tag cat">家電</span><span class="tag">原価 50%</span></div>
+            <div class="p-target">デスクワーカー</div>
+          </div>
+          <div class="p-price"><div class="yen">980<span class="u">円</span></div><div class="cost">COST 50%</div></div>
+        </div>
+
+        <div class="p-card">
+          <div class="p-idx">08</div>
+          <div class="p-body">
+            <h5>ツヤツヤ滝行シャンプー 400ml</h5>
+            <div class="p-meta"><span class="tag cat">日用品</span><span class="tag">原価 44%</span></div>
+            <div class="p-target">20〜40代女性</div>
+          </div>
+          <div class="p-price"><div class="yen">698<span class="u">円</span></div><div class="cost">COST 44%</div></div>
+        </div>
+
+        <div class="p-card">
+          <div class="p-idx">09</div>
+          <div class="p-body">
+            <h5>ばかうま柿の葉煎餅 激辛味</h5>
+            <div class="p-meta"><span class="tag cat">食品</span><span class="tag">原価 46%</span></div>
+            <div class="p-target">30代以上男性／訪日客</div>
+          </div>
+          <div class="p-price"><div class="yen">248<span class="u">円</span></div><div class="cost">COST 46%</div></div>
+        </div>
+
+        <div class="p-card hot">
+          <div class="p-idx">10</div>
+          <div class="p-body">
+            <h5>マイナス3℃ZZZ アイス枕</h5>
+            <div class="p-meta"><span class="tag cat">日用品</span><span class="tag">原価 49%</span></div>
+            <div class="p-target">全世代</div>
+          </div>
+          <div class="p-price"><div class="yen">1,280<span class="u">円</span></div><div class="cost">COST 49%</div></div>
+        </div>
+      </div>
+
+      <div class="picks reveal">
+        <div class="pick">
+          <div class="no">PICK 01</div>
+          <h6>光るぞ☆オシキン</h6>
+          <p>二次創作OKポリシーを採用、SNS拡散の起爆剤に。Z世代／推し活層の UGC を本格的に取りにいく戦略商品。</p>
+        </div>
+        <div class="pick">
+          <div class="no">PICK 02</div>
+          <h6>ジェットコーラ</h6>
+          <p>業界最安値帯 <b>88円</b>。全店レジ横の冷蔵什器に配置し、ついで買い／来店頻度を底上げする客寄せ商品。</p>
+        </div>
+        <div class="pick">
+          <div class="no">PICK 03</div>
+          <h6>マイナス3℃ZZZ</h6>
+          <p>猛暑特需狙いの目玉アイス枕。「平年比+1.2℃」予報を追い風に、夏シーズン最需要期の柱に据える。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 4 -->
+  <section id="sec4">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">04</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Distribution</div>
+          <div class="sec-title">販売チャネル戦略</div>
+        </div>
+        <div class="sec-sub">— 15 min</div>
+      </div>
+
+      <div class="channel-grid reveal">
+        <div class="ch">
+          <div class="flag">Domestic ／ 国内</div>
+          <h4>全国一斉展開</h4>
+          <ul>
+            <li>全国驚安堂 <strong>570店舗</strong>（うち免税対応 300店舗）で一斉展開</li>
+            <li>公式EC「驚安オンライン」：<strong>5月25日先行予約</strong>開始</li>
+            <li>法人ルート：オフィス向け「<strong>夏のまとめ買いセット</strong>」（カラカラT＋ヒエヒエ砲）</li>
+          </ul>
+        </div>
+        <div class="ch">
+          <div class="flag">Overseas ／ 海外</div>
+          <h4>アジア＋北米テスト</h4>
+          <ul>
+            <li>アジア <strong>16店舗</strong>（台湾7／タイ4／香港3／シンガポール2）で同時展開</li>
+            <li>北米テスト：<strong>LA・ホノルル 2店舗</strong>で「ジェットコーラ」「噛みごたえ侍」先行投入</li>
+            <li>現地スタッフ向けマニュアルは <strong>6/1</strong> までに翻訳完了</li>
+          </ul>
+        </div>
+        <div class="ch">
+          <div class="flag">Inbound ／ 訪日客</div>
+          <h4>多言語 × インフルエンサー</h4>
+          <ul>
+            <li>免税ポップを<strong>4言語化</strong>（英・中・韓・タイ）</li>
+            <li>中国「<strong>小紅書</strong>」インフル 10名起用、5月下旬に投稿開始</li>
+            <li>台湾IGリール広告、<strong>6月配信</strong></li>
+            <li>訪日客向けガイドを<strong>成田・関空・那覇</strong>で配布</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 5 -->
+  <section id="sec5">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">05</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Promotion &amp; SNS</div>
+          <div class="sec-title">プロモーション・SNS施策</div>
+        </div>
+        <div class="sec-sub">— 15 min</div>
+      </div>
+
+      <table class="promo-table reveal">
+        <thead>
+          <tr>
+            <th style="width:30%">施策</th>
+            <th style="width:40%">内容</th>
+            <th style="width:15%">担当</th>
+            <th style="width:15%">開始</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-l="施策"><div class="t">TikTok公式チャレンジ</div></td>
+            <td data-l="内容"><div class="d">#マジ価格夏チャレンジ。Z世代のUGC獲得が狙い。</div></td>
+            <td data-l="担当"><span class="owner">広報部</span></td>
+            <td data-l="開始"><span class="start">6/20</span></td>
+          </tr>
+          <tr>
+            <td data-l="施策"><div class="t">インフルエンサー先行 10名</div></td>
+            <td data-l="内容"><div class="d">国内Z世代＋訪日層に強い10名を先行起用。</div></td>
+            <td data-l="担当"><span class="owner">マーケ部</span></td>
+            <td data-l="開始"><span class="start">6/15</span></td>
+          </tr>
+          <tr>
+            <td data-l="施策"><div class="t">推し活コラボ</div></td>
+            <td data-l="内容"><div class="d">「光るぞ☆オシキン」二次創作OK公式宣言。</div></td>
+            <td data-l="担当"><span class="owner">マーケ部</span></td>
+            <td data-l="開始"><span class="start">6/20</span></td>
+          </tr>
+          <tr>
+            <td data-l="施策"><div class="t">1万円ガチ買いガチャ</div></td>
+            <td data-l="内容"><div class="d">1万円購入で景品ガチャ1回。客単価押し上げ。</div></td>
+            <td data-l="担当"><span class="owner">店舗運営部</span></td>
+            <td data-l="開始"><span class="start">7/01</span></td>
+          </tr>
+          <tr>
+            <td data-l="施策"><div class="t">店頭POP多言語化</div></td>
+            <td data-l="内容"><div class="d">主要免税対応店 300店で展開。英・中・韓・タイ。</div></td>
+            <td data-l="担当"><span class="owner">店舗運営部</span></td>
+            <td data-l="開始"><span class="start">6/10</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SEC 6 -->
+  <section id="sec6">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">06</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Key Metrics</div>
+          <div class="sec-title">KPIと目標</div>
+        </div>
+        <div class="sec-sub">— 10 min</div>
+      </div>
+
+      <div class="kpi-grid reveal">
+        <div class="kpi accent">
+          <div class="lbl">夏3ヶ月売上</div>
+          <div class="val">18.0<span class="u">億円</span></div>
+          <div class="delta up">▲ +12% YoY</div>
+        </div>
+        <div class="kpi">
+          <div class="lbl">客単価</div>
+          <div class="val">1,400<span class="u">円</span></div>
+          <div class="delta up">▲ +8% YoY</div>
+        </div>
+        <div class="kpi">
+          <div class="lbl">インバウンド比率</div>
+          <div class="val">22<span class="u">%</span></div>
+          <div class="delta up">▲ +4pt YoY</div>
+        </div>
+        <div class="kpi">
+          <div class="lbl">SNS UGC 投稿数</div>
+          <div class="val">5,000<span class="u">件</span></div>
+          <div class="delta new">★ NEW KPI</div>
+        </div>
+        <div class="kpi">
+          <div class="lbl">マジ価格NEO リピート率</div>
+          <div class="val">35<span class="u">%</span></div>
+          <div class="delta new">★ NEW KPI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 7 -->
+  <section id="sec7">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">07</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Timeline</div>
+          <div class="sec-title">スケジュール</div>
+        </div>
+        <div class="sec-sub">MAY → SEPT 2026</div>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="tl"><div class="tl-date"><span class="y">2026</span>5/25</div><div class="tl-body"><h5>EC 先行予約開始</h5><p>公式EC「驚安オンライン」にて先行予約受付を開始。</p></div></div>
+        <div class="tl"><div class="tl-date"><span class="y">2026</span>6/10</div><div class="tl-body"><h5>店頭POP 配布完了</h5><p>免税対応店300店を含む全店への配布を完了させる。</p></div></div>
+        <div class="tl"><div class="tl-date"><span class="y">2026</span>6/15</div><div class="tl-body"><h5>店舗陳列開始 ／ インフル先行投稿</h5><p>国内Z世代＋訪日層に強い10名の先行投稿スタート。</p></div></div>
+        <div class="tl"><div class="tl-date"><span class="y">2026</span>6/20</div><div class="tl-body"><h5>SNS 解禁 ／ TikTokチャレンジ開始</h5><p>#マジ価格夏チャレンジ 本格始動。</p></div></div>
+        <div class="tl milestone"><div class="tl-date"><span class="y">2026</span>7/01</div><div class="tl-body"><h5>全国一斉キャンペーン開始</h5><p>「マジ価格 NEO」正式ローンチ。全店舗 × 全チャネルで展開。</p></div></div>
+        <div class="tl"><div class="tl-date"><span class="y">2026</span>8/15</div><div class="tl-body"><h5>中間レビュー会議</h5><p>KPI進捗を全部署横断で確認。軌道修正の意思決定。</p></div></div>
+        <div class="tl"><div class="tl-date"><span class="y">2026</span>8/31</div><div class="tl-body"><h5>夏キャンペーン終了</h5><p>販促施策クローズ。最終売上確定フェーズへ。</p></div></div>
+        <div class="tl milestone"><div class="tl-date"><span class="y">2026</span>9/10</div><div class="tl-body"><h5>振り返り会議</h5><p>KPI達成状況の総括、秋冬PBライン策定へ接続。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 8 -->
+  <section id="sec8">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">08</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Action Items</div>
+          <div class="sec-title">各部へのお願い</div>
+        </div>
+        <div class="sec-sub">By Department</div>
+      </div>
+
+      <div class="actions reveal">
+        <div class="act">
+          <div>
+            <div class="dept">営業部 ／ Sales</div>
+            <h6>店頭POP受領後、<span class="kw">6/10までに陳列完了</span>。</h6>
+          </div>
+          <div class="due"><div class="due-lbl">Due</div><div class="due-date">6/10<span class="m">陳列完了</span></div></div>
+        </div>
+        <div class="act">
+          <div>
+            <div class="dept">店舗運営部 ／ Store Ops</div>
+            <h6>免税対応店スタッフへの<span class="kw">新商品研修を 6/5 までに実施</span>。</h6>
+          </div>
+          <div class="due"><div class="due-lbl">Due</div><div class="due-date">6/05<span class="m">研修完了</span></div></div>
+        </div>
+        <div class="act">
+          <div>
+            <div class="dept">物流部 ／ Logistics</div>
+            <h6>6/15 陳列開始に向けた<span class="kw">配送スケジュールを 5/27 までに確定</span>。</h6>
+          </div>
+          <div class="due"><div class="due-lbl">Due</div><div class="due-date">5/27<span class="m">配送確定</span></div></div>
+        </div>
+        <div class="act">
+          <div>
+            <div class="dept">海外事業部 ／ Global</div>
+            <h6>アジア 16店舗の現地スタッフ向け<span class="kw">マニュアル翻訳を 6/1 まで</span>。</h6>
+          </div>
+          <div class="due"><div class="due-lbl">Due</div><div class="due-date">6/01<span class="m">翻訳完了</span></div></div>
+        </div>
+        <div class="act">
+          <div>
+            <div class="dept">広報部 ／ PR</div>
+            <h6>プレスリリース<span class="kw">6/15 10:00 配信</span>。</h6>
+          </div>
+          <div class="due"><div class="due-lbl">Due</div><div class="due-date">6/15<span class="m">10:00 配信</span></div></div>
+        </div>
+        <div class="act">
+          <div>
+            <div class="dept">全部署 ／ All Div.</div>
+            <h6>8/15 中間レビュー会議用の<span class="kw">中間データを 8/12 までに提出</span>。</h6>
+          </div>
+          <div class="due"><div class="due-lbl">Due</div><div class="due-date">8/12<span class="m">データ提出</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 9 + 10 -->
+  <section id="sec9">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">09</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Q &amp; A</div>
+          <div class="sec-title">質疑応答</div>
+        </div>
+        <div class="sec-sub">— 10 min</div>
+      </div>
+
+      <div class="qa-box reveal">
+        <div class="side">
+          <h4>フロア／Zoom 両方から受付</h4>
+          <p>発言される方は所属とお名前を先にお伝えください。Zoom参加者は挙手 or チャット欄へ。マーケ部 司会が順に指名します。</p>
+          <p class="note">※ 個別の取引条件・原価に関する詳細は、クローズドな打合せで別途回答</p>
+        </div>
+        <div class="side">
+          <h4>事前質問の送り先</h4>
+          <p>当日までに質問を集約したい場合は、以下までお送りください。当日の議事進行に反映します。</p>
+          <p class="note">marketing-pb@kyouan.internal ／ Slack #pb-neo-brief</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec10" style="padding-bottom:60px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num filled">10</div>
+        <div class="sec-titles">
+          <div class="sec-kicker">Closing</div>
+          <div class="sec-title">閉会</div>
+        </div>
+        <div class="sec-sub">— 05 min</div>
+      </div>
+
+      <div class="qa-box dark reveal">
+        <div class="side">
+          <h4>総括</h4>
+          <p>マーケティング本部長 矢島 より、本日の議論と今後の重点ポイントを総括します。</p>
+          <p class="note">Speaker ／ 矢島（マーケティング本部長）</p>
+        </div>
+        <div class="side">
+          <h4>次回会議</h4>
+          <p>進捗共有会にて、陳列・配送・プロモ各領域の進捗をクイックに突合します。</p>
+          <p class="note">2026.06.17（水）14:00 — 進捗共有会</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-top">
+      <h5>マジ価格 NEO ／ Summer 2026 — Go Live 7.01</h5>
+      <div class="next">Next Meeting<b>2026.06.17 (Wed) 14:00</b></div>
+    </div>
+    <div class="f-bot">
+      <span>© 驚安堂 ／ Marketing Div. ／ PB Planning</span>
+      <span>Document: 2026-S-BRIEF-05 // Confidential</span>
+    </div>
+  </footer>
+
+  <a href="#" class="totop" id="totop" aria-label="Back to top">TOP ↑</a>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Back to top
+  const totop = document.getElementById('totop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) totop.classList.add('show');
+    else totop.classList.remove('show');
+  });
+  totop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+</script>
+</body>
+</html>

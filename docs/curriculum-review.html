@@ -142,13 +142,14 @@
   .structure-label { font-weight: 700; color: #3b82f6; font-size: 0.75rem; margin-bottom: 0.3rem; }
   .structure-item { margin-bottom: 0.2rem; padding-left: 0.2rem; }
   .structure-item .s-key { font-weight: 700; color: #1e40af; }
-  .video-comments { margin-top: 0.5rem; }
-  .comment { font-size: 0.75rem; padding: 0.3rem 0.5rem; border-radius: 4px; margin-bottom: 0.3rem; line-height: 1.4; }
-  .comment .comment-name { font-weight: 700; margin-right: 0.3rem; }
-  .comment.tsuchiya { background: #fff8e1; border-left: 2px solid #f9a825; }
-  .comment.kawashima { background: #e8f5e9; border-left: 2px solid #43a047; }
-  .comment.oikawa { background: #e3f2fd; border-left: 2px solid #1e88e5; }
-  .comment.kanno { background: #fce4ec; border-left: 2px solid #e53935; }
+  .comment-btn { font-size: 0.65rem; color: #5b8def; background: #eef2ff; border: none; padding: 0.2rem 0.5rem; border-radius: 4px; cursor: pointer; flex-shrink: 0; margin-left: 0.3rem; transition: all 0.15s; font-family: inherit; }
+  .comment-btn:hover { background: #dde4ff; }
+  .giscus-panel { display: none; padding: 1rem 1.5rem 1.2rem 1.5rem; background: #f8faff; border-bottom: 1px solid #f0f0f0; }
+  .giscus-panel.open { display: block; }
+  .giscus-panel .comments-label { font-size: 0.7rem; color: #999; margin-bottom: 0.6rem; }
+  .giscus-panel .giscus-loading { font-size: 0.8rem; color: #888; padding: 0.5rem 0; }
+  .giscus-panel .giscus-disabled { font-size: 0.8rem; color: #b08800; padding: 0.5rem; background: #fff8e1; border-radius: 4px; line-height: 1.5; }
+  .giscus-panel .giscus-disabled code { background: rgba(0,0,0,0.05); padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.75rem; }
 
   .summary { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
   .summary h2 { font-size: 1.1rem; margin-bottom: 1rem; }
@@ -1248,6 +1249,47 @@ document.addEventListener('DOMContentLoaded', function() {
       chart.appendChild(line);
     })();
   })();
+  // giscus config (set these after "Video Reviews" category is created)
+  var GISCUS_CONFIG = {
+    repo: 'TakuyaTsuchiya/claude-learning',
+    repoId: 'R_kgDOR3AOBw',
+    category: 'Video Reviews',
+    categoryId: 'DIC_kwDOR3AOB84C6p3g',
+    mapping: 'specific',
+    theme: 'light',
+    lang: 'ja'
+  };
+
+  function loadGiscus(container, term) {
+    if (!GISCUS_CONFIG.categoryId || GISCUS_CONFIG.categoryId.indexOf('__') === 0) {
+      container.innerHTML += '<div class="giscus-disabled">コメント機能は準備中です（<code>Video Reviews</code>カテゴリとDiscussion事前作成が完了するまで）。</div>';
+      return;
+    }
+    var loading = document.createElement('div');
+    loading.className = 'giscus-loading';
+    loading.textContent = 'コメントを読み込み中…';
+    container.appendChild(loading);
+
+    var s = document.createElement('script');
+    s.src = 'https://giscus.app/client.js';
+    s.setAttribute('data-repo', GISCUS_CONFIG.repo);
+    s.setAttribute('data-repo-id', GISCUS_CONFIG.repoId);
+    s.setAttribute('data-category', GISCUS_CONFIG.category);
+    s.setAttribute('data-category-id', GISCUS_CONFIG.categoryId);
+    s.setAttribute('data-mapping', GISCUS_CONFIG.mapping);
+    s.setAttribute('data-term', term);
+    s.setAttribute('data-strict', '1');
+    s.setAttribute('data-reactions-enabled', '1');
+    s.setAttribute('data-emit-metadata', '0');
+    s.setAttribute('data-input-position', 'top');
+    s.setAttribute('data-theme', GISCUS_CONFIG.theme);
+    s.setAttribute('data-lang', GISCUS_CONFIG.lang);
+    s.crossOrigin = 'anonymous';
+    s.async = true;
+    s.addEventListener('load', function() { loading.remove(); });
+    container.appendChild(s);
+  }
+
   // Process each section - render structured scripts
   document.querySelectorAll('.section').forEach(function(sec) {
     var sectionNum = sec.id.replace('s', '');
@@ -1255,6 +1297,7 @@ document.addEventListener('DOMContentLoaded', function() {
     videos.forEach(function(v, i) {
       var vNum = i + 1;
       var key = 'S' + sectionNum + '-V' + vNum;
+      v.dataset.videoId = key;
       var numEl = v.querySelector('.video-num');
       numEl.textContent = 'V' + vNum;
 
@@ -1327,6 +1370,27 @@ document.addEventListener('DOMContentLoaded', function() {
         e.stopPropagation();
         v.classList.toggle('open');
         updateCloseBtn();
+      });
+
+      // Comment button + lazy-loaded giscus panel
+      var cbtn = document.createElement('button');
+      cbtn.className = 'comment-btn';
+      cbtn.textContent = '💬 コメント';
+      v.appendChild(cbtn);
+
+      var commentsDiv = document.createElement('div');
+      commentsDiv.className = 'giscus-panel';
+      commentsDiv.dataset.videoId = key;
+      commentsDiv.innerHTML = '<div class="comments-label">' + key + ' コメント</div>';
+      scriptDiv.parentNode.insertBefore(commentsDiv, scriptDiv.nextSibling);
+
+      cbtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        commentsDiv.classList.toggle('open');
+        if (commentsDiv.classList.contains('open') && !commentsDiv.dataset.loaded) {
+          loadGiscus(commentsDiv, key);
+          commentsDiv.dataset.loaded = '1';
+        }
       });
     });
   });

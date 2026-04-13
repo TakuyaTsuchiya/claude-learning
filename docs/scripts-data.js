@@ -58,6 +58,34 @@ var SCRIPTS = {
       { start: "11:30", end: "12:00", topic: "核心メッセージ＋クロージング", direction: "同上", content: "いろいろな設定や便利なツールが出てきますが、<strong>本質は、皆さんの生活や仕事の中で目の前の問題をどんどん解決していくこと</strong>です。それを繰り返すうちに、Claude Codeの使い方はどんどん上手くなっていきます。それでは、実践的に手を動かしていきましょう。今回の動画はこれでおしまいです。", reference: "" }
     ]
   },
+  "S1-V3": {
+    meta: {
+      duration: "約6分30秒",
+      mode: "画面収録（ステータスライン＋ブラウザ＋ターミナル）",
+      goal: "トークン消費を体感し、コンテキストウィンドウ管理の重要性を理解する"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "コンテキストウィンドウ概念図", purpose: "作業机の比喩＋200Kトークンの図示", timing: "Step 4 種明かし①" },
+      { type: "画面収録", name: "ステータスライン拡大", purpose: "使用率・レート制限リセット時刻を見せる", timing: "Step 2・Step 8" },
+      { type: "ブラウザ", name: "OpenAI Tokenizer", purpose: "トークン分解の可視化（日英コード比較）", timing: "Step 3" },
+      { type: "画面収録", name: "/context 実演", purpose: "カテゴリ別トークン使用量の可視化", timing: "Step 5" },
+      { type: "画面収録", name: "/cost 実演", purpose: "現在のコスト表示", timing: "Step 5" },
+      { type: "画面収録", name: "/clear 実演", purpose: "コンテキストリセット", timing: "Step 6" },
+      { type: "画面収録", name: "/compact focus 実演", purpose: "フォーカス要約の実行", timing: "Step 6" }
+    ],
+    script: [
+      { start: "0:00", end: "0:30", topic: "オープニング＋核心予告", direction: "スライド：表紙", content: "この動画では<strong>Claude Codeの真髄</strong>に迫ります。いきなり結論から言います。<strong>「Claude Codeで業務するってのは、コンテキストウィンドウとトークンのマネジメントだ」</strong>。これが今日のメッセージです。ただ、いきなりこの話をしてもピンと来ないと思うので、まず<strong>体感から</strong>入りましょう。", reference: "" },
+      { start: "0:30", end: "1:15", topic: "前動画の残骸", direction: "画面収録：ターミナルのステータスラインをズームアップ", content: "まずはこれ、前の動画でも出てきた<strong>ステータスライン</strong>。ターミナルの下に、こんな感じで数字が並んでいますよね。コンテキスト使用率とか、レート制限のリセット時刻とか。<strong>前の回転寿司分析の動画だと、ここで3%使っていました</strong>。「3%って何？」「コンテキスト使用率って何？」という感じだと思います。答えは後半でお見せするので、まずは<strong>トークンそのものを触って体感</strong>してみましょう。", reference: "" },
+      { start: "1:15", end: "2:15", topic: "OpenAI Tokenizerで体感", direction: "ブラウザ：OpenAI Tokenizerを開く", content: "OpenAIが公開している<strong>Tokenizer</strong>というページを開きます。ここに文章を貼り付けると、<strong>AIがその文章を何トークンとして読むか可視化</strong>してくれます。英語で「Hello, how are you?」と入れると6トークン。同じ内容を日本語で「こんにちは、元気ですか？」と入れると、<strong>ひらがな・漢字は1文字ごとに1〜3トークン</strong>に分かれるので、英語より圧倒的にトークンを食います。さらにコードを貼り付けると、記号や改行まで1つずつトークンになっている。<strong>これがトークンの正体</strong>です。文章もファイルの中身も、全部この単位に分解されてAIに渡されています。", reference: "https://platform.openai.com/tokenizer" },
+      { start: "2:15", end: "3:00", topic: "種明かし①コンテキストウィンドウ", direction: "スライド：コンテキストウィンドウ概念図", content: "ここで種明かしです。<strong>コンテキストウィンドウ</strong>というのは、Claudeが一度に保持できるトークンの総量――つまり<strong>AIの「作業机の広さ」</strong>です。Claude Opusは20万トークンまで入ります。ここに会話履歴、ファイル、コマンド出力、CLAUDE.md、読み込まれたスキル、全部が乗ってきます。<strong>公式ドキュメントでもこのトピックだけで1ページ丸々割かれている</strong>くらい、Claude Code習熟の最大の分岐点です。満杯になるとClaudeは自動で圧縮（コンパクト化）しますが、<strong>会話の早い段階の指示が失われる</strong>ことがある。だからこれをちゃんと管理できる人が、Claude Codeを使いこなせる人です。", reference: "https://code.claude.com/docs/ja/context-management" },
+      { start: "3:00", end: "4:00", topic: "/context と /cost 実演", direction: "画面収録：ターミナルで /context コマンドを実行", content: "で、今自分が何トークン使っているか・何にスペースを食われているかは、コマンドで見えます。まず<strong>/context</strong>。これを打つと、<strong>システム指示・CLAUDE.md・ツール定義・メッセージ履歴・スキルなど、カテゴリ別にどれくらいトークンを食っているかが可視化</strong>されます。「あ、スキルだけで5千トークン行ってるんだ」というのが一目で分かります。もうひとつが<strong>/cost</strong>。こちらは<strong>現在のトークン使用量とコスト</strong>を表示します。ステータスラインを設定していない時でもこれで確認できる。<strong>ステータスライン常時表示＋節目で /context</strong>、この2本立てが基本です。", reference: "" },
+      { start: "4:00", end: "5:15", topic: "/clear と /compact focus", direction: "画面収録：/clear 実行→ステータスラインがリセットされる様子", content: "コンテキスト管理の<strong>一番大事な所作</strong>がこれです。違う仕事に切り替える時は<strong>/clear</strong>。過去の会話を全部消して真っさらからスタートします。前のタスクの情報が残っていると、その後のやり取り全部でトークンを無駄に食い続ける。<strong>「タスクが変わる＝必ず /clear」</strong>を習慣にしてください。一方、<strong>同じタスクを続けたいけど会話が長くなってきた時</strong>は<strong>/compact focus on ○○</strong>。たとえば「/compact focus on API changes」と打つと、<strong>「APIの変更点だけ残して他は要約」</strong>という形で圧縮してくれます。闇雲に要約されるんじゃなく、<strong>残したい内容を自分で指定できる</strong>のがポイントです。", reference: "" },
+      { start: "5:15", end: "5:45", topic: "auto-compactの落とし穴", direction: "画面収録：auto-compactが走った時の表示例", content: "放っておくと、コンテキストが満杯になった時に<strong>auto-compact（自動要約）</strong>が走ります。便利ですが、<strong>会話の早い段階で出した指示が消えることがある</strong>。「さっき『こういう書き方はダメ』って言ったのに、またやってる……」みたいな現象はこれが原因です。対策は<strong>永続的なルールをCLAUDE.mdに書いておく</strong>こと。CLAUDE.mdは毎回コンテキストに読み込まれるので、auto-compactで消えません。CLAUDE.mdの書き方は<strong>セクション2でじっくり扱います</strong>。", reference: "" },
+      { start: "5:45", end: "6:15", topic: "Proプラン推奨", direction: "画面収録：ステータスラインのレート制限表示部分", content: "もう一点、現実的な話。<strong>Claude Code Proプラン</strong>を強く推奨します。無料枠だとレート制限にすぐ引っかかって、1日の途中で「はい終わり」になります。ステータスラインの右側に<strong>「あと何時間でレート制限がリセットされるか」</strong>が出ているので、ここを見ながら使う。業務で本気で使うなら<strong>Proプラン一択</strong>です。", reference: "" },
+      { start: "6:15", end: "6:45", topic: "核心メッセージ再掲＋クロージング", direction: "スライド：表紙に戻す", content: "というわけで、最後にもう一度。<strong>「Claude Codeで業務するってのは、コンテキストウィンドウとトークンのマネジメントだ」</strong>。これが使いこなしの核です。<strong>/context</strong>で状況を見て、<strong>/clear</strong>で切り替えて、<strong>/compact focus</strong>で残したい情報を指定する。この3つを押さえるだけで、Claude Codeの<strong>精度と安定感が一段階上がります</strong>。次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
   "S1-V4": {
     meta: {
       duration: "約11分",

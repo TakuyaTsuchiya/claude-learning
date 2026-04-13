@@ -20,11 +20,13 @@
   5. **位置付け方針** — 導入/実践/まとめ等
   6. **参照一覧** — 使う資料・CSV・URL・デモファイル等
   7. **シーンの流れ** — 話題の順序（Step 1→2→3…）
-- 台本もレビューサイト内に書く：
-  - ヘッダー：モジュール / セクション / 動画タイトル / 尺 / モード / ゴール / 重要トピック / 受講者のつまずき / 画面操作方針 / 位置付け方針 / 参照一覧
-  - 素材リスト：種別 / 名称 / 用途 / 挿入タイミング / ファイル名
-  - 台本本体：開始時間 / 終了時間 / 話題 / シーン演出 / 話す内容 / 引用
-  - チェックリスト：順序確認・禁止表現・タイムスタンプ完備等
+- 台本は `docs/scripts-data.js` に記述し、`curriculum-review.html` から動的レンダリング（関心の分離）
+  - 構成7項目はHTML側（`curriculum-review.html`）に直書き
+  - 台本本体は `scripts-data.js` の `SCRIPTS` オブジェクトに追加
+  - 1エントリの構造：
+    - `meta`：duration / mode / goal
+    - `materials[]`：type / name / purpose / timing
+    - `script[]`：start / end / topic / direction / content / reference
 
 ### 台本作成ワークフロー（実演デモ講座向け）
 - 土屋が Screen Studio で画面収録＋ラフ解説

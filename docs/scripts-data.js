@@ -203,5 +203,33 @@ var SCRIPTS = {
       { start: "5:30", end: "6:00", topic: "書きすぎない（毎ターン入力コストに乗る）", direction: "画面収録：書きすぎた悪い例をチラ見", content: "冒頭の伏線に戻ります。CLAUDE.mdは<strong>毎ターン先頭に乗っかる</strong>ので、書きすぎると<strong>毎ターンのコストと精度の両方が悪化</strong>します。細かいルールは本体に書かず<strong>外部ファイルにリンクを貼る</strong>。これが長く運用するコツです。", reference: "" },
       { start: "6:00", end: "6:30", topic: "まとめ→次回『トークン管理』", direction: "スライド：表紙", content: "まとめます。<strong>役割・ファイルの地図・リンク集、の3本柱で書く</strong>。書きすぎない、育てながら整える。次の動画では、今話した<strong>『毎ターンの入力コスト＝トークン』をどう管理するか</strong>を扱います。", reference: "" }
     ]
+  },
+  "S2-V5": {
+    meta: {
+      duration: "約7分40秒",
+      mode: "画面収録（エディタ＋Claude Code＋ブラウザ。スライドは表紙のみ）",
+      goal: "回転寿司大手3社のIR比較HTMLをスペック駆動開発で作り直し、スペック駆動の理解を深める"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "画面収録", name: "以前のIR比較HTML振り返り", purpose: "S1-V2／S2-V4で作った成果物を再表示し「あれを作り直す」と宣言", timing: "シーン2" },
+      { type: "画面収録", name: "docs/spec.md作成", purpose: "Claude Codeと対話しながらスペックを書き上げる実演", timing: "シーン6〜7" },
+      { type: "画面収録", name: "Claude Codeによる再実装", purpose: "「docs/spec.md通りに作って」で一発生成", timing: "シーン8" },
+      { type: "ブラウザ", name: "完成版IR比較HTML（白基調の投資レポート）", purpose: "Vibe版と並べて比較", timing: "シーン9" }
+    ],
+    script: [
+      { start: "0:00", end: "0:50", topic: "オープニング：スペック駆動開発の重要性", direction: "スライド：表紙", content: "この動画では<strong>スペック駆動開発</strong>を扱います。<strong>Claude Codeで何かを生成するときに、とても重要な考え方</strong>です。<br><br>Claude Codeはそのままでも十分に賢く、思いつきやノリで依頼したものでも、及第点の成果物は出てきます。ただし、業務で使ったり、より正確に何かを生成したい場面では話が変わります。<strong>作る前に仕様＝スペックをきっちり固め、曖昧さのない状態で依頼する</strong>――ここが大事になってきます。<br><br>そうすることで、<strong>人間とAIの間で「何を、どう作るのか」の目線合わせ＝合意形成</strong>ができます。合意があるからAIは迷わず実装でき、目当てのものが生成される。だからスペック駆動開発は、非常に重要な考え方なのです。", reference: "" },
+      { start: "0:50", end: "1:10", topic: "題材紹介：以前のIR比較HTMLを作り直す", direction: "画面収録：以前のIR比較HTMLを表示", content: "そこで今日は、この考え方を体感していただくために、<strong>以前に作成した回転寿司大手3社のIR比較サイトを、スペック駆動で作り直してみます</strong>。同じゴールを別のアプローチで辿り直すことで、スペック駆動が何を守ってくれているのかが明確に見えてきます。", reference: "demos/sushi-ir-comparison.html" },
+      { start: "1:10", end: "2:05", topic: "Vibe Codingの位置付け", direction: "画面収録：前回のIR比較HTMLを表示しながら振り返り", content: "まず、<strong>前回のやり方＝Vibe Coding</strong>から振り返ります。思いついた指示をそのまま投げ、返ってきたものを採用する――これがVibe Codingです。手早くて便利ですが、<strong>行き当たりばったりで実装するので、修正がうまくいかなかったり、おもいどおりの成果物が生成されないことがあります</strong>。前回のIR比較はたまたま小規模だったため成立しました。規模が大きくなった途端、狙い通りの成果物が出にくくなります。<br><br>ただし誤解のないように言うと、<strong>Vibe Codingが悪いわけではありません</strong>。違いは<strong>AIに渡すコンテキストの量</strong>です。Vibe Codingは思いつきだけを渡す、Spec-Drivingは仕様というコンテキストを事前に渡す――だから狙い通りのものが出やすくなる。<strong>優劣の話ではなく、用途で使い分ける</strong>話です。スケッチや試し打ちならVibeが手軽、業務や正確さが要るならSpec-Drivingが向く、という整理になります。", reference: "" },
+      { start: "2:05", end: "2:40", topic: "スペックとは／日常スペックとの接続／Boris継承", direction: "スライド：表紙", content: "では<strong>スペックとは何か</strong>。specは英語のspecification、日本語でいう<strong>「仕様書」</strong>です。<br><br>イメージしやすいのは<strong>「パソコンのスペック」</strong>。メーカーは発売前に目標スペックを決めて、そこに向かって製造ラインが動きます。<strong>スペック駆動開発もこれと同じ発想</strong>で、ソフトウェアも<strong>先に仕様を定めて、そこに向かって作る</strong>。いわば<strong>人間とAIの合意書であり、AIへの設計指示書</strong>です。<br><br><strong>開発者ボリスの「まずPlanしてから実装」</strong>という考え方を、継承しているものです。", reference: "Boris氏（Claude Code開発者）の運用" },
+      { start: "2:40", end: "3:10", topic: "ドキュメント＝AIの記憶", direction: "画面収録：docs/spec.mdを開いて見せる", content: "もう一つ、スペックを書くことの大きな効能があります。スペック駆動開発ではドキュメントに仕様を記載していきます。<strong>これがClaude Codeの『記憶』になる</strong>という点です。<br><br>チャット履歴は <code>/clear</code> で消えますし、トークンが膨らめば古い会話は押し流されます。一方で<strong><code>docs/spec.md</code> に書いておけば、次のセッションでもClaude Codeがそこを読みに来てくれる</strong>。結果として、AIの挙動を<strong>予測可能な範囲にコントロール</strong>できるようになります。", reference: "" },
+      { start: "3:10", end: "4:00", topic: "まずスペックを書きます（投資家向けに方向付け）", direction: "画面収録：docs/spec.mdを新規作成してClaude Codeに問い返させる", content: "では進めていきます。<strong>まず、スペックを書きます</strong>。<code>docs/spec.md</code> を新規作成しましょう。<br><br>ここがポイントです。<strong>前回と意図的に違う切り口で作ります</strong>。前回は「3社のIRを比較してHTMLに」とざっくり投げた結果、ダークトーンの素朴な比較ページになりました。今回は<strong>投資家・経営者が投資判断に使えるレポート</strong>という位置付けでspecを組みます。<br><br>Claude Codeにはこう依頼します。「<strong>回転寿司3社のIR比較レポートを作成したい。読者は投資家と経営者。抜けている観点を問い返してください</strong>」。AIが問い返してくる項目が、そのままspecのヌケモレ潰しになります。", reference: "" },
+      { start: "4:00", end: "4:55", topic: "スペックの中身を見せる（投資家向け仕様）", direction: "画面収録：書き上がったdocs/spec.mdをスクロール", content: "対話を通して書き上がったspecがこちらです。<br><br><code># IR比較レポート 仕様<br><br>## 対象読者<br>投資家・経営者<br><br>## 比較指標<br>- 売上高・営業利益率<br>- PER・PBR・ROE・配当利回り・時価総額<br>- 既存店売上前年比<br><br>## 事業リスク<br>各社の有報「事業等のリスク」から3項目抜粋<br><br>## 直近ニュース・株価変動要因<br>価格改定・決算サプライズ・経営陣交代・M&amp;Aなど、出典と日付付き<br><br>## デザイン<br>白基調・黒文字・グレー罫線・ブルーアクセント（投資レポート風）<br><br>## 構成<br>ヘッダー→サマリー3行→財務テーブル→各社個別（財務＋リスク＋ニュース）→比較インサイト→免責</code><br><br><strong>前回のダークトーン・3指標だけの比較とは、もう別物</strong>です。<strong>ヌケモレと曖昧さは、このフェーズで全て潰しておく</strong>。これがスペック駆動の肝心な部分です。", reference: "" },
+      { start: "4:55", end: "5:50", topic: "次にスペックに沿って実装を依頼します", direction: "画面収録：Claude Codeに「この docs/spec.md の通りに作って」と投げる→生成完了まで", content: "<strong>次に、スペックに沿って実装を依頼します</strong>。specが書けたら、あとは<strong>「この <code>docs/spec.md</code> の通りに作ってください」</strong>と依頼する。これだけです。<br><br>前回のVibe Coding版はダークトーンで3指標のみの比較でした。今回は<strong>specを物差しにしている</strong>ため、<strong>解釈のブレがありません</strong>。出来上がった成果物をご覧ください。<strong>白基調の投資レポート風</strong>で、財務指標は<strong>PER・PBR・ROE</strong>まで網羅、事業リスク3項目、直近ニュースの出典と日付、免責事項まで、<strong>specで指定した通り</strong>に仕上がっています。同じ3社・同じIRでも、<strong>作り方を変えるだけで全く別物が出来上がる</strong>。これがspecの力です。", reference: "" },
+      { start: "5:50", end: "6:20", topic: "Vibe版との比較（コンテキスト量の差）", direction: "画面収録：Vibe版とSpec版を左右に並べる", content: "Vibe版と並べて比較してみます。スペックを書いておくと、<br><br>①<strong>チームで事前にレビューできる</strong>（作る前に合意が取れる）<br>②<strong>AIの記憶として残る</strong>（セッションを跨いでも再現できる）<br>③<strong>やり直しが一発</strong>（specを修正して再依頼するだけで済む）<br><br>同じ成果物でも、<strong>AIに渡すコンテキスト量の差が、再現性・レビュー容易性・やり直しのしやすさに効いてきます</strong>。", reference: "" },
+      { start: "6:20", end: "6:45", topic: "小さく始めるコツ", direction: "画面収録：ざっくりspec→実装→追記の往復イメージ", content: "一つ注意点です。<strong>最初から完璧なspecを書こうとしないでください</strong>。現実には不可能ですし、書き始めた瞬間に手が止まります。<br><br>現実的なのは、<strong>AIと対話しながらspecを育てていく</strong>やり方です。ざっくり書いて、実装してみて、足りない箇所をspecに追記する。この往復で育てていきます。", reference: "" },
+      { start: "6:45", end: "7:10", topic: "S5への布石", direction: "同上", content: "スペック駆動は、<strong>S5のアプリ開発編で本領を発揮</strong>します。データベースを持つSaaS風アプリを作る際、specなしで着手すると確実に迷子になります。<br><br>だからこそ今のうちに、<strong>今回のような既視の小さな成果物で習慣化</strong>しておきましょう。IR比較程度のスケールが、ちょうど良い練習台になります。", reference: "" },
+      { start: "7:10", end: "7:40", topic: "クロージング", direction: "スライド：表紙", content: "まとめます。<strong>spec＝人間とAIの合意書であり、AIの記憶</strong>です。ヌケモレを先に潰し、作る前に目線合わせを済ませておく――それだけで、Claude Codeとの対話の精度は一段上がります。<br><br><strong>思いつきで依頼するVibeも、スペックを固めて依頼するSpec-Drivingも、ともに大事な道具</strong>。用途に応じて使い分けられるようになってください。それでは、次の動画でお会いしましょう。", reference: "" }
+    ]
   }
 };

@@ -146,7 +146,7 @@
   .structure-item .s-key { font-weight: 700; color: #1e40af; }
   .comment-btn { font-size: 0.65rem; color: #5b8def; background: #eef2ff; border: none; padding: 0.2rem 0.5rem; border-radius: 4px; cursor: pointer; flex-shrink: 0; margin-left: 0.3rem; transition: all 0.15s; font-family: inherit; }
   .comment-btn:hover { background: #dde4ff; }
-  .giscus-panel { display: none; padding: 1rem 1.5rem 1.2rem 1.5rem; background: #f8faff; border-bottom: 1px solid #f0f0f0; }
+  .giscus-panel { display: none; padding: 0.6rem 0 0.8rem 0; margin-bottom: 0.8rem; border-bottom: 1px dashed #c8d4e6; }
   .giscus-panel.open { display: block; }
   .giscus-panel .comments-label { font-size: 0.7rem; color: #999; margin-bottom: 0.6rem; }
   .giscus-panel .giscus-loading { font-size: 0.8rem; color: #888; padding: 0.5rem 0; }
@@ -1385,10 +1385,14 @@ document.addEventListener('DOMContentLoaded', function() {
       commentsDiv.className = 'giscus-panel';
       commentsDiv.dataset.videoId = key;
       commentsDiv.innerHTML = '<div class="comments-label">' + key + ' コメント</div>';
-      scriptDiv.parentNode.insertBefore(commentsDiv, scriptDiv.nextSibling);
+      scriptDiv.insertBefore(commentsDiv, scriptDiv.firstChild);
 
       cbtn.addEventListener('click', function(e) {
         e.stopPropagation();
+        if (!v.classList.contains('open')) {
+          v.classList.add('open');
+          updateCloseBtn();
+        }
         commentsDiv.classList.toggle('open');
         if (commentsDiv.classList.contains('open') && !commentsDiv.dataset.loaded) {
           loadGiscus(commentsDiv, key);

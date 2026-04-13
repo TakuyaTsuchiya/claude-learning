@@ -256,7 +256,7 @@
 
   <div class="nav-group">
     <div class="nav-label">業務自動化・コンサルティング</div>
-    <a href="#s3" class="biz">S3 業務効率化に役立つ道具 <span class="badge">7本</span></a>
+    <a href="#s3" class="biz">S3 業務効率化に役立つ道具 <span class="badge">6本</span></a>
     <a href="#s4" class="biz">S4 業務効率化の実践 <span class="badge">7本</span></a>
   </div>
 
@@ -586,7 +586,7 @@
   <!-- S3 -->
   <div class="section biz" id="s3">
     <div class="section-header">
-      <div><h2>S3：業務効率化に役立つ道具</h2><div class="meta">7本 / 35分</div></div>
+      <div><h2>S3：業務効率化に役立つ道具</h2><div class="meta">6本 / 30分</div></div>
       <span class="badge">業務自動化・コンサルティング</span>
     </div>
     <div class="video-list">
@@ -596,13 +596,13 @@
           <div class="video-title">確定申告Skillで学ぶSkillsの極意</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>Skillsの概念を理解し、スキルの追加・実行ができるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>Skillsとは何か／shinkoku（確定申告スキル）のデモ／「入れるだけでClaude Codeが専門家になる」</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>Skillsの存在自体を知らない</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。shinkokuスキルで確定申告の一連の流れ</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>導入（Skills概念の紹介）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>shinkokuスキル</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Skillsとは → Step 2 shinkokuスキルのインストール → Step 3 確定申告デモ → Step 4 Skillsの可能性</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span><strong>shinkokuをインストールして確定申告の一連の流れを実演</strong>し、Skills＝「専門家の手順がパッケージ化されたもの」という概念を理解する。自分の業務にSkill化する発想を得る</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span><strong>Skillsとは＝職人のノウハウをパッケージ化したもの</strong>（日常の「資格」「免許」と同じ発想：保有者が即戦力になる）／<strong>SKILL.md オープン標準</strong>＝40+のAIエージェントで動く共通規格／shinkokuの例：税理士の判断手順が丸ごと入っている（帳簿→決算→税額→電子申告まで）／<strong>「入れるだけで専門家の手順が動く」</strong>衝撃／<strong>作者の知識が全員に配布される＝Skillの本質</strong>／<strong>Skillは自動化と手動のバランスが肝心</strong>（マイナンバー・源泉徴収票等の個人情報は手動入力推奨）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>プロンプトを毎回書き直している（同じ依頼でも品質がブレる）／チームで仕事を共有できない（個人の頭の中で完結）／「Skillって何をインストールするの？」（概念が曖昧）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。<code>/plugin marketplace add</code> → <code>/plugin install</code> → <code>/assess</code>（申告要否判定）→ <code>/journal</code>（レシート1枚OCR→自動仕訳）→ <code>/settlement</code>（決算整理→PL/BS）→ <code>/income-tax</code>（還付額表示）→ <code>/e-tax</code>（ブラウザ自動入力ハイライト）。<strong>マイナンバー・源泉徴収票など個人情報は画面に映さず、手動入力推奨を口頭で補足</strong>（個人情報保護の観点）</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>導入（S3章全体の入口。パッケージをインストールするだけで専門家の手順が動く体験から始め、次のV2：Skills Creatorで「自分の業務をSkill化する」側へ接続）</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>shinkoku（<code>https://github.com/kazukinagata/shinkoku</code>）／Anthropic公式Skills（<code>https://github.com/anthropics/skills</code>）／SKILL.md オープン標準／S3-V2 Skills Creatorへの布石</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず<strong>Skillsが業務効率化で重要な理由を宣言</strong>（Skillなしだと毎回プロンプト書き直し・品質ブレ・チーム共有不能）→ 次に題材として確定申告を税理士の職人芸ごとパッケージ化したshinkokuを紹介 → Skillなしで確定申告を丸投げするとどうなるか（対比で問題提示）→ <strong>Skillsの定義</strong>（資格や免許と同じ発想で「保有者が即戦力」）＋SKILL.md標準で40+エージェント対応という普遍性 → インストール実演（<code>/plugin marketplace add</code>→<code>/plugin install</code>）→ 申告要否判定（<code>/assess</code>で数問の対話→「申告必要」判定）→ 仕訳登録（<code>/journal</code>でレシート1枚OCR→勘定科目自動判定）→ 決算整理（<code>/settlement</code>でPL/BS一発表示）→ 所得税計算（<code>/income-tax</code>で還付額表示）→ e-Tax（<code>/e-tax</code>でClaudeがブラウザを動かして作成コーナーに自動入力、<strong>マイナンバー等は手動入力推奨</strong>）→ 作者の知識が全員に配布される＝Skillの本質／S3-V2への布石（自分の業務はどうSkill化する？）→ クロージング</div>
           </div>
         </div>
       </div>
@@ -683,22 +683,6 @@
             <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（API第1弾、MCPとの違いを体感）</div>
             <div class="structure-item"><span class="s-key">参照一覧：</span>X API</div>
             <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 X APIキーの取得 → Step 2 投稿文の生成 → Step 3 Claude Codeから直接投稿 → Step 4 反応分析 → Step 5 MCPとの違いまとめ</div>
-          </div>
-        </div>
-      </div>
-      <div class="video">
-        <div class="video-num">7</div>
-        <div class="video-content">
-          <div class="video-title">API② LINE送信 — 顧客への一斉通知・Bot自動返信 </div>
-          <div class="video-structure">
-            <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>LINE Messaging APIで顧客通知・Bot自動返信を実装できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>LINE Messaging APIの設定／一斉通知・Bot自動返信の実装／日本のビジネスはSlackよりLINEの現場が多い／「LINEで顧客対応を自動化します」はコンサル提案として即戦力</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>LINE Developers設定が複雑</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。一斉通知とBot自動返信</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（API第2弾、コンサル提案の実例）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>LINE Messaging API</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 LINE Messaging APIの設定 → Step 2 顧客への一斉通知 → Step 3 Bot自動返信の実装 → Step 4 コンサル提案としての価値</div>
           </div>
         </div>
       </div>

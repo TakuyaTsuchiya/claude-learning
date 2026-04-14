@@ -58,6 +58,35 @@ var SCRIPTS = {
       { start: "11:30", end: "12:00", topic: "核心メッセージ＋クロージング", direction: "同上", content: "いろいろな設定や便利なツールが出てきますが、<strong>本質は、皆さんの生活や仕事の中で目の前の問題をどんどん解決していくこと</strong>です。それを繰り返すうちに、Claude Codeの使い方はどんどん上手くなっていきます。それでは、実践的に手を動かしていきましょう。今回の動画はこれでおしまいです。", reference: "" }
     ]
   },
+  "S1-V3": {
+    meta: {
+      duration: "約8分15秒",
+      mode: "画面収録（Mac・Windows両方のインストール手順＋Claude Code内での/statusline設定）",
+      goal: "Claude CodeとCursorをインストールし、mkdir→cd→claude起動＋ステータスライン設定まで完了できる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "画面収録", name: "Mac向けインストール手順", purpose: "Claude Code本体ダウンロード→インストール→バージョン確認", timing: "序盤のMac手順パート" },
+      { type: "画面収録", name: "Windows向けインストール手順", purpose: "Git for Windows→Claude Code本体→Git Bashで動作確認", timing: "序盤のWindows手順パート" },
+      { type: "画面収録", name: "Cursorインストール", purpose: "Mac・Windows両方、無料プランで起動まで", timing: "中盤" },
+      { type: "画面収録", name: "Claude Code Proプラン契約", purpose: "pricingページから契約までの流れ", timing: "中盤〜後半" },
+      { type: "画面収録", name: "プロジェクトフォルダ作成とclaude起動", purpose: "mkdir→cd→claudeの流れ", timing: "後半" },
+      { type: "画面収録", name: "/statusline設定", purpose: "ステータスラインの2行表示設定", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではClaude Codeを使い始める皆さんに向けて、<strong>Claude CodeとCursorのインストール、そして初回のステータスライン設定</strong>までをお伝えします。Mac・Windows両方の手順を押さえていきます。", reference: "" },
+      { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "表紙のまま", content: "環境構築は、多くの方が挫折するポイントと言われています。特に<strong>PATHを通す作業と、WindowsユーザーのGit for Windowsインストール</strong>の2つでつまずく方が多いです。ここを丁寧に整えておけば、<strong>この先の全動画が皆さんのPC上で再現できる</strong>状態になります。手順はやや多めですが、一度だけの作業ですので、このタイミングでしっかり終わらせてしまいましょう。", reference: "" },
+      { start: "1:00", end: "1:30", topic: "ネイティブインストーラー推奨", direction: "画面収録：公式セットアップページを開く", content: "Claude Code本体のインストール方法は複数ありますが、<strong>公式のネイティブインストーラー</strong>を使う方法をおすすめします。npm経由のインストールも可能ですが、Node.jsの環境整備が別途必要になります。ネイティブインストーラーならダブルクリックで完結しますので、非エンジニアの方はこちらが確実になります。", reference: "https://docs.claude.com/en/docs/claude-code/setup" },
+      { start: "1:30", end: "2:30", topic: "Mac：Claude Codeインストール", direction: "画面収録：公式サイトからmacOS用インストーラーをダウンロード→実行→ターミナルで確認", content: "まずMac向けの手順です。公式サイトから<strong>macOS用インストーラー</strong>をダウンロードします。ダブルクリックで実行すると、自動で必要な場所にインストールされます。インストール後、ターミナルを開いて<code>claude --version</code>と打ちます。バージョン番号が表示されればインストール成功です。もし<code>command not found</code>と出る場合は、<strong>PATHがまだ通っていない</strong>状態ですので、ターミナルを一度閉じて開き直してください。", reference: "https://docs.claude.com/en/docs/claude-code/setup" },
+      { start: "2:30", end: "3:15", topic: "Windows前提：Git for Windows", direction: "画面収録：gitforwindows.orgを開く→インストーラーをダウンロード→実行", content: "次にWindows向けの手順です。Windowsユーザーの方には、<strong>前提条件としてGit for Windowsを先にインストールしていただく必要があります</strong>。理由は、Claude Codeが<strong>Git Bashという環境で動く</strong>ためです。<code>gitforwindows.org</code>からインストーラーをダウンロードして、<strong>すべてデフォルト設定のまま</strong>進めて構いません。インストール完了後、スタートメニューに「Git Bash」が表示されていれば準備完了です。", reference: "https://gitforwindows.org/" },
+      { start: "3:15", end: "4:30", topic: "Windows：Claude Codeインストール", direction: "画面収録：公式サイトからWindows用インストーラーをダウンロード→実行→Git Bashで確認", content: "Git Bashが用意できたら、Claude Code本体に進みます。公式サイトから<strong>Windows用インストーラー</strong>をダウンロードして実行します。インストール完了後、<strong>Git Bashを開いて</strong><code>claude --version</code>と打ちます。バージョン番号が表示されれば成功です。Windowsの場合は<strong>PowerShellやコマンドプロンプトではなく、必ずGit Bashを使う</strong>点にご注意ください。この講座でも全てGit Bashで進めていきます。", reference: "https://docs.claude.com/en/docs/claude-code/setup" },
+      { start: "4:30", end: "5:15", topic: "Cursorインストール", direction: "画面収録：cursor.comを開く→Mac/Win用インストーラーをダウンロード→実行", content: "続いてCursorをインストールします。Cursorは、Claude Codeと組み合わせて使うエディターです。<code>cursor.com</code>から<strong>Mac用・Windows用それぞれのインストーラー</strong>をダウンロードして、ダブルクリックで実行します。<strong>無料プランで十分</strong>ですので、そのまま起動までお進めください。起動後、初回セットアップで日本語化の選択画面が出ますので、お好みで選んでいただければと思います。", reference: "https://cursor.com/" },
+      { start: "5:15", end: "5:45", topic: "Claude Code Proプラン契約", direction: "画面収録：claude.com/pricingを開く→プラン選択→契約", content: "Claude Codeを業務で本格的に使う場合は、<strong>Claude Code Proプランの契約を強く推奨します</strong>。<code>claude.com/pricing</code>からプランを選んで契約できます。無料枠だとレート制限にすぐ引っかかって、1日の途中で作業が止まってしまいます。月額の固定費で済みますので、業務利用ならProプラン一択です。", reference: "https://www.claude.com/pricing" },
+      { start: "5:45", end: "6:30", topic: "プロジェクトフォルダ作成とclaude起動", direction: "画面収録：ターミナル（MacはTerminal／WindowsはGit Bash）でmkdir→cd→claude", content: "インストールが完了したら、<strong>最初のプロジェクトフォルダを作ってClaude Codeを起動する</strong>流れを確認していきます。ターミナルを開いて、<code>mkdir my-project</code>でフォルダを作成し、<code>cd my-project</code>でそのフォルダに移動します。そして<code>claude</code>と打つとClaude Codeが起動します。これでClaude Codeが<strong>このフォルダ内で作業する状態</strong>になりました。", reference: "" },
+      { start: "6:30", end: "7:45", topic: "/statusline設定", direction: "画面収録：Claude Code内で /statusline 実行→2行表示の設定を依頼→ステータスライン反映", content: "最後に<strong>ステータスラインの設定</strong>をしておきます。Claude Codeを起動した状態で<code>/statusline</code>と打ちます。Claude Codeが設定ファイルを自動生成してくれますので、<strong>gitブランチ・コンテキスト使用率・レート制限リセット時間の2行表示</strong>の設定をお願いすると、その内容でファイルを書いてくれます。設定が反映されると、ターミナル下部にこうした情報がリアルタイムで表示されるようになります。<strong>今後の全動画で参考にしていく情報</strong>ですので、必ず設定しておいてください。", reference: "https://code.claude.com/docs/ja/statusline" },
+      { start: "7:45", end: "8:15", topic: "クロージング", direction: "スライド：表紙に戻す", content: "これで環境構築は完了です。<strong>Claude Code本体・Cursor・Proプラン・ステータスライン</strong>の4点が揃いました。次の動画からは、この環境の上で実際に業務ツールを作っていきます。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
   "S2-V3": {
     meta: {
       duration: "約6分30秒",

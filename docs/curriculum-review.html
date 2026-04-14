@@ -692,7 +692,7 @@
   <!-- S4 -->
   <div class="section biz" id="s4">
     <div class="section-header">
-      <div><h2>S4：業務効率化の実践</h2><div class="meta">7本 / 35分</div></div>
+      <div><h2>S4：業務効率化の実践</h2><div class="meta">6本 / 30分</div></div>
       <span class="badge">業務自動化・コンサルティング</span>
     </div>
     <div class="video-list">
@@ -702,109 +702,93 @@
           <div class="video-title">【人事向け】社内eラーニングシステムを自作しよう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>社内eラーニングシステムをHTML一枚で自作できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>動画再生ページ＋進捗管理のHTML自作／LMS月額 vs 自作のコスト比較／ドメイン知識のプロダクト化の好例</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「eラーニングシステムは高額ツールが必要」→HTMLで十分</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。eラーニングHTMLの生成と動作確認</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：教育・研修向け）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 課題「LMSは高い」→ Step 2 HTMLで自作するデモ → Step 3 進捗管理機能の確認 → Step 4 社内研修・教育事業での活用</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>人事・研修担当者が現場職向け社内eラーニングシステムのガワ（階層メニュー＋受講ダッシュボード）をClaude Codeで10分で組み上げられるようになる。架空「シーサイドホテル」の清掃スタッフ育成LMS（3カテゴリ×3教材＝全9本）を題材に、最低限のスペック駆動開発で仕様書を書き、HTML一枚の受講者ポータルと受講状況マトリクスを動く状態で受講者が手元で再現できるアウトプットを得る。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>現場職の新人教育課題（外国人スタッフ増・離職率・OJT負担の業界傾向）／S1-V2「ドメイン知識のプロダクト化」を人事ドメインで実証／最低限のスペック駆動開発（S2-V5の最短適用）／階層メニュー（本の目次と同じ発想）／受講者×教材マトリクス（学校の出席簿の構造）／スコープ絞り（動画再生・認証・永続化なし、ダミー進捗フラグをハードコード）／Vibe Coding vs 最低限スペック駆動の差（コンテキスト量の違い）／月額LMS vs 自作HTML（規模と要件で使い分け）／S5への布石（多拠点・多ユーザー・永続化にはバックエンド）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「eラーニングシステムは専用SaaS契約が必要」という思い込み／「仕様書に何を書けばいいか分からない」（画面数・データ構造・ダミー値の3点に絞れば数行で済む）／「9教材分のHTMLを1枚ずつ書くのは現実には不可能」という諦め</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙と課題設定1枚のみ、残りは画面収録で実演。<code>mkdir demos/hotel-cleaning-lms && cd demos/hotel-cleaning-lms</code>→<code>spec.md</code>をClaude Codeと対話で書き起こし（階層3カテゴリ×3教材、4画面、ダミー進捗フラグ）→実装依頼→生成された<code>index.html</code>をブラウザで開きトップ→カテゴリ→教材詳細→ダッシュボードの順で操作。<strong>個人情報配慮</strong>：実在ホテルチェーン名・実在スタッフ名は一切出さず、架空「シーサイドホテル」と田中さん・山田さん・グエンさんで統一。サムネ画像はフリー素材またはプレースホルダー</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S4の1本目として、S1「ドメイン知識のプロダクト化」とS2「スペック駆動開発」の合流地点に置く。S1-V2で「HTMLレポートは単品で作れる」器を手にし、S2-V5で「仕様書→実装」の手順を学んだ受講者に対し、人事ドメインでの実証回として機能。「自分の職種でもゼロから仕組みを生み出せる」という自信を付けさせ、S4の残り5本（V2バックオフィス・V3人事・V4経営・V5マーケ・V6営業）に送り出すハブ。同時にS5「アプリ開発」への橋渡しとして、ガワの限界（多拠点・多ユーザー・永続化）を最終シーンで正直に述べ、S5のバックエンド・DB・デプロイが登場する必然性を予告する</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span><code>demos/hotel-cleaning-lms/spec.md</code>（生成する仕様書）／<code>demos/hotel-cleaning-lms/index.html</code>（生成する受講者ポータル＋ダッシュボード）／S1-V2「HTMLレポート単品」／S2-V5「スペック駆動開発を実践しよう」／S4全体マップ／S5への橋渡しメモ（HTML単品の限界＝永続化・多拠点・多ユーザー）／厚生労働省「宿泊業における人材確保・育成の現状」等の公開統計</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まずホテル業界の新人教育課題を腰を据えて宣言する（外国人スタッフ増・OJT負担集中・離職率・「教えた人が辞めて一から教え直し」の循環を50〜60秒で語る）→ 次に本日のアウトプット像を先に見せる（完成した<code>index.html</code>をブラウザで30秒早送り試写、「このガワを10分で作る」と宣言）→ コンテンツ構造を図解（3カテゴリ×3教材＝9本、受講者は田中・山田・グエンの架空3名、実在ホテル・実名は一切使わない方針を明示）→ 最低限のスペック駆動開発の考え方を1分で導入（S2-V5の復習、階層・画面数・ダミーデータの3点に絞るミニマム運用）→ <code>mkdir demos/hotel-cleaning-lms && cd demos/hotel-cleaning-lms</code>で作業ディレクトリ用意、Claude Codeと対話しながら<code>spec.md</code>を書き起こし（3カテゴリ×3教材の階層、4画面、ダミー進捗フラグのハードコード方針、動画再生・認証・永続化は載せないスコープを明記）→ <code>spec.md</code>をClaude Codeに渡し実装を依頼、生成された<code>index.html</code>をブラウザで開きトップ画面の3カテゴリカードとカテゴリ画面の教材カード＋YouTube風サムネを操作して階層メニューが仕様書通りに出ていることを確認 → 受講ダッシュボードを開き田中・山田・グエンの3名×9教材マトリクスで受講済み／未受講の配色を見せ、「誰がどこで止まっているかが1画面で分かる」人事視点の価値を添える → スコープの割り切りを正直に述べる（動画再生はサムネのみ、ログイン認証なし、進捗フラグはハードコード、の3点を明示）→ 仕様書なしVibe Codingとの対比を10秒で中立に挟む（階層もダミーデータも狙い通りが出にくくなる、コンテキスト量の差）→ クロージングで「今日のガワをベースに自社の教材タイトルと受講者名を入れ替えるだけで自部署に持ち込める」を強調しつつ、多拠点展開や複数人同時更新まで進めたくなった段階ではバックエンドとDBが必要になり、それはS5で扱うと予告して締める</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">2</div>
         <div class="video-content">
-          <div class="video-title">【経理向け】毎月の請求書・Excel処理を自動化しよう</div>
+          <div class="video-title">【人事・経理向け】申請書類チェック校閲を自動化しよう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>請求書PDF化とExcel処理の自動化ツールを作れるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>請求書のPDF化／Excel処理の自動化／バックオフィス業務の効率化</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「PDF生成は難しそう」→Claude Codeに任せれば一発</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。請求書データ→PDF生成</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：バックオフィス向け）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 課題設定 → Step 2 請求書PDF化デモ → Step 3 Excel処理ツールデモ → Step 4 業務への組み込み</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>経理・人事・総務のバックオフィス担当者が、申請書Excel10件＋添付PDF・画像（領収書・定期券写真・母子手帳コピー）の混在ファイルをClaude Codeで対話的に突合させ、「承認可」「要確認」を仕分けたHTMLチェックレポートを10分で受け取れるようになる。月100件超の目視突合500分を、AI一次チェック＋人間最終判定のハイブリッド運用で30分に圧縮する感覚を体得することが学習目的。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>バックオフィス横断の「申請処理」は職種を越えた共通苦労（経費精算・育児休業・通勤手当）／AI一次チェック＋人間最終判定のハイブリッドが現実解（100%自動化は幻想、80%自動仕分け＋20%人間判断）／読み取り精度は素材で変わる（印字PDFほぼ100%／スキャン画像90〜95%／手書き・FAX 60〜80%）／個人情報ガードレールが入口条件（Anthropicデータポリシー＋マスキング実装＋マイナンバー設計除外）／申請データの現実的な混在でもClaude Codeはそのまま読みに行ける／具体的な差分指摘で信頼を得る（金額差・日付差・経路不一致を数値と根拠で）／S3-V2（Skills Creator月次レポート）とバックオフィス2大柱（月次集約×申請処理）／対話ツール完結 vs S5-V6 Webアプリ化の境界（ワークフロー承認・監査ログ・複数ユーザ運用ならアプリ化の番）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「個人情報をClaudeに読ませて大丈夫か」の技術以前のハードル（心理ブロック）／「10件ぐらい目で見た方が早いのでは」の比較感覚（100件超・月次繰り返しのスケールで腹落ちさせる）／「手書き・スキャン画像の読み取り不安定で結局使えない」の不信感（精度は素材依存と正直に開示し、限界を運用ガードレールに転化する設計で解消）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙・個人情報配慮・クロージングの3枚のみ。画面収録で実演。<strong>冒頭の個人情報シーンを実演前に1〜1.5分で必ず組み込む</strong>：(1)Anthropicデータポリシー1枚図解30秒／(2)マスキング実装デモ30秒（<code>mask.py</code>で氏名→A氏・生年月日→年代・口座→下4桁）／(3)マイナンバー処理対象外の設計思想／(4)ガードレール4項目（利用目的通知・マスキング・機微情報除外・社内ポリシー整合）。題材は<code>demos/shinsei-check/</code>配下の申請書Excel10件（経費精算5・通勤手当3・育児休業2）＋添付PDF/画像。対話依頼→Claude Codeが読み取り突合→生成HTMLをブラウザで開き✅承認可6件／⚠️要確認4件の仕分けと差分根拠を確認。手書きの不鮮明な領収書が自動で⚠️に落ちる挙動で「限界が運用ガードレールに転化」を示す。<strong>個人情報配慮</strong>：実演は全て架空データ、田中太郎・山田花子・グエン・ティ・ハン（V1と統一）、マイナンバー欄は設計段階から非搭載</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S4の2本目。V1（eラーニング）・V3（オンボーディングチェックリスト）・V5（SEO記事）が「HTMLレポート単品／コンテンツ生成」軸で並ぶのに対し、V2は「AIの読み取り×判定エンジン」という別軸の道具箱を立てる位置付け。画像・PDF混在ファイルを対話で読み解きながら仕分ける体験はV2だけが担当。S3-V2（Skills Creatorで月次レポートSkill化）と組み合わせて<strong>バックオフィスの「月次集約×申請処理」2大柱</strong>を完成させる。クロージングでS5-V6（freee風Webアプリ）との棲み分けを明示し、「対話ツールで月100件まで一人で回せる／ワークフロー承認・監査ログ・複数ユーザ運用ならWebアプリ化の番」という境界体験を残す</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span><code>demos/shinsei-check/applications/</code>（申請書Excel10件、架空データ）／<code>demos/shinsei-check/attachments/</code>（領収書画像・印字PDF・スキャン・定期券写真・母子手帳コピーPDF）／<code>demos/shinsei-check/mask.py</code>（マスキング実装デモ用）／<code>demos/shinsei-check/output/check-report.html</code>（生成例）／<code>slides/s4-v2-data-policy.png</code>（Anthropicデータポリシー要約）／<code>slides/s4-v2-guardrail.png</code>（ガードレール4項目）／S3-V2「Skills Creator月次レポート」／S5-V6「freee風Webアプリ」／S1-V2「HTMLレポート単品」</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まずバックオフィス担当者の「月100件超の申請仕分け地獄」を宣言する（経理に経費精算、人事に育児休業、総務に通勤手当変更が毎月100件超、一件5分の目視突合で月500分が消える、50〜60秒で腰を据えて語り「ハイブリッド運用で500分を30分に圧縮」と価値宣言）→ 次に個人情報ガードレールを実演前に1〜1.5分で組み込む（Anthropicデータポリシー1枚図解30秒／マスキング実装デモ30秒／マイナンバー処理対象外の思想／ガードレール4項目）→ 題材フォルダ<code>demos/shinsei-check/</code>を開き申請書Excel10件（経費精算5・通勤手当3・育児休業2）と添付PDF/画像の混在を見せる。田中太郎・山田花子・グエン・ティ・ハンの架空データでV1と統一 → Claude Codeを起動し「このフォルダの申請10件と添付を突合し、不整合があれば差額・差日数・経路不一致を具体的に挙げてHTMLレポートに」と対話で依頼 → Claude Codeが印字PDFとスキャン画像を順に読み、金額と日付を抽出する進捗をログで見せる → 生成されたHTMLレポートをブラウザで開き、✅承認可6件／⚠️要確認4件と各行の差分根拠（「¥12,300 vs ¥12,500、200円差」「出産予定日 申請5/15 vs 母子手帳5/12、3日差」「経路不一致」）を確認 → 読み取り精度を正直に開示（印字PDFほぼ100%・スキャン画像90〜95%・手書き60〜80%）、手書きの不鮮明な領収書が自動で⚠️に落ちる挙動を見せ「限界が運用ガードレールに転化」と位置付ける → S3-V2との2大柱を一言で示す（S3-V2は月次集約の属人化解消、S4-V2は日次の申請処理の目視解消、両者でバックオフィス全体がAIで挟み撃ち）→ 「100%自動化は幻想、80%自動化が現実解」を中立化メッセージで明示（AIは除外とフラグ立て、最終承認印は人が押す、迷惑メールフィルタと同じ発想）→ 月100件×5分＝500分から要確認数件×6分＝30分への時間圧縮を数字で締める → クロージングでS5-V6（freee風Webアプリ）との棲み分けを明示（対話ツールで月100件まで一人で完結／ワークフロー承認・監査ログ・複数ユーザ同時運用になったらS5-V6のWebアプリ化の番、という境界を引いて動画を閉じる）</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">【人事向け】オンボーディングチェックリストを自動生成しよう</div>
+          <div class="video-title">【人事向け】新人受け入れチェックリストを自作しよう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>新入社員情報CSVからオンボーディングチェックリストを自動生成できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>CSV入力→部署別チェックリストHTML生成／どの会社にもある業務で業種を選ばない／S1「ドメイン知識をプロダクト化」の実例</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「人事業務は定型なのに毎回手作業」→自動化のインパクト</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。CSVから部署別チェックリストHTML生成</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：人事向け）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>サンプル新入社員情報CSV</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 課題「部署ごとにチェックリストが違う」→ Step 2 CSVデータ準備 → Step 3 チェックリスト自動生成デモ → Step 4 S1の「ドメイン知識＝プロダクト」の実証</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>人事担当者が架空中小企業「○△商事」の新人受け入れ業務を題材に、5部署分（営業・エンジニア・経理・マーケ・カスタマーサクセス）のチェックリストHTMLをClaude Codeへの対話プロンプト1回で一気に自作できるようになる。Notion・Excelでの手作りから「静的HTML5枚、スタイル統一・印刷対応・スマホ対応」への切り替えを1本で完結させ、修正も「プロンプト1行追加で5部署再生成」の手応えまで体験する。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>「どの会社にもある業務」だから自動化の費用対効果が高い（業種・規模を問わず毎年発生）／部署ごとにやることが違う現場感（営業CRM・名刺／エンジニアGitHub・開発環境／経理経費精算・会計ソフト／マーケ広告アカウント／CS顧客DB権限）／Notion手作りとClaude Codeの用途の使い分け（初期構築×統一スタイル×印刷はHTML、共同編集×日々更新はNotion）／対話プロンプト1回の手応え（CSVも動的生成も不要）／修正の容易さ＝プロンプト1行追加で全部署再生成／S1-V2「ドメイン知識のプロダクト化」の人事ドメイン応用／V1「ホテル清掃LMS（研修）」とV3「受入チェックリスト（採用）」の人事ペア構造／個人情報の扱い方の作法（マイナンバー確認は項目タイトルのみ、実入力は手動・オフライン処理）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「部署別に違うテンプレ、どこまでプロンプトに書けばいいの？」（5部署分を1プロンプトに並べる型を実演）／「マイナンバーや給与情報を扱うのが怖い」（項目タイトルのみ表示、実入力は手動・オフライン処理の作法を明示）／「Notionで手作りしていた自分のやり方は間違いだったのか」（優劣ではなく用途の使い分けで中立化）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ、残りは画面収録で実演（スライド10%・画面収録90%）。Claude Code起動→対話プロンプト1回で「○△商事の新人受け入れチェックリストを5部署分（営業・エンジニア・経理・マーケ・CS）静的HTML・チェックボックス付き・印刷対応・スマホ対応・スタイル統一」と依頼→数十秒で5枚のHTMLが出揃う→ブラウザで5枚を順に開き部署ごとに項目が違うこと・デザインが統一されていることを確認→印刷プレビューとスマホ幅で表示崩れがないことを確認→修正デモ「営業に携帯電話契約追加」とプロンプト1行追加で営業HTMLのみ差分更新。<strong>個人情報配慮</strong>：架空中小企業「○△商事」、新人名は田中さん・山田さん・グエンさんで統一、マイナンバー確認は項目タイトルのみ表示し実入力欄は設けず「手動・オフライン処理」と注釈</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S4の6本の中で<strong>最もシンプルかつ最も非エンジニア向けの入り口</strong>。V1（ホテル清掃向けeラーニング）が「研修＝新人が学ぶ側」の人事題材なのに対し、V3は「採用＝新人を受け入れる側」の人事題材で、V1とV3は<strong>人事ペア構造</strong>として機能。CSVや動的生成を持ち込まず「対話プロンプト1回で静的HTML5枚」に絞ることで、S4前半で「Claude Codeはコード書きではなく事務作業の道具」という体感を固める。S1-V2「ドメイン知識のプロダクト化」で学んだ思想を、人事ドメインに応用した最小実装例。S5への布石として「HTML単品では共同編集・更新通知・権限管理に限界がある」気づきを残し、S5-V6「freee風アプリ」で深化させる接続点を作る</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>S4-V1（ホテル清掃LMS／人事ペア構造の相方）／S1-V2（ドメイン知識のプロダクト化／思想の元ネタ）／S5-V6（freee風アプリ／HTML単品の限界の受け皿）／架空企業設定：○△商事（中小企業、5部署：営業・エンジニア・経理・マーケ・CS）／架空新人：田中さん・山田さん・グエンさん（V1・V2と統一）／出力HTML例：<code>demos/onboarding/checklist-sales.html</code>／<code>checklist-engineer.html</code>／<code>checklist-accounting.html</code>／<code>checklist-marketing.html</code>／<code>checklist-cs.html</code>（各10〜15項目、チェックボックス付き、印刷・スマホ対応、スタイル統一）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず人事担当者が新人受け入れで毎年何をしているかを腰を据えて宣言する（○△商事のような中小企業では採用翌月に部署ごとやることが全く違うのに毎年同じ段取りを頭の中で組み直している負担の不可視化、50〜60秒）→ 次にこの講座で扱う範囲を明示する（Claude Codeへの対話プロンプト1回で5部署分のチェックリストHTMLを一気に自作、CSVも動的生成も使わない完全に静的なHTML5枚）→ Notionで手作りする従来の段取りとの比較表を示し「Notionが悪いのではなく用途の使い分け」を強調する（初期構築×統一スタイル×印刷はHTML、共同編集×日々更新はNotion、の中立的整理）→ 題材「○△商事の新人受け入れ」の設定を提示（5部署、各10〜15項目、新人は田中・山田・グエンの完全架空データ）。個人情報の扱い方の作法を先に宣言（マイナンバー確認は項目タイトルのみ、実入力は手動・オフライン処理と注釈）→ Claude Code起動、対話プロンプトを1回依頼する様子を収録（5部署分の項目を1プロンプトに並べる型を画面で示す）→ 数十秒で5枚のHTMLが生成、ブラウザで営業→エンジニア→経理→マーケ→CSの順に開き部署ごとに項目が違うこと・デザインが統一されていることを確認 → 印刷プレビューとスマホ幅表示を切り替えHTML単品でも印刷・PDF・スマホが全部賄えることを確認 → 修正デモ「営業に携帯電話契約追加」とプロンプト1行を足すだけで営業HTMLだけ差分更新、他4部署はそのまま（修正の容易さ＝プロンプト1行追加の手応えを印象付ける）→ S1-V2「ドメイン知識のプロダクト化」を人事ドメインに応用した実例、V1とV3が研修と採用の人事ペアとして機能することを位置付ける → クロージング：今回作ったHTMLは初期構築と配布にはそのまま使える一方、共同編集・更新通知・権限管理までは届かない、この限界がS5-V6「freee風アプリ」で受け止められるという次セクションへの布石で締める</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
-          <div class="video-title">【経営者向け】Slack・LINE・議事録を週次サマリー1枚にまとめよう</div>
+          <div class="video-title">【経営者向け】Slack・Notionから週次サマリー自動生成しよう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>複数ソースを横断して経営者向け週次サマリーHTMLを生成できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>S3のMCP応用編／複数ソース（Slack＋LINE＋議事録）の横断／経営者向け1枚サマリー／個別MCPとの違い＝組み合わせて使う力</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>複数MCPの同時活用のイメージがわかない</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。Slack＋LINE＋議事録→サマリーHTML生成</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：経営者向け、S3の応用編）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 「社長が月曜朝にこれ1枚で先週の全体像がわかる」→ Step 2 Slack・LINE・議事録からデータ収集 → Step 3 週次サマリーHTML生成 → Step 4 S3の個別MCP vs 組み合わせの力</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>架空スタートアップ「スタートアップ.inc」（B2B SaaS、40名）の1週間分のSlack全チャネルとNotion経営会議議事録DBをSlack MCPとNotion MCPの同時接続で横断集約し、CEO向け週次サマリーHTML（顧客対応動向／社内進捗／経営方針／示唆の4層構造）を月曜朝に自動生成できるようになる。S3で学んだ個別MCPから、複数MCPを同時に動かして経営判断を支える複合MCPへの質的転換を、実演を通じて腹落ちさせる。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>複合MCP＝「複数の有能な秘書がチームで動く状態」（Slack担当秘書が顧客の声と社内論議、Notion担当秘書が経営会議の決定事項、CEO向け1枚に統合）／経営層の「月曜朝問題」（先週の全体像が散らばり、頭の中で時系列に並べ直す作業は現実には不可能）／「<strong>有能な秘書が先週の全体像を月曜朝に用意してくれる</strong>」（経営層への訴求軸）／「<strong>週次報告資料作成の繰り返しから解放される</strong>」（中間管理層・メンバーへの訴求軸、経営者と現場の両方が得する構図）／Slack MCP＋Notion MCP同時起動（<code>/mcp</code>で両方緑、LLMが自律的にツールを呼び分け）／4層構造HTML＝経営判断の読み順（顧客対応動向→社内進捗→経営方針→示唆）／チャネル設計が情報密度を決める（#cs-support・#sales-voiceから顧客声を拾う）／S3-V2との棲み分け（月次＝Skills＋内部データ、週次＝複合MCP＋リアルタイム、扱う時間軸で使い分け）／S5への布石（複数入力を束ねて統合出力の思考パターンはDB設計・非同期処理の基盤）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「複合プロンプトの書き方がわからず指示が散らかる」（4層構造テンプレートで解消）／「<code>/mcp</code>で2つ緑になっても片方のMCPしか使われない」（明示指示あり／なしの出力差で粒度感覚を掴ませる）／「Slack Bot Token・Notion Integration Tokenの取得と権限で止まる」（S3-V3・S3-V4で通ったトークンをそのまま流用する手順を案内）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ、本編は画面収録で実演（スライド10%・画面収録90%）。架空「スタートアップ.inc」の散在状況（Slack 6チャネル：#general、#sales、#cs-support、#sales-voice、#product-dev、#board-updates＋Notion経営会議議事録DB）を視覚化→<code>~/.claude/mcp.json</code>にSlack MCP（xoxb-）とNotion MCP（Internal Integration Token）を同時登録→<code>/mcp</code>で両サーバーが緑色であることを確認→複合プロンプト投下（過去1週間のSlack全チャネルとNotion経営会議議事録DBを統合、CEO向け週次サマリーHTMLを4層構造で、#cs-supportと#sales-voiceから顧客声を優先抽出）→LLMが<code>slack_search_messages</code>と<code>notion_query_database</code>を自律呼び分け→生成HTMLをブラウザで開き4層構造を確認（「決済機能ほしい5件」→「決済API連携提案準備」→「Q1新施策として承認」→「次週の焦点はQ1ロードマップ」）→明示指示なしの比較デモでプロンプト設計の粒度感を共有。<strong>個人情報配慮</strong>：実在企業名・実在社員名・実在顧客名は一切使わず、Slackメッセージ・Notion議事録のサンプルも完全架空</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S4の中盤で、S3全体の応用編として<strong>個別MCPから複合MCPへの質的転換点</strong>を担う動画。S3-V3（Slack単体）・S3-V4（Notion単体）で「1つの情報源をAIで扱う」を習得した受講者が、S4-V4で初めて「複数の情報源を同時に動かし、LLMが自律的に使い分ける」複合MCPを実務ベースで体験。点から線・面への段差が本動画の学習価値の中心。S3-V2（月次レポートSkill化）との棲み分け（固定フロー月次集約＝Skills、動的週次リアルタイム集約＝複合MCP）で、受講者が自分の業務でどちらを選ぶかの判断軸を持てる状態にする。S5への布石として「複数入力を束ねて統合出力」の思考パターンがDB設計・非同期処理の基盤となる。ペルソナは経営者（CEO・CFO・事業部長）と40〜100名規模の意思決定者、中間管理層・メンバーへの価値として「週次報告資料作成からの解放」軸も提示し経営者と現場の両方が得する構図でクロスセクションに響かせる</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>公式MCPサーバー：<code>https://github.com/modelcontextprotocol/servers</code>／Slack MCP実装：<code>https://github.com/modelcontextprotocol/servers/tree/main/src/slack</code>／Slack APIコンソール：<code>https://api.slack.com/apps</code>／Notion公式MCP：<code>https://github.com/makenotion/notion-mcp-server</code>／Notion Integration Token取得：<code>https://www.notion.so/my-integrations</code>／Notion Databases仕様：<code>https://developers.notion.com/reference/database-query</code>／S3-V3 Slack MCP実演／S3-V4 Notion MCP実演／S3-V2 Skills Creator月次レポート／デモデータ<code>demos/startup-inc/</code>（<code>slack-messages-week.json</code>6チャネル1週間分、<code>notion-board-notes-db.json</code>経営会議議事録DB、いずれも完全架空）／撮影前動作確認：S3-V3・S3-V4で確認済みトークン流用、2026年4月時点で両MCPの同時稼働を事前検証</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず経営者の月曜朝7時を描写する冒頭シーン（CEOがコーヒーを片手に「先週は何が起きたのか」を掴みたいがSlackスクロール・Notion探索・頭の中で時系列並べ直しが毎週続く現実、本動画の価値を2軸で宣言：経営層「有能な秘書が先週の全体像を月曜朝に用意」／中間管理層・メンバー「週次報告資料作成の繰り返しから解放」、50〜60秒）→ 次にS3との対比を置く（S3-V3 Slack単体・S3-V4 Notion単体から、S4-V4はSlack MCPとNotion MCPを同時起動してLLMが自律的にツールを呼び分ける複合MCPの世界、点から線・面への質的転換）→ S3-V2（月次レポートSkill化）との棲み分けを整理（固定フロー月次集約＝Skills、動的週次リアルタイム集約＝複合MCP、扱う時間軸の違いで選ぶ発想）→ 題材「スタートアップ.inc」の1週間を紹介（Slack 6チャネルとNotion経営会議議事録DB、#cs-supportと#sales-voiceから顧客の声を拾う設計）→ 事前準備として<code>~/.claude/mcp.json</code>にSlack Bot TokenとNotion Internal Integration Tokenの2本を登録する手順（S3-V3・S3-V4で通ったトークン流用）→ <code>/mcp</code>で両MCPが緑色であることを確認（複数の秘書が同時待機している状態）→ 複合プロンプト設計の勘所を解説（「情報源指定」「集約軸」「出力構造」「優先度指定」の4要素テンプレート）→ プロンプト投下、LLMが<code>slack_search_messages</code>と<code>notion_query_database</code>を自律呼び分ける様子を画面で追う → 生成HTMLをブラウザで開き4層構造を確認（顧客対応動向「『決済機能ほしい』5件」→社内進捗「決済API連携提案準備」→経営方針「Q1新施策として承認」→示唆「次週の焦点はQ1ロードマップ」、顧客声から経営判断までの連鎖が1枚で視覚化）→ 補助デモとして明示指示なしで同じプロンプトを走らせるとSlackだけ／Notionだけに偏ることを短く提示（複合プロンプト設計の粒度感覚を渡す）→ クロージングでは複合MCPが組織の意思決定スピードと現場の資料作成負担を同時に変えることを再確認し、「今は2つのMCPだが、営業ツール・財務データ・顧客DBも同じやり方で束ねれば組織のあらゆる判断が高速化」と見通しを置き、S5のDB設計・非同期処理への思考基盤として本動画が機能することを一言で接続する</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">5</div>
         <div class="video-content">
-          <div class="video-title">【マーケティング向け】LINE Harnessで顧客CRMを構築しよう</div>
+          <div class="video-title">【マーケティング向け】高品質SEO記事を分割工程で生成しよう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>LINE HarnessをCloudflareにデプロイし、無料で顧客CRMを運用できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>LINE Harness OSS／Cloudflare無料枠デプロイ／ステップ配信・セグメント配信・スコアリング・リッチメニュー切替まで全部入り／L社月額2万円→0円／Claude Codeから全操作可能</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>Cloudflareの設定が初めての人</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。LINE Harnessのデプロイと各機能</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：マーケティング向け、サーバー代0円）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>https://github.com/Shudesu/line-harness-oss</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 LINE Harnessの紹介と機能一覧 → Step 2 Cloudflare無料枠にデプロイ → Step 3 ステップ配信・セグメント配信のデモ → Step 4 「月額2万円→0円」のインパクト</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>SEO記事の制作フローを「競合分析→ユーザーニーズ分析→構成案→本文→メタ生成」の5工程に分割し、工程間をMarkdownファイルで受け渡す疎結合設計で、YMYL高額商材（屋上防水工事）でも上位を狙える高品質記事を再現性高く生成できるようになる。最終工程ではこのフロー全体を<code>/seo [キーワード]</code>Skillに変換し、S3-V2 Skills Creatorの応用として「業務フロー全体をSkill化する」発想を持ち帰る。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>YMYL高額商材でこそ工程分割の価値が明快(屋上防水工事は1件数十万〜数百万、検索者の真剣度高く浅い記事では上位取れない)／E-E-A-T(経験・専門性・権威性・信頼性)の位置付け(AI下書き＋人間監修がE-E-A-T要件を満たす現実解、30秒断言通過)／一発執筆と工程分割の比較(工程分割は各工程で一つの話題に集中、品質が再現される)／S2-V1の<code>/clear</code>思想をコンテンツ制作に応用(1セッション1話題で毎回同品質)／工程間ファイル受け渡しによる疎結合設計(<code>01-competitor-analysis.md</code>→<code>02-user-needs.md</code>→<code>03-outline.md</code>→<code>04-body.md</code>→<code>05-meta.md</code>)／WebSearch×Claude×人間監修の三位一体(Claude単体の専門知識は粗いのでWebSearchで一次情報)／工法の多様性が工程分割の威力を引き立てる(ウレタン・シート・FRP・アスファルト)／<strong>コアメッセージ：80%の再現性と20%の人間監修</strong>(工程分割で80%の品質は再現できる、残り20%の監修・一次情報・現場写真こそGoogleが評価するE-E-A-Tの核)</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「AIで書いた記事はGoogleペナルティ」の思い込み(E-E-A-T要件を満たす現実解を断言通過)／一発執筆で済ませる作業習慣(YMYL領域で一発執筆の浅さと工程分割の深さを並べ品質差を体感)／競合分析の具体的なやり方がわからない(WebSearchで10記事の見出し構成・トピック・強みをMarkdown比較表に整理する流れを実演)</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙1枚＋「5工程フロー図」1枚の計2枚、あとは画面収録で実演(約9〜10分)。ターミナル(Claude CodeでWebSearch実行＋各工程の指示プロンプト)／テキストエディタ(<code>01〜05</code>の5ファイルを順次開いて中身確認、工程間受け渡しの手触り)／ブラウザ(最終記事のMarkdownプレビュー、E-E-A-T概念説明用のG社ガイドライン30秒)。<strong>速足構成(案A)</strong>：全5工程を概要＋サンプル出力の提示で通す、各工程はプロンプト→生成結果→次工程のリズム。<strong>個人情報配慮</strong>：架空建設会社「○△建設」(V2と連動)、競合分析の上位10記事は「競合A社」「競合B社」伏字、実在リフォーム会社名・実在サービス名は出さない、資材価格・補助金は「2026年4月時点」と明記、地域差は注意1行</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S4の後半を担うマーケ担当者・中小企業経営者・オウンドメディア運営・個人事業主のコンテンツ発信担当向けの動画。S2-V1で学んだ<code>/clear</code>思想を「コンテンツ制作」に応用し、S3-V2 Skills Creatorで学んだ「業務手順のSkill化」を「工程全体のSkill化」へとスケールさせる位置にある。題材に屋上防水工事を選ぶのはYMYL領域かつ高額商材で<strong>工程分割の価値が最も明快に証明できる</strong>ため。浅い記事では絶対に上位が取れないジャンルでこそ「80%の再現性＋20%の人間監修」のコアメッセージが説得力を持つ。V2で登場した架空「○△建設」のオウンドメディア記事という設定で連続性を作り、S4全体の架空世界観を締めくくる。V6(S4最終)およびS5への布石として「単発のHTML／Skillから工程全体をパイプライン化する発想」を植える</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>S2-V1「プロジェクト管理コマンド」<code>/clear</code>思想／S3-V2「Skills Creator」(<code>/seo [キーワード]</code>Skill化の接続先)／S4-V2「申請書類チェック校閲」(架空「○△建設」の共有設定)／デモキーワード：「屋上防水工事 費用相場」(YMYL高額商材)／デモデータ：<code>demos/s4-v5/</code>(5工程分のMarkdownサンプル：<code>01-competitor-analysis.md</code>／<code>02-user-needs.md</code>／<code>03-outline.md</code>／<code>04-body.md</code>／<code>05-meta.md</code>)／Google E-E-A-T概念(Experience / Expertise / Authoritativeness / Trustworthiness、30秒で断言通過)／WebSearchツール(Claude Code組み込み)</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まずマーケ担当者が毎月「高品質なSEO記事が必要」に追われている現実を50〜60秒で語る(テーマ指定してAIに依頼する手軽さは魅力だがYMYL領域では浅い記事は絶対に上位を取れず、競合記事も豊富で企業のSEO投資も大きい、ここでコアメッセージ「工程分割で80%の再現性、残り20%の監修・一次情報・現場写真は人間の役割、この20%こそE-E-A-Tの核」を冒頭で一度打つ)→ 次にE-E-A-T(Experience/Expertise/Authoritativeness/Trustworthiness＝経験・専門性・権威性・信頼性)を30秒で解説、「AI下書き＋人間監修がE-E-A-T要件を満たす現実解」と断言して通過(「AI記事はペナルティ」神話への長い反論はしない)→ 題材を提示(架空「○△建設」のオウンドメディア記事として「屋上防水工事 費用相場」キーワード、V2と同じ架空会社のマーケ部門設定)→ 第1工程「競合分析」：Claude CodeのWebSearchでGoogle上位10記事を取得、見出し構成・含まれるトピック・各記事の強みをMarkdown比較表にまとめ<code>01-competitor-analysis.md</code>に保存(動画内では「競合A社」「競合B社」伏字)→ 第2工程「ユーザーニーズ分析」：比較表を読み込み「競合が見落としているギャップ」「ターゲット(マンション・ビルオーナー・小規模リフォーム会社)が本当に知りたいこと」を深掘り<code>02-user-needs.md</code>に保存 → 第3工程「構成案作成」：H2/H3の見出し体系を設計<code>03-outline.md</code>に保存(ウレタン・シート・FRP・アスファルトの4工法比較、費用内訳、業者選びチェックリストを差別化見出しに組み込む)→ 第4工程「本文執筆」：構成に沿ってセクション別に深掘り<code>04-body.md</code>に保存(「2026年4月時点の全国平均」「地域差あり」と撮影時点と対象範囲を明記、WebSearchとClaudeと人間監修の三位一体で一次情報の精度担保)→ 第5工程「メタ生成」：タイトルタグ・メタディスクリプション・OGP設定を<code>05-meta.md</code>に保存 → 最終記事をブラウザのMarkdownプレビューで確認、「5工程のファイル受け渡しで毎回同品質が再現される」と整理(一発執筆との品質差を言葉で確認)→ クロージング：「この5工程をS3-V2 Skills Creatorで<code>/seo [キーワード]</code>一発Skillに変換すれば、別キーワードでも同じ品質のパイプラインが動く」とSkill化接続を明示し、冒頭のコアメッセージ「80%の再現性＋20%の人間監修」をもう一度打ってS5への布石(工程全体をパイプライン化する発想をS5のアプリ開発へ発展)で締める</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">6</div>
         <div class="video-content">
-          <div class="video-title">【マーケティング向け】高品質SEO記事を分割工程で生成しよう</div>
+          <div class="video-title">【営業向け】Webスクレイピングで決裁者アタックリスト自動生成しよう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>SEOコンテンツ生成を工程分割し、再現性のある高品質ワークフローを構築できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>「一発で記事書いて」だと浅い→工程分割で品質UP（S2の/clear思想の実践）／競合分析→ニーズ分析→構成案→本文→メタ生成の5ステップ／各工程でファイル出力→次工程で読み込み／Skill化で「/seo [キーワード]」一発で毎回同品質</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「一発で記事書いて」で済ませてしまう → 工程分割の発想がない</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。5ステップのワークフロー</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：マーケティング向け）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 導入「一発だと浅い。工程分割で品質UP」→ Step 2 競合分析（WebSearchで上位10記事→比較表）→ Step 3 ユーザーニーズ分析（ペルソナ・ギャップ特定）→ Step 4 構成案作成（H2/H3）→ Step 5 本文執筆 → Step 6 タイトル・メタ生成 → Step 7 まとめ「Skill化で毎回同品質」</div>
-          </div>
-        </div>
-      </div>
-      <div class="video">
-        <div class="video-num">7</div>
-        <div class="video-content">
-          <div class="video-title">【営業向け】スクレイピングしてアタックリストを自動生成しよう</div>
-          <div class="video-structure">
-            <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>企業の事例ページURLから営業アタックリストを自動生成できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>アタックリストとは何か（営業の現場感：誰が・どう使う・どんな価値）／事例ページURLからの2段階スクレイピング（一覧→個別ページ）／LLMが自律的にURLを抽出する仕組み／URLパターン（case, cases, customers等）をプロンプトに入れると精度が上がる＝人間のドメイン知識の価値／手作業100社8時間→Claude Code数分</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>アタックリストの業務価値がピンとこない（→手作業との比較で体感させる）／スクレイピングが難しそう（→URLを渡すだけでできると見せる）</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>デモあり。口頭＋ターミナル画面のみ（スライドなし）。Sansan事例ページURL→一覧取得→個別ページスクレイピング→会社名・部署・役職・氏名をCSV出力</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（ユースケース：営業・インサイドセールス向け）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>Sansan事例ページURL（https://jp.sansan.com/case/）／デモ用出力: demo/s2v3/attack_list.csv</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 アタックリストとは？営業の現場で誰がどう使うか（1分）→ Step 2 手作業だと100社分で丸1日、これをClaude Codeで数分に（30秒）→ Step 3 実演：Sansan事例ページURLを入力→一覧ページをスクレイピング→LLMが個別事例URLを抽出→個別ページをスクレイピング→会社名・部署・役職・氏名をCSV出力（5分）→ Step 4 ポイント解説：URLにcase, customers等が含まれるという条件をプロンプトに入れた＝人間の業務知識がAIの精度を上げる（1分）→ Step 5 完成したCSVを開いて確認・まとめ（1.5分）</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>BtoB営業・インサイドセールス・営業DX推進担当が、Sansan事例ページ(<code>https://jp.sansan.com/case/</code>)の公開情報を題材に、robots.txt確認→一覧ページのクロール→個別事例ページからの決裁者情報抽出→CSV出力までの多段階ワークフローをClaude Code1本で回せるようになる。手作業で100社分の決裁者アタックリスト(会社名・部署・役職・氏名・業界)を作ると8時間かかる「読む・写す・転記する」の単純労働を数分に圧縮し、空いた時間を営業戦略・顧客関係構築という高付加価値業務に振り向ける感覚を体得する。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>BtoB営業の「決裁者アタックリスト作成」は新規営業の生命線(稟議・契約の承認権限者に直接届かないと商談が進まない、100社を手作業で集めると8時間が溶ける)／「決裁者」と「決済者」は別物(営業業界標準は「決裁者」＝承認権限者、「決済者」は代金支払い者の意味なので誤用、Sansan・ベルフェイス等SaaS各社も「決裁者」統一)／robots.txtと利用規約の確認は営業職の法令リテラシー(着手前にサイト側の許諾範囲を読む責任、個人情報保護法・特定商取引法の橋渡し)／2段階スクレイピングの階層構造(一覧→個別ページ、URLパターンを自律抽出)／人間のドメイン知識がAI精度を上げる(URLパターン候補<code>case</code>, <code>cases</code>, <code>customers</code>をプロンプトに埋め込むと抽出精度が跳ね上がる、S1からの一貫メッセージの再現)／手作業100社8時間 vs Claude Code数分の対比(手作業が悪いのではなく、人間の時間を高付加価値業務に振り向け直す発想)／生成CSVの現物検証(Excelで開いて公開情報と一致を目で確認)／S4セクション締めくくり→S5への質的転換(V1〜V5は単機能効率化、V6は多段階ワークフロー、S5ではCSVローカル→DB永続化＋チーム共有＋WebインターフェースのSaaS化へ)</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「スクレイピングって法的に大丈夫なのか」(robots.txt・利用規約・公開情報の3点を入口で明示)／「100社分のURLを1つずつ貼るのか」という勘違い(一覧→個別の階層をClaude Codeが自律的に辿る挙動を目で見るまでピンと来ない)／「LLMは毎回結果が揺れるから仕事に使えないのでは」の精度不信(URLパターンをプロンプトに書き足した瞬間に抽出結果が安定する体験で解消)</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙・法令配慮・クロージングの3枚のみ、それ以外はターミナル画面中心の画面収録で実演。<strong>冒頭の法令配慮シーンを実演前に1〜1.5分で固定配置</strong>：(1)<code>curl https://jp.sansan.com/robots.txt | grep -i case</code>で<code>/case/</code>が許可されていることを目で確認30秒／(2)Sansan利用規約・公開情報・スクレイピング許可確認済の3点を口頭で30秒／(3)個人情報保護法・特定商取引法の軽い橋渡し30秒。題材ページをブラウザで開き事例一覧の構造を見せる→Claude Codeを起動し一覧URLを1つ渡して対話で依頼→一覧を読みURLパターンからリンク抽出→個別ページへ降りて決裁者情報を拾う進捗を対話ログで流す→生成<code>attack_list.csv</code>をExcelで開き5列が揃っていることを確認→Sansan公式事例ページ3〜4件をブラウザで別タブで開き抽出データが公開情報と一致することを視覚的に突き合わせる。<strong>個人情報配慮</strong>：Sansan事例ページは公開情報・スクレイピング許可明示済、抽出される実在企業・担当者氏名はすべてSansanが公開している情報であることを動画内で明言、営業目的で利用する前に対象者のプライバシー設定・公開許諾範囲を再確認する責任がある旨を1文添える</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S4の6本目、最終動画。V1〜V5(eラーニング・申請書類チェック・オンボーディングチェックリスト・週次サマリー・SEO記事)が単機能の効率化で並んできたのに対し、V6は初めて「取得→加工→出力」の多段階ワークフローを扱い、S4セクション全体の「小さな局所最適化」から「事業全体を視野に入れた戦略的自動化」への卒業地点として設計。robots.txt確認→一覧クロール→URLパターン自律抽出→個別ページスクレイピング→JSON→CSVという複数ステップがClaude Code1本で連結できる体験はS4の中でV6だけが担う。クロージングではS5(SaaS化)への質的転換を明示し、「今はCSVをローカルで開く個人ツール、S5では同じリストを複数人で共有しDBに永続化してリアルタイム更新するWebインターフェース」という連続性で締める。S4の終着点でありS5の出発点でもある蝶番の回</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>Sansan事例ページ：<code>https://jp.sansan.com/case/</code>／Sansan robots.txt：<code>https://jp.sansan.com/robots.txt</code>／Sansan利用規約ページ(動画内で参照)／デモ用出力：<code>demos/s4-v6/attack_list.csv</code>(会社名・部署・役職・氏名・業界5列)／デモ用プロンプト：<code>demos/s4-v6/prompt.md</code>(URLパターン<code>case</code>, <code>cases</code>, <code>customers</code>をドメイン知識として埋め込んだ版)／法令配慮スライド：<code>slides/s4-v6-compliance.png</code>／S1-V1「人間のドメイン知識がAI精度を上げる」メッセージの源流／S4-V1〜V5「単機能の効率化」軸(本動画が多段階ワークフロー軸への展開)／S5-V1「SaaS化の出発点」</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まずBtoB営業の「決裁者アタックリスト作成地獄」を宣言する(新規営業の商談は決裁者に直接届かないと進まない、100社を手作業で集めると8時間が溶ける、50〜60秒で腰を据えて語り「Sansan事例ページを題材に8時間を数分に圧縮し空いた時間を営業戦略・顧客関係構築に振り向け直す」価値宣言)→ 次に「決裁者」という用語を中立化して定義する(「決裁者」は稟議・契約の承認権限者で営業業界標準、「決済者」は代金支払い者の意味で誤用、という一次情報を短く挟む)→ 法令配慮シーンを1〜1.5分でしっかり組み込む(<code>curl https://jp.sansan.com/robots.txt | grep -i case</code>で<code>/case/</code>が許可されていることを目で確認、利用規約・公開情報・スクレイピング許可確認済の3点、個人情報保護法・特定商取引法の軽い橋渡し、「着手する前にrobots.txtと利用規約を読む」習慣を意義ごと位置付ける)→ 題材ページ<code>https://jp.sansan.com/case/</code>をブラウザで開き事例一覧の構造を見せ「この一覧からクロールを始める」と見通しを共有 → Claude Codeを起動し一覧URLを1つ渡してまず素のプロンプトで依頼、LLMが企業ロゴ・リンクからURLパターンを探る様子を対話ログで見せる → ドメイン知識をプロンプトに差し込む体験に入る(素のプロンプトでは抽出精度が揺れる場面を短く示したうえで、「URLパターン候補は<code>case</code>, <code>cases</code>, <code>customers</code>です」という1行を足した途端に個別ページへの到達精度が安定する変化を対比で見せる、S1からの一貫メッセージを再現)→ Claude Codeが一覧→個別ページの2段階を自律的に辿り会社名・部署・役職・氏名・業界を1件ずつJSONで抽出、最後にCSVにまとめる過程を対話ログで流す(2段階スクレイピングの階層構造が多段階ワークフローの核心)→ 生成<code>attack_list.csv</code>をExcelで開き5列が揃っていることを確認、Sansan公式事例ページ3〜4件をブラウザ別タブで開いて抽出データが公開情報と一致することを視覚的に突き合わせる(現物検証の一手間を省かない)→ 手作業100社8時間 vs Claude Code数分の対比を数字で締める(時間差の正体は「人間が1社ずつ読む作業の自動化」、手作業が劣っているのではなく人間の時間を高付加価値業務に振り向け直す発想が本質、営業目的で利用する前にプライバシー設定・公開許諾範囲を再確認する責任が営業側にある旨も添える)→ S4セクション全体を俯瞰(V1〜V5は単機能の効率化、V6は多段階ワークフロー、S4は小さな局所最適化から事業全体の戦略的自動化への卒業)→ クロージングでS5(SaaS化)への質的転換を予告(今回はCSVをローカルで開く個人ツール、S5では同じ決裁者アタックリストを複数人で共有しDBに永続化してWebインターフェースからリアルタイム更新するSaaSへ質的に変わる、「今はCSVをローカル、次はチームで共有する段階」と境界を引きS4-V6が蝶番であることを明示して動画を閉じる)</div>
           </div>
         </div>
       </div>

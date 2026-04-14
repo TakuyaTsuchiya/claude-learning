@@ -927,86 +927,85 @@
       <div class="video">
         <div class="video-num">1</div>
         <div class="video-content">
-          <div class="video-title">名刺管理アプリにDB実装</div>
+          <div class="video-title">名刺管理アプリにDB接続して永続化しよう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>既存アプリにSupabaseを接続し、データの永続化を実装できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>Supabaseテーブル設計／CRUD操作／「もうブラウザ閉じても消えない」</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>テーブル設計が初めて（→「Excelの列を決める感覚」）</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。S5-V4のコードにSupabase接続を追加</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>S6の核。Supabase基本操作をここで覚える</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>S5-V4で作った名刺管理アプリのコード</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 「S5で作った名刺管理、ブラウザ閉じたら消えましたよね」→ Step 2 Supabaseテーブル設計 → Step 3 接続設定 → Step 4 CRUD実装 → Step 5 デプロイ → Step 6 「データが残ってる！」</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>前のセクションで作った名刺管理アプリのローカルストレージ保存をSupabase接続に置き換え、「ブラウザを閉じても別端末からも同じデータが見える」永続化を実装できるようになる（APIキーと<code>.env</code>の扱いもここで初めて実体験する）。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>ローカルストレージとクラウドDBの対比（冷蔵庫の付箋と自宅ファイルのクラウド、用途で使い分け）／テーブル設計＝Excelの列を決める感覚（contacts単一テーブル、id / name / company / email / phone / created_atの6列）／CRUD4操作（Excelの行追加・表閲覧・セル編集・行削除に対応）／APIキーと<code>.env</code>の実際の扱い（前のセクションの布石回収、<code>.gitignore</code>で除外、Vercel環境変数にも登録、家の鍵をSNSに載せない感覚）／Supabaseクライアントの呼び出し（<code>createClient(url, key)</code>）／「ブラウザ閉じても消えない」体験（別タブ・スマホでも同じデータが見える）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span><code>.env</code>と環境変数という言葉で止まる（中身は「鍵を1箇所にまとめたテキストファイル」だけ、実演で開いて見せれば腑に落ちる）／テーブル設計を何から決めればいいか迷う（アプリで入力している項目をそのまま列にする、名刺なら「名前・会社・メール・電話」がそのまま列）／ローカル保存の処理をどこまで消せばいいか分からない（読み書きの関数を1〜2箇所置き換えるだけで画面コードはほぼ触らない）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライド2割（表紙＋「ローカル保存 vs クラウドDB」対比図＋contactsテーブル設計1枚）／画面収録8割（Supabase管理画面→エディタ→ブラウザ→スマホ→Vercelの往復）。<strong>APIキー扱い</strong>：実演時のみANON KEYを表示、撮影後に必ずローテーション、動画内で「撮影後に無効化します」と一言添える。実演コマンド連鎖：Supabase管理画面でcontactsテーブル作成→Settings→APIからURL/ANON KEYコピー→ローカルで<code>.env</code>新規作成→<code>.gitignore</code>に<code>.env</code>が入っていることを確認→<code>npm install @supabase/supabase-js</code>→Claude Codeに「ローカルストレージの読み書きをSupabaseに置き換えて」と依頼→ローカル動作確認→Supabase Table Editorで行が増えたことを確認→GitHub push→Vercel環境変数画面にURL/キー登録→自動デプロイ→本番URLをスマホで開き同じデータ確認。架空名刺データ（架空商事の山田太郎等）、実在企業・個人名は避ける</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S6の起点であり、前のセクションで作った3つのアプリを「自分のブラウザだけの試作」から「複数端末で共有できる本物のアプリ」に昇格させる最初の1本。ここで覚える流れ（テーブル作成→<code>.env</code>設定→Claude Codeに置き換え依頼→環境変数の本番登録→デプロイ）は続く2本でも同じ順序で反復するため、3本シリーズの<strong>手本回</strong>として丁寧に見せる。APIキーと<code>.env</code>は前のセクションの安全回とSupabaseセットアップ回の両方で布石を置いていた話題で、ここで初めて実際のファイル操作として回収する。認証・権限管理・本番運用の論点はこの3本では扱わず、後のBACKSTAGE社の回で「プロダクトとして公開するときの別の層」として改めて整理する</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>前のセクションで作った名刺管理アプリのリポジトリ（GitHub上、ローカルストレージ保存版）／Supabase公式 <code>https://supabase.com/</code>／Supabase JS SDK公式 <code>https://supabase.com/docs/reference/javascript/introduction</code>／<code>.env</code>サンプル（<code>SUPABASE_URL=...</code> / <code>SUPABASE_ANON_KEY=...</code>の2行）／Vercel環境変数設定画面 <code>https://vercel.com/docs/projects/environment-variables</code>／前のセクションの安全回とSupabaseセットアップ回</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず冒頭で「前のセクションで3つのアプリを作りました。見た目は本物のSaaSでも、データは自分のブラウザの中だけ。ブラウザを閉じるとスマホでは何も見えないし、同僚とも共有できません。今日はその最後の壁を取り払います。名刺管理アプリにクラウドのデータベースを繋いで、『ブラウザを閉じても、別の端末でも、同じデータが見える』状態にします」と宣言（50〜60秒）→ 次にローカル保存とクラウドDBの対比を1枚のスライドで整理（ローカル＝冷蔵庫の付箋、クラウドDB＝自宅のファイルをクラウドに上げる感覚、優劣ではなく用途の使い分け）→ テーブル設計はExcelの列を決める感覚、と日常語で橋渡ししてcontactsテーブル1枚の設計を提示（id／name／company／email／phone／created_atの6列）→ Supabase管理画面のTable Editorでcontactsテーブルを作成（実演）→ 続いてプロジェクトのSettings→APIからURLとANON KEYをコピーし、ローカルに<code>.env</code>を新規作成して2行書く（「この1ファイルがすべての鍵、だから<code>.gitignore</code>に入っていることを必ず確認」と強調）→ <code>npm install @supabase/supabase-js</code>でSDKを追加、Claude Codeに「ローカルストレージの読み書きをSupabaseに置き換えて」と依頼（CRUDの4操作が一度に置き換わる様子を見せる）→ ローカルで名刺を1件登録し、Supabase管理画面のTable Editorで同じ行が増えたことを確認（「ブラウザの外側にデータが出た」瞬間）→ GitHubにpushし、Vercelの環境変数画面にURLとキーを同じように登録して本番デプロイ（<code>.env</code>はGitに上がらない、環境変数は本番環境にも別経路で渡す、という構造を口頭で整理）→ 本番URLをスマホで開き、さっきPCで登録した名刺がそのまま見えることを確認（「ブラウザを閉じても消えない」体験の達成点）→ 最後に「これで名刺アプリはローカル試作からクラウド本物に昇格しました。同じ流れを経費アプリ・CRMでも反復します。認証や権限管理はこの3本では扱わず、BACKSTAGE社の回でまとめて整理します」と次回予告で閉じる</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">2</div>
         <div class="video-content">
-          <div class="video-title">経費アプリに認証＋DB実装</div>
+          <div class="video-title">経費アプリにDB接続して永続化しよう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>認証機能を追加し、ユーザーごとにデータを分離できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>Supabase Auth／ログイン・サインアップ／ユーザー別データ表示</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>認証の仕組みが難しそう（→「Supabaseがほぼ全部やってくれる」）</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。S5-V5のコードに認証＋DB接続を追加</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践。V1に認証が加わる</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>S5-V5で作った経費アプリのコード</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 「経費アプリ、誰でも見れちゃいますよね。ログインを付けましょう」→ Step 2 Supabase Auth設定 → Step 3 ログイン/サインアップ実装 → Step 4 ユーザー別データ表示 → Step 5 デプロイ</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>フロント完結の経費アプリにSupabaseを接続し、経費データを端末を超えて残せるようにする。2回目の反復で「APIキー取得 → テーブル作成 → CRUD実装」という永続化の型を体得し、次に別ドメインのアプリでも同じ手順で接続できる自信を持ち帰る。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>2回目だからリズムを上げる（前の動画で踏んだ3ステップを経費アプリで同じ順に辿り直す、再現性の体感）／別ドメインで同じ型が通用する実感（家計簿でも住所録でも同じExcelに書式だけ変えて記録する感覚）／テーブル設計の小さな拡張（<code>expenses</code>の単一テーブル、金額は数値型・日付は日付型・カテゴリは文字列型と列ごとに型を選ぶ発想）／ローカルストレージ → Supabaseの置き換え（既存のローカル保存ロジックを差し替えるだけでコードの骨格は変わらない）／本講座では永続化の型に集中する判断（集計クエリは組み合わせ実装可能だが、本講座ではシンプルな永続化の型を揺るぎないものにする方を優先）／レシート画像はブラウザ表示のみに留める（クラウドストレージに預ける選択肢もあるが今回は永続化の骨格に絞る）／認証・権限管理は後半に集約</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「同じ手順でもう一度やる意味が見えない」（冒頭で「2回目は手が覚えに行くフェーズ」と宣言し、速度を上げることで学習の進捗感を担保）／「金額や日付の列の型って何を選ぶの？」（金額は計算したくなるから数値型、日付は並び替えたくなるから日付型、という基準を1行で示す）／「集計グラフを外して見栄えが寂しくなるのでは」（フロント側のグラフ描画はそのまま残し、データ取得先だけDBに差し替える構成）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライド比率は低め（表紙＋完成画面キャプチャのみ、尺の1割以下）、残り9割は画面収録の一気通貫。実演順：Supabase管理画面を開く→<code>expenses</code>テーブル作成（列：id / date / amount / category / memo / created_at、型はそれぞれ選ぶ）→APIキーを<code>.env</code>に貼る（前の動画と同じ流儀で手早く）→Claude Codeに「ローカルストレージ保存をSupabaseの<code>expenses</code>テーブルに置き換えて」と依頼→生成差分を確認→ブラウザで経費を登録→Supabase管理画面で行が増えたことを確認→ブラウザを閉じて開き直しても経費が残っていることを確認→別タブで同じURLを開いても同じデータが見えることで永続化を体感。<strong>個人情報配慮</strong>：経費データは架空（会議費／交通費／消耗品費など）、実在の店舗名・取引先名は使わない</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S6の反復定着回。前の動画で永続化の型を初めて通した受講者に、同じ型が別ドメインでも通用することを体感してもらう位置。ここで型が定着すれば、次の動画でCRMを永続化するときには手が先に動く状態に近づく。S6全体の学習曲線としては「1回目で型を学ぶ → 2回目で速度を上げて定着 → 3回目で手が覚える」の中央に置かれる回であり、受講者の自信がもっとも伸びる瞬間をここに設計する。BACKSTAGE社の回で認証・権限管理に踏み込む前に、シンプルな永続化の骨格を3つのアプリで揃えきる流れの中継点</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>前のセクションで作ったfreee風経費アプリ（ローカルストレージ版、置き換え元のコード）／Supabase公式ドキュメント <code>https://supabase.com/docs</code>／Supabase JavaScriptクライアント <code>https://supabase.com/docs/reference/javascript/introduction</code>／前のセクションのSupabaseセットアップ回（APIキーの場所と管理画面の位置が既出）／前の動画で整備した<code>.env</code>とSupabaseクライアント初期化パターン</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず冒頭で「前の動画で名刺管理アプリを永続化しました。今日は同じ手順を経費アプリで辿り直します。2回目なので手が覚えにいくフェーズです。完成すると、経費データが端末を超えて残るようになります」と宣言 → 次に今日の完成形を30秒プレビュー（経費を登録 → ブラウザを閉じる → 開き直しても残っている）→ Supabase管理画面で<code>expenses</code>テーブルを作成（列と型を1列ずつ選ぶ、金額は数値型・日付は日付型という選び方を短く添える）→ APIキーを<code>.env</code>に貼る（ここは前の動画と同じ流儀で手早く通す）→ Claude Codeに「ローカルストレージ保存をSupabaseの<code>expenses</code>テーブルに置き換えて」と依頼し、生成された差分を確認 → ブラウザで架空の経費を登録し、Supabase管理画面で行が増えたことを確認 → ブラウザを閉じて開き直し、経費が残っていることを体感（ここで「型が定着した」ことを言語化）→ 集計クエリにも踏み込める選択肢があるが本講座では永続化の骨格に集中すると整理し、レシート画像のクラウド保存も同じ理由で次の機会に回すと伝える → 最後に「次の動画では同じ型をCRMで3回目に辿ります。そこまで来れば永続化の型は自分の型になっています」と予告してクロージング</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">CRMをチーム共有化</div>
+          <div class="video-title">CRMアプリにDB接続して永続化しよう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>チームで共有できるアプリを作り、権限管理（RLS）の基本を理解する</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>RLS（Row Level Security＝行レベルセキュリティ）／チーム共有／「自分のデータだけ見える設定」</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>権限管理が複雑そう（→「1行のルールを書くだけ」）</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。S5-V6のCRMにチーム共有＋RLSを追加</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践。DB→認証→権限管理の3段階目</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>S5-V6で作ったCRMのコード</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 「CRM、チームで使いたいですよね」→ Step 2 認証追加 → Step 3 RLS設定 → Step 4 チームメンバーでの動作確認 → Step 5 デプロイ</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>前のセクションで作ったSalesforce風CRMにSupabaseを接続し、顧客データと商談ステータスをクラウドで永続化できるようになる。DB接続3回目の反復を通じて「もう自分で好きなSaaSのDB接続ができる」という独り立ち感覚を確立する。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>3回目の反復で独り立ち（自転車の乗り始めは補助輪付き、2回目で補助輪を外し、3回目でスイスイ走れるようになる感覚）／customers単一テーブルで顧客×商談×パイプラインをまとめて扱う設計（id / name / company / status / last_contact / memo / created_atの7カラム、複数テーブル・外部キーを使う設計は実務では登場するが今回は扱わない）／パイプラインのステータス遷移を<code>status</code>カラム1つで実現（見込み・提案・成約の状態を単一カラムのUPDATEで切り替える、Excelの「ステータス」列書き換えと同じ）／CRUDの4動作をまとめて復習（依頼文パターンが3回目でテンプレート化）／S6前半3本の総まとめ（名刺・経費・CRMの3アプリが「ブラウザを閉じても消えない」状態に到達）／独り立ち後の景色（自分の普段使いのSaaSに置き換えて「あれも同じ手順で作れる」と言語化）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「3回目だから手順を飛ばしても大丈夫か不安」（前の2本で身体が覚えている範囲は省略して構わない、Claude Codeへの依頼文も要点だけで通じる）／「顧客と商談を分けなくて本当に大丈夫か」（今回はシンプルにデータが残ることが目的、単一テーブルで十分機能する、必要になった段階で分ければいい）／「パイプラインのドラッグ操作がDB反映されるか心配」（ステータスが変わるたびに<code>status</code>カラムをUPDATEするだけ、画面の見た目とDBの中身は同じことの2つの表現）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙＋S6前半3本の3アプリ完成後の全体像図のみ、画面収録で実演。Supabase側でcustomersテーブル作成→前のセクションのCRMコードを開く→ローカルストレージ保存箇所をSupabaseクライアントに置き換えるようClaude Codeに依頼→CRUD動作確認（顧客追加／一覧表示／ステータス変更／削除）→ブラウザを閉じて再度開きデータが残っていることを確認→GitHub push→Vercel自動デプロイ。<strong>最後に名刺・経費・CRMの3アプリをブラウザタブで並べて、それぞれブラウザを閉じても消えない状態を見せるツアーで締める</strong>。スライドと画面収録の比率は1:9。顧客データは架空（「株式会社サンプル商事」「見込み客A」程度）、実在企業・個人名は使わない</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S6の前半3本（DB接続編）の<strong>総まとめ回</strong>。前の2本で身につけた「テーブル設計 → Supabase接続 → CRUD置き換え」のフローを3回目で完全に定着させ、受講者が<strong>自分一人で好きなSaaSにDB接続できる独り立ち感覚</strong>を持ち帰る回。前のセクションで作ってきた3つのフロントアプリが全て永続化され、ローカルストレージ時代の「ブラウザを閉じたら消える」制約を卒業するマイルストーンになる。この総まとめを踏まえて、次の2本でプロの開発組織のリアルなClaude Code活用フローを見て、今の自分の到達点がプロの現場とどう地続きになっているかを比較する展望に繋ぐ</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>Supabase公式 <code>https://supabase.com/</code>／Supabase JavaScript Client <code>https://supabase.com/docs/reference/javascript/introduction</code>／前のセクションで作ったSalesforce風CRMのコード（ローカルストレージ版、ベースとなるアプリ）／前2本のDB接続回（名刺・経費）で整備した<code>.env</code>とSupabaseクライアントの初期化パターン／前のセクションで扱った「秘密情報の扱い」回（APIキーの環境変数管理の復習）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず冒頭で「前の2本で名刺と経費をクラウドに保存できるようにしました、残るは前のセクションの最後に作ったSalesforce風CRMです、3回目の今回はサクッと進めて、見終わる頃には自分の普段使いのSaaSにもDB接続できる手応えを持ち帰ってもらいます」と宣言し、3回目の反復で独り立ち感覚を確立するのが今日の目的だと腰を据えて語る → 次にSupabase側でcustomersテーブルを作る、カラムはid / name / company / status / last_contact / memo / created_atの7つ、「顧客と商談を分けない、パイプラインのステータスもstatusカラム1つで表現する、シンプルにデータが残ることを優先する」という設計判断を1文で言い切る → 前のセクションで作ったCRMのコードを開き、ローカルストレージ保存の箇所をSupabaseクライアントへのCRUD呼び出しに置き換えるようClaude Codeに依頼、3回目なので依頼文が要点だけで通じることを体感する → ブラウザで顧客を1件追加し、SupabaseのTable Editorにレコードが届いていることを確認 → パイプラインのカードをドラッグして「見込み」から「提案」へ動かし、statusカラムがUPDATEされたことをTable Editorで確認、画面の見た目とDBの中身が同じことの2つの表現であることを腹落ちさせる → 顧客を1件削除し、画面とDBの両方から消えることを確認、ブラウザを閉じて再度開いても他のデータは残り続ける様子を見せる → GitHubにpushしてVercelが自動デプロイ、発行URLにスマホからアクセスして、端末を超えて同じデータが見える状態を確認 → 最後に名刺・経費・CRMの3つをブラウザタブで並べて、それぞれブラウザを閉じても消えない状態を順にツアーし、「前の2本と今回で、前のセクションで作った3つのSaaS風アプリが全て永続化できました、ここまで来たら自分の普段使いのSaaSにも同じ手順でDB接続できます、次の2本ではプロの開発組織のリアルなClaude Code活用フローを見て、今日たどり着いたこの到達点がプロの現場とどう地続きになっているかを見ていきます」と展望を語って締めくくる</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
-          <div class="video-title">セキュリティ注記＋本番運用の話</div>
+          <div class="video-title">BACKSTAGE社の日常開発フローを見よう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>プロトタイプと本番プロダクトの違いを理解する</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>「この講座で作ったものはプロトタイプ・社内ツールとして十分使える」／不特定多数公開・決済にはセキュリティ専門知識が別途必要／次のステップの紹介</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「じゃあ使えないの？」（→社内ツール・プロトタイプなら十分。外部公開時だけ注意）</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。口頭で説明</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>重要な注意喚起。誠実に伝える</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>—</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 「ここまでで3つのSaaSを本物にしました」→ Step 2 「社内ツール・プロトタイプとしては十分実用的」→ Step 3 「外部公開・決済を扱う場合はセキュリティの専門知識が必要」→ Step 4 次のステップの紹介</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>BACKSTAGE社のエンジニアチームが日常どのようにClaude Codeを扱っているかを観察し、自分が前半3本で到達した「SaaSプロトタイプが作れる状態」の次のステップ（チーム開発・組織活用）のイメージを持つ。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>BACKSTAGE社のエンジニア組織の紹介（規模感・役割分担）[要先方確認：公開可能な情報範囲]／チーム内でのClaude Code活用シーン（コードレビュー・ペアプロ・知見共有）[要先方確認]／意思決定のスピード感とチーム文化（視聴者の職場と地続きに感じられる切り口で）[要先方確認]／「プロも同じツールを使っている」という親近感の醸成（プロは別世界ではなく扱い方の厚みの違いとして提示）／前半3本で扱ったDB接続との接続点（プロは同じ技術をどう扱うか）[要先方確認]</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「プロはどう使ってるの？」のイメージがわかない（BACKSTAGE社の日常シーンを具体的に見せて解消）／「プロのレベルを見て自分が萎縮しないか」（同じツール・同じコマンドを使っている親近感で和らげる、レベル差ではなく「使い込みの厚み」として中立化）／「自分の環境では再現できないのでは」（個人開発とチーム開発の接続点、コードレビュー・知見共有は1人でも工夫で取り入れられる）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドとインタビュー／現場素材の比率は <strong>[要先方確認]</strong>。想定枠：オープニング・クロージングはスライド（講座側で制作）／BACKSTAGE社紹介シーンは先方提供素材もしくはインタビュー撮影 [要先方確認]／Claude Code活用の日常シーンは画面収録／デスク周り撮影／インタビュー [要先方確認]／コード・社内ツールの映り込みは公開可否を事前確認 [要先方確認：マスキング要否]／個人情報・社内固有情報の扱いルールを先方と事前合意</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>前半3本でDB接続を体験し「自分はSaaSプロトタイプを作れる」状態に到達した受講者に、<strong>同じツールを使うプロの組織の日常</strong>を見せて視野を広げる役割。単なる事例紹介ではなく、「受講者が次にイメージすべきステップ（チーム開発・組織活用）」の具体像を提供する前半編。次の動画（本番運用編＋セキュリティ）への自然な橋渡しとして、まずはチーム文化・日常という入りやすい切り口から扱う。講座最終回手前のマイルストーンとして、達成感（ここまで来た）と展望（この先に続く道）を両立</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>BACKSTAGE社の関連情報（会社紹介・エンジニア組織情報・公開可能な事例）[要先方確認：URL・素材・出演者の出演同意書]／出演者：BACKSTAGE社エンジニア（及川さん含む可能性）[要先方確認：出演者確定・撮影日程]／前半3本の到達点（受講者の現在地としての参照）／次の動画（後半・本番運用編）の構成メモ（接続の確認用）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず冒頭で「ここまでの3本でDB接続を体験し、自分はSaaSプロトタイプを作れる状態になった。次はプロの組織がこのツールをどう扱っているか、日常を観察する時間です」と50〜60秒で宣言し、なぜこの回でプロの事例を見るのかを腰を据えて語る → 次にBACKSTAGE社の紹介（会社・エンジニア組織の規模感・役割分担）[要先方確認] → エンジニアチームのClaude Code活用の日常シーン1：コードレビューの場面 [要先方確認] → 日常シーン2：ペアプロ／知見共有の場面 [要先方確認] → チームの意思決定スピード感と文化の描写 [要先方確認] → 受講者が今いる地点（前半3本の到達点）とプロの組織の扱い方を並べて、「同じツールを使っているが厚みが違う」という親近感と展望を同時に提示 → 個人開発でも取り入れられる要素の抽出（1人でも工夫で近づける接点）→ クロージング：ここまでの到達感を言語化し、「次の動画では同じBACKSTAGE社の本番運用編・セキュリティ面を扱う」と予告 [要先方確認：予告の踏み込み範囲]。※上記シーンの具体内容・順序は先方確認後に詳細化</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">5</div>
         <div class="video-content">
-          <div class="video-title">BACKSTAGE社のリアル開発フロー</div>
+          <div class="video-title">プロの本番運用とセキュリティを学ぼう</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>プロのエンジニアチームのClaude Code活用を知り、自分の次のステップをイメージする</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>内容は先方（BACKSTAGE社）に任せる</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「プロはどう使ってるの？」のイメージがわかない</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>先方に任せる</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>講座の締め。「皆さんはここまで来ました。プロはこう使っています」</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>先方提供素材</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>先方に任せる</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>BACKSTAGE社の本番運用事例を観察し、自分が作ったプロトタイプと本格的な本番運用の境界線を理解したうえで、受講後の次のステップ（コミュニティ参加・専門書・エンジニアとの協業・継続学習）を具体的にイメージできるようになる。本講座で身につけた力は「プロの世界への入口」であると自覚し、プロもAIで武装している現実に触れて、次の一歩を踏み出す心構えを得る。</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>プロトタイプと本番運用の境界線（断罪ではなく「用途と規模の差」として可視化）[要先方確認]／認証・権限管理の実装例（ログイン・権限分離・行レベルセキュリティ等、本講座スコープ外だが「プロはこう扱っている」の具体例）[要先方確認]／脆弱性対策と定期スキャン（パソコンのセキュリティ更新と同じ発想で橋渡し）[要先方確認]／監視・ログ・インシデント対応の文化（「何かあった時にどう気づき、どう動くか」をチームとして備える考え方）[要先方確認]／CI/CD・テスト戦略（工場の検品ラインのイメージで橋渡し）[要先方確認]／スケーラビリティと運用体制（利用者が増えた時にどう支えるか）[要先方確認]／「あなたのプロトタイプ」と「プロの本番」の対比（社内ツール・検証用途としての即戦力価値と、本番運用の上乗せ要素を並べる）／プロもAIで武装している現実（受講者は「プロの入口」に立ったという高揚感の根拠）[要先方確認]</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「自分のプロトタイプは結局使えないのでは」と過小評価（社内ツール・個人用・検証用途としては即戦力という肯定的位置付けを明示）／「本番運用はハードルが高すぎて、自分には一生手が出せない」と萎縮（プロも同じツール・同じAIから始めている、違いは「組織・体制・継続学習」であって才能や特別な秘密ではない）／「講座が終わったら何をすればいいか分からない」と行き先を見失う（受講後の次のステップを具体的に案内、「入口に立った」という現在地を明確化）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>先方提供素材・インタビュー形式・画面収録の比率はすべて [要先方確認]。想定構成：BACKSTAGE社のオフィス／作業風景の素材を一部差し込み [要先方確認]／及川さん中心のインタビューorナレーション重ね [要先方確認]／実際のCI/CD画面・監視ダッシュボード等の画面収録 [要先方確認]。<strong>必須で組み込みたい図解</strong>：「あなたのプロトタイプ vs プロの本番」の境界線を1枚のスライドで可視化（プロトタイプ欄に本講座で扱った要素、本番欄に今回吸収する5項目を並べる）。素材が整わない場合の代替：スライド中心＋講師語りでプロの本番運用を解説する構成へ切り替え [要先方確認後に方針確定]</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>本動画はS6最終回であり、<strong>本講座全体の総まとめ</strong>として機能する。前の動画でBACKSTAGE社のチーム文化・日常編を見た受講者に対し、本動画では「本番運用・セキュリティ・運用ノウハウ」というプロの実務面を見せることで、前半3本で自分の手で体験したDB接続アプリを「プロの世界の入口」として再定義する。メッセージは「あなたはここまで来た、プロはここから先をこう運用している」。受講者を萎縮させず、達成感と次への意欲を同時に持たせる設計。最終シーンでは「プロもAIで武装している、あなたもその入口に立った」という一貫したトーンで、受講後の次のステップへと橋渡しする。旧セキュリティ注記・本番運用の5項目は本動画に吸収し、「注意喚起」ではなく「プロの実例を通じた前向きな気づき」として再構成する</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>BACKSTAGE社の関連情報（オフィス映像・インタビュー・本番運用事例・CI/CD実例・監視ダッシュボード等）[要先方確認：公開可否と提供範囲]／BACKSTAGE社のAI活用事例（プロもAIで武装している根拠）[要先方確認]／前の動画（前半：チーム文化・日常編）— 直前動画との接続／前半3本（DB接続を実装した3つのアプリ）— 受講者の現在地の言語化に使用／本講座全体（S1〜S6）の到達点— 最終シーンの振り返りに使用／受講後の次のステップ案内：コミュニティ（想定：本講座のコミュニティ／外部勉強会）[要先方確認：具体的な誘導先]／専門書（本番運用・セキュリティ・SRE関連）[要先方確認：推薦書リスト]／エンジニアとの協業／継続学習（公式ドキュメント・プロの発信）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず冒頭50〜60秒で「前の動画でBACKSTAGE社の日常を見ました、今回は本番運用編です。あなたはここまででDB接続アプリを作れるようになった、プロはここから先をこう運用しています」と講座最終動画としての宣言と高揚感の土台を置く → 次にBACKSTAGE社の本番運用事例の全体像を俯瞰（[要先方確認]）→ 「あなたのプロトタイプ vs プロの本番」境界線図解で受講者の現在地を可視化 → 認証・権限管理の実装例を中立的に紹介（[要先方確認]）→ 脆弱性対策と定期スキャンの日常運用（[要先方確認]）→ 監視・ログ・インシデント対応の文化（[要先方確認]）→ CI/CD・テスト戦略の自動検品ライン（[要先方確認]）→ スケーラビリティと運用体制（[要先方確認]）→ 受講後の次のステップ案内（コミュニティ・専門書・エンジニアとの協業・継続学習）→ 講座全体（S1〜S6）の振り返りと達成感の確認 → 最後に「プロもAIで武装しています、あなたもその入口に立ちました」と高揚感あるクロージング。※最終シーンのクロージングは講座全体の締めとして最重要、受講者が前向きに講座を閉じられる語り口を台本段階で磨き込む</div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 
   <!-- Policy Map -->
   <div class="policy-map" id="policy">

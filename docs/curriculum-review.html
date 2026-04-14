@@ -609,80 +609,80 @@
       <div class="video">
         <div class="video-num">2</div>
         <div class="video-content">
-          <div class="video-title">自分の業務をSkill化して組織全体に共有しよう — Skills Creatorの使い方</div>
+          <div class="video-title">毎月30時間の月次レポート作成をSkill化する — Skills Creatorで自分の業務を手放す</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>自分の業務をSkill化し、チーム全員で使えるようにできる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>Skills Creatorの使い方／Skills自体もClaudeに作らせる／1日1回やること→Skill化／チーム全員が同じ品質で作業できる横展開</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>何をSkill化すればいいかわからない（→1日1回やることから）</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。実際にSkillを作成する工程を見せる</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（Skills作成）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>公式skill-creator https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Skill化の対象を選ぶ（1日1回やること）→ Step 2 Skills Creatorで作成 → Step 3 テスト実行 → Step 4 チームへの共有方法</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>経理担当者が毎月繰り返している<strong>月次経営報告レポート作成</strong>を題材に、Skills Creatorで自分の業務をSkill化し、<strong>同じ品質のレポートをチーム誰もが生成できる状態</strong>にできるようになる。アウトプットは経営者向けHTMLインフォグラフィックレポート。架空のドレミファエア社の3月度月次レポート作成までを一気通貫で実演する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span><strong>Skill化の対象＝「毎月・毎週・毎日、同じ手順で繰り返す業務」</strong>（日常の「マニュアル」「レシピ」と同じ発想で、手順を書き出せば誰でも同じ品質で再現できる）／<strong>Skills Creatorの正体＝「自分の作業手順をClaudeに説明するだけでSkill仕様に変換される対話型ツール」</strong>（プロンプトエンジニアリングの知識は不要）／<strong>S3-V1との対比</strong>：V1は「他者が作ったshinkokuを使う」体験、V2は「自分が作り手になる」体験＝受動→能動への転換／<strong>非エンジニア業務こそSkill化の主戦場</strong>（経理・人事・営業・マーケの毎月やってくる定型業務）／<strong>「数字だけのレポート」から「読まれるレポート」へ</strong>＝背景・ストーリー・示唆を含むHTMLレポートを自動生成／<strong>属人化の解消</strong>＝ベテラン経理のノウハウがSkill化で組織の資産に／<strong>小さく始める戦術</strong>（完璧を目指さず、まず1ヶ月分で回してテスト→微調整）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「何をSkill化すればいいかわからない」（毎月必ずやる定型業務が最適候補）／「自分の作業を言葉で説明できる自信がない」（暗黙知を書き出せない、対話形式がこのハードルを解決）／「Skillの品質は1回で完成する?」（テスト→微調整の前提を知らずに踏み出せない）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。業務の洗い出し → <code>/skill-creator</code> 起動→対話形式で手順を口頭説明 → <code>SKILL.md</code> 自動生成 → 生成Skillの中身（ロール・インプット・アウトプット）確認 → テスト実行（<code>demos/doremifa-air/</code> の3ファイル：financials.csv／board-notes.md／business-notes.md）→ ブラウザでHTMLレポート確認 → 対話で微調整。<strong>実在企業のIRデータは使わず、架空のドレミファエア社データで統一</strong></div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>S3の核となる「作り手体験」。V1（他者作shinkokuを使う＝受動）の直後に置き、「使って仕組みが分かった」受講者を「自分が設計する側」へ反転させる。経理という非エンジニア業務を題材にすることで<strong>コードが書けなくてもSkillの作り手になれる</strong>ことを実証。V3（MCP）への伏線として「Skillだけでは外部ツール（Slack・Notion等）には触れない」→「次はそれを繋ぐMCP」へ接続</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>公式Skills Creator（<code>https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md</code>）／S3-V1 shinkoku実演（対比用）／デモデータ <code>demos/doremifa-air/financials.csv</code>／<code>board-notes.md</code>／<code>business-notes.md</code>／参考書籍（発想参照のみ・引用なし）：経理AI実践ガイド ケース08「読まれるレポート作成」</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず<strong>毎月やってくる月次レポート作成の憂鬱を宣言</strong>（月末の業績集計・議事録読み直し・パワポ作成に毎月10〜30時間、しかも経営会議で読まれない「数字の羅列」で終わる、を50〜60秒で腰を据えて語る）→ 次にS3-V1 shinkokuとの対比を置く（受動から能動への転換） → 題材紹介：架空のドレミファエア社（ドレミファソラシドの7路線を持つ中堅キャリア）の3月度月次経営レポート、業績CSV・経営会議メモ・事業背景メモの3ファイルをインプットに経営者向けHTMLレポートを出力 → <code>/skill-creator</code> 起動、「あなたの業務手順を教えてください」への応答で経理手順を口頭説明（前年比計算・議事録からの関心事抽出・事業メモからの定性情報・数字の背景ストーリー組立・HTML出力） → 応答が <code>SKILL.md</code> に自動変換されていく過程 → 生成Skillの中身（ロール・インプット・アウトプット条件）の構造確認 → テスト実行：<code>demos/doremifa-air/</code> の3ファイルを渡してHTMLレポート生成、ブラウザで確認（「LCC参入で価格競争懸念」「新路線就航で四国需要の取り込み」等の背景付きの読まれるレポート） → 微調整（「グラフが弱い」「示唆をもう1段踏み込みたい」を対話で反映しSkillを育てる） → チーム共有の言及（「このまま共有すれば他の経理メンバーも同じ品質で出せる」とひと言） → クロージング：Skillは手順の外部化＝組織の資産</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">3</div>
         <div class="video-content">
-          <div class="video-title">MCP① Slack連携 — チャンネル横断で日報・週報を自動生成 </div>
+          <div class="video-title">MCP① Slack連携 — チャンネル横断で日報・週報を自動生成</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>Slack MCPを接続し、日報・週報を自動生成できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>MCP接続方法／Slack全チャンネル横断クロール／日報・週報の自動生成／上司向けチーム活動サマリー</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>MCPの接続設定でつまずく</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙＋MCP概念図のみ（参照: https://ai.plainenglish.io/what-is-mcp-model-context-protocol-18624a444b51）。画面収録で実演。Slack MCP接続→日報生成</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（MCP第1弾）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>Slack MCP</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 MCPとは → Step 2 Slack MCPの接続設定 → Step 3 全チャンネル横断で日報生成 → Step 4 「毎日30分→30秒」の効果</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Claude CodeでSlack MCPを接続し、全チャンネルを横断して日報・週報を自動生成できるようになり、S3で初めて学ぶ<strong>「MCPの定義」と「外部ツール連携の本質」</strong>を理解する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span><strong>MCPとは＝AI（Claude）と外部ツール（Slack・Notion等）を繋ぐ共通規格</strong>（日常の「USB-Cポート」のように、異なる周辺機器も共通規格で繋ぐ発想）／MCP = Model Context Protocol = モデル・コンテキスト・プロトコル／<strong>Skills（手順パッケージ）vs MCP（外部ツール接続）の対比</strong>で混同を防ぐ／MCPの接続は<strong>「認証情報をconfig.jsonに書くだけ」の3ステップ</strong>で完了／Slack MCPで全チャンネルをクロール→AIが日報を作成→毎日30分の作業が30秒／<strong>上司向けチーム活動サマリー</strong>＝経営層にも響く価値／MCPは複数接続可能（Slack＋Calendar＋Gmail等を組み合わせる入口）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>MCPの接続設定（<code>~/.claude/mcp.json</code> や <code>claude_desktop_config.json</code> の編集）でつまずく／Skillsと混同する（「Skillも外部ツール連携じゃないの？」）／「接続したのに動かない」環境依存トラブル</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙＋MCP概念図（USB-C例示）のみ。画面収録で実演。公式リポジトリ（<code>https://github.com/modelcontextprotocol/servers</code>）のSlack実装を使用。接続手順（環境構築→トークン取得→config.json記述→接続テスト）→ プロンプト「Slackの過去7日間の全チャンネルをクロール、日報を生成して」→ 結果表示。<strong>サンプルワークスペースは架空チーム</strong>（実在組織データは使わない）</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践・導入ハイブリッド（MCP第1弾）。S3全体を「手順パッケージ化（V1 Skills）→ 自分の業務をパッケージ化（V2 Skills Creator）→ 外部ツール連携（V3 MCP第1弾）」と階段状に設計。V3はMCP概念の初登場動画としてS3内での役割を担う。V4以降で「複数MCP組み合わせ」へ接続する布石</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>公式MCPサーバーリポジトリ（<code>https://github.com/modelcontextprotocol/servers</code>）／Anthropic公式Skills（<code>https://github.com/anthropics/skills</code>）／S3-V1（Skillsとの対比）／S3-V2（作り手体験）／MCP概念図例（<code>https://ai.plainenglish.io/what-is-mcp-model-context-protocol-18624a444b51</code>）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず<strong>毎日30分かけてSlack日報を手作業で書いているチームの課題</strong>を紹介し、「この30分が30秒になったら」という価値提示で冒頭1分を使う → 次にMCPを日常例（USB-C・Lightningケーブル）で説明（メーカーが違う周辺機器も共通規格で繋がるのと同じで、SlackもNotionもGmailもMCPという統一規格でClaudeに繋げば協調して動く）→ MCPの定義を明示、Skills（手順パッケージ）との違いを対比で明確化 → Slack MCP接続実演：公式リポジトリのSlack実装を確認 → トークン取得（Slack APIコンソール）→ <code>config.json</code> への設定記述 → 接続テストで「接続完了」を確認する3ステップを丁寧に解説 → 受講者つまずきポイント補足（「接続できない時はここをチェック」という実務チェックリスト）→ 接続済みSlack MCPに「過去7日間、すべてのチャンネルのメッセージをクロール、営業活動・企画進捗・事務完了等を集約して経営層向け日報を生成して」と指示し実際の出力を表示（日付・チャンネル別活動サマリー・数字による成果指標・上司向けコメント）→ 同じプロンプトで週報も生成可能、HTML化の利点に触れる → クロージング：「今見たのはSlack MCPだけだが、同じやり方でNotionの議事録・Figma・X など複数ツール組み合わせまですべてMCP経由で可能」とV4〜V6への布石</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">4</div>
         <div class="video-content">
-          <div class="video-title">MCP② Notion連携 — 議事録・タスク管理をAIで自動化 </div>
+          <div class="video-title">MCP② Notion連携 — 組織の記憶を横断して経営課題を抽出する</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>Notion MCPで議事録からタスク自動登録ができるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>Notion MCPの接続／Notionのデータベースに直接読み書き／議事録→アクションアイテム抽出→タスク自動登録／「Notionを開かずにNotionを操作する」</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>Notion APIの権限設定が複雑</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。議事録からNotionタスク自動登録</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（MCP第2弾）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>Notion MCP</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 Notion MCPの接続設定 → Step 2 議事録からアクションアイテム抽出 → Step 3 Notionタスクに自動登録 → Step 4 進捗一覧取得</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Notion MCPを接続し、組織内に散在する知識（議事録・プロジェクト情報・ドキュメント・ナレッジ）を横断して検索・抽出し、新しい視点からHTML報告書や組織内FAQなどに再構成できるようになる</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span>Notion MCPの接続方法と権限設定／<strong>組織の記憶をClaudeが横断操作することの価値</strong>（個別タスク処理→知識の統合活用へシフト）／<strong>議事録×プロジェクト×ドキュメント×ナレッジの4層構造を一度に検索する力</strong>／「過去3ヶ月の議事録から経営課題を抽出」の実例／オンボーディング資料自動生成のユースケース／週報・ダッシュボード・FAQ自動化による「情報の民主化」／<strong>「Notionを開かずにNotionを操作する」から「Notionを読み込んで意思決定を支援する」への進化</strong></div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>「Notion MCPって結局タスク登録の自動化?」という限界感（実は知識横断の力学が本質）／Notion APIの権限設定が複雑（Integration・Database Permission・User権限の3層理解がない）／「どんなデータが取れるのか」の実感がない</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。デモは「過去3ヶ月の議事録から経営課題を抽出してHTMLダッシュボード生成」シナリオ。Notion内の議事録DB（複数プロジェクト分）→ Claude Codeでの横断検索 → HTML出力の一気通貫フロー。<strong>個人情報（社員名等）はダミーデータで統一</strong></div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（MCP第2弾）。S3-V3（Slack＝流れる情報・リアルタイム）に対して、V4はNotion＝蓄積された情報・歴史という<strong>対比構造</strong>を作る。「流れる情報」と「蓄積された情報」の両立で、組織の意思決定速度と質が同時に上がる価値を伝える。V5 Figma・V6 X MCPへの布石として「MCP＝組織のあらゆる場所にClaudeが入る」連続性を意識させる</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>Notion公式MCP（<code>https://github.com/makenotion/notion-mcp-server</code>）／Notion Databasesドキュメント（<code>https://developers.notion.com/reference/database-query</code>）／S3-V3（Slack MCPとの対比）／S3-V5 Figmaへの接続地点</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず<strong>組織の記憶をClaudeが横断操作することの重要性を宣言</strong>（人間の脳は個人の経験しか覚えていないが、Notionは組織全体の知識が蓄積された図書館であり、MCPで接続するとClaudeがその司書になって複数の情報源を一度に探索できる）→ 次に題材として「経営層が経営課題を把握したい」という日常ニーズを提示（議事録・プロジェクト管理DB・ナレッジベース・顧客フィードバックが組織内のNotionに分散している状況を視覚化）→ 従来方法（人手で情報収集→Excelにまとめ直す）との時間差を強調 → Notion MCPの接続設定を実演（Integration作成・権限設定・Claude Codeでの認証まで）→ 接続後「過去3ヶ月の議事録を全検索し、経営課題キーワードを抽出」というプロンプトを投げ、複数DBから一度に結果を集約する様子を実演 → 抽出結果をHTML形式のダッシュボード（課題別の議事録リンク・発生日時・関連プロジェクト・優先度スコア）に自動成形 → 応用の汎用性を説く（オンボーディング資料自動生成、FAQ化、週報自動作成）→ S3-V3の「Slackから日報を吸い上げる」との組み合わせで<strong>リアルタイム情報と歴史情報の統合</strong>が可能であることを示唆 → クロージング</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">5</div>
         <div class="video-content">
-          <div class="video-title">MCP③ マネーフォワード連携 — 経理業務の自動化 </div>
+          <div class="video-title">MCP③ Figma連携 — デザインと実装の壁をなくし「設計⇔組立」の循環を実装する</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>マネーフォワードMCPで経理業務を自動化できるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>レシート画像→仕訳登録／残高確認／月次締めの自動化／「経理の作業をAIが巻き取る」コンサル提案の実例</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>マネーフォワードのAPI設定</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。レシート画像→仕訳登録</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（MCP第3弾、コンサル提案の実例）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>マネーフォワードMCP</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 マネーフォワードMCPの接続設定 → Step 2 レシート画像→仕訳登録 → Step 3 残高確認・月次締め → Step 4 コンサル提案としての価値</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>Figma MCPを接続し、FigmaのデザインカンプをClaudeが直接読み取り、その場で実装コードを生成しブラウザで動作確認できるようになる。<strong>「デザイナーの頭の中にAIが入る」</strong>ことで、設計と実装の翻訳コストが劇的に削減できることを体験する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span><strong>Figma MCPとは＝AIが「デザインシステム」を読むトンネル</strong>（日常の「設計図を読む大工」「レシピを読む料理人」と同じ発想）／<strong>デザイン⇔実装の翻訳コスト削減</strong>（言語化の手間がなくなる：Figmaで「こう見たい」と示すだけ→Claudeが最適な実装を判断）／<strong>MCPの実装は2段階</strong>：デザイン読取（<code>get_design_context</code>）→ コード生成（推奨：React+Tailwind）→ 検証（Canvas書き込みで設計との乖離をFigmaで即座に修正）／過去の「手作業」は悪ではなく、「人間の判断が必要な場面」（デザインガイドラインの解釈・例外的レイアウト・ブランド判断）が明確になるだけ／<strong>実務レベルのデザインシステムの必要性</strong>（トークン化・コンポーネント体系・Variant設定が実装精度を左右）／<strong>公式版（Dev Mode MCP Server）推奨</strong>（フル機能：読取・変数/スタイル抽出・Canvas書き込み・FigJam統合）</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>Figmaファイルの構造化が不十分だとClaudeの読み取り精度が落ちる（親フレーム・グループの命名不統一、Variantの粒度がラフ）／Claude→Figmaの「逆方向」アクセス（Canvas書き込み）の権限設定（Personal Access Tokenのscope）／「デザインは固定で、実装だけが動く」という思い込みの転換（実装後にdesign側で修正→実装も自動追従、の循環）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。架空LP（またはダッシュボード）のFigmaファイル（コンポーネント・Variant・Design Tokenセットアップ済み）→ <code>/mcp</code> でFigma MCP接続確認 → FigmaファイルURLを渡し <code>get_design_context</code> で設計データ抽出 → 「このデザインをReact+Tailwindで実装して」と依頼、実装コード生成 → ブラウザで動作確認（スタイル・レスポンシブ・インタラクション）→ Figmaで微調整（「このセクション、もう少し余白がほしい」）→ Claudeが差分検出して更新コードを生成</div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（MCP第3弾、S3の転換点）。S3-V1（Skills＝「手順」）→ S3-V3（Slack＝「流れる情報」）→ S3-V4（Notion＝「組織の記憶」）→ <strong>S3-V5（Figma＝「設計・ビジュアル」）</strong>の流れで、Claudeが「組織のあらゆる場所に入る」全体像を進める。V1〜V4は「後方支援系」（管理・集約）だが、V5は「創造系」（設計から実装）でありMCPの最前線を示す。S5（アプリ開発）への架け橋として<strong>「単体のHTML実装」から「デザインシステムに基づく反復開発」への質的転換</strong>を予感させる</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>Figma公式MCPサーバー（<code>https://developers.figma.com/docs/figma-mcp-server/</code>）／用意するFigmaファイル：LP or ダッシュボード（コンポーネント・Variant・Design Token設定済み）／Claude Code MCP確認コマンド <code>/mcp</code>／Design Tokenドキュメント（Color/Typography/Spacing）</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず<strong>デザイン↔実装の「壁」が組織のコストになっていることを宣言</strong>（デザイナーが「こう見たい」→エンジニアが「それは技術的には…」→営業マネージャーが「どっちでもいいから早くして」という不毛な往復が毎日起きている、設計図⇔組立の関係性が現場では壊れている）→ 次にその壁の正体が「言語化ロス」だと定義（デザイナーがFigmaで示したのに、エンジニアがHTMLに訳すプロセスで「意図」と「実装」がズレる、レシピを日本語で説明し直すと必ず何か落ちるのと似ている）→ Figma MCPの登場背景（Figma＝構造化されたデザインシステムをAIが直接読めるトンネル）→ 実演準備：デザイン＆トークン済みのLPをFigmaで開く → Claude CodeでMCP接続確認 → <code>get_design_context</code> でデザインデータ抽出（「Figmaの構造情報をClaudeが丸ごと理解している」を見せる）→ 「このデザイン、実装して」と一行で依頼（プロンプトエンジニアリング不要、設計書が自動供給される）、ClaudeがReact+Tailwindコードを自動生成 → ブラウザで動作確認（色・タイポグラフィ・レスポンシブがFigmaどおり）→ 「でも実装後にデザイン変わることあるよね」とFigmaで微調整（パディング＋0.5rem）→ ClaudeのCanvas書き込み機能でFigmaに修正を反映、または手動で差分検出→再生成 → 「このループが毎日、1分で回る」と結論 → S3全体の途中経過（Skills・Slack・Notion・Figmaで組織が包まれ始めている）を確認、V6 X MCPへ繋ぐクロージング</div>
           </div>
         </div>
       </div>
       <div class="video">
         <div class="video-num">6</div>
         <div class="video-content">
-          <div class="video-title">API① X（Twitter）投稿 — SNSマーケティングの自動化 </div>
+          <div class="video-title">MCP④ X（Twitter）連携 — 投稿生成・検索・反応分析で「SNS自動化」を実現</div>
           <div class="video-structure">
             <div class="structure-label">構成</div>
-            <div class="structure-item"><span class="s-key">ゴール：</span>X APIを使ってClaude Codeから投稿・分析ができるようになる</div>
-            <div class="structure-item"><span class="s-key">重要トピック：</span>X APIの設定／投稿文生成→投稿→反応分析の一気通貫／MCPとAPIの違い（「プラグインを入れるだけ」vs「自分でAPIを叩く」）</div>
-            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>APIキーの取得手順が複雑</div>
-            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙のみ。画面収録で実演。投稿文生成→X投稿→反応分析</div>
-            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践（API第1弾、MCPとの違いを体感）</div>
-            <div class="structure-item"><span class="s-key">参照一覧：</span>X API</div>
-            <div class="structure-item"><span class="s-key">シーンの流れ：</span>Step 1 X APIキーの取得 → Step 2 投稿文の生成 → Step 3 Claude Codeから直接投稿 → Step 4 反応分析 → Step 5 MCPとの違いまとめ</div>
+            <div class="structure-item"><span class="s-key">ゴール：</span>X MCPを接続し、投稿文生成→X投稿→反応分析→投稿戦略提案の一気通貫フローを実演でき、マーケターが日々のSNS運用を自動化できる発想を得る。同時にS3セクション全体が<strong>「Slack（社内）→Notion（記憶）→Figma（設計）→X（対外）」</strong>というAIが組織の内側から外側まで入る世界観を体験する</div>
+            <div class="structure-item"><span class="s-key">重要トピック：</span><strong>MCPの本質「プラグインを入れるだけで複雑なAPI認証・管理から解放される」</strong>（V3〜V5で経験した「入れるだけで動く」を対外ツール第一事例として再体験）／<strong>X MCPとは＝X公式のAIゲートウェイ</strong>（投稿・検索・反応分析の119ツールがMCP経由でClaudeから直接呼べる、FastMCPで自動生成）／<strong>SNS自動化の3段階</strong>：生成（Claudeが1週間分の投稿案を作成）→ 投稿（X MCPで定時自動配信）→ 分析（反応データ集計、次の戦略提案）／マーケターの日常変化：「毎朝SNSチェック→手打ち投稿」が「週間計画→定時自動配信→反応分析は翌朝レポート」へ／業界トレンド監視の自動化（Xで競合トレンド検索→要約→自社ポジショニング提案）／個人発信者向けの訴求（ツイート職人の毎日の投稿ルーチン→AI代理で戦略的発信）／<strong>S3セクション全体の世界観</strong>：Slack（チーム内）→Notion（記録・知識化）→Figma（設計）→X（市場への発信）＝AIが組織全体の接点に入る</div>
+            <div class="structure-item"><span class="s-key">受講者のつまずき：</span>X MCPの接続設定でエラー（xmcpエンドポイント指定・環境変数の漏れ）／生成した投稿がX側の制限に引っかかる（文字数・メディア形式）／反応分析の「いいね」「リツイート」取得にタイムラグ（X APIのキャッシュ遅延）</div>
+            <div class="structure-item"><span class="s-key">画面操作方針：</span>スライドは表紙＋S3全体の構成図（MCP連鎖：Skills→Slack→Notion→Figma→X）のみ。画面収録で実演。<strong>テスト用Xアカウント</strong>を使用し、X MCP接続確認 → 投稿案生成（週間マーケティング投稿計画）→ X MCPで直接投稿 → 反応分析（検索・いいね集計）→ 次の投稿戦略提案。<strong>画面に「テスト専用」を表示し業務用・個人アカウントへの悪用を連想させない</strong></div>
+            <div class="structure-item"><span class="s-key">位置付け方針：</span>実践＋締めくくり（MCP第4弾・最終回）。S3章の「手順パッケージ化→自作→社内コミュニケーション→組織記憶→デザイン→対外発信」というMCP活用の流れを完成させる。V1で「入れるだけで専門家の手順が動く（shinkoku）」、V2で「自分の業務をSkill化」、V3〜V5で「社内・組織・設計のMCP」を経験した受講者が、ここで<strong>「市場への発信」にAIの手が及ぶ</strong>ことを体験。S5アプリ開発セクションへの橋渡しとして「AIが単なる効率化ツールではなく、組織全体のビジネスプロセスに統合される時代」という問題意識を植える</div>
+            <div class="structure-item"><span class="s-key">参照一覧：</span>xdevplatform/xmcp（<code>https://github.com/xdevplatform/xmcp</code>）／npaka氏のXMCP解説（<code>https://note.com/npaka/n/nae69651a3c79</code>）／X公式MCPサーバー セットアップ手順（<code>https://engineer117.com/generative_ai/claude/x-official-mcp-xmcp-setup-guide/</code>）／X API公式ドキュメント（<code>https://developer.x.com/</code>）／S3-V3〜V5 MCP連作との連続性</div>
+            <div class="structure-item"><span class="s-key">シーンの流れ：</span>まず<strong>SNS運用の現実を宣言</strong>（マーケターや個人発信者は毎日SNSチェック→投稿という手作業に30分以上費やし戦略立案の時間が削られている、一方Claudeに投稿計画を預ければ定時自動配信→反応分析→改善提案が24時間サイクルで回る世界が存在する、それを実現するのがX MCPだ）→ 次にS3セクション全体を振り返る（V1〜V2でSkillsの概念を体験・作成、V3でSlack、V4でNotion、V5でFigmaのMCPを学んだ、すべて「プラグインを入れるだけで動く」という同じ美学で繋がっている）→ 対外発信はどうか（従来はX APIを手作業で叩きAPIキー管理・エラーハンドリングを自分で背負う必要があった、X公式がxmcpを提供した今その手間から解放される）→ X MCPの定義（X公式提供のMCPサーバー、投稿・検索・反応分析など119個のツールをFastMCP経由で提供）→ テスト用Xアカウントに接続しX MCP登録状況を確認 → Claudeに「今週のSNSマーケティング投稿案を作って」と指示し週間計画（投稿文・画像説明・最適時間帯）を生成 → X MCPで実際に投稿、完了ログ表示 → 検索機能で投稿へのいいね・リツイート・リプライを取得、反応パターン集計（「このテーマは関心高い」「この時間帯は反応が早い」といった気付き）→ 反応データに基づいて「来週の投稿戦略の提案」をClaudeに依頼、具体的改善案が出る（「前週の高反応コンテンツの傾向に沿い、月曜日に業界トレンド投稿、木曜日に自社インサイト投稿」）→ 「生成→投稿→分析→改善」のサイクルが人手を介さず完全自動で回る意義を強調 → クロージング：S3全体の着地として「AIが組織全体に入る」現実を強調（Skills→Slack→Notion→Figma→X、組織のあらゆる接点でAIが手を動かすことで本当の効率化が実現）、S5アプリ開発ではさらに深い統合（DB・CI/CD・テスト戦略）として展開することを予告</div>
           </div>
         </div>
       </div>
@@ -1036,20 +1036,19 @@
     <div class="policy-item"><div class="policy-num">7</div><div class="policy-text">CLAUDE.md階層構造 <span class="policy-where">S2-V2, S2-V3, S5-V4</span></div></div>
     <div class="policy-item"><div class="policy-num">8</div><div class="policy-text">Skills=自社業務の資産化 <span class="policy-where">S3-V2</span></div></div>
     <div class="policy-item"><div class="policy-num">9</div><div class="policy-text">GUIからの脱却（MCP/CLI） <span class="policy-where">S3-V4</span></div></div>
-    <div class="policy-item"><div class="policy-num">10</div><div class="policy-text">スライド生成自動化 <span class="policy-where">S3-V3</span></div></div>
-    <div class="policy-item"><div class="policy-num">11</div><div class="policy-text">mkdir+cd、1セッション1話題 <span class="policy-where">S1-V2, S2-V1</span></div></div>
-    <div class="policy-item"><div class="policy-num">12</div><div class="policy-text">ステータスライン設定（/statusline） <span class="policy-where">S1-V3</span></div></div>
-    <div class="policy-item"><div class="policy-num">13</div><div class="policy-text">音声入力 <span class="policy-where">S1-V4</span></div></div>
-    <div class="policy-item"><div class="policy-num">14</div><div class="policy-text">サンドボックス=安全 <span class="policy-where">S2-V4</span></div></div>
-    <div class="policy-item"><div class="policy-num">15</div><div class="policy-text">Planモード=探索→計画→実装 <span class="policy-where">S2-V1</span></div></div>
-    <div class="policy-item"><div class="policy-num">16</div><div class="policy-text">「まだやらなくていいこと」を明示 <span class="policy-where">S1-V1</span></div></div>
-    <div class="policy-item"><div class="policy-num">17</div><div class="policy-text">スライド最小限・公式画面収録 <span class="policy-where">制作方針</span></div></div>
-    <div class="policy-item"><div class="policy-num">18</div><div class="policy-text">裏テーマ：AI DXコンサルへ <span class="policy-where">S4-V4, S4-V5</span></div></div>
-    <div class="policy-item"><div class="policy-num">19</div><div class="policy-text">検証ループ=最もレバレッジが高い <span class="policy-where">S1-V4, S2-V1</span></div></div>
-    <div class="policy-item"><div class="policy-num">20</div><div class="policy-text">2回ダメなら/clearして再スタート <span class="policy-where">S2-V1, S2-V4</span></div></div>
-    <div class="policy-item"><div class="policy-num">21</div><div class="policy-text">失敗パターン5つ <span class="policy-where">S2-V4</span></div></div>
-    <div class="policy-item"><div class="policy-num">22</div><div class="policy-text">具体的なコンテキストを提供する <span class="policy-where">S2-V2</span></div></div>
-    <div class="policy-item"><div class="policy-num">23</div><div class="policy-text">情報源はClaude公式と開発者Borisだけで十分 <span class="policy-where">制作方針</span></div></div>
+    <div class="policy-item"><div class="policy-num">10</div><div class="policy-text">mkdir+cd、1セッション1話題 <span class="policy-where">S1-V2, S2-V1</span></div></div>
+    <div class="policy-item"><div class="policy-num">11</div><div class="policy-text">ステータスライン設定（/statusline） <span class="policy-where">S1-V3</span></div></div>
+    <div class="policy-item"><div class="policy-num">12</div><div class="policy-text">音声入力 <span class="policy-where">S1-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">13</div><div class="policy-text">サンドボックス=安全 <span class="policy-where">S2-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">14</div><div class="policy-text">Planモード=探索→計画→実装 <span class="policy-where">S2-V1</span></div></div>
+    <div class="policy-item"><div class="policy-num">15</div><div class="policy-text">「まだやらなくていいこと」を明示 <span class="policy-where">S1-V1</span></div></div>
+    <div class="policy-item"><div class="policy-num">16</div><div class="policy-text">スライド最小限・公式画面収録 <span class="policy-where">制作方針</span></div></div>
+    <div class="policy-item"><div class="policy-num">17</div><div class="policy-text">裏テーマ：AI DXコンサルへ <span class="policy-where">S4-V4, S4-V5</span></div></div>
+    <div class="policy-item"><div class="policy-num">18</div><div class="policy-text">検証ループ=最もレバレッジが高い <span class="policy-where">S1-V4, S2-V1</span></div></div>
+    <div class="policy-item"><div class="policy-num">19</div><div class="policy-text">2回ダメなら/clearして再スタート <span class="policy-where">S2-V1, S2-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">20</div><div class="policy-text">失敗パターン5つ <span class="policy-where">S2-V4</span></div></div>
+    <div class="policy-item"><div class="policy-num">21</div><div class="policy-text">具体的なコンテキストを提供する <span class="policy-where">S2-V2</span></div></div>
+    <div class="policy-item"><div class="policy-num">22</div><div class="policy-text">情報源はClaude公式と開発者Borisだけで十分 <span class="policy-where">制作方針</span></div></div>
   </div>
 
 

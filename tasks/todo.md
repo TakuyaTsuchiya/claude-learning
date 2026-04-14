@@ -1,5 +1,48 @@
 # Claude Code講座 制作進捗
 
+## S4構成完成度アッププロジェクト（2026-04-14〜進行中）
+
+### 完了
+- [x] S4-V1〜V7 並列ドラフト作成（Exploreサブエージェント7並列）→ `tasks/s4-drafts.md`
+  - V1: eラーニング（9シーン、LocalStorage進捗、架空ビジネスカレッジ）
+  - V2: 請求書・Excel（11シーン、架空○△建設、jsPDF＋openpyxl）
+  - V3: オンボーディング（10シーン、部署別HTML3ファイル、架空5名）
+  - V4: 週次サマリー（10シーン、S3 MCP応用編、架空スタートアップ.inc、LINE接続方式要確認）
+  - V5: LINE Harness（11シーン、Cloudflareデプロイ、架空ライフシフトアカデミー）
+  - V6: SEO記事5工程（10シーン、/clear思想＋Skill化、架空キーワード）
+  - V7: アタックリスト（11シーン、Sansan事例公開情報、robots.txt配慮）
+
+### 次：土屋と一括レビュー → HTML反映
+- [ ] `tasks/s4-drafts.md` 冒頭の確認事項サマリを土屋と一括レビュー
+  - V3・V5・V6・V7はタイトル新提案あり（採否判断必要）
+  - V4のLINE接続方式（MCP公式／REST API／CSV迂回）確定必要
+  - V5の大手SaaS伏字・Cloudflare事前セットアップの運用
+- [ ] 合意内容で `docs/curriculum-review.html` S4-V1〜V7の該当箇所を一括書き換え
+- [ ] 書き換え完了後、台本化（scripts-data.js）フェーズへ
+
+### 次セッション開始時のプロンプト案
+```
+tasks/s4-drafts.md を開いて、冒頭の「土屋への確認事項サマリ」を上から順にレビューしていこう。
+まずV1から始めて、各動画ごとに：
+1. タイトル：現状維持 or 新提案どちら採用か
+2. 題材・デモデータ：この架空データで進めてOKか
+3. 各動画固有の要確認事項（V4のLINE接続方式、V5のCloudflare運用等）
+を決める。全7本合意が取れたら、docs/curriculum-review.html の S4-V1〜V7
+（693-811行目）を一括書き換え。完了後、S3-V2〜V6と合わせて台本化（scripts-data.js）へ。
+```
+
+### V4レビュー時の特記事項
+- V4「週次サマリー」はS3 MCP応用編の位置付け。LINE MCP公式実装の現時点状況を要調査（撮影時に動くものの事前特定が必要）
+- S3-V2（月次Skill）vs S4-V4（週次複合MCP）の使い分け説明が重要
+
+### V5レビュー時の特記事項
+- Cloudflare初期設定は撮影でどこから始めるか要決定：
+  - 案A：アカウント作成〜Workers設定済み前提（撮影は `wrangler deploy` から）
+  - 案B：ゼロからデモ（時間長いが受講者の「自分でできる」実感が強い）
+- LINE Official Account Webhook実機テストの可否（配信テスト成功まで見せるか、結果画像で代替か）
+
+---
+
 ## S3構成完成度アッププロジェクト（2026-04-14〜進行中）
 
 ### 完了
@@ -13,33 +56,22 @@
   - [x] V5: Figma MCP（11シーン、デザイン↔実装・公式版Dev Mode MCP推奨）
   - [x] V6: X MCP（10シーン、xmcp採用・S3全体の締めくくり）
 
-### 土屋と1本ずつレビュー → HTML反映（進行中）
+### 土屋と1本ずつレビュー → HTML反映
 - [x] **V2: Skills Creator ✅確定**（経理マン×ドレミファエア月次レポート題材）
   - デモデータ `demos/doremifa-air/` 作成済（financials.csv／board-notes.md／business-notes.md）
   - 書籍「経理AI実践ガイド ケース08」は発想の参照のみ、プロンプト直接引用なし
   - 出力はHTMLインフォグラフィック、チーム共有は口頭で一言、S3-V3予告なし
-- [ ] **V3: Slack MCP ← 次セッション開始地点**
-- [ ] V4: Notion MCP
-- [ ] V5: Figma MCP
-- [ ] V6: X MCP
-- [ ] 合意した内容で `docs/curriculum-review.html` S3-V2〜V6の該当箇所を書き換え
-- [ ] 書き換え完了後、V1と同様に台本化（scripts-data.js）フェーズへ
+- [x] V3: Slack MCP（USB-C比喩／公式`modelcontextprotocol/servers`前提でドラフトそのまま採用）
+- [x] V4: Notion MCP（「組織の記憶」再定義／経営課題抽出HTMLダッシュボード）
+- [x] V5: Figma MCP（マネーフォワードから差し替え／公式Dev Mode MCP Server推奨）
+- [x] V6: X MCP（X APIから差し替え／xdevplatform/xmcp採用、S3全体の締めくくり）
+- [x] **2026-04-14：ドラフトを `docs/curriculum-review.html` に一括転記完了**（V2〜V6、タイトルも更新）
 
-### 次セッション開始時のプロンプト案
-```
-tasks/s3-drafts.md を読んで、V3（Slack MCP）のレビューから始めよう。
-冒頭の確認事項サマリの通りで、下記3点を決める：
-1. ターゲット：経営層向けサマリーか、個人向け（自分の議論要約）か
-2. MCP実装の選定：modelcontextprotocol/servers公式 or npaka実装 or 他（2026-04時点で動くもの調査必要）
-3. 出力形式：Markdownで止める or HTML完成品（V2でHTMLやるので差別化でMarkdownもアリ）
-V2確定の経緯は tasks/s3-drafts.md 冒頭と s3-drafts.md#S3-V2 参照。
-```
+### 次フェーズ：台本化（scripts-data.js）
+- [ ] V1と同様に S3-V2〜V6 を `docs/scripts-data.js` の `SCRIPTS` に追加
+- [ ] 各動画の `meta`（duration/mode/goal）／`materials[]`／`script[]`（start/end/topic/direction/content/reference）を記述
+- [ ] 台本執筆スタイル（CLAUDE.md記載）を厳守：中級者向けの落ち着いた口語体／Step番号不使用／中立化／専門用語の日常語橋渡し／冒頭50〜60秒で「なぜ重要か」
 
-### V3レビュー用の土屋向け問いかけメモ
-- V3はMCP初登場動画。MCPの定義説明（USB-C比喩）に尺を割く設計
-- 題材デモは「日報・週報自動生成」ドラフト済み、ターゲット次第で微調整
-- S3全体の主人公は経営層・マネージャー層で一貫してきた（V1経営者／V2経理マン）
-- 実装はSlack MCPが複数ある状態。撮影時に動くものを事前特定する必要あり
 
 ### 参考：S3全体構成の最終形（V7削除後）
 | # | 題材 | 役割 |

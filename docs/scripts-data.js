@@ -662,5 +662,173 @@ var SCRIPTS = {
       { start: "7:00", end: "7:40", topic: "S4俯瞰", direction: "スライド：表紙", content: "このセクションをここで俯瞰します。前の5本は単機能の効率化で並んできましたが、この動画は初めて<strong>「取得→加工→出力」の多段階ワークフロー</strong>を扱いました。<strong>小さな局所最適化から、事業全体を視野に入れた戦略的自動化への卒業地点</strong>、という位置付けです。", reference: "" },
       { start: "7:40", end: "9:00", topic: "次セクションへの質的転換・クロージング", direction: "スライド：クロージング", content: "最後に次のアプリ開発セクションへの橋渡しを置いて閉じます。今回作ったのは<strong>CSVをローカルで開く個人ツール</strong>、次のセクションでは<strong>同じ決裁者アタックリストを複数人で共有し、データベースに永続化し、Webインターフェースからリアルタイム更新するSaaSへ質的に変わります</strong>。「今はCSVをローカル、次はチームで共有する段階」——この境界がこの動画の立ち位置です。それでは次の動画でお会いしましょう。", reference: "" }
     ]
+  },
+  "S5-V1": {
+    meta: {
+      duration: "約6分30秒",
+      mode: "画面収録（ブラウザ＋Claude Codeターミナル）",
+      goal: "GitHubアカウントを作成し、Claude Codeからリポジトリを作成・コミット・pushできるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "コミット／プッシュ／プル概念図", purpose: "GitHub三大操作の全体像を1枚で提示", timing: "序盤" },
+      { type: "画面収録", name: "GitHubアカウント作成", purpose: "ブラウザでサインアップ→メール認証→初期設定", timing: "中盤" },
+      { type: "画面収録", name: "gh auth login連携", purpose: "ターミナルからブラウザ認証フローを一気通貫で見せる", timing: "中盤" },
+      { type: "画面収録", name: "Claude Codeでリポジトリ作成＆push", purpose: "gh repo createとcommit/pushをClaude Codeに依頼して自動実行", timing: "後半の動作確認" },
+      { type: "出力成果物", name: "GitHubリポジトリ（my-first-repo）", purpose: "ブラウザから反映確認できるクラウド保管庫", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>GitHubのアカウント作成と初めてのリポジトリ作成</strong>をお伝えします。セクション全体の出発点となる回です。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "いきなり結論をお伝えします。<strong>SansanやSalesforceに月額何万円も払っているツール、実は自分で作れるとしたら</strong>——そんな体験をするのがこのセクションです。ただしいきなりアプリ作りには入らず、<strong>まずV1〜V3の3本で道具箱を整えます</strong>。V1がGitHub、V2がVercel、V3がSupabase、この3つのアカウントと使い方を先に押さえてしまえば、V4以降は実装に集中できます。今日はその1本目、<strong>コードを置いておく場所としてのGitHub</strong>を作ります。", reference: "" },
+      { start: "1:10", end: "1:50", topic: "GitHubとは", direction: "スライド：表紙", content: "GitHubという名前は聞いたことがある方が多いと思います。一言で言うと<strong>「コードのクラウド保管庫」</strong>です。身近な例で言えば、<strong>Google Driveのコード版</strong>と考えていただくと近いです。自分のパソコンの中だけにコードを置いておくと、消えたら終わり、他の端末から見られない、という状態になります。クラウドに置けば<strong>どこからでもアクセスできて、履歴も残り、消えない</strong>——これがGitHubの価値です。", reference: "" },
+      { start: "1:50", end: "2:30", topic: "コミット／プッシュ／プル", direction: "スライド：コミット／プッシュ／プル概念図", content: "GitHubで覚えてほしい操作は3つだけです。<strong>コミットは「保存ポイントを作る」</strong>、ゲームのセーブポイントのイメージです。<strong>プッシュは「クラウドに送る」</strong>、コミットしたものをGitHubにアップロードする動きです。<strong>プルは「クラウドから持ってくる」</strong>、逆方向の動きです。「Gitは難しい」という先入観をお持ちの方もいらっしゃると思いますが、<strong>Claude Codeが操作してくれるので、手元で覚えるコマンドはほぼ不要</strong>です。", reference: "" },
+      { start: "2:30", end: "3:10", topic: "GitHubアカウント作成", direction: "画面収録：github.com/signup をブラウザで開く", content: "それでは実際に進めます。ブラウザで<code>github.com/signup</code>にアクセスして、メールアドレスとパスワードを入れていきます。無料プランで十分です。ユーザー名はあとから使うので、分かりやすい名前にしておきましょう。メール認証まで済ませると、アカウント作成完了です。", reference: "https://github.com/signup" },
+      { start: "3:10", end: "3:50", topic: "gh auth loginでClaude Codeと連携", direction: "画面収録：ターミナルで gh auth login 実行", content: "次に、<strong>Claude CodeからGitHubを操作できるように連携します</strong>。ターミナルで<code>gh auth login</code>と打つと、ブラウザが立ち上がって認証画面が出ます。<strong>ブラウザ上で「Authorize」を押すだけ</strong>で、Claude Codeが今作ったGitHubアカウントを操作できる状態になります。この認証は1回やれば以降ずっと使えます。", reference: "https://cli.github.com/" },
+      { start: "3:50", end: "4:40", topic: "Claude Codeでリポジトリ作成", direction: "画面収録：Claude Codeに依頼", content: "ここからはClaude Codeに依頼します。<strong>「<code>my-first-repo</code>という名前で、GitHubにプライベートリポジトリを作ってください」</strong>と自然な日本語で伝えるだけです。Claude Codeが<code>gh repo create</code>コマンドを実行して、リポジトリを作ってくれます。<strong>プライベートとパブリックの2種類</strong>がありますが、最初はプライベートで作っておけば、自分と招待した人しか見られないので安心です。", reference: "" },
+      { start: "4:40", end: "5:20", topic: "ファイル作成＋コミット＆プッシュ", direction: "画面収録：Claude Codeにファイル作成と初コミットを依頼", content: "続けて依頼します。<strong>「<code>README.md</code>を作って、『はじめてのリポジトリです』と書いて、コミットしてプッシュしてください」</strong>——これだけです。Claude Codeが<code>git add</code>、<code>git commit</code>、<code>git push</code>まで自動で実行してくれます。手元で覚えるコマンドはほぼ不要、と最初にお伝えした通りです。実際の業務では、<strong>作業の区切りで毎回コミット</strong>するイメージで進めてください。", reference: "" },
+      { start: "5:20", end: "5:55", topic: "GitHub画面で反映確認", direction: "画面収録：ブラウザでGitHubのリポジトリページを開く", content: "GitHubのサイトに戻って、今作ったリポジトリを開きます。<strong>README.mdが表示されて、コミット履歴も残っています</strong>。「クラウドに保存できた」という体感がここで得られます。スマホのブラウザからも同じURLで見られますので、あとで試してみてください。", reference: "" },
+      { start: "5:55", end: "6:30", topic: "クロージング", direction: "スライド：表紙に戻す", content: "これで<strong>コードのクラウド保管庫</strong>が手に入りました。ただし、今の状態ではまだ<strong>Webで公開されているわけではありません</strong>。次のV2ではVercelというサービスを使って、このリポジトリを<strong>世界からアクセスできるWebサイト</strong>に変えていきます。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S5-V2": {
+    meta: {
+      duration: "約6分",
+      mode: "画面収録（ブラウザ＋スマホ）",
+      goal: "Vercelアカウントを作成し、GitHubリポジトリと連携して、Webページを世界に公開できるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "GitHub→Vercel連携図", purpose: "コード保管庫と公開サービスの役割分担を1枚で提示", timing: "序盤" },
+      { type: "画面収録", name: "Vercelアカウント作成＋GitHub連携", purpose: "サインアップからGitHub連携承認まで", timing: "中盤" },
+      { type: "画面収録", name: "リポジトリ選択＆デプロイ", purpose: "V1で作ったmy-first-repoを選んでデプロイ実行", timing: "中盤〜後半" },
+      { type: "画面収録", name: "発行URLにスマホからアクセス", purpose: "公開URLをスマホで開いて世界公開の体感を得る", timing: "後半の動作確認" },
+      { type: "出力成果物", name: "Vercel発行URL（xxx.vercel.app）", purpose: "誰でもアクセスできる公開Webページ", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>Vercelのアカウント作成と初めてのデプロイ</strong>をお伝えします。V1で作ったリポジトリを、世界に公開するところまで一気通貫で扱います。", reference: "" },
+      { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "スライド：表紙", content: "V1でGitHubにコードを置くことができました。一方で、<strong>今の状態では誰もWebブラウザで見られません</strong>。コードが保管庫に置かれているだけの状態です。ここから<strong>コードをWebサイトに変えて世界に公開する仕組み</strong>が必要になります。それを担ってくれるのが<strong>Vercel</strong>というサービスです。今日はこのVercelをGitHubと連携して、URLを1本発行するところまで進めます。", reference: "" },
+      { start: "1:00", end: "1:45", topic: "Vercelとは", direction: "スライド：GitHub→Vercel連携図", content: "Vercelを一言で言うと<strong>「GitHubのコードを自動でWebサイトにしてくれるサービス」</strong>です。身近な例で言えば、<strong>noteやTumblrに記事を書くと公開URLができる</strong>、あの感覚に近いです。記事ではなくコードを置いておくと、その瞬間にWebサイトとして公開してくれる、という役割分担です。GitHubが<strong>コードの保管庫</strong>、Vercelが<strong>世界に公開する窓口</strong>、この2つがセットで動くイメージで進めてください。", reference: "" },
+      { start: "1:45", end: "2:30", topic: "Vercelアカウント作成", direction: "画面収録：vercel.com でサインアップ", content: "それでは実際に進めます。ブラウザで<code>vercel.com</code>にアクセスして、<strong>「Sign Up」から「Continue with GitHub」</strong>を選びます。V1で作ったGitHubアカウントでそのままログインできるので、メールアドレスを別途入れる手間はありません。無料プランで、個人利用なら十分な容量があります。", reference: "https://vercel.com/" },
+      { start: "2:30", end: "3:10", topic: "GitHub連携", direction: "画面収録：GitHub連携の承認画面", content: "サインアップの途中で、<strong>「Vercelにリポジトリへのアクセスを許可するか」</strong>という承認画面が出ます。ここで許可することで、GitHubに置いたコードをVercelが自動で取ってきてWebサイトにしてくれます。全リポジトリを許可するか、特定のリポジトリだけ許可するか選べますが、<strong>まずは特定のリポジトリだけ許可</strong>しておくと安心です。", reference: "" },
+      { start: "3:10", end: "4:00", topic: "リポジトリ選択＆デプロイ", direction: "画面収録：Vercelダッシュボードで my-first-repo をImport", content: "Vercelの画面で<strong>「Import Project」</strong>を押します。連携したリポジトリの一覧が出てくるので、V1で作った<code>my-first-repo</code>を選びます。設定はそのまま、<strong>「Deploy」ボタン</strong>を押すだけです。ビルドとデプロイが走って、1〜2分後に完了画面が出ます。", reference: "" },
+      { start: "4:00", end: "4:45", topic: "発行URLにアクセス", direction: "画面収録：xxx.vercel.app をブラウザで開く", content: "完了画面に<strong>発行されたURL</strong>が表示されます。<code>xxx.vercel.app</code>という形式のURLです。クリックするとブラウザで開いて、V1で作ったREADMEの内容がWebページとして表示されます。<strong>これでもう世界中どこからでもアクセスできる状態</strong>です。", reference: "" },
+      { start: "4:45", end: "5:15", topic: "スマホからもアクセス確認", direction: "画面収録：スマホでURLを開く", content: "スマホのブラウザで同じURLを開いてみます。<strong>スマホからも同じページが開ける</strong>——ここで「世界に公開する」という感覚が本当に体感できると思います。友人や同僚にURLを送れば、その人もすぐに見られます。", reference: "" },
+      { start: "5:15", end: "5:40", topic: "公開の不安を中立化", direction: "スライド：表紙", content: "「全世界に公開されるのが不安」と感じる方もいらっしゃると思います。ただ<strong>URLを教えなければ事実上誰もアクセスしません</strong>。検索エンジンにも基本的には拾われません。心配な場合は<strong>プライベート公開</strong>の設定もできます。いつでも非公開に戻せるので、まずは触ってみる姿勢で進めてください。", reference: "" },
+      { start: "5:40", end: "6:00", topic: "クロージング", direction: "スライド：表紙に戻す", content: "これで<strong>道具が2つ揃いました</strong>。<strong>GitHub（保管庫）＋Vercel（公開窓口）</strong>、この組み合わせでコードを世界に出せるようになりました。次のV3ではデータベースの<strong>Supabase</strong>を先にセットアップしておき、V4から実際のアプリ作りに入ります。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S5-V3": {
+    meta: {
+      duration: "約6分",
+      mode: "画面収録（ブラウザ）",
+      goal: "Supabaseアカウントを作成し、プロジェクトを作ってAPIキーと管理画面の場所を把握できるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "S5フロント／S6バックエンド全体像図", purpose: "今セクションのスコープとS6への接続を1枚で提示", timing: "序盤" },
+      { type: "画面収録", name: "Supabaseアカウント作成", purpose: "サインアップからダッシュボード到達まで", timing: "中盤" },
+      { type: "画面収録", name: "プロジェクト作成", purpose: "リージョン選択・パスワード設定の実演", timing: "中盤" },
+      { type: "画面収録", name: "管理画面ツアー", purpose: "Table Editor／Authentication／API Docs／APIキー場所の把握", timing: "中盤〜後半" },
+      { type: "出力成果物", name: "Supabaseプロジェクト（my-first-project）", purpose: "S6で接続して使う空のプロジェクト", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>Supabaseのアカウント作成とプロジェクト作成</strong>をお伝えします。V1・V2に続く、セットアップ3本目の締めくくりです。", reference: "" },
+      { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "スライド：表紙", content: "V1でGitHub、V2でVercelを揃えました。3つ目の道具、<strong>データベース（Supabase）</strong>もここで揃えておきます。S6で実際に接続して使いますので、そのときに慌てないよう<strong>今のうちにアカウントとプロジェクトだけ作っておく</strong>、というのが今日のゴールです。触ってみるだけの回ではありますが、<strong>データベースという概念に最初に触れる回</strong>でもあるので、全体像を押さえながら進めていきます。", reference: "" },
+      { start: "1:00", end: "1:45", topic: "Supabaseとは", direction: "スライド：S5フロント／S6バックエンド全体像図", content: "Supabaseを一言で言うと<strong>「クラウドにあるExcelの表＋認証機能」</strong>です。身近な例で言えば、<strong>Googleスプレッドシートをアプリから読み書きできるようにしたイメージ</strong>が近いです。表にデータを貯めておいて、ログイン機能も付けられる——この2つがセットで手に入ります。本格的なデータベースサービスは触ったことがない方が多いと思いますが、<strong>概念はExcelとほぼ同じ</strong>なので、恐れる必要はありません。", reference: "" },
+      { start: "1:45", end: "2:30", topic: "Supabaseアカウント作成", direction: "画面収録：supabase.com でサインアップ", content: "それでは進めます。ブラウザで<code>supabase.com</code>にアクセスして、<strong>「Start your project」からGitHubアカウントでサインアップ</strong>します。V1で作ったGitHubアカウントをそのまま使えるので、メールアドレスは別途いりません。ダッシュボード画面に到達すれば、ここからが本番です。", reference: "https://supabase.com/" },
+      { start: "2:30", end: "3:20", topic: "プロジェクト作成", direction: "画面収録：New Projectで作成", content: "ダッシュボードで<strong>「New Project」</strong>を押します。プロジェクト名は<code>my-first-project</code>のような分かりやすい名前にしましょう。<strong>リージョンは「Tokyo（ap-northeast-1）」</strong>を選びます。日本から使うなら東京リージョンが一番早いです。データベース用のパスワードは<strong>自動生成で強いものを作って、パスワードマネージャーに保存</strong>しておきます。作成には1〜2分かかります。", reference: "" },
+      { start: "3:20", end: "4:00", topic: "Table Editor", direction: "画面収録：左メニューのTable Editorを開く", content: "管理画面のツアーをしていきます。まず<strong>Table Editor</strong>、ここが「Excelの表」に相当する場所です。テーブル（表）を作って、列を定義して、データを入れる——このすべてがブラウザ上でできます。今日はまだ何も作りませんが、<strong>「ここに表が並ぶ」というイメージ</strong>だけ押さえておいてください。", reference: "" },
+      { start: "4:00", end: "4:30", topic: "Authentication", direction: "画面収録：左メニューのAuthenticationを開く", content: "次に<strong>Authentication</strong>、ログイン機能を司る場所です。メールアドレス＋パスワード、Google、GitHubなど、<strong>あらゆるログイン方式がボタン1つで有効化</strong>できます。アプリの「ログイン画面」を作るのが、ここに来るだけで済むようになる、ということです。", reference: "" },
+      { start: "4:30", end: "5:00", topic: "API Docs＋APIキーの場所", direction: "画面収録：API Docs画面とSettings→APIを順に開く", content: "<strong>API Docs</strong>は、作った表にアクセスするための使い方が自動生成されている場所です。そして<strong>Settings→API</strong>にある<strong>APIキー</strong>、これが重要です。<strong>アプリからSupabaseにアクセスするときの合言葉</strong>のようなものと考えてください。", reference: "" },
+      { start: "5:00", end: "5:30", topic: "APIキーの扱いは今日ここまで", direction: "画面収録：APIキー画面のまま", content: "APIキーについて今日覚えてほしいことは1つだけ、<strong>「このキーは外に出してはいけない」</strong>ということです。GitHubに間違えてpushしてしまうと、誰でも自分のデータベースにアクセスできてしまいます。<strong>実際の扱い方は<code>.env</code>ファイルと環境変数を使う</strong>のですが、そこはS6で実際に接続するときに学びます。今日は「キーの存在と場所だけ確認」で十分です。", reference: "" },
+      { start: "5:30", end: "6:00", topic: "クロージング", direction: "スライド：表紙に戻す", content: "これで<strong>道具3つ揃いました</strong>。<strong>GitHub（保管庫）＋Vercel（公開窓口）＋Supabase（データベース）</strong>、これでSaaSを作る準備が完全に整いました。次のV4から実際のアプリ作りに入ります。最初は<strong>名刺管理アプリ</strong>、Sansan風のツールをClaude Codeで作っていきます。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S5-V4": {
+    meta: {
+      duration: "約8分",
+      mode: "画面収録（エディタ＋Claude Codeターミナル＋ブラウザ＋スマホ）",
+      goal: "アプリ開発用CLAUDE.mdを整備し、スペック駆動で名刺管理アプリを実装、GitHubにpushしてVercelで公開するまでの全フローを1本で体験する"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "完成画面キャプチャ", purpose: "Sansan風の一覧＋詳細＋検索UIを提示", timing: "冒頭・クロージング" },
+      { type: "サンプルデータ", name: "demo/s5v4/CLAUDE.md（アプリ開発用テンプレ）", purpose: "技術スタック・ディレクトリ構造・コーディング規約のテンプレ", timing: "序盤" },
+      { type: "サンプルデータ", name: "demo/s5v4/spec.md", purpose: "名刺管理アプリの要件定義（CRUD・検索・ローカルストレージ）", timing: "中盤" },
+      { type: "画面収録", name: "Claude Codeで実装＋ローカル動作確認", purpose: "CLAUDE.md→spec.md→実装→ブラウザ動作確認の一気通貫", timing: "中盤〜後半" },
+      { type: "画面収録", name: "GitHub push＋Vercel自動デプロイ", purpose: "pushから本番URL発行までの自動化の確認", timing: "後半の動作確認" },
+      { type: "出力成果物", name: "名刺管理アプリ（Vercel発行URL）", purpose: "スマホからもアクセスできるSaaS風Webアプリ", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>名刺管理アプリをSansan風に自作する</strong>方法をお伝えします。S5の核となる回、実際にSaaSを自分で作る体験の1本目です。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "今日のメッセージから先にお伝えします。<strong>「Sansanのような名刺管理SaaSに月額数千円払っている会社は多いです。一方で、Claude Codeとスペック駆動があれば、同等の機能を短時間で作れます」</strong>——これを今日体感していただきます。V1〜V3で道具は揃いましたので、今日は<strong>CLAUDE.md→スペック駆動→実装→push→デプロイ</strong>という一気通貫のフローを、ひとつ実際に回してみる回になります。この流れがV5・V6でも繰り返されるので、ここで手を動かして覚えることが、このあとの学びを楽にします。", reference: "" },
+      { start: "1:10", end: "2:10", topic: "アプリ開発用CLAUDE.md", direction: "画面収録：demo/s5v4/CLAUDE.mdを開く", content: "まずは<strong>アプリ開発用のCLAUDE.md</strong>から整備します。CLAUDE.mdの書き方は以前の動画で<strong>基礎編</strong>をお伝えしましたが、アプリ開発はもう一段スケールが大きくなります。具体的には、<strong>技術スタック（HTML／CSS／JavaScript）・ディレクトリ構造（index.html、js/、css/）・コーディング規約（命名ルール・コメントの書き方）</strong>、この3つをCLAUDE.mdに書いておきます。こう書いておけば、Claude Codeが毎回同じルールで書いてくれます。", reference: "demo/s5v4/CLAUDE.md" },
+      { start: "2:10", end: "3:00", topic: "スペック駆動をアプリ開発スケールへ", direction: "画面収録：demo/s5v4/spec.mdを開く", content: "次に<strong>スペック駆動開発</strong>、これも以前の動画で単一HTMLで体験していただいた内容ですが、<strong>アプリ開発スケールに拡張</strong>します。複数画面があるアプリは、要件を先にまとめておかないとClaude Codeが迷子になります。<code>spec.md</code>に<strong>名刺管理アプリの要件——一覧／詳細／検索／新規登録／編集／削除</strong>、いわゆるCRUD（クラッド）と呼ばれる4機能を書いておきます。ここで<strong>ローカルストレージ保存</strong>という前提も入れておきます。", reference: "demo/s5v4/spec.md" },
+      { start: "3:00", end: "3:40", topic: "ローカルストレージの日常比喩", direction: "スライド：表紙", content: "<strong>ローカルストレージ</strong>という言葉を日常の感覚に変換しておきます。これは<strong>自分のブラウザの中だけに残るメモ</strong>、<strong>冷蔵庫に貼った付箋</strong>のようなイメージです。その家でしか見えません。一方、V3で作ったSupabaseのようなクラウドDBは、<strong>端末を超えて共有できる</strong>ので、会社全体で使えます。今日はまだSupabaseに繋がず、<strong>ローカルストレージだけで動くアプリ</strong>を作ります。S6でSupabaseに繋ぎ直して、本物のSaaSに昇格させます。", reference: "" },
+      { start: "3:40", end: "4:50", topic: "Claude Codeに実装依頼", direction: "画面収録：Claude Codeで依頼→Planモード→実装", content: "ここからClaude Codeに依頼します。<strong>「CLAUDE.mdとspec.mdを読んで、名刺管理アプリを実装してください。データはローカルストレージに保存してください」</strong>——これだけです。Claude CodeはまずPlanモードで設計を出してくれます。ディレクトリ構造、画面構成、データの持ち方を承認して、実装に入ります。ここは少し時間がかかりますので、実際の業務では他の作業をしながら待っていただく形になります。", reference: "" },
+      { start: "4:50", end: "5:40", topic: "ローカル動作確認", direction: "画面収録：ブラウザでindex.htmlを開く", content: "完成しました。ブラウザで<code>index.html</code>を開きます。<strong>名刺一覧画面、新規登録フォーム、詳細画面、検索バー</strong>——すべて揃っています。試しに名刺を数件登録してみます。<strong>登録した名刺が一覧に並び、検索バーで絞り込める</strong>ところまで動いています。見た目はSansan、機能もほぼ同等です。", reference: "" },
+      { start: "5:40", end: "6:20", topic: "GitHub push", direction: "画面収録：Claude Codeにpushを依頼", content: "次にGitHubにpushします。Claude Codeに<strong>「新しいリポジトリを作って、このプロジェクトをpushしてください」</strong>と依頼するだけです。V1でお伝えした<code>gh repo create</code>、<code>git add</code>、<code>git commit</code>、<code>git push</code>を全部自動でやってくれます。", reference: "" },
+      { start: "6:20", end: "7:00", topic: "Vercel自動デプロイ", direction: "画面収録：Vercelダッシュボードで自動デプロイ確認", content: "ここでVercelの画面を見てみます。V2でGitHubと連携しておいたので、<strong>pushした瞬間にVercelが自動でビルドとデプロイを開始</strong>します。1〜2分で完了画面が出て、<strong>発行URL</strong>が表示されます。これで名刺管理アプリが世界に公開されました。", reference: "" },
+      { start: "7:00", end: "7:30", topic: "スマホからもアクセス確認", direction: "画面収録：スマホで発行URLを開く", content: "発行URLをスマホで開いてみます。<strong>スマホのブラウザからも名刺管理アプリが動きます</strong>。レスポンシブな見た目で、タッチ操作で新規登録も検索もできます。Sansanのスマホ版と見比べても、機能としてはかなり近い水準になっています。", reference: "" },
+      { start: "7:30", end: "8:00", topic: "クロージング", direction: "スライド：表紙に戻す", content: "これで<strong>初めてのSaaS自作体験</strong>が完了しました。CLAUDE.md→スペック駆動→実装→push→デプロイ、この5ステップのフローを体で覚えていただけたと思います。<strong>違いはデータがローカル保存だけ、これはS6でSupabaseに繋いで解決します</strong>。次のV5は経費アプリ、同じフローを別ドメインで反復します。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S5-V5": {
+    meta: {
+      duration: "約6分30秒",
+      mode: "画面収録（エディタ＋Claude Codeターミナル＋ブラウザ）",
+      goal: "freee風の経費管理アプリを実装し、V4で学んだフロー（CLAUDE.md→スペック駆動→push→デプロイ）を別業務ドメインで反復して定着させる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "完成画面（月次集計グラフ含む）", purpose: "freee風の経費入力＋グラフダッシュボードを提示", timing: "冒頭・クロージング" },
+      { type: "サンプルデータ", name: "demo/s5v5/CLAUDE.md", purpose: "V4のCLAUDE.mdを経費アプリ用にカスタマイズしたもの", timing: "序盤" },
+      { type: "サンプルデータ", name: "demo/s5v5/spec.md", purpose: "経費アプリ要件（入力・カテゴリ・月次集計・画像アップロード）", timing: "序盤" },
+      { type: "画面収録", name: "Claude Codeで実装＋動作確認", purpose: "グラフ描画＋画像アップロードの挙動確認", timing: "中盤〜後半" },
+      { type: "画面収録", name: "GitHub push＋Vercel自動デプロイ", purpose: "反復により迷いなく回る様子", timing: "後半の動作確認" },
+      { type: "出力成果物", name: "経費管理アプリ（Vercel発行URL）", purpose: "月次集計グラフ付きのSaaS風Webアプリ", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>freee風の経費管理アプリを自作する</strong>方法をお伝えします。V4で学んだフローを別ドメインで反復する、S5の2本目です。", reference: "" },
+      { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "スライド：表紙", content: "V4で名刺管理アプリを作りました。今日はfreee風の経費アプリを作ります。同じ題材を繰り返すのではなく、<strong>同じフロー（CLAUDE.md→スペック駆動→push→デプロイ）でまったく違うアプリが作れる</strong>、この再現性を体感するのが今日の目的です。さらに今日は、V4にはなかった<strong>グラフ描画と画像アップロード</strong>という要素も自然に組み込みます。「2回目だから楽になる」を体で感じていただく回です。", reference: "" },
+      { start: "1:00", end: "1:40", topic: "経費アプリ用のCLAUDE.mdとspec.md", direction: "画面収録：demo/s5v5/のCLAUDE.mdとspec.mdを開く", content: "V4で作ったCLAUDE.mdをコピーして、経費アプリ用にカスタマイズします。技術スタックとディレクトリ構造はV4とほぼ同じ、<strong>コーディング規約の部分だけ経費データ用に少し書き換える</strong>、という程度で済みます。<code>spec.md</code>には経費アプリの要件を書いておきます。<strong>経費入力・カテゴリ分類・月次集計グラフ・レシート画像アップロード</strong>、この4つがメイン要件です。", reference: "demo/s5v5/CLAUDE.md／demo/s5v5/spec.md" },
+      { start: "1:40", end: "2:20", topic: "新要素の予告", direction: "画面収録：spec.mdの該当箇所を強調", content: "V4になかった要素を先に整理しておきます。1つ目は<strong>カテゴリ分類</strong>、ドロップダウンで複数選択できる形です。2つ目は<strong>月次集計グラフ</strong>、Chart.jsのようなグラフライブラリで棒グラフを描きます。3つ目は<strong>レシート画像のアップロード</strong>、ブラウザのローカルストレージに画像を保存します。どれも難しそうに聞こえますが、<strong>Claude Codeが適切なライブラリを選んで組み込んでくれる</strong>ので、こちらからの指示は一言で済みます。", reference: "" },
+      { start: "2:20", end: "3:20", topic: "Claude Codeに実装依頼", direction: "画面収録：Claude Codeで依頼→Planモード→実装", content: "Claude Codeに依頼します。<strong>「CLAUDE.mdとspec.mdを読んで、経費管理アプリを実装してください。月次集計は棒グラフで見せてください」</strong>——これだけです。<strong>グラフの実装方法は細かく指示しません</strong>、「棒グラフで」と伝えるだけで、Claude Codeが<strong>Chart.js</strong>のような適切なライブラリを選んで組み込みます。これが「2回目の楽さ」の正体です。", reference: "" },
+      { start: "3:20", end: "4:10", topic: "グラフ描画＋画像アップロード確認", direction: "画面収録：ブラウザで経費を数件入力→グラフ描画→レシート画像アップロード", content: "完成しました。経費を数件入力してみます。<strong>入力画面からカテゴリをドロップダウンで選び、金額を入力、レシート画像を添付</strong>します。ダッシュボードに移ると<strong>月次集計の棒グラフ</strong>がきれいに描画されています。レシート画像も一覧から開いて確認できます。画像はローカルストレージに保存されているので、<strong>ブラウザを閉じても残っています</strong>。", reference: "" },
+      { start: "4:10", end: "4:40", topic: "ローカルストレージの限界予告", direction: "画面収録：開発者ツールのApplication→Local Storageを開く", content: "ただし、<strong>画像をローカルストレージに貯めすぎると容量制限に引っかかります</strong>。ブラウザのローカルストレージは5MB〜10MB程度が上限です。レシート画像が数十枚になると厳しくなる、という限界があります。これを根本的に解決するのが<strong>S6で接続するSupabaseのストレージ機能</strong>です。今日はまだこの上限の中で動かしています。", reference: "" },
+      { start: "4:40", end: "5:20", topic: "GitHub push＋Vercel自動デプロイ", direction: "画面収録：Claude Codeにpush依頼→Vercelダッシュボード", content: "GitHubにpushします。<strong>「新しいリポジトリを作ってpushしてください」</strong>、依頼は1行です。Vercelが自動でビルドを開始して、1〜2分で発行URLが出ます。V4で1回経験したフローなので、<strong>もう迷うことなく回る</strong>感覚があると思います。", reference: "" },
+      { start: "5:20", end: "5:55", topic: "発行URLで動作確認", direction: "画面収録：発行URLをブラウザで開く", content: "発行URLを開きます。<strong>経費管理アプリがWebで動いています</strong>。ダッシュボードのグラフも、レシート画像のアップロードも、本番環境で同じように動きます。スマホからも開けます。これで2つ目のSaaS風アプリが世界に公開できました。", reference: "" },
+      { start: "5:55", end: "6:30", topic: "クロージング", direction: "スライド：表紙に戻す", content: "V4・V5と同じフローで<strong>2つのアプリが作れました</strong>。CLAUDE.md→スペック駆動→push→デプロイ、この5ステップが体に馴染んできたと思います。<strong>次のV6は3つ目のSalesforce風CRM</strong>、ここまで作れれば、もう一人で好きなSaaSが作れる状態になります。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S5-V6": {
+    meta: {
+      duration: "約7分",
+      mode: "画面収録（エディタ＋Claude Codeターミナル＋ブラウザ）",
+      goal: "Salesforce風CRMを実装してV4・V5で学んだフローを3回目の反復で定着させ、『もう自分で好きなSaaSを作れる』という独り立ち感覚を得る"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "完成画面（パイプラインのカード形式）", purpose: "Salesforce風の商談ステータス管理UIを提示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "S5完成3アプリのサムネイル一覧", purpose: "名刺・経費・CRMの3アプリを1枚で俯瞰", timing: "クロージング直前" },
+      { type: "サンプルデータ", name: "demo/s5v6/CLAUDE.md", purpose: "V4・V5のCLAUDE.mdをCRM用に調整したもの", timing: "序盤" },
+      { type: "サンプルデータ", name: "demo/s5v6/spec.md", purpose: "CRM要件（顧客／商談／パイプライン／メモ）", timing: "序盤" },
+      { type: "画面収録", name: "Claude Codeで実装＋パイプライン動作確認", purpose: "ドラッグで商談ステータスを動かす実演", timing: "中盤〜後半" },
+      { type: "画面収録", name: "GitHub push＋Vercel自動デプロイ＋3アプリのブラウザツアー", purpose: "S5完成の達成感とS6への橋渡し", timing: "クロージング直前" },
+      { type: "出力成果物", name: "CRM（Vercel発行URL）", purpose: "顧客・商談・パイプラインを管理できるSaaS風Webアプリ", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>Salesforce風のCRMを自作する</strong>方法をお伝えします。S5の総まとめの回です。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "V4で名刺、V5で経費を作りました。今日は3つ目の<strong>Salesforce風CRM</strong>を作ります。同じフローを3回繰り返すことで、<strong>「もう自分で好きなSaaSが作れる」という独り立ちの感覚</strong>を今日持ち帰っていただきます。今日はもうフローの説明はしません。「3回目、手が慣れている」という状態で、そのまま実装に入ります。3つのSaaS風アプリが完成した状態でS5を閉じる、というのが今日のマイルストーンです。", reference: "" },
+      { start: "1:10", end: "2:00", topic: "CRM要件とCLAUDE.mdの準備", direction: "画面収録：demo/s5v6/のCLAUDE.mdとspec.mdを開く", content: "CLAUDE.mdはV5のものをコピーしてCRM用に書き換えます。<code>spec.md</code>のCRM要件はこうです。<strong>顧客一覧・商談管理・パイプラインステータス（見込み→提案→成約）・フォローアップメモ</strong>。CRM特有の要素として、<strong>顧客と商談の紐付け</strong>（1人の顧客に対して複数の商談がぶら下がる構造）、そして<strong>パイプラインのステータス遷移</strong>（カードを見込みから提案へ、提案から成約へと動かす操作）、この2つが入ります。", reference: "demo/s5v6/CLAUDE.md／demo/s5v6/spec.md" },
+      { start: "2:00", end: "2:40", topic: "ドラッグ操作の予告", direction: "画面収録：spec.mdの該当箇所を強調", content: "一番の新要素は<strong>ドラッグでステータスを動かす操作</strong>です。Trelloのようなカード形式のボード画面で、商談カードを<strong>「見込み」から「提案」へ、「提案」から「成約」へ</strong>と動かせるようにします。難しそうに聞こえますが、<strong>「ドラッグで動かせるようにして」と一言伝えるだけ</strong>で、Claude Codeが適切な仕組みを選んで実装します。", reference: "" },
+      { start: "2:40", end: "3:40", topic: "Claude Codeに実装依頼", direction: "画面収録：Claude Codeで依頼→Planモード→実装", content: "Claude Codeに依頼します。<strong>「CLAUDE.mdとspec.mdを読んで、CRMを実装してください。商談カードはドラッグでステータスを動かせるようにしてください」</strong>——これだけです。3回目なので、ここはもう<strong>お馴染みの待ち時間</strong>になっていると思います。", reference: "" },
+      { start: "3:40", end: "4:30", topic: "パイプライン動作確認", direction: "画面収録：ブラウザでCRMを開く→商談カードをドラッグ", content: "完成しました。ブラウザで開きます。<strong>顧客一覧、商談のカード形式ボード、メモ機能</strong>、すべて揃っています。商談カードをクリックして<strong>ドラッグすると、「見込み」から「提案」へ動きます</strong>。「提案」から「成約」へもスムーズに動きます。顧客と商談の紐付けも、商談詳細から該当顧客に飛べます。", reference: "" },
+      { start: "4:30", end: "5:00", topic: "GitHub push＋Vercel自動デプロイ", direction: "画面収録：push→Vercelダッシュボード→発行URL", content: "GitHubにpushします。Vercelが自動でビルド、発行URLが出ます。もう3回目なので、待っている間に次のスライドへ進めましょう。", reference: "" },
+      { start: "5:00", end: "5:40", topic: "3アプリのブラウザツアー", direction: "画面収録：ブラウザの3タブでV4・V5・V6の完成品を並べる", content: "ここでS5の<strong>3つの完成品</strong>を並べてみます。<strong>V4の名刺管理アプリ、V5の経費管理アプリ、V6のCRM</strong>——ブラウザのタブに3つ並んでいます。<strong>これだけのSaaS風アプリをこの短時間で作りました</strong>。同じフロー（CLAUDE.md→スペック駆動→実装→push→デプロイ）が、3つの異なる業務ドメインでそれぞれ動いている、この再現性が今日のお土産です。", reference: "" },
+      { start: "5:40", end: "6:20", topic: "ローカル完結の限界とS6への展望", direction: "スライド：S5完成3アプリのサムネイル一覧", content: "ただし、3つのアプリには<strong>1つ共通する制約</strong>があります。<strong>データが全部自分のブラウザの中だけに保存されている</strong>、ということです。他の端末からは見られませんし、チームメンバーと共有もできません。これを解決するのが<strong>S6で接続するSupabase</strong>です。S6でDBと認証を繋げば、<strong>3つのアプリがチームで使える実用レベルに昇格</strong>します。", reference: "" },
+      { start: "6:20", end: "6:40", topic: "独り立ちメッセージ", direction: "スライド：表紙", content: "今日持ち帰ってほしい感覚は1つだけ、<strong>「もう自分で好きなSaaSを作れる」</strong>ということです。CLAUDE.mdとspec.mdを書いて、Claude Codeに依頼して、pushしてデプロイする——このフローさえ身につけば、<strong>どんなアプリでも同じ手順で作れます</strong>。これがS5のゴールです。", reference: "" },
+      { start: "6:40", end: "7:00", topic: "クロージング", direction: "スライド：表紙に戻す", content: "次のS6では、今日の名刺管理アプリにデータベースを繋ぐところから始めます。<strong>ローカル完結のツールから、チームで使える本物のSaaSへ</strong>、質的な転換を一緒に体験しましょう。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
   }
 };

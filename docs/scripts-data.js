@@ -487,5 +487,180 @@ var SCRIPTS = {
       { start: "6:50", end: "7:30", topic: "サイクルが完全自動で回る意義", direction: "スライド：表紙", content: "ここまでで<strong>「生成→投稿→分析→改善」のサイクルが人手を介さず回る</strong>状態が完成しました。マーケターの日常は<strong>「毎朝SNSチェック→手打ち投稿」から「週間計画→定時自動配信→反応分析は翌朝レポートで確認」</strong>へ変わります。空いた時間は本来の戦略立案に使える、というわけです。", reference: "" },
       { start: "7:30", end: "8:10", topic: "S3全体着地・S5への布石・クロージング", direction: "スライド：S3全体構成図", content: "S3全体をまとめます。<strong>Skills→Slack→Notion→Figma→X、組織の内側から外側まで、すべての接点でAIが手を動かす世界観</strong>がここに完成しました。次のS5アプリ開発編では、<strong>さらに深い統合——データベース・CI/CD・テスト戦略まで含めたAI開発</strong>を扱います。それでは次の動画でお会いしましょう。", reference: "" }
     ]
+  },
+  "S4-V1": {
+    meta: {
+      duration: "約8分",
+      mode: "画面収録（エディタ＋Claude Codeターミナル＋ブラウザ）",
+      goal: "人事・研修担当者が現場職向けeラーニングシステムのガワ（階層メニュー＋受講ダッシュボード）を最低限のスペック駆動開発で10分で組み上げられるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "課題設定", purpose: "ホテル業界の新人教育課題を1枚で示す", timing: "序盤" },
+      { type: "サンプルデータ", name: "demos/hotel-cleaning-lms/spec.md", purpose: "対話で書き起こす仕様書（3カテゴリ×3教材・4画面・ダミー進捗フラグ）", timing: "中盤" },
+      { type: "画面収録", name: "Claude Codeとの対話", purpose: "spec.md書き起こし→実装依頼", timing: "中盤" },
+      { type: "出力成果物", name: "demos/hotel-cleaning-lms/index.html", purpose: "受講者ポータル＋受講ダッシュボード", timing: "後半の動作確認" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では人事・研修担当の方に向けて、<strong>現場職向けの社内eラーニングシステム</strong>をClaude Codeで自作していきます。題材は架空ホテル『シーサイドホテル』の清掃スタッフ育成LMS、10分で動くガワを一緒に組み上げます。", reference: "" },
+      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "スライド：課題設定", content: "宿泊業やサービス業の現場は、<strong>外国人スタッフの増加・OJT負担の集中・高い離職率</strong>といった課題を抱えているケースが多いと思います。「せっかく教えた人が辞めて、また一から教え直し」という循環も珍しくありません。一方でeラーニングというと専用SaaSの契約が前提、というイメージをお持ちかもしれません。この動画では、<strong>最低限のスペック駆動開発でHTML1枚の受講者ポータルを自作する</strong>方法をお伝えします。自社の教材タイトルと受講者名を入れ替えるだけで自部署に持ち込める、そんな作り方です。", reference: "" },
+      { start: "1:20", end: "1:50", topic: "アウトプット像", direction: "画面収録：完成index.htmlを30秒早送りで試写", content: "まず今日のゴールを先にお見せします。完成した<code>index.html</code>はこのような形です。<strong>3カテゴリ×3教材、受講ダッシュボードまで含めて1枚のHTMLに収まっている</strong>のがポイントです。このガワを10分で作る、という目標で進めていきます。", reference: "demos/hotel-cleaning-lms/index.html" },
+      { start: "1:50", end: "2:25", topic: "コンテンツ構造の図解", direction: "画面収録：コンテンツ構造を図示", content: "題材の中身を整理します。カテゴリは<strong>客室清掃・浴場清掃・共用部清掃の3つ</strong>、各カテゴリに教材が3本、合計9教材という構造です。受講者は田中さん・山田さん・グエンさんの架空3名で、<strong>実在ホテル名・実在スタッフ名は一切使わない</strong>方針で進めます。", reference: "" },
+      { start: "2:25", end: "3:05", topic: "最低限のスペック駆動の導入", direction: "画面収録：エディタに切り替え", content: "ここでのスペック駆動は、前のセクションで扱った仕様書作りを<strong>最小構成で適用する</strong>形で進めます。書き込むのは<strong>階層構造・画面数・ダミーデータの3点だけ</strong>、他は思い切って載せません。仕様書は数行で済みます。", reference: "" },
+      { start: "3:05", end: "4:10", topic: "spec.mdの書き起こし", direction: "画面収録：ターミナルでディレクトリ作成→Claude Codeと対話", content: "<code>mkdir demos/hotel-cleaning-lms && cd demos/hotel-cleaning-lms</code>で作業ディレクトリを用意します。ここでClaude Codeと対話しながら<code>spec.md</code>を書き起こします。<strong>3カテゴリ×3教材の階層、トップ・カテゴリ・教材詳細・ダッシュボードの4画面、進捗フラグはダミーでハードコード</strong>——動画再生・ログイン認証・永続化は<strong>今回のスコープから外す</strong>ことも明記します。", reference: "demos/hotel-cleaning-lms/spec.md" },
+      { start: "4:10", end: "5:00", topic: "実装→HTML操作", direction: "画面収録：spec.mdを渡して実装依頼→index.htmlをブラウザで開く", content: "<code>spec.md</code>をClaude Codeに渡して実装を依頼します。生成された<code>index.html</code>をブラウザで開き、<strong>トップの3カテゴリカード→カテゴリ画面の教材カード→教材詳細</strong>の順に操作します。YouTube風のサムネも並んで、階層メニューが仕様書通りに出ていることが見て取れます。", reference: "demos/hotel-cleaning-lms/index.html" },
+      { start: "5:00", end: "5:40", topic: "受講ダッシュボード", direction: "画面収録：ダッシュボード画面に切り替え", content: "ダッシュボードでは<strong>田中・山田・グエンの3名×9教材のマトリクス</strong>が1画面で出ます。受講済みと未受講が配色で区別され、<strong>誰がどこで止まっているかが一目で分かる</strong>、という人事側の価値がここに現れます。", reference: "" },
+      { start: "5:40", end: "6:10", topic: "スコープの割り切り", direction: "画面収録：サムネをクリックして動かないことを見せる", content: "ここで<strong>スコープの割り切りを正直に伝えておきます</strong>。動画再生はサムネ表示のみ、ログイン認証はなし、進捗フラグはハードコード、の3点です。これは<strong>仕様書に書いた通り、載せないと決めた</strong>部分、という位置付けです。", reference: "" },
+      { start: "6:10", end: "6:40", topic: "Vibe Codingとの対比", direction: "画面収録：スライド表紙に戻す", content: "仕様書を書かずにVibe Codingで進めた場合と短く比較しておきます。<strong>階層もダミーデータも狙い通りが出にくくなる</strong>、というのが実際です。コンテキスト量の差、と整理しておくのが中立的で、優劣の話ではありません。", reference: "" },
+      { start: "6:40", end: "8:00", topic: "クロージング・次セクションへの布石", direction: "スライド：表紙", content: "この動画では、<strong>最低限のスペック駆動で10分のガワ</strong>が手に入る体験をしていただきました。自社の教材タイトルと受講者名を入れ替えるだけで自部署に持ち込める状態です。一方で<strong>多拠点展開や複数人同時更新まで進めたくなった段階では、バックエンドとデータベースが必要</strong>になります。これはアプリ開発のセクションで扱います。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S4-V2": {
+    meta: {
+      duration: "約9分",
+      mode: "画面収録（エディタ＋Claude Codeターミナル＋ブラウザ。スライドは表紙・個人情報配慮・クロージングの3枚）",
+      goal: "経理・人事・総務のバックオフィス担当者が、申請書Excel10件＋添付PDF・画像の混在ファイルをClaude Codeで仕分けしHTMLチェックレポートを10分で受け取れるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "Anthropicデータポリシー要約", purpose: "個人情報配慮の冒頭シーンで使用", timing: "序盤" },
+      { type: "スライド", name: "ガードレール4項目", purpose: "個人情報配慮の締めで使用", timing: "序盤" },
+      { type: "サンプルデータ", name: "demos/shinsei-check/applications/", purpose: "申請書Excel10件（経費5・通勤手当3・育児休業2、架空データ）", timing: "中盤" },
+      { type: "サンプルデータ", name: "demos/shinsei-check/attachments/", purpose: "領収書・印字PDF・スキャン・定期券・母子手帳コピーの混在添付", timing: "中盤" },
+      { type: "画面収録", name: "mask.pyデモ", purpose: "氏名・生年月日・口座のマスキング実装デモ", timing: "序盤" },
+      { type: "画面収録", name: "Claude Codeでの突合", purpose: "対話依頼→読み取り進捗→HTMLレポート生成", timing: "中盤〜後半" },
+      { type: "出力成果物", name: "demos/shinsei-check/output/check-report.html", purpose: "承認可6件・要確認4件の仕分けと差分根拠を載せたレポート", timing: "後半の動作確認" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経理・人事・総務のバックオフィス担当の方に向けて、<strong>申請書類のチェック校閲をClaude Codeで自動化する</strong>方法をお伝えします。題材は月100件超の申請突合、AI一次チェックと人間最終判定のハイブリッド運用です。", reference: "" },
+      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "スライド：表紙", content: "バックオフィスの現場は、<strong>経費精算・通勤手当・育児休業の申請処理が毎月100件超</strong>、というケースも珍しくありません。1件5分の目視突合で合計500分、月次で丸1日以上が消えていきます。一方で100%自動化は現実的ではなく、<strong>80%をAIで自動仕分け、残り20%を人間が最終判定する</strong>ハイブリッドが現実解です。500分を30分に圧縮する感覚を、この動画で体得していただきます。", reference: "" },
+      { start: "1:20", end: "2:30", topic: "個人情報ガードレール", direction: "スライド：Anthropicデータポリシー→画面収録：mask.py実行→スライド：ガードレール4項目", content: "実演に入る前に、<strong>個人情報の扱い</strong>を先に固めます。まず<strong>Anthropicのデータポリシー</strong>：API経由のデータは学習に使われない、という前提を押さえます。次に<strong>マスキングの実装デモ</strong>、<code>mask.py</code>で氏名はA氏、生年月日は年代、口座は下4桁に置き換わります。<strong>マイナンバーは設計段階から処理対象に入れない</strong>方針です。ガードレールは<strong>利用目的の通知・マスキング・機微情報の除外・社内ポリシーとの整合</strong>の4項目、という整理で入口条件を揃えておきます。", reference: "demos/shinsei-check/mask.py" },
+      { start: "2:30", end: "3:10", topic: "題材フォルダ", direction: "画面収録：demos/shinsei-check/をエディタで開く", content: "題材フォルダを開きます。<code>demos/shinsei-check/applications/</code>に申請書Excel10件、<strong>経費精算5・通勤手当3・育児休業2</strong>の内訳です。<code>attachments/</code>側には領収書画像・印字PDF・スキャン画像・定期券写真・母子手帳コピーのPDFが混在します。登場人物は<strong>田中太郎さん・山田花子さん・グエン・ティ・ハンさん</strong>、完全架空データで前の動画と揃えています。", reference: "demos/shinsei-check/applications/" },
+      { start: "3:10", end: "3:40", topic: "対話依頼", direction: "画面収録：Claude Codeのプロンプト欄", content: "Claude Codeに依頼します。<strong>「このフォルダの申請10件と添付を突合し、不整合があれば差額・差日数・経路不一致を具体的に挙げてHTMLレポートにまとめてください」</strong>——自然な日本語でそのまま伝える形です。", reference: "" },
+      { start: "3:40", end: "4:30", topic: "読み取り進捗", direction: "画面収録：Claude Codeの処理ログ", content: "Claude Codeが印字PDFとスキャン画像を順に読み、金額と日付を抽出していく進捗をログで追います。ここは少し時間がかかる部分で、<strong>読み取り精度は素材で変わります</strong>。目安としては<strong>印字PDFがほぼ100%、スキャン画像が90〜95%、手書きやFAX紙が60〜80%</strong>といった水準です。", reference: "" },
+      { start: "4:30", end: "5:30", topic: "HTMLレポート確認", direction: "画面収録：生成HTMLをブラウザで開く", content: "生成されたHTMLレポートをブラウザで開きます。<strong>✅承認可が6件、⚠️要確認が4件</strong>で仕分けされています。要確認の行には差分根拠が並んでいて、<strong>「¥12,300 vs ¥12,500、200円差」「出産予定日 申請5/15 vs 母子手帳5/12、3日差」「経路不一致」</strong>のように、数値と根拠がセットで示されます。<strong>差分の出し方が具体的だから、人間側の最終判定が短時間で済む</strong>、という設計です。", reference: "demos/shinsei-check/output/check-report.html" },
+      { start: "5:30", end: "6:10", topic: "精度の正直な開示", direction: "画面収録：手書き領収書が要確認に落ちる行", content: "ここで<strong>読み取り精度の限界を正直にお伝えします</strong>。手書きの不鮮明な領収書は、自動で⚠️要確認に落ちます。これは<strong>精度の限界がそのまま運用ガードレールに転化している</strong>状態で、怪しいものは人間に回す、という切り分けが仕組みの中に織り込まれています。", reference: "" },
+      { start: "6:10", end: "6:40", topic: "バックオフィス2大柱", direction: "画面収録：スライド表紙に戻す", content: "前のセクションで扱った<strong>Skills Creatorによる月次レポート自動化</strong>と、この動画の<strong>日次の申請処理自動化</strong>を組み合わせると、バックオフィスの業務が<strong>月次集約と日次申請処理の両側から挟み撃ち</strong>になります。属人化と目視地獄の両方が、AIで解けていく絵です。", reference: "" },
+      { start: "6:40", end: "7:20", topic: "100%自動化は幻想", direction: "画面収録：スライド表紙のまま", content: "中立化のメッセージを1つ置いておきます。<strong>100%自動化は幻想、80%自動化が現実解</strong>です。AIが担うのは<strong>除外とフラグ立て、最終承認印は人が押す</strong>——迷惑メールフィルタと同じ発想で運用するのがしっくりきます。月100件×5分の500分が、<strong>要確認数件×6分で30分</strong>に圧縮される、という時間の姿に変わります。", reference: "" },
+      { start: "7:20", end: "9:00", topic: "アプリ化との棲み分け・クロージング", direction: "スライド：クロージング", content: "最後に対話ツール完結型と業務アプリ化の<strong>棲み分け</strong>を明示して閉じます。<strong>月100件までなら対話ツール一人完結、ワークフロー承認・監査ログ・複数ユーザー同時運用まで踏み込む段階からはWebアプリ化の番</strong>、という境界です。アプリ化はこのあとのセクションで扱います。個人情報のガードレールを入口に据えて、現実的な自動化を着実に進めていきましょう。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S4-V3": {
+    meta: {
+      duration: "約7分",
+      mode: "画面収録（Claude Codeターミナル＋ブラウザ。スライドは表紙のみ）",
+      goal: "人事担当者が架空中小企業『○△商事』の新人受け入れ業務を題材に、5部署分のチェックリストHTMLを対話プロンプト1回で一気に自作できるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "画面収録", name: "Claude Codeで一括生成", purpose: "対話プロンプト1回で5部署分のHTMLを生成", timing: "中盤" },
+      { type: "画面収録", name: "5部署のHTML確認", purpose: "営業・エンジニア・経理・マーケ・CSを順に開く", timing: "後半" },
+      { type: "画面収録", name: "印刷プレビュー・スマホ幅", purpose: "静的HTMLでも印刷とスマホが賄える確認", timing: "後半" },
+      { type: "画面収録", name: "修正デモ", purpose: "プロンプト1行追加で営業HTMLのみ差分更新", timing: "クロージング直前" },
+      { type: "出力成果物", name: "demos/onboarding/checklist-*.html", purpose: "5部署分のチェックリストHTML", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では人事担当の方に向けて、<strong>新人受け入れチェックリストをClaude Codeで自作する</strong>方法をお伝えします。題材は架空中小企業『○△商事』、5部署分のチェックリストHTMLをプロンプト1回で組み上げます。", reference: "" },
+      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "スライド：表紙", content: "中小企業の人事担当の方は、<strong>採用翌月に部署ごとのやることが全く違う</strong>のに、毎年同じ段取りを頭の中で組み直している、という場面が多いと思います。営業にはCRMと名刺、エンジニアにはGitHubと開発環境、経理には経費精算の登録、と部署ごとに準備物が違う。この負担は意外と可視化されにくい領域です。この動画では、<strong>Claude Codeへの対話プロンプト1回で5部署分のチェックリストHTMLを一気に自作する</strong>方法をお伝えします。CSVも動的生成も使わない、完全に静的なHTML5枚を作る最小構成で進めます。", reference: "" },
+      { start: "1:20", end: "1:45", topic: "扱う範囲の明示", direction: "スライド：表紙", content: "扱うのは<strong>静的HTML5枚、チェックボックス付き、印刷対応、スマホ対応、スタイル統一</strong>までです。共同編集や更新通知・権限管理はスコープ外、ここは最後に触れます。", reference: "" },
+      { start: "1:45", end: "2:15", topic: "Notion手作りとの使い分け", direction: "画面収録：Notionとの比較表を図示", content: "Notionで手作りするやり方との比較を短く挟んでおきます。<strong>Notionが悪いわけではなく、用途の使い分け</strong>です。<strong>初期構築とスタイル統一、印刷までやりたい場面はHTML、共同編集と日々更新が中心になるならNotion</strong>、という整理が現場感に合います。", reference: "" },
+      { start: "2:15", end: "2:55", topic: "題材と個人情報作法", direction: "画面収録：エディタで要件メモを開く", content: "題材の設定です。架空中小企業『○△商事』、5部署は<strong>営業・エンジニア・経理・マーケ・カスタマーサクセス</strong>、各部署10〜15項目、新人は田中・山田・グエンの架空3名で前の動画と統一します。<strong>マイナンバー確認は項目タイトルのみ、実入力欄は設けずに手動・オフライン処理</strong>と注釈を入れておく、というのがここでの個人情報の扱い方です。", reference: "" },
+      { start: "2:55", end: "3:40", topic: "対話プロンプト1回依頼", direction: "画面収録：Claude Codeのプロンプト欄", content: "Claude Codeに依頼します。<strong>「○△商事の新人受け入れチェックリストを5部署分、静的HTML・チェックボックス付き・印刷対応・スマホ対応・スタイル統一でお願いします」</strong>と、5部署分の項目を1プロンプトにまとめて渡します。<strong>プロンプト1回だけ</strong>がこの動画の手触りの核です。", reference: "" },
+      { start: "3:40", end: "4:40", topic: "5部署のHTML確認", direction: "画面収録：ブラウザで5枚を順に開く", content: "数十秒で5枚のHTMLが出揃いました。<strong>営業→エンジニア→経理→マーケ→CS</strong>の順に開いていきます。部署ごとに項目が違うこと、そして<strong>デザインは5枚で統一されている</strong>ことが確認できます。", reference: "demos/onboarding/checklist-sales.html" },
+      { start: "4:40", end: "5:10", topic: "印刷プレビュー・スマホ幅", direction: "画面収録：印刷プレビュー→開発者ツールでスマホ幅", content: "印刷プレビューに切り替えるとA4で綺麗に収まります。続けて開発者ツールでスマホ幅に切り替えても、レイアウトが崩れずに縦積みで読める状態です。<strong>HTML1枚で印刷・PDF・スマホが全部賄える</strong>、という事実を押さえておきます。", reference: "" },
+      { start: "5:10", end: "5:50", topic: "修正デモ", direction: "画面収録：プロンプト1行追加→営業HTMLのみ再生成", content: "修正の容易さも見ておきます。<strong>「営業のチェックリストに『携帯電話契約』の項目を追加してください」</strong>と1行足すだけで、営業HTMLだけ差分更新、他4部署はそのままです。<strong>プロンプト1行追加で部分修正</strong>、という手応えを印象付けておきます。", reference: "" },
+      { start: "5:50", end: "7:00", topic: "クロージング・次セクションへの布石", direction: "スライド：表紙", content: "ここまでで、<strong>ドメイン知識のプロダクト化を人事ドメインに応用した最小実装例</strong>が手に入りました。前の動画のホテル清掃LMSが「新人が学ぶ側」の人事題材だったのに対し、この動画は「新人を受け入れる側」——<strong>研修と採用の人事ペア</strong>として機能します。一方で共同編集・更新通知・権限管理まで進めたくなった段階では、HTML単品では届きません。この続きはアプリ開発のセクションで受け止めます。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S4-V4": {
+    meta: {
+      duration: "約8分30秒",
+      mode: "画面収録（Claude Codeターミナル＋ブラウザ。スライドは表紙のみ）",
+      goal: "架空スタートアップ『スタートアップ.inc』の1週間分のSlack全チャネルとNotion経営会議議事録DBを複合MCPで横断集約し、CEO向け週次サマリーHTMLを自動生成できるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "画面収録", name: "mcp.json設定", purpose: "Slack MCPとNotion MCPの同時登録", timing: "中盤" },
+      { type: "画面収録", name: "/mcp確認", purpose: "両サーバーが緑色であることを確認", timing: "中盤" },
+      { type: "画面収録", name: "複合プロンプト実行", purpose: "Slack全チャネル＋Notion経営会議議事録DBを統合する依頼", timing: "中盤" },
+      { type: "画面収録", name: "ツール自律呼び分け", purpose: "slack_search_messagesとnotion_query_databaseが順次呼ばれる様子", timing: "中盤〜後半" },
+      { type: "出力成果物", name: "週次サマリーHTML（4層構造）", purpose: "顧客対応動向→社内進捗→経営方針→示唆の構造で出力", timing: "後半の動作確認" },
+      { type: "画面収録", name: "比較デモ", purpose: "明示指示なしで走らせた場合の偏りを短く提示", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経営者・事業部長・中間管理層の方に向けて、<strong>Slack MCPとNotion MCPを同時に動かし、CEO向け週次サマリーを自動生成する</strong>方法をお伝えします。個別MCPから複合MCPへ、点から線・面への質的転換を実演で体感していただきます。", reference: "" },
+      { start: "0:20", end: "1:20", topic: "月曜朝7時の描写", direction: "スライド：表紙", content: "経営層や事業責任者の方は、<strong>月曜朝にコーヒーを片手に「先週は何が起きたのか」を掴みたい</strong>場面が多いと思います。一方でSlackをチャネル横断でスクロールし、Notionの議事録を探し、頭の中で時系列に並べ直す作業は現実には厳しいものです。この動画でお伝えする価値は2軸です。経営層にとっては<strong>有能な秘書が先週の全体像を月曜朝に用意してくれる</strong>、中間管理層やメンバーにとっては<strong>週次報告資料作成の繰り返しから解放される</strong>——経営者と現場の両方が得する構図で整理していきます。", reference: "" },
+      { start: "1:20", end: "2:00", topic: "点→線・面への対比", direction: "スライド：表紙", content: "前のセクションでは、Slack単体とNotion単体の扱い方を別々にお伝えしました。この動画では、<strong>Slack MCPとNotion MCPを同時に起動し、LLMが自律的にツールを呼び分ける</strong>複合MCPの世界に踏み込みます。1つの情報源から複数の情報源へ、点から線・面への質的転換、という位置付けです。", reference: "" },
+      { start: "2:00", end: "2:30", topic: "Skills vs 複合MCPの棲み分け", direction: "スライド：表紙", content: "前のセクションで扱った<strong>月次レポートのSkill化</strong>との棲み分けも整理しておきます。<strong>固定フローで月次を集約する場面はSkills、動的に週次リアルタイムで束ねる場面は複合MCP</strong>——扱う時間軸の違いで選ぶ、というのが使い分けの指針になります。", reference: "" },
+      { start: "2:30", end: "3:00", topic: "題材紹介", direction: "画面収録：Slackチャネル一覧とNotion議事録DBを俯瞰", content: "題材は架空スタートアップ『<strong>スタートアップ.inc</strong>』、B2B SaaS・40名規模の設定です。Slackは<strong>#general・#sales・#cs-support・#sales-voice・#product-dev・#board-updates</strong>の6チャネル、Notionには経営会議議事録DBが1本。<strong>#cs-supportと#sales-voiceから顧客の声を拾う</strong>のが情報密度を決めるポイントです。", reference: "demos/startup-inc/" },
+      { start: "3:00", end: "3:40", topic: "MCP同時登録", direction: "画面収録：~/.claude/mcp.jsonを編集", content: "事前準備として<code>~/.claude/mcp.json</code>にSlack MCPとNotion MCPの2本を同時登録します。<strong>Slack Bot Tokenはxoxbで始まるトークン、NotionはInternal Integration Token</strong>、いずれも前のセクションで通したトークンをそのまま流用します。", reference: "https://github.com/modelcontextprotocol/servers/tree/main/src/slack ／ https://github.com/makenotion/notion-mcp-server" },
+      { start: "3:40", end: "4:10", topic: "/mcp確認", direction: "画面収録：/mcpで両サーバー緑色", content: "<code>/mcp</code>で確認すると、<strong>SlackとNotionの両サーバーが緑色</strong>で並びます。<strong>複数の秘書が同時に待機している</strong>状態、というのがここでの絵です。", reference: "" },
+      { start: "4:10", end: "4:40", topic: "複合プロンプトの4要素", direction: "画面収録：プロンプト欄に入力開始", content: "複合プロンプトには勘所があります。<strong>情報源の指定・集約軸・出力構造・優先度</strong>の4要素を入れる、というテンプレートです。ここが抜けると指示が散って、出力が偏ります。", reference: "" },
+      { start: "4:40", end: "5:40", topic: "プロンプト投下と自律呼び分け", direction: "画面収録：プロンプト送信→ツール呼び分けのログ", content: "プロンプトを投下します。<strong>「過去1週間のSlack全チャネルとNotion経営会議議事録DBを統合し、CEO向け週次サマリーHTMLを4層構造で、#cs-supportと#sales-voiceの顧客声を優先抽出してください」</strong>——これだけです。LLMは<code>slack_search_messages</code>と<code>notion_query_database</code>を<strong>自律的に呼び分けながら</strong>集約を進めていきます。", reference: "" },
+      { start: "5:40", end: "6:40", topic: "4層構造HTML確認", direction: "画面収録：生成HTMLをブラウザで開く", content: "生成されたHTMLを開きます。<strong>顧客対応動向→社内進捗→経営方針→示唆</strong>の4層構造です。具体的には<strong>「『決済機能ほしい』5件」→「決済API連携提案準備」→「Q1新施策として承認」→「次週の焦点はQ1ロードマップ」</strong>——顧客の声から経営判断まで、1枚で連鎖が見える状態に整います。", reference: "" },
+      { start: "6:40", end: "7:20", topic: "明示指示なしの比較デモ", direction: "画面収録：指示をぼかした同プロンプトを実行", content: "補助デモとして、<strong>優先度指定を抜いた同じプロンプト</strong>を短く走らせてみます。するとSlackだけに偏る、あるいはNotionだけを読む、といった挙動が出やすくなります。<strong>複合プロンプトの粒度設計が結果を決める</strong>、という感触をここで掴んでおきます。", reference: "" },
+      { start: "7:20", end: "8:30", topic: "クロージング・次セクションへの布石", direction: "スライド：表紙", content: "この動画では、<strong>組織の意思決定スピードと現場の資料作成負担を同時に変える</strong>体験をしていただきました。今回束ねたのはSlackとNotionの2本ですが、<strong>営業ツール・財務データ・顧客DBも同じやり方で束ねれば、組織のあらゆる判断が高速化</strong>していきます。「複数入力を束ねて統合出力」という思考パターンは、次のアプリ開発セクションで扱うデータベース設計・非同期処理の基盤になります。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S4-V5": {
+    meta: {
+      duration: "約9分30秒",
+      mode: "画面収録（Claude Codeターミナル＋エディタ＋ブラウザ。スライドは表紙と5工程フロー図の2枚）",
+      goal: "SEO記事制作フローを5工程に分割し、工程間をMarkdownファイルで疎結合につなぐ設計で、YMYL高額商材でも再現性高く高品質記事を生成できるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "5工程フロー図", purpose: "競合分析→ユーザーニーズ→構成→本文→メタの流れを1枚で示す", timing: "中盤" },
+      { type: "画面収録", name: "競合分析工程", purpose: "WebSearchで上位10記事を取得→比較表に整理", timing: "中盤" },
+      { type: "画面収録", name: "ユーザーニーズ分析工程", purpose: "比較表からギャップとターゲットニーズを深掘り", timing: "中盤" },
+      { type: "画面収録", name: "構成案作成工程", purpose: "H2/H3の見出し体系を設計", timing: "中盤" },
+      { type: "画面収録", name: "本文執筆工程", purpose: "セクション別に深掘り、2026年4月時点の前提付き", timing: "中盤" },
+      { type: "画面収録", name: "メタ生成工程", purpose: "タイトル・ディスクリプション・OGPを生成", timing: "後半" },
+      { type: "出力成果物", name: "demos/s4-v5/01〜05.md", purpose: "各工程の出力Markdown（疎結合の受け渡し物）", timing: "中盤〜後半" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではマーケ担当・オウンドメディア運営の方に向けて、<strong>SEO記事制作を5工程に分割してClaude Codeで高品質に生成する</strong>方法をお伝えします。題材はYMYL高額商材『屋上防水工事 費用相場』です。", reference: "" },
+      { start: "0:20", end: "1:30", topic: "なぜ扱うか・コアメッセージ", direction: "スライド：表紙", content: "マーケ担当の方は、<strong>毎月「高品質なSEO記事」に追われている</strong>場面が多いと思います。テーマを決めてAIに一発依頼する手軽さは魅力ですが、<strong>YMYL領域では浅い記事では絶対に上位が取れない</strong>のが現実です。競合も豊富で、SEO投資も大きい。ここでコアメッセージを一度打っておきます。<strong>工程分割で80%の再現性を確保し、残り20%の監修・一次情報・現場写真は人間の役割</strong>——この20%こそGoogleが評価するE-E-A-Tの核です。", reference: "" },
+      { start: "1:30", end: "2:00", topic: "E-E-A-T解説", direction: "スライド：表紙", content: "E-E-A-Tは<strong>Experience・Expertise・Authoritativeness・Trustworthiness＝経験・専門性・権威性・信頼性</strong>の略です。<strong>AI下書きと人間監修の組み合わせがこの要件を満たす現実解</strong>、と断言して通過します。「AI記事はペナルティ」という話への長い反論はしません。", reference: "" },
+      { start: "2:00", end: "2:30", topic: "題材提示", direction: "画面収録：エディタで作業ディレクトリ準備", content: "題材は架空建設会社『<strong>○△建設</strong>』のオウンドメディア記事、キーワードは<strong>「屋上防水工事 費用相場」</strong>です。前の動画と同じ架空会社のマーケ部門、という連続設定で進めます。", reference: "demos/s4-v5/" },
+      { start: "2:30", end: "3:30", topic: "第1工程：競合分析", direction: "画面収録：WebSearchで上位10記事取得→01.md保存", content: "最初の工程は<strong>競合分析</strong>です。Claude CodeのWebSearchで上位10記事を取得し、<strong>見出し構成・含まれるトピック・各記事の強み</strong>をMarkdown比較表に整理します。動画内の表示は<strong>「競合A社」「競合B社」</strong>で伏字、実在サービス名は出しません。結果を<code>01-competitor-analysis.md</code>に保存します。", reference: "demos/s4-v5/01-competitor-analysis.md" },
+      { start: "3:30", end: "4:15", topic: "第2工程：ユーザーニーズ分析", direction: "画面収録：02.md生成", content: "次の工程は<strong>ユーザーニーズ分析</strong>です。比較表を読み込み、<strong>競合が見落としているギャップと、マンション・ビルオーナー・小規模リフォーム会社が本当に知りたいこと</strong>を深掘りします。<code>02-user-needs.md</code>に保存、という流れです。", reference: "demos/s4-v5/02-user-needs.md" },
+      { start: "4:15", end: "5:00", topic: "第3工程：構成案作成", direction: "画面収録：03.md生成", content: "次は<strong>構成案作成</strong>、H2/H3の見出し体系を設計します。<strong>ウレタン・シート・FRP・アスファルトの4工法比較、費用内訳、業者選びチェックリスト</strong>を差別化見出しとして組み込む、という作り方です。<code>03-outline.md</code>に保存します。", reference: "demos/s4-v5/03-outline.md" },
+      { start: "5:00", end: "6:00", topic: "第4工程：本文執筆", direction: "画面収録：04.md生成", content: "<strong>本文執筆</strong>の工程です。構成に沿ってセクション別に深掘りし、<code>04-body.md</code>に保存します。ここでの前提表記は<strong>「2026年4月時点の全国平均」「地域差あり」</strong>と撮影時点と対象範囲を明記しておきます。<strong>WebSearch・Claude・人間監修の三位一体</strong>で、一次情報の精度を担保する、というスタンスです。", reference: "demos/s4-v5/04-body.md" },
+      { start: "6:00", end: "6:30", topic: "第5工程：メタ生成", direction: "画面収録：05.md生成", content: "最後は<strong>メタ生成</strong>です。タイトルタグ・メタディスクリプション・OGP設定を<code>05-meta.md</code>に保存します。これで5工程が出揃いました。", reference: "demos/s4-v5/05-meta.md" },
+      { start: "6:30", end: "7:30", topic: "Markdownプレビュー・品質差確認", direction: "画面収録：最終記事をMarkdownプレビュー", content: "最終記事をMarkdownプレビューで確認します。<strong>5工程のファイル受け渡しで毎回同品質が再現される</strong>、という感触をここで言葉にしておきます。一発執筆のアウトプットとは、粒度と構造で明確な差が出ます。", reference: "" },
+      { start: "7:30", end: "9:30", topic: "Skill化接続・コアメッセージ再打ち・クロージング", direction: "スライド：表紙", content: "最後にSkill化への接続です。<strong>前のセクションで扱ったSkills Creatorを使えば、この5工程を<code>/seo [キーワード]</code>という一発Skillに変換</strong>できます。別キーワードでも同じパイプラインが動く、という状態です。冒頭のコアメッセージをもう一度打っておきます——<strong>80%の再現性＋20%の人間監修</strong>、この20%こそE-E-A-Tの核で、AIと人間の役割分担の原則です。工程全体をパイプライン化する発想は、次のアプリ開発セクションでさらに深まります。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S4-V6": {
+    meta: {
+      duration: "約9分",
+      mode: "画面収録（ブラウザ＋Claude Codeターミナル＋Excel。スライドは表紙・法令配慮・クロージングの3枚）",
+      goal: "BtoB営業・インサイドセールスが、Sansan事例ページの公開情報を題材にrobots.txt確認→一覧クロール→個別ページ抽出→CSV出力までの多段階ワークフローをClaude Code1本で回せるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "法令配慮", purpose: "robots.txt・利用規約・個人情報保護法の3点要約", timing: "序盤" },
+      { type: "画面収録", name: "robots.txt確認", purpose: "curlで/case/の許可を目視確認", timing: "序盤" },
+      { type: "画面収録", name: "Sansan事例ページ構造", purpose: "一覧ページの構造をブラウザで見せる", timing: "中盤" },
+      { type: "画面収録", name: "素のプロンプト実行", purpose: "URLパターン推定の揺れを短く見せる", timing: "中盤" },
+      { type: "画面収録", name: "ドメイン知識追加", purpose: "URLパターン候補を1行足して安定させる", timing: "中盤" },
+      { type: "画面収録", name: "2段階スクレイピング", purpose: "一覧→個別の階層を自律的に辿る様子", timing: "中盤〜後半" },
+      { type: "出力成果物", name: "demos/s4-v6/attack_list.csv", purpose: "会社名・部署・役職・氏名・業界の5列CSV", timing: "後半の動作確認" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではBtoB営業・インサイドセールスの方に向けて、<strong>Claude Codeで決裁者アタックリストをWebスクレイピングで自動生成する</strong>方法をお伝えします。題材はSansan事例ページの公開情報、多段階ワークフローの実践編です。", reference: "" },
+      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "スライド：表紙", content: "BtoB営業の新規開拓は、<strong>稟議や契約の承認権限を持つ決裁者に直接届かないと商談が進みません</strong>。100社分の決裁者アタックリストを手作業で作ると、<strong>会社名・部署・役職・氏名・業界の転記だけで8時間</strong>が溶ける、という場面が多いと思います。この動画では、<strong>Sansan事例ページの公開情報を題材に8時間を数分に圧縮</strong>し、空いた時間を営業戦略・顧客関係構築という高付加価値業務に振り向ける感覚を体得していただきます。", reference: "" },
+      { start: "1:20", end: "1:40", topic: "決裁者の用語中立化", direction: "スライド：表紙", content: "用語を1つだけ揃えておきます。<strong>「決裁者」は稟議・契約の承認権限者、営業業界の標準用語</strong>です。「決済者」は代金支払い者を指す別の意味なので、営業領域では誤用にあたります。SansanやSaaS各社も「決裁者」で統一しています。", reference: "" },
+      { start: "1:40", end: "2:40", topic: "法令配慮", direction: "スライド：法令配慮→画面収録：curlでrobots.txt確認", content: "スクレイピングに着手する前の<strong>法令配慮</strong>を先に固めます。まず<code>curl https://jp.sansan.com/robots.txt | grep -i case</code>で<strong><code>/case/</code>パスが許可されている</strong>ことを目で確認します。次に<strong>Sansan利用規約・公開情報・スクレイピング許可の3点</strong>を口頭で押さえ、<strong>個人情報保護法と特定商取引法</strong>の橋渡しを短く入れておきます。「着手前にrobots.txtと利用規約を読む」という習慣を、営業職の法令リテラシーとして位置付けます。", reference: "https://jp.sansan.com/robots.txt" },
+      { start: "2:40", end: "3:10", topic: "題材ページ構造", direction: "画面収録：https://jp.sansan.com/case/ をブラウザで開く", content: "題材ページ<code>https://jp.sansan.com/case/</code>をブラウザで開きます。<strong>事例一覧ページから各企業の個別事例ページへのリンク</strong>が並んでいます。この一覧からクロールを始める、という見通しを共有しておきます。", reference: "https://jp.sansan.com/case/" },
+      { start: "3:10", end: "4:00", topic: "素のプロンプトで実行", direction: "画面収録：Claude Codeで一覧URLを渡して依頼", content: "まずは素のプロンプトで依頼してみます。<strong>「この一覧ページの事例から会社名・部署・役職・氏名・業界を抽出してください」</strong>とだけ渡します。すると<strong>企業ロゴやリンクからURLパターンを手探りで推測する</strong>様子が対話ログに出ます。抽出は走るものの、精度が少し揺れる感触があります。", reference: "" },
+      { start: "4:00", end: "4:50", topic: "ドメイン知識で安定させる", direction: "画面収録：プロンプトに1行追加", content: "ここで<strong>ドメイン知識をプロンプトに差し込みます</strong>。<strong>「URLパターンの候補は<code>case</code>、<code>cases</code>、<code>customers</code>です」</strong>という1行を足します。するとその瞬間に、個別ページへの到達精度が安定します。<strong>人間のドメイン知識がAI精度を上げる</strong>——この講座で繰り返しお伝えしてきたメッセージが、ここでも再現される形です。", reference: "demos/s4-v6/prompt.md" },
+      { start: "4:50", end: "5:50", topic: "2段階スクレイピング", direction: "画面収録：対話ログで一覧→個別の階層を辿る", content: "Claude Codeが<strong>一覧→個別ページの2段階を自律的に辿ります</strong>。一覧からリンクを拾い、個別事例ページへ降りて会社名・部署・役職・氏名・業界を1件ずつ抽出、最後にまとめてJSON→CSVに整える、という階層処理です。<strong>多段階ワークフローの核心</strong>がここで見えます。", reference: "" },
+      { start: "5:50", end: "6:30", topic: "CSV現物検証", direction: "画面収録：attack_list.csvをExcelで開く→Sansan公式を別タブで突き合わせ", content: "生成された<code>attack_list.csv</code>をExcelで開きます。<strong>会社名・部署・役職・氏名・業界の5列</strong>が揃っています。現物検証として、Sansan公式の事例ページ3〜4件をブラウザ別タブで開き、抽出データが<strong>公開情報と一致する</strong>ことを目で突き合わせます。この一手間を省かない、というのがリスト運用の姿勢です。", reference: "demos/s4-v6/attack_list.csv" },
+      { start: "6:30", end: "7:00", topic: "8時間 vs 数分", direction: "スライド：表紙", content: "<strong>手作業100社8時間 vs Claude Code数分</strong>の対比で時間を締めます。時間差の正体は<strong>「人間が1社ずつ読む作業の自動化」</strong>です。手作業が劣るという話ではなく、人間の時間を高付加価値業務に振り向け直す発想が本質です。営業目的で利用する前には、対象者のプライバシー設定や公開許諾範囲を再確認する責任が営業側にある、という一文もここに添えておきます。", reference: "" },
+      { start: "7:00", end: "7:40", topic: "S4俯瞰", direction: "スライド：表紙", content: "このセクションをここで俯瞰します。前の5本は単機能の効率化で並んできましたが、この動画は初めて<strong>「取得→加工→出力」の多段階ワークフロー</strong>を扱いました。<strong>小さな局所最適化から、事業全体を視野に入れた戦略的自動化への卒業地点</strong>、という位置付けです。", reference: "" },
+      { start: "7:40", end: "9:00", topic: "次セクションへの質的転換・クロージング", direction: "スライド：クロージング", content: "最後に次のアプリ開発セクションへの橋渡しを置いて閉じます。今回作ったのは<strong>CSVをローカルで開く個人ツール</strong>、次のセクションでは<strong>同じ決裁者アタックリストを複数人で共有し、データベースに永続化し、Webインターフェースからリアルタイム更新するSaaSへ質的に変わります</strong>。「今はCSVをローカル、次はチームで共有する段階」——この境界がこの動画の立ち位置です。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
   }
 };

@@ -7,7 +7,7 @@ var SCRIPTS = {
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "講座タイトル表示", timing: "冒頭" },
-      { type: "スライド", name: "3トラック構成図", purpose: "業務効率化・アプリ開発・実務フローの3本柱を図示", timing: "Step 5 講座の進め方" }
+      { type: "スライド", name: "3トラック構成図", purpose: "業務効率化・アプリ開発・実務フローの3本柱を図示", timing: "講座全体構成の紹介パート" }
     ],
     script: [
       { start: "0:00", end: "0:15", topic: "オープニング", direction: "スライド：表紙", content: "Claude Code超実践講座へようこそ。この講座では、Claude Codeの超実践的な使い方をお伝えしていきます。", reference: "" },
@@ -34,15 +34,15 @@ var SCRIPTS = {
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭" },
-      { type: "画面収録", name: "Cursorエディター操作", purpose: "Claude Codeにお題を投げる〜完成まで", timing: "Step 1〜Step 4" },
-      { type: "画面収録", name: "ブラウザ表示", purpose: "完成したHTMLを確認", timing: "Step 5" }
+      { type: "画面収録", name: "Cursorエディター操作", purpose: "Claude Codeにお題を投げる〜完成まで", timing: "序盤〜中盤" },
+      { type: "画面収録", name: "ブラウザ表示", purpose: "完成したHTMLを確認", timing: "後半の動作確認" }
     ],
     script: [
       { start: "0:00", end: "0:15", topic: "オープニング", direction: "スライド：表紙", content: "それでは、この動画ではClaude Codeで魔法体験をしていきます。", reference: "" },
       { start: "0:15", end: "0:30", topic: "何もインストールしない宣言", direction: "画面収録：Cursorエディターを映す", content: "<strong>まず何もインストールせずに</strong>、Cursorというエディター上でClaude Codeがどのように動くのかを見ていただきます。", reference: "" },
       { start: "0:30", end: "0:45", topic: "Cursor紹介", direction: "画面収録：Cursorの画面全体を見せる", content: "これがCursorというエディターです。この中でClaude Codeを動かしていきます。早速やってみましょう。", reference: "" },
       { start: "0:45", end: "1:15", topic: "プロンプト入力", direction: "画面収録：Claude Codeのチャット欄にお題を入力", content: "いきなりこんなことを言ってみます。「<strong>回転寿司大手3社の最新のIR情報を比較分析して、見やすいHTMLのウェブサイトにまとめてください。</strong>」", reference: "" },
-      { start: "1:15", end: "1:45", topic: "AIはリサーチが得意", direction: "画面収録：送信後の画面", content: "<strong>AIはリサーチがとても得意</strong>ですので、こういったことをサクッとやってくれます。フォルダもファイルも何も用意していませんが、それも全部Claude Codeが勝手に作ってくれます。ちなみに、ステータスバーについては後ほど説明しますね。", reference: "" },
+      { start: "1:15", end: "1:45", topic: "AIはリサーチが得意", direction: "画面収録：送信後の画面", content: "<strong>AIはリサーチがとても得意</strong>ですので、こういったことをサクッとやってくれます。フォルダもファイルも何も用意していませんが、それも全部Claude Codeが勝手に作ってくれます。ちなみに、ステータスラインについては後ほど説明します。", reference: "" },
       { start: "1:45", end: "2:15", topic: "リサーチ開始", direction: "画面収録：Claude Codeが応答を返す", content: "「回転寿司大手3社のIR情報を分析し、HTMLサイトにまとめます」と返ってきました。まずリサーチを始めてくれています。大手3社――スシロー、くら寿司、はま寿司ですね。", reference: "" },
       { start: "2:15", end: "3:00", topic: "許可ダイアログの説明", direction: "画面収録：Webサイトへのアクセス許可を求めるダイアログ", content: "ここで「このウェブサイトを見に行っていいですか？」と聞かれます。株探、みん株、くら寿司の公式サイトなどですね。Claude Codeは勝手にアクセスせず、<strong>必ずユーザーに許可を求めてくれます</strong>。もちろん許可を出しましょう。", reference: "" },
       { start: "3:00", end: "4:00", topic: "情報収集の様子", direction: "画面収録：各サイトへアクセスしている表示（タイムラプス）", content: "Yahoo!ファイナンス、流通ニュースサイト、フード&ライフカンパニーズの公式サイトなど、さまざまなウェブサイトを見に行って情報を集めてくれています。こちらは何もする必要がありません。", reference: "" },
@@ -66,24 +66,24 @@ var SCRIPTS = {
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "スライド", name: "コンテキストウィンドウ概念図", purpose: "作業机の比喩＋200Kトークンの図示", timing: "Step 4 種明かし①" },
-      { type: "画面収録", name: "ステータスライン拡大", purpose: "使用率・レート制限リセット時刻を見せる", timing: "Step 2・Step 8" },
-      { type: "ブラウザ", name: "OpenAI Tokenizer", purpose: "トークン分解の可視化（日英コード比較）", timing: "Step 3" },
-      { type: "画面収録", name: "/context 実演", purpose: "カテゴリ別トークン使用量の可視化", timing: "Step 5" },
-      { type: "画面収録", name: "/cost 実演", purpose: "現在のコスト表示", timing: "Step 5" },
-      { type: "画面収録", name: "/clear 実演", purpose: "コンテキストリセット", timing: "Step 6" },
-      { type: "画面収録", name: "/compact focus 実演", purpose: "フォーカス要約の実行", timing: "Step 6" }
+      { type: "スライド", name: "コンテキストウィンドウ概念図", purpose: "作業机の比喩＋200Kトークンの図示", timing: "種明かしパート" },
+      { type: "画面収録", name: "ステータスライン拡大", purpose: "使用率・レート制限リセット時刻を見せる", timing: "序盤と終盤" },
+      { type: "ブラウザ", name: "OpenAI Tokenizer", purpose: "トークン分解の可視化（日英コード比較）", timing: "体感パート" },
+      { type: "画面収録", name: "/context 実演", purpose: "カテゴリ別トークン使用量の可視化", timing: "中盤" },
+      { type: "画面収録", name: "/cost 実演", purpose: "現在のコスト表示", timing: "中盤" },
+      { type: "画面収録", name: "/clear 実演", purpose: "コンテキストリセット", timing: "中盤〜後半" },
+      { type: "画面収録", name: "/compact focus 実演", purpose: "フォーカス要約の実行", timing: "中盤〜後半" }
     ],
     script: [
-      { start: "0:00", end: "0:30", topic: "オープニング＋核心予告", direction: "スライド：表紙", content: "この動画では<strong>Claude Codeの真髄</strong>に迫ります。いきなり結論から言います。<strong>「Claude Codeで業務するってのは、コンテキストウィンドウとトークンのマネジメントだ」</strong>。これが今日のメッセージです。ただ、いきなりこの話をしてもピンと来ないと思うので、まず<strong>体感から</strong>入りましょう。", reference: "" },
-      { start: "0:30", end: "1:15", topic: "前動画の残骸", direction: "画面収録：ターミナルのステータスラインをズームアップ", content: "まずはこれ、前の動画でも出てきた<strong>ステータスライン</strong>。ターミナルの下に、こんな感じで数字が並んでいますよね。コンテキスト使用率とか、レート制限のリセット時刻とか。<strong>前の回転寿司分析の動画だと、ここで3%使っていました</strong>。「3%って何？」「コンテキスト使用率って何？」という感じだと思います。答えは後半でお見せするので、まずは<strong>トークンそのものを触って体感</strong>してみましょう。", reference: "" },
-      { start: "1:15", end: "2:15", topic: "OpenAI Tokenizerで体感", direction: "ブラウザ：OpenAI Tokenizerを開く", content: "OpenAIが公開している<strong>Tokenizer</strong>というページを開きます。ここに文章を貼り付けると、<strong>AIがその文章を何トークンとして読むか可視化</strong>してくれます。英語で「Hello, how are you?」と入れると6トークン。同じ内容を日本語で「こんにちは、元気ですか？」と入れると、<strong>ひらがな・漢字は1文字ごとに1〜3トークン</strong>に分かれるので、英語より圧倒的にトークンを食います。さらにコードを貼り付けると、記号や改行まで1つずつトークンになっている。<strong>これがトークンの正体</strong>です。文章もファイルの中身も、全部この単位に分解されてAIに渡されています。", reference: "https://platform.openai.com/tokenizer" },
-      { start: "2:15", end: "3:00", topic: "種明かし①コンテキストウィンドウ", direction: "スライド：コンテキストウィンドウ概念図", content: "ここで種明かしです。<strong>コンテキストウィンドウ</strong>というのは、Claudeが一度に保持できるトークンの総量――つまり<strong>AIの「作業机の広さ」</strong>です。Claude Opusは20万トークンまで入ります。ここに会話履歴、ファイル、コマンド出力、CLAUDE.md、読み込まれたスキル、全部が乗ってきます。<strong>公式ドキュメントでもこのトピックだけで1ページ丸々割かれている</strong>くらい、Claude Code習熟の最大の分岐点です。満杯になるとClaudeは自動で圧縮（コンパクト化）しますが、<strong>会話の早い段階の指示が失われる</strong>ことがある。だからこれをちゃんと管理できる人が、Claude Codeを使いこなせる人です。", reference: "https://code.claude.com/docs/ja/context-management" },
-      { start: "3:00", end: "4:00", topic: "/context と /cost 実演", direction: "画面収録：ターミナルで /context コマンドを実行", content: "で、今自分が何トークン使っているか・何にスペースを食われているかは、コマンドで見えます。まず<strong>/context</strong>。これを打つと、<strong>システム指示・CLAUDE.md・ツール定義・メッセージ履歴・スキルなど、カテゴリ別にどれくらいトークンを食っているかが可視化</strong>されます。「あ、スキルだけで5千トークン行ってるんだ」というのが一目で分かります。もうひとつが<strong>/cost</strong>。こちらは<strong>現在のトークン使用量とコスト</strong>を表示します。ステータスラインを設定していない時でもこれで確認できる。<strong>ステータスライン常時表示＋節目で /context</strong>、この2本立てが基本です。", reference: "" },
-      { start: "4:00", end: "5:15", topic: "/clear と /compact focus", direction: "画面収録：/clear 実行→ステータスラインがリセットされる様子", content: "コンテキスト管理の<strong>一番大事な所作</strong>がこれです。違う仕事に切り替える時は<strong>/clear</strong>。過去の会話を全部消して真っさらからスタートします。前のタスクの情報が残っていると、その後のやり取り全部でトークンを無駄に食い続ける。<strong>「タスクが変わる＝必ず /clear」</strong>を習慣にしてください。一方、<strong>同じタスクを続けたいけど会話が長くなってきた時</strong>は<strong>/compact focus on ○○</strong>。たとえば「/compact focus on API changes」と打つと、<strong>「APIの変更点だけ残して他は要約」</strong>という形で圧縮してくれます。闇雲に要約されるんじゃなく、<strong>残したい内容を自分で指定できる</strong>のがポイントです。", reference: "" },
-      { start: "5:15", end: "5:45", topic: "auto-compactの落とし穴", direction: "画面収録：auto-compactが走った時の表示例", content: "放っておくと、コンテキストが満杯になった時に<strong>auto-compact（自動要約）</strong>が走ります。便利ですが、<strong>会話の早い段階で出した指示が消えることがある</strong>。「さっき『こういう書き方はダメ』って言ったのに、またやってる……」みたいな現象はこれが原因です。対策は<strong>永続的なルールをCLAUDE.mdに書いておく</strong>こと。CLAUDE.mdは毎回コンテキストに読み込まれるので、auto-compactで消えません。CLAUDE.mdの書き方は<strong>セクション2でじっくり扱います</strong>。", reference: "" },
-      { start: "5:45", end: "6:15", topic: "Proプラン推奨", direction: "画面収録：ステータスラインのレート制限表示部分", content: "もう一点、現実的な話。<strong>Claude Code Proプラン</strong>を強く推奨します。無料枠だとレート制限にすぐ引っかかって、1日の途中で「はい終わり」になります。ステータスラインの右側に<strong>「あと何時間でレート制限がリセットされるか」</strong>が出ているので、ここを見ながら使う。業務で本気で使うなら<strong>Proプラン一択</strong>です。", reference: "" },
-      { start: "6:15", end: "6:45", topic: "核心メッセージ再掲＋クロージング", direction: "スライド：表紙に戻す", content: "というわけで、最後にもう一度。<strong>「Claude Codeで業務するってのは、コンテキストウィンドウとトークンのマネジメントだ」</strong>。これが使いこなしの核です。<strong>/context</strong>で状況を見て、<strong>/clear</strong>で切り替えて、<strong>/compact focus</strong>で残したい情報を指定する。この3つを押さえるだけで、Claude Codeの<strong>精度と安定感が一段階上がります</strong>。次の動画でお会いしましょう。", reference: "" }
+      { start: "0:00", end: "0:30", topic: "オープニング＋核心予告", direction: "スライド：表紙", content: "この動画では<strong>Claude Codeの真髄</strong>に迫ります。いきなり結論からお伝えします。<strong>「Claude Codeを業務で使いこなすとは、コンテキストウィンドウとトークンをマネジメントすることだ」</strong>——これが今日のメッセージです。ただ、いきなりこの話をしてもピンと来づらいと思いますので、まず<strong>体感から</strong>入っていきましょう。", reference: "" },
+      { start: "0:30", end: "1:15", topic: "前動画の残骸", direction: "画面収録：ターミナルのステータスラインをズームアップ", content: "前の動画でも登場した<strong>ステータスライン</strong>です。ターミナルの下に数字が並んでおり、コンテキスト使用率や、レート制限のリセット時刻が表示されています。<strong>前回の回転寿司分析の動画では、ここで3%を使っていました</strong>。「3%って何？」「コンテキスト使用率って何？」と感じる方も多いと思いますので、答えは後半でお見せすることにして、先に<strong>トークンそのものを触って体感</strong>してみましょう。", reference: "" },
+      { start: "1:15", end: "2:15", topic: "OpenAI Tokenizerで体感", direction: "ブラウザ：OpenAI Tokenizerを開く", content: "OpenAIが公開している<strong>Tokenizer</strong>というページを開きます。ここに文章を貼り付けると、<strong>AIがその文章を何トークンとして読むかを可視化</strong>してくれます。英語で「Hello, how are you?」と入れると6トークン。同じ内容を日本語で「こんにちは、元気ですか？」と入れると、<strong>ひらがなや漢字は1文字ごとに1〜3トークン</strong>に分かれるため、英語よりも多くのトークンを消費します。さらにコードを貼り付けると、記号や改行まで1つずつトークンになっていますね。<strong>これがトークンの正体</strong>です。文章もファイルの中身も、すべてこの単位に分解されてAIに渡されています。", reference: "https://platform.openai.com/tokenizer" },
+      { start: "2:15", end: "3:00", topic: "種明かし①コンテキストウィンドウ", direction: "スライド：コンテキストウィンドウ概念図", content: "ここで種明かしです。<strong>コンテキストウィンドウ</strong>というのは、Claudeが一度に保持できるトークンの総量——つまり<strong>AIの「作業机の広さ」</strong>です。Claude Opusは20万トークンまで入ります。ここに会話履歴、ファイル、コマンド出力、CLAUDE.md、読み込まれたスキル、すべてが乗ってきます。<strong>公式ドキュメントでもこのトピックだけで1ページ割かれている</strong>ほど、Claude Code習熟の最大の分岐点です。満杯になるとClaudeは自動で圧縮（コンパクト化）に入りますが、<strong>会話の早い段階の指示が失われる</strong>ことがあります。だからこれを管理できる方が、Claude Codeを使いこなせる方になります。", reference: "https://code.claude.com/docs/ja/context-management" },
+      { start: "3:00", end: "4:00", topic: "/context と /cost 実演", direction: "画面収録：ターミナルで /context コマンドを実行", content: "次に、今自分が何トークン使っているか・何にスペースを取られているかを見るコマンドをご紹介します。<strong>/context</strong>を打つと、<strong>システム指示・CLAUDE.md・ツール定義・メッセージ履歴・スキルなど、カテゴリ別にどれくらいトークンを消費しているかが可視化</strong>されます。「スキルだけで5千トークン使っている」といった内訳が一目で把握できますね。もうひとつが<strong>/cost</strong>です。こちらは<strong>現在のトークン使用量とコスト</strong>を表示します。ステータスラインを設定していないときもこれで確認できます。<strong>ステータスライン常時表示＋節目で /context</strong>、この2本立てが基本になります。", reference: "" },
+      { start: "4:00", end: "5:15", topic: "/clear と /compact focus", direction: "画面収録：/clear 実行→ステータスラインがリセットされる様子", content: "コンテキスト管理の<strong>一番重要な所作</strong>がこちらです。違う仕事に切り替えるときは<strong>/clear</strong>を打ちます。過去の会話を全部消して、真っさらな状態からスタートします。前のタスクの情報が残っていると、その後のやり取り全部でトークンを無駄に消費し続けてしまいます。<strong>「タスクが変わる＝必ず /clear」</strong>を習慣にしてください。一方、<strong>同じタスクを続けたいものの会話が長くなってきた</strong>場合は<strong>/compact focus on ○○</strong>を使います。たとえば「/compact focus on API changes」と打つと、<strong>「APIの変更点だけ残して他は要約する」</strong>という形で圧縮してくれます。闇雲に要約されるのではなく、<strong>残したい内容を自分で指定できる</strong>のがポイントになります。", reference: "" },
+      { start: "5:15", end: "5:45", topic: "auto-compactの落とし穴", direction: "画面収録：auto-compactが走った時の表示例", content: "放っておくと、コンテキストが満杯になったタイミングで<strong>auto-compact（自動要約）</strong>が走ります。便利ですが、<strong>会話の早い段階で出した指示が消えてしまう</strong>ことがあります。「以前こう依頼したはずなのに、また同じ間違いをしている」という現象は、これが原因です。対策は<strong>永続的なルールをCLAUDE.mdに書いておく</strong>こと。CLAUDE.mdは毎回コンテキストに読み込まれますので、auto-compactでも消えません。CLAUDE.mdの書き方は<strong>前回の動画でじっくり扱いました</strong>ので、併せてご確認ください。", reference: "" },
+      { start: "5:45", end: "6:15", topic: "Proプラン推奨", direction: "画面収録：ステータスラインのレート制限表示部分", content: "もう一点、現実的な話をお伝えします。<strong>Claude Code Proプラン</strong>の契約を強く推奨します。無料枠だとレート制限にすぐ引っかかり、1日の途中で作業が止まってしまいます。ステータスラインの右側に<strong>「あと何時間でレート制限がリセットされるか」</strong>が表示されていますので、ここを見ながら使っていきます。業務で本格的に使うなら<strong>Proプラン一択</strong>です。", reference: "" },
+      { start: "6:15", end: "6:45", topic: "核心メッセージ再掲＋クロージング", direction: "スライド：表紙に戻す", content: "最後にもう一度お伝えします。<strong>「Claude Codeを業務で使いこなすとは、コンテキストウィンドウとトークンをマネジメントすることだ」</strong>——これが使いこなしの核になります。<strong>/context</strong>で状況を見て、<strong>/clear</strong>で切り替えて、<strong>/compact focus</strong>で残したい情報を指定する。この3つを押さえるだけで、Claude Codeの<strong>精度と安定感が一段上がります</strong>。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
   "S1-V4": {
@@ -118,28 +118,28 @@ var SCRIPTS = {
   },
   "S1-V5": {
     meta: {
-      duration: "約7分45秒",
+      duration: "約7分10秒",
       mode: "画面収録（エディタ＋Claude Code＋ブラウザ）",
-      goal: "アジェンダMarkdown1枚からHTML静的サイトを一発生成できるようになる"
+      goal: "アジェンダMarkdown1枚から、URL1本で配布できる会議用HTMLサイトを生成できるようになる"
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "サンプルデータ", name: "demo/s1v5/agenda.md", purpose: "架空企業『驚安堂』の2026年夏新商品リリース説明会アジェンダ（PB『マジ価格NEO』10商品・販路・SNS施策・KPI・スケジュール）", timing: "Step 2〜3" },
-      { type: "画面収録", name: "Claude CodeでHTML生成", purpose: "アジェンダを投げる→frontend-designスキル自動選択→コード生成", timing: "Step 4" },
-      { type: "画面収録", name: "完成HTMLをブラウザで確認", purpose: "1ページに整理された会議資料サイトを上から下まで見せる", timing: "Step 5" },
-      { type: "出力成果物", name: "index.html（社内会議用ワンページサイト）", purpose: "ブラウザで開くだけ／URL1本で配布できる会議資料", timing: "Step 5〜6" }
+      { type: "サンプルデータ", name: "demo/s1v5/agenda.md", purpose: "架空ディスカウントストア『驚安堂』の2026年夏新商品リリース説明会アジェンダ（PB『マジ価格NEO』10商品・販路・SNS施策・KPI・スケジュール）", timing: "サンプルデータ紹介" },
+      { type: "画面収録", name: "Claude CodeでHTML生成", purpose: "アジェンダを依頼→frontend-designスキル自動読込→コード生成", timing: "中盤" },
+      { type: "画面収録", name: "完成HTMLをブラウザで確認", purpose: "1ページに整理された会議資料サイトを上から下まで見せる", timing: "後半の動作確認" },
+      { type: "出力成果物", name: "index.html（社内会議用ワンページサイト）", purpose: "ブラウザで開くだけ／URL1本で配布できる会議資料", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、<strong>社内会議用の資料を、HTMLサイトでサクッと作る方法</strong>をお伝えします。スライド作成からの解放、と言ってもいいかもしれません。", reference: "" },
-      { start: "0:25", end: "1:15", topic: "スライドの問題提起", direction: "表紙のまま", content: "会議資料って、皆さんスライドで作ること多いですよね。でも、けっこう大変じゃないですか？<strong>テキストボックスのレイアウト調整、表のセル幅合わせ、画像の位置決め、色の統一</strong>――気がつくと内容より体裁に時間を使っている。しかも1スライドに入る情報量って、すごく限られているんですよ。", reference: "" },
-      { start: "1:15", end: "1:45", topic: "HTMLサイトという選択肢", direction: "表紙のまま", content: "そこで提案したいのが、<strong>HTMLサイトで作るという選択肢</strong>です。「HTMLは難しそう…」と思うかもしれませんが、大丈夫。Claude Codeが全部書きます。皆さんは、会議のアジェンダさえ用意すればOKです。", reference: "" },
-      { start: "1:45", end: "2:30", topic: "題材紹介", direction: "画面収録：エディタでdemo/s1v5/agenda.mdを開く", content: "今回は架空のディスカウントストア<strong>『驚安堂』の夏の新商品リリース説明会</strong>、これを題材にしてみます。マーケ部から営業・店舗運営・海外事業部に向けた、PB新商品10品目のお披露目会、というシナリオです。", reference: "demo/s1v5/agenda.md" },
-      { start: "2:30", end: "3:30", topic: "アジェンダの中身を見せる", direction: "画面収録：agenda.mdをゆっくりスクロール", content: "これがアジェンダのMarkdownです。日時、参加者、市場背景、<strong>新商品10品目の表、販路、SNS施策、KPI、スケジュール、各部へのお願い</strong>――けっこう情報量ありますよね。これをスライドで作ったら、20枚は超えちゃう。レイアウト調整だけで半日仕事です。", reference: "demo/s1v5/agenda.md" },
-      { start: "3:30", end: "4:15", topic: "Claude Codeに投げる", direction: "画面収録：Claude Codeのチャット欄に入力", content: "Claude Codeにこう投げます。「<strong>demo/s1v5/agenda.md をもとに、社内会議用のHTMLサイトを作って。frontend-designスキルを使って、見やすく整理して。</strong>」これだけです。アジェンダのファイルパスとお願いを伝えるだけ。", reference: "" },
-      { start: "4:15", end: "5:30", topic: "frontend-designスキル＋生成", direction: "画面収録：frontend-designスキル読み込み→コード生成（タイムラプス）", content: "<strong>frontend-designスキルが自動で読み込まれます。</strong>これはAnthropic公式のスキルで、見やすいウェブページを作るための専門知識が詰まっています。商品10品目の表、販路、KPIの数字、スケジュール――それぞれを見やすいセクションに分けてレイアウトしてくれます。この間、他の仕事をしていてOKです。", reference: "" },
-      { start: "5:30", end: "6:30", topic: "完成HTMLをブラウザで確認", direction: "画面収録：ブラウザでindex.htmlを開く→上から下までスクロール", content: "出来上がりました。ブラウザで開きます。トップに会議名と日時、目次。スクロールすると、市場背景、商品ラインアップは見やすい表、販路はカード型、KPIは数字を大きく見せる、スケジュールはタイムライン――<strong>スライドだったら20枚以上必要だった内容が、1ページにまとまっています。</strong>", reference: "" },
-      { start: "6:30", end: "7:00", topic: "URL共有で配布完了", direction: "画面収録：URLバーをハイライト／Slackに貼り付ける想定", content: "あとはこのHTMLをどこかに置いてURLを発行するだけ。Slackやメールで「これ見ておいてください」とURLを貼れば、<strong>配布完了です。</strong>ファイル添付・バージョン違い・印刷配布、そういう手間はもうゼロ。", reference: "" },
-      { start: "7:00", end: "7:45", topic: "まとめ・クロージング", direction: "スライド：表紙に戻す", content: "スライド作成にかけていた時間を、本来やりたい仕事に取り戻しましょう。<strong>アジェンダをClaude Codeに投げて、URLを共有する。</strong>今日から皆さんの会議資料の作り方を変えるのに、追加スキルは何も要りません。それでは、次のビデオでお会いしましょう。", reference: "" }
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではオフィスワーカーの方に向けて、<strong>社内会議用の資料をHTMLサイトでつくる方法</strong>をお伝えします。アジェンダのMarkdown1枚をClaude Codeに渡すだけで、URLで配布できる会議資料が仕上がる、そんな作り方です。", reference: "" },
+      { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "表紙のまま", content: "会議資料をスライドで作ると、<strong>テキストボックスのレイアウト調整・表のセル幅合わせ・画像の位置決め</strong>に時間を取られて、気づけば中身より体裁に手がかかっている、ということが起こりがちです。一方でHTMLサイトなら、レイアウトはClaude Codeが整えてくれますし、<strong>URLを1本送るだけで配布も完了</strong>します。HTML自体の知識は要らない前提で進めますので、アジェンダさえ用意すれば明日の会議にそのまま出せる資料が手に入る——その体験をしていただく回になります。", reference: "" },
+      { start: "1:00", end: "1:40", topic: "題材紹介", direction: "画面収録：エディタでdemo/s1v5/agenda.mdを開く", content: "まず今回の題材です。架空のディスカウントストア<strong>『驚安堂』の夏新商品リリース説明会</strong>を例に進めていきます。マーケティング本部から全営業部・店舗運営部・海外事業部に向けた、PB新商品10品目のお披露目会、というシナリオになります。", reference: "demo/s1v5/agenda.md" },
+      { start: "1:40", end: "2:30", topic: "アジェンダの中身を見せる", direction: "画面収録：agenda.mdをゆっくりスクロール", content: "アジェンダのMarkdownがこちらです。日時・参加者・市場背景、そして<strong>新商品10品目の表、販売チャネル、SNS施策、KPI、スケジュール、各部へのアクションアイテム</strong>——情報量はかなり多いですね。これをスライドで作ると20枚以上になりますし、レイアウト調整だけで半日仕事になってしまいます。", reference: "demo/s1v5/agenda.md" },
+      { start: "2:30", end: "3:10", topic: "Claude Codeに依頼", direction: "画面収録：Claude Codeのプロンプト入力欄に入力", content: "次にClaude Codeに依頼します。<strong>「demo/s1v5/agenda.md をもとに、社内会議用のHTMLサイトを作ってください。frontend-designスキルを使って、見やすく整理してください」</strong>——これだけです。アジェンダのファイルパスと、見やすく作ってほしいという意図を自然な日本語で伝えます。", reference: "" },
+      { start: "3:10", end: "4:20", topic: "frontend-designスキル＋生成", direction: "画面収録：frontend-designスキル読み込み→コード生成（タイムラプス）", content: "<strong>frontend-designスキルが自動で読み込まれます</strong>。これはAnthropic公式のスキルで、見やすいウェブページを設計するためのノウハウが詰まっています。商品10品目の表・販売チャネル・KPIの数字・スケジュール、それぞれを読みやすいセクションに分けてレイアウトしてくれます。生成には少し時間がかかりますので、実際の業務では他の作業をしながら待っていただく形になります。", reference: "" },
+      { start: "4:20", end: "5:15", topic: "完成HTMLをブラウザで確認", direction: "画面収録：ブラウザでindex.htmlを開く", content: "できあがりました。<strong>index.htmlをダブルクリックするだけ</strong>で立ち上がります。トップに会議名と日時、そして目次が並びます。スクロールしていくと、市場背景のサマリー、新商品10品目は見やすい表形式、販売チャネルはカード型のレイアウト、KPIは数字を大きく見せるダッシュボード風——<strong>スライドなら20枚以上必要だった内容が、1ページに収まっています</strong>。", reference: "" },
+      { start: "5:15", end: "5:50", topic: "スケジュール・アクションアイテム", direction: "画面収録：ページ下部までスクロール", content: "さらにスクロールすると、スケジュールはタイムライン表示、各部へのアクションアイテムは部署ごとに整理された形で並びます。<strong>スライドでは表現しにくかった時系列や担当分けが、HTMLだと素直に見せられる</strong>のがポイントですね。", reference: "" },
+      { start: "5:50", end: "6:30", topic: "URL共有で配布完了", direction: "画面収録：URLバーをハイライト／Slackに貼り付ける想定", content: "あとはこのindex.htmlを社内サーバーや共有ストレージに置いてURLを発行すれば、<strong>Slackやメールに貼るだけで配布が完了</strong>します。ファイル添付、バージョン違いの管理、印刷して配る手間は発生しません。", reference: "" },
+      { start: "6:30", end: "7:10", topic: "クロージング", direction: "スライド：表紙に戻す", content: "最後にまとめます。<strong>アジェンダのMarkdownをClaude Codeに渡してURLを共有する</strong>、これだけで会議資料の準備が済むようになります。スライド作成にかけていた時間を、本来やりたい仕事に取り戻していただければと思います。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
   "S2-V1": {
@@ -150,16 +150,16 @@ var SCRIPTS = {
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "画面収録", name: "ターミナル操作", purpose: "exit→mkdir→cd→claude起動→/init", timing: "Step 1〜2" },
-      { type: "画面収録", name: "/clear・/compact・--resume", purpose: "各コマンドの実行と効果、auto-compactの説明", timing: "Step 3〜5" },
-      { type: "画面収録", name: "Planモード実演", purpose: "Shift+Tab×2で切替→plan mode on→計画表示→承認で実装", timing: "Step 6" }
+      { type: "画面収録", name: "ターミナル操作", purpose: "exit→mkdir→cd→claude起動→/init", timing: "序盤" },
+      { type: "画面収録", name: "/clear・/compact・--resume", purpose: "各コマンドの実行と効果、auto-compactの説明", timing: "中盤" },
+      { type: "画面収録", name: "Planモード実演", purpose: "Shift+Tab×2で切替→plan mode on→計画表示→承認で実装", timing: "後半" }
     ],
     script: [
       { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、Claude Codeの<strong>基本コマンドとPlanモードの使い方</strong>をお伝えします。", reference: "" },
       { start: "0:20", end: "0:50", topic: "フォルダ作りはClaude Codeの外でやる", direction: "画面収録：Claude Codeから exit して抜ける", content: "まずはプロジェクト用のフォルダを作って、そこに移動します。<strong>これが一番大事です</strong>。ちなみにこの作業は<strong>Claude Codeの外で行います</strong>。もしClaude Codeが起動していたら、一旦 <strong>exit</strong> で抜けてください。", reference: "" },
       { start: "0:50", end: "1:35", topic: "mkdir / cd でプロジェクト作成・移動", direction: "画面収録：Documents配下でmkdir→cd", content: "Documentsの配下で <strong>mkdir my-project</strong>。これで「my-project」というフォルダが作れました。そこに移動しましょう。<strong>cd my-project</strong> で、今このプロジェクトフォルダの中に入った状態です。", reference: "" },
-      { start: "1:35", end: "1:55", topic: "claudeコマンドで起動", direction: "画面収録：ターミナルで claude 実行", content: "ここで <strong>claude</strong> というコマンドを打つと、このディレクトリの中で作業ができるようになります。Claude Codeは<strong>今いるフォルダの中で働く道具</strong>なので、新しい仕事を始めるときはまずフォルダを作る、と覚えてください。", reference: "" },
-      { start: "1:55", end: "2:15", topic: "/init でプロジェクト初期化", direction: "画面収録：Claude Code内で /init 実行", content: "起動したClaude Codeの中で、まず <strong>/init</strong> を打ちます。これで何が起きるかというと、<strong>CLAUDE.md というマークダウンファイルが自動で作られる</strong>んです。", reference: "" },
+      { start: "1:35", end: "1:55", topic: "claudeコマンドで起動", direction: "画面収録：ターミナルで claude 実行", content: "ここで <strong>claude</strong> というコマンドを打つと、このディレクトリの中で作業ができるようになります。Claude Codeは<strong>今いるフォルダの中で働く道具</strong>なので、新しい仕事を始めるときは最初にフォルダを作る、と覚えてください。", reference: "" },
+      { start: "1:55", end: "2:15", topic: "/init でプロジェクト初期化", direction: "画面収録：Claude Code内で /init 実行", content: "起動したClaude Codeの中で、<strong>/init</strong> を打ちます。これで何が起きるかというと、<strong>CLAUDE.md というマークダウンファイルが自動で作られる</strong>んです。", reference: "" },
       { start: "2:15", end: "2:40", topic: "CLAUDE.mdはプロジェクトの取扱説明書", direction: "画面収録：生成されたCLAUDE.mdを開く", content: "このファイルはとても重要で、Claude Codeが<strong>毎回読み込む「このプロジェクトの取扱説明書」</strong>です。プロジェクトのルール・構成・注意点を書いておくと、以降ずっと守ってくれます。書き方の詳細は、次の動画で扱います。", reference: "" },
       { start: "2:40", end: "3:20", topic: "/clear はこの講座で一番大事", direction: "画面収録：/clear 実行", content: "さて、次が<strong>今日いちばん大事な話</strong>です。<strong>/clear</strong> というコマンドがあります。/clearを押すと、これまでの内容が全部消えます。<strong>1つの作業が終わったら、すぐに/clear</strong>することを推奨しています。", reference: "" },
       { start: "3:20", end: "3:50", topic: "文脈を貯めると精度が落ちる", direction: "画面収録：/clear 実行後の画面", content: "これで会話の履歴が全部リセットされます。「せっかく話した文脈が消えちゃうのもったいない」と思うかもしれませんが、<strong>実は逆</strong>で、文脈を貯めたままだとClaude Codeの精度がどんどん落ちます。なので、<strong>この講座では/clearを強く推奨します</strong>。", reference: "" },
@@ -178,29 +178,29 @@ var SCRIPTS = {
   },
   "S2-V2": {
     meta: {
-      duration: "約6:30",
+      duration: "約6分30秒",
       mode: "画面収録（エディタ＋Claude Code。スライドは表紙のみ）",
       goal: "非エンジニアでも書けるCLAUDE.mdを自分仕様に育てて、Claude Codeを『取扱説明書付き』で動かせるようになる"
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "画面収録", name: "CLAUDE.md編集", purpose: "3行テンプレから育てた版まで実編集", timing: "Step 2〜5" },
-      { type: "画面収録", name: "Claude Codeで効果確認", purpose: "CLAUDE.md反映後に振る舞いが変わるのを見せる", timing: "Step 3" },
-      { type: "サンプルファイル", name: "demo/s2v2/CLAUDE_lv1.md", purpose: "3行テンプレ版（書き始めの見本）", timing: "Step 3" },
-      { type: "サンプルファイル", name: "demo/s2v2/CLAUDE_lv2.md", purpose: "業務に馴染ませた育てた版（参照・リンク集・禁止事項）", timing: "Step 5" }
+      { type: "画面収録", name: "CLAUDE.md編集", purpose: "3行テンプレから育てた版まで実編集", timing: "中盤〜後半" },
+      { type: "画面収録", name: "Claude Codeで効果確認", purpose: "CLAUDE.md反映後に振る舞いが変わるのを見せる", timing: "中盤" },
+      { type: "サンプルファイル", name: "demo/s2v2/CLAUDE_lv1.md", purpose: "3行テンプレ版（書き始めの見本）", timing: "Lv.1 3行テンプレ紹介" },
+      { type: "サンプルファイル", name: "demo/s2v2/CLAUDE_lv2.md", purpose: "業務に馴染ませた育てた版（参照・リンク集・禁止事項）", timing: "Lv.2 育てた版紹介" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、<strong>Claude Codeに毎回読み込ませる取扱説明書『CLAUDE.md』の書き方</strong>をお伝えします。", reference: "" },
-      { start: "0:20", end: "0:50", topic: "前動画の復習と位置付け", direction: "画面収録：エディタでCLAUDE.mdを開く", content: "前回 <strong>/init</strong> を打ったら自動で生成された、このCLAUDE.mdというファイル。今回はこれを<strong>自分の仕事用に育てていく</strong>話です。", reference: "" },
-      { start: "0:50", end: "1:30", topic: "CLAUDE.mdは毎ターン送信される", direction: "画面収録：CLAUDE.md→会話欄のイメージ図", content: "まず大事なポイント。CLAUDE.mdは<strong>セッションの最初に一度読み込まれて、そのあと毎ターンの会話と一緒にAIへ送信され続ける</strong>ファイルです。前動画で「Claude Codeは毎ターン会話全文を送り直してる」と話しましたが、<strong>CLAUDE.mdもその先頭に毎回乗っかる</strong>イメージ。だからClaude Codeは毎回ちゃんと覚えてる風に動いてくれるんです。", reference: "" },
-      { start: "1:30", end: "1:55", topic: "書きすぎ注意の伏線", direction: "同上", content: "裏を返すと、CLAUDE.mdに書きすぎると<strong>毎ターンの入力コストがずっと大きくなる</strong>ということ。これはあとで効いてくるので、頭の片隅に入れておいてください。", reference: "" },
-      { start: "1:55", end: "2:10", topic: "まずは3行から", direction: "画面収録：CLAUDE.mdを空にして書き始める", content: "では書いていきます。<strong>結論、最初は3行でOK</strong>です。", reference: "" },
-      { start: "2:10", end: "3:00", topic: "Lv.1 3行テンプレを書く", direction: "画面収録：3行を実際に打ち込む", content: "この3行をまず書いてみましょう。<br><br><code>- あなたは経営コンサルタントの業務アシスタントです。<br>- 出力は常に日本語、敬体（です・ます）で。<br>- よく使うファイル置き場：docs/clients/（クライアント資料）、docs/templates/（提案書・議事録の雛形）</code><br><br>書いたら保存。<strong>役割・出力スタイル・ファイルの地図</strong>、この3つが入ってればClaude Codeの振る舞いは明確に変わります。", reference: "demo/s2v2/CLAUDE_lv1.md" },
-      { start: "3:00", end: "3:40", topic: "効果を体感する", direction: "画面収録：Claude Codeに「議事録テンプレを見せて」と頼む→docs/templates/を自分で見に行く挙動", content: "試しに「議事録のテンプレを開いて」と頼んでみます。CLAUDE.mdに<strong>ファイルの地図を書いておいた</strong>ので、Claude Codeは迷わず <strong>docs/templates/</strong> を見に行ってくれる。書いてなかったら「どこにありますか？」と聞き返される所ですね。", reference: "" },
-      { start: "3:40", end: "4:20", topic: "CLAUDE.mdは『リンク集』として使うのが最適", direction: "画面収録：CLAUDE.mdに『参照リンク集』セクションを追加", content: "ここがBoris氏（Claude Code開発者）の発想で大事な所。<strong>CLAUDE.mdは長文マニュアルではなく『インデックス＝資料への地図』として使うのが一番効く</strong>。「この案件のルールは docs/client-rules.md に書いてあります」と<strong>リンクを貼って中身は別ファイル</strong>に逃がす。こうすると本文は軽いまま、必要なときだけ詳細が読み込まれます。", reference: "Boris氏（Claude Code開発者）の運用" },
-      { start: "4:20", end: "5:30", topic: "Lv.2 業務に馴染ませた版を見せる", direction: "画面収録：完成版を上からスクロールして見せる", content: "1〜2週間使うと、こんな感じに育ちます。<br><br><code># CLAUDE.md<br><br>## 私について<br>- 役割：中堅製造業向けの業務改善コンサルタント<br>- よく扱うデータ：クライアントの売上CSV、業務フロー図、議事録、請求書<br>- 出力は日本語・敬体。箇条書きは「・」ではなく「-」。<br><br>## よく使うファイルの場所<br>- クライアント一覧：docs/clients.csv<br>- 議事録テンプレ：docs/templates/meeting.md（命名は YYYY-MM-DD_クライアント名.md）<br>- 提案書テンプレ：docs/templates/proposal.pptx<br>- 過去の請求書：docs/invoices/<br><br>## 出力の好み<br>- Markdownは見出し ## から始める（# は使わない）。<br>- 外部に出す文書ではクライアント名は「A社」「B社」と伏字に。<br><br>## 参照リンク集<br>- 社内ナレッジ（NotionはMCPで接続済み）：運用ルールは docs/notion-rules.md<br>- よく使う統計：e-Stat（https://www.e-stat.go.jp/）<br>- Boris氏のCLAUDE.md（開発者向け参考）：S5-V4で詳しく扱う<br><br>## やらないでほしいこと<br>- クライアント固有名詞入りデータを外部APIに勝手に送らない。<br>- Excelは上書きせず別名保存（_v2.xlsx など）で。<br>- git push --force や rm -rf は必ず確認してから。</code><br><br>ポイントは<strong>「役割／ファイルの地図／出力ルール／リンク集／やらないこと」の5ブロック</strong>。これ以上は書かない。", reference: "demo/s2v2/CLAUDE_lv2.md" },
-      { start: "5:30", end: "6:00", topic: "書きすぎない（毎ターン入力コストに乗る）", direction: "画面収録：書きすぎた悪い例をチラ見", content: "冒頭の伏線に戻ります。CLAUDE.mdは<strong>毎ターン先頭に乗っかる</strong>ので、書きすぎると<strong>毎ターンのコストと精度の両方が悪化</strong>します。細かいルールは本体に書かず<strong>外部ファイルにリンクを貼る</strong>。これが長く運用するコツです。", reference: "" },
-      { start: "6:00", end: "6:30", topic: "まとめ→次回『トークン管理』", direction: "スライド：表紙", content: "まとめます。<strong>役割・ファイルの地図・リンク集、の3本柱で書く</strong>。書きすぎない、育てながら整える。次の動画では、今話した<strong>『毎ターンの入力コスト＝トークン』をどう管理するか</strong>を扱います。", reference: "" }
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではClaude Codeを使う皆さんに向けて、<strong>Claude Codeが毎回読み込む取扱説明書『CLAUDE.md』の書き方</strong>をお伝えします。非エンジニアの方でも書ける、入門レベルで進めていきます。", reference: "" },
+      { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "表紙のまま／または画面収録でCLAUDE.mdを開く", content: "CLAUDE.mdを書いておくと、<strong>会社の業務ルール・ファイル配置・出力の好みを、Claude Codeに毎回説明し直さずに済む</strong>ようになります。新しいアシスタントを迎えるたびに業務をゼロから教える手間、と言えば近いでしょうか。前回 <strong>/init</strong> を打って自動生成されたこのファイルを、今回は<strong>自分の仕事仕様に育てていく</strong>、そのための書き方を扱っていきます。", reference: "" },
+      { start: "1:00", end: "1:40", topic: "CLAUDE.mdは毎ターン送信される", direction: "画面収録：CLAUDE.md→会話欄のイメージ図", content: "まず仕組みのポイントです。CLAUDE.mdは<strong>セッションの最初に一度読み込まれて、そのあと毎ターンの会話と一緒にAIへ送信され続ける</strong>ファイルです。前動画で「Claude Codeは毎ターン会話全文を送り直している」とお話ししましたが、<strong>CLAUDE.mdはその先頭に毎回乗っかる</strong>イメージになります。だからClaude Codeは、毎セッションで一貫した振る舞いをしてくれるわけです。", reference: "" },
+      { start: "1:40", end: "2:00", topic: "書きすぎ注意の伏線", direction: "同上", content: "裏を返すと、CLAUDE.mdに書きすぎると<strong>毎ターンの入力コストがずっと大きくなる</strong>ということになります。これは後ほど効いてくる話ですので、頭の片隅に置いておいてください。", reference: "" },
+      { start: "2:00", end: "2:15", topic: "最初は3行から", direction: "画面収録：CLAUDE.mdを空にして書き始める", content: "では書いていきます。<strong>最初は3行から始めれば十分</strong>です。", reference: "" },
+      { start: "2:15", end: "3:00", topic: "Lv.1 3行テンプレを書く", direction: "画面収録：3行を実際に打ち込む", content: "この3行を打ち込んでみましょう。<br><br><code>- あなたは経営コンサルタントの業務アシスタントです。<br>- 出力は常に日本語、敬体（です・ます）で。<br>- よく使うファイル置き場：docs/clients/（クライアント資料）、docs/templates/（提案書・議事録の雛形）</code><br><br>書いたら保存します。<strong>役割・出力スタイル・ファイルの地図</strong>、この3つが入っていればClaude Codeの振る舞いは明確に変わります。", reference: "demo/s2v2/CLAUDE_lv1.md" },
+      { start: "3:00", end: "3:35", topic: "効果を体感する", direction: "画面収録：Claude Codeに「議事録テンプレを見せて」と頼む→docs/templates/を自分で見に行く挙動", content: "試しに「議事録のテンプレを開いてください」と依頼してみます。CLAUDE.mdに<strong>ファイルの地図を書いておいた</strong>ので、Claude Codeは迷わず <strong>docs/templates/</strong> を見に行ってくれます。書いていなければ「どこにありますか？」と聞き返されるところですね。", reference: "" },
+      { start: "3:35", end: "4:15", topic: "CLAUDE.mdは『リンク集』として使うのが最適", direction: "画面収録：CLAUDE.mdに『参照リンク集』セクションを追加", content: "次に大事な発想をお伝えします。<strong>CLAUDE.mdは長文マニュアルではなく、『インデックス＝資料への地図』として使うのが最もフィットします</strong>。「この案件のルールは docs/client-rules.md に書いてあります」と<strong>リンクを貼って、詳細は別ファイルに切り出す</strong>。こうすると本文は軽いまま、必要なときだけ詳細が読み込まれる構成になります。", reference: "Boris氏（Claude Code開発者）の運用" },
+      { start: "4:15", end: "5:25", topic: "Lv.2 業務に馴染ませた版を見せる", direction: "画面収録：完成版を上からスクロールして見せる", content: "1〜2週間使っていくと、こんな感じに育っていきます。<br><br><code># CLAUDE.md<br><br>## 私について<br>- 役割：中堅製造業向けの業務改善コンサルタント<br>- よく扱うデータ：クライアントの売上CSV、業務フロー図、議事録、請求書<br>- 出力は日本語・敬体。箇条書きは「・」ではなく「-」。<br><br>## よく使うファイルの場所<br>- クライアント一覧：docs/clients.csv<br>- 議事録テンプレ：docs/templates/meeting.md（命名は YYYY-MM-DD_クライアント名.md）<br>- 提案書テンプレ：docs/templates/proposal.pptx<br>- 過去の請求書：docs/invoices/<br><br>## 出力の好み<br>- Markdownは見出し ## から始める（# は使わない）。<br>- 外部に出す文書ではクライアント名は「A社」「B社」と伏字に。<br><br>## 参照リンク集<br>- 社内ナレッジ（NotionはMCPで接続済み）：運用ルールは docs/notion-rules.md<br>- よく使う統計：e-Stat（https://www.e-stat.go.jp/）<br>- 開発者向けのCLAUDE.md事例：別セクションで詳しく扱います<br><br>## やらないでほしいこと<br>- クライアント固有名詞入りデータを外部APIに勝手に送らない。<br>- Excelは上書きせず別名保存（_v2.xlsx など）で。<br>- git push --force や rm -rf は必ず確認してから。</code><br><br>ポイントは<strong>「役割／ファイルの地図／出力ルール／リンク集／やらないこと」の5ブロック</strong>です。これ以上は書き足さないのがコツになります。", reference: "demo/s2v2/CLAUDE_lv2.md" },
+      { start: "5:25", end: "5:55", topic: "書きすぎない（毎ターン入力コストに乗る）", direction: "画面収録：書きすぎた悪い例をチラ見", content: "冒頭の伏線に戻ります。CLAUDE.mdは<strong>毎ターン先頭に乗っかる</strong>ので、書きすぎると<strong>毎ターンのコストと精度の両方が悪化</strong>します。細かいルールは本体に書かず、<strong>外部ファイルにリンクを貼る</strong>——これが長く運用していくコツになります。", reference: "" },
+      { start: "5:55", end: "6:30", topic: "まとめ→次回『トークン管理』", direction: "スライド：表紙", content: "最後にまとめます。<strong>役割・ファイルの地図・リンク集、この3本柱で書く</strong>。書きすぎず、育てながら整える——この進め方でClaude Codeに仕事を覚えさせていきましょう。次の動画では、いまお話しした<strong>『毎ターンの入力コスト＝トークン』をどう管理するか</strong>を扱います。", reference: "" }
     ]
   },
   "S2-V5": {
@@ -211,10 +211,10 @@ var SCRIPTS = {
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "画面収録", name: "以前のIR比較HTML振り返り", purpose: "S1-V2／S2-V4で作った成果物を再表示し「あれを作り直す」と宣言", timing: "シーン2" },
-      { type: "画面収録", name: "docs/spec.md作成", purpose: "Claude Codeと対話しながらスペックを書き上げる実演", timing: "シーン6〜7" },
-      { type: "画面収録", name: "Claude Codeによる再実装", purpose: "「docs/spec.md通りに作って」で一発生成", timing: "シーン8" },
-      { type: "ブラウザ", name: "完成版IR比較HTML（白基調の投資レポート）", purpose: "Vibe版と並べて比較", timing: "シーン9" }
+      { type: "画面収録", name: "以前のIR比較HTML振り返り", purpose: "既に本講座の前のセクションで作成した回転寿司3社のIR比較サイトを再表示し「あれを作り直す」と宣言", timing: "序盤の題材紹介" },
+      { type: "画面収録", name: "docs/spec.md作成", purpose: "Claude Codeと対話しながらスペックを書き上げる実演", timing: "中盤のspec執筆パート" },
+      { type: "画面収録", name: "Claude Codeによる再実装", purpose: "「docs/spec.md通りに作って」で一発生成", timing: "後半の実装パート" },
+      { type: "ブラウザ", name: "完成版IR比較HTML（白基調の投資レポート）", purpose: "Vibe版と並べて比較", timing: "後半の比較パート" }
     ],
     script: [
       { start: "0:00", end: "0:50", topic: "オープニング：スペック駆動開発の重要性", direction: "スライド：表紙", content: "この動画では<strong>スペック駆動開発</strong>を扱います。<strong>Claude Codeで何かを生成するときに、とても重要な考え方</strong>です。<br><br>Claude Codeはそのままでも十分に賢く、思いつきやノリで依頼したものでも、及第点の成果物は出てきます。ただし、業務で使ったり、より正確に何かを生成したい場面では話が変わります。<strong>作る前に仕様＝スペックをきっちり固め、曖昧さのない状態で依頼する</strong>――ここが大事になってきます。<br><br>そうすることで、<strong>人間とAIの間で「何を、どう作るのか」の目線合わせ＝合意形成</strong>ができます。合意があるからAIは迷わず実装でき、目当てのものが生成される。だからスペック駆動開発は、非常に重要な考え方なのです。", reference: "" },

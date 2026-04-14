@@ -316,5 +316,176 @@ var SCRIPTS = {
       { start: "7:00", end: "7:30", topic: "応用可能性", direction: "画面収録：HTMLを表示しながら", content: "今日の進め方は、<strong>題材の3社を任意の業界の競合企業に置き換えれば、どの職種でも今日から使えます</strong>。マーケターなら自社カテゴリの上位3社、経営企画なら同業界の上場企業、営業なら担当業界のキープレイヤー——皆さんのドメイン知識と組み合わせれば、競合分析の初手として強い武器になります。", reference: "" },
       { start: "7:30", end: "8:10", topic: "クロージング・次回への布石", direction: "スライド：表紙", content: "まとめます。<strong>Claude CodeのWebFetch機能で公開IR資料を取得し、1回の依頼で比較マトリクスHTMLが手元に届く</strong>——リサーチ業務にClaude Codeを応用する第一歩を体験していただきました。<strong>次の動画では、同じ3社IRを題材に、今度は投資家向けレポートとしてスペック駆動で作り直します</strong>。同じ題材でコンテキスト量を増やすと成果物がどう変わるか、その対比をぜひ体感してください。それでは次の動画でお会いしましょう。", reference: "" }
     ]
+  },
+  "S3-V1": {
+    meta: {
+      duration: "約7分10秒",
+      mode: "画面収録（ターミナル＋Claude Code＋ブラウザ。スライドは表紙のみ）",
+      goal: "shinkokuをインストールして確定申告の一連の流れを実演し、Skills＝専門家の手順がパッケージ化されたものという概念を理解する。自分の業務をSkill化する発想を得る"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "画面収録", name: "shinkokuインストール", purpose: "/plugin marketplace add → /plugin install の流れ", timing: "序盤" },
+      { type: "画面収録", name: "/assess 申告要否判定", purpose: "数問の対話で申告必要を判定", timing: "中盤" },
+      { type: "画面収録", name: "/journal 仕訳登録", purpose: "レシート1枚OCR→勘定科目自動判定", timing: "中盤" },
+      { type: "画面収録", name: "/settlement → /income-tax", purpose: "決算整理から還付額表示まで", timing: "中盤〜後半" },
+      { type: "画面収録", name: "/e-tax ブラウザ自動入力", purpose: "Claudeがブラウザを操作して作成コーナーに入力", timing: "後半の動作確認" },
+      { type: "出力成果物", name: "PL/BSと還付額レポート", purpose: "決算書と所得税の還付額表示", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では業務効率化に取り組みたい全職種の方に向けて、<strong>Skills</strong>という機能をお伝えします。題材は確定申告、税理士の専門手順を丸ごとパッケージ化した<strong>shinkoku</strong>を実際にインストールして動かしていきます。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "皆さんは普段、Claude Codeに何かを依頼するとき<strong>毎回プロンプトを書き直して</strong>いないでしょうか。同じような依頼でも品質がブレる、チームのメンバーに同じ仕事を頼んでも自分のようには進まない、自分の頭の中の手順を共有できない——こうした課題はSkillsを使うことでまとめて解決できます。<strong>Skills＝職人の手順をパッケージ化したもの</strong>、これがS3で扱う最初のキーワードです。", reference: "" },
+      { start: "1:10", end: "1:50", topic: "題材紹介：shinkoku", direction: "画面収録：shinkokuのGitHubリポジトリを表示", content: "題材は<strong>確定申告</strong>です。確定申告は税理士が長年の経験で身につけた判断手順、<strong>帳簿の付け方・決算整理・税額計算・電子申告までの一連の判断</strong>がぎっしり詰まった業務になります。この税理士の手順を丸ごとパッケージ化したのが、今日扱う<strong>shinkoku</strong>です。", reference: "shinkoku: https://github.com/kazukinagata/shinkoku" },
+      { start: "1:50", end: "2:30", topic: "Skillsの定義", direction: "スライド：表紙", content: "ここで<strong>Skillsとは何か</strong>を整理します。日常の例で言えば<strong>「資格」や「免許」</strong>と同じ発想です。資格を持っている人が職場に来れば、その瞬間から即戦力として動ける——Skillsもそれと同じで、<strong>インストールするだけで専門家の手順が動き出す</strong>仕組みになります。さらにSkillsは<strong>SKILL.mdというオープン標準</strong>で書かれているので、Claude Codeだけでなく40以上のAIエージェントで共通して動く——そういう普遍性を持っています。", reference: "Anthropic公式Skills: https://github.com/anthropics/skills" },
+      { start: "2:30", end: "3:10", topic: "shinkokuインストール実演", direction: "画面収録：ターミナルでコマンド実行", content: "では実際にshinkokuをインストールします。Claude Code内で<strong>/plugin marketplace add</strong>でshinkokuのリポジトリを登録、続けて<strong>/plugin install</strong>でshinkokuを取り込みます。これだけで税理士の判断手順が皆さんのClaude Codeに常駐する状態になります。", reference: "" },
+      { start: "3:10", end: "3:50", topic: "申告要否判定", direction: "画面収録：/assess 実行", content: "まず<strong>/assess</strong>を実行します。これは申告要否を判定するスキルで、<strong>数問の対話に答えるだけで「申告が必要かどうか」を判定</strong>してくれます。会社員で副業がある方、フリーランスの方、年金受給者の方、それぞれのケースで「申告必要」「不要」の判定が出ます。<strong>これだけで税理士に相談する一歩目が済む</strong>形になります。", reference: "" },
+      { start: "3:50", end: "4:35", topic: "仕訳登録", direction: "画面収録：レシート画像を渡して/journal実行", content: "次に<strong>/journal</strong>で仕訳登録を実演します。レシート1枚を渡すだけで、<strong>Claude CodeがOCRで内容を読み取り、勘定科目を自動判定して仕訳を作ってくれます</strong>。コンビニで買った文房具なら「消耗品費」、駅で買った切符なら「旅費交通費」、こうした判断を税理士の手順に沿って自動でやってくれる、というわけです。", reference: "" },
+      { start: "4:35", end: "5:15", topic: "決算整理と所得税計算", direction: "画面収録：/settlement → /income-tax 実行", content: "仕訳が一通り登録されたら<strong>/settlement</strong>で決算整理、続いて<strong>/income-tax</strong>で所得税計算に進みます。決算整理を実行するとPL（損益計算書）とBS（貸借対照表）が一発で表示され、所得税計算に進めば<strong>還付額がいくらになるか</strong>がその場で表示されます。手作業なら半日かかる工程が、コマンド一つで終わります。", reference: "" },
+      { start: "5:15", end: "6:10", topic: "e-Tax自動入力と個人情報の扱い", direction: "画面収録：/e-tax を実行→ブラウザ自動入力", content: "最後に<strong>/e-tax</strong>を実行します。これはClaude Codeが<strong>ブラウザを実際に操作して、e-Taxの確定申告書等作成コーナーに自動で入力していく</strong>機能になります。これまで手で打ち込んでいた数字がClaudeの手で順に入力されていく様子は、初めて見ると衝撃かもしれません。<strong>一方でマイナンバーや源泉徴収票の内容など、個人情報に関わる項目は手動入力を推奨します</strong>。自動化と手動のバランス、ここがSkillの設計の肝になります。", reference: "" },
+      { start: "6:10", end: "6:45", topic: "Skillの本質", direction: "スライド：表紙", content: "今日体験していただいたshinkokuは、<strong>作者の税理士的な判断手順が、インストールした全員に配布される</strong>仕組みです。これがSkillの本質になります。専門家1人の知識が、Skillという形で組織や世界中の使い手に配られる——<strong>「個人のノウハウが組織の資産になる」</strong>、これが業務効率化の文脈でSkillsが革命的だと言われる理由です。", reference: "" },
+      { start: "6:45", end: "7:10", topic: "クロージング", direction: "スライド：表紙", content: "今日は他者が作ったSkillを使う体験でしたが、<strong>次の動画では皆さん自身が自分の業務をSkill化する側に回ります</strong>。受け取る側から作り手に回る、その入口がSkills Creatorです。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S3-V2": {
+    meta: {
+      duration: "約7分10秒",
+      mode: "画面収録（エディタ＋Claude Code＋ブラウザ。スライドは表紙のみ）",
+      goal: "Skills Creatorで月次経営報告レポートをSkill化し、同じ品質のレポートをチーム誰もが生成できる状態にする。架空ドレミファエア社の3月度月次レポートをHTMLインフォグラフィックで一気通貫生成する"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "サンプルデータ", name: "demos/doremifa-air/financials.csv", purpose: "架空ドレミファエア社（7路線中堅キャリア）の3月度業績データ", timing: "サンプルデータ紹介" },
+      { type: "サンプルデータ", name: "demos/doremifa-air/board-notes.md", purpose: "経営会議メモ（関心事抽出のソース）", timing: "サンプルデータ紹介" },
+      { type: "サンプルデータ", name: "demos/doremifa-air/business-notes.md", purpose: "事業背景メモ（定性情報のソース）", timing: "サンプルデータ紹介" },
+      { type: "画面収録", name: "/skill-creator 起動と対話", purpose: "経理手順を口頭説明→SKILL.md自動生成", timing: "中盤" },
+      { type: "画面収録", name: "テスト実行→HTMLレポート確認", purpose: "3ファイルを渡してHTMLレポート生成→ブラウザで読まれるレポートを確認", timing: "後半の動作確認" },
+      { type: "画面収録", name: "対話で微調整", purpose: "「グラフが弱い」「示唆をもう1段」をSkillに反映", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経理・管理部門の方に向けて、<strong>毎月の月次レポート作成をSkill化する方法</strong>をお伝えします。Skills Creatorという機能を使い、自分の業務を組織誰もが再現できる仕組みに変えていきます。", reference: "" },
+      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "表紙のまま", content: "月末の業績集計、議事録の読み直し、パワポへの転記——多くの経理担当の方が<strong>毎月10〜30時間を月次レポート作成</strong>に費やしています。一方で経営会議に出すと「数字の羅列」で読まれずに終わる、というケースも少なくないと思います。これをSkill化すれば、<strong>同じ手順を毎月Claude Codeが回してくれる、しかも背景・ストーリー・示唆まで含めた読まれるレポート</strong>に進化させられます。今日はその体験をしていただく回になります。", reference: "" },
+      { start: "1:20", end: "1:50", topic: "前回からの転換（受動→能動）", direction: "表紙のまま", content: "前回の動画では、他者が作ったshinkokuを使う「受動的な体験」をしていただきました。<strong>今日は皆さん自身が作り手に回ります</strong>。受け取る側から能動的に設計する側へ、その転換を可能にするのがSkills Creatorです。", reference: "" },
+      { start: "1:50", end: "2:30", topic: "題材紹介：ドレミファエア社", direction: "画面収録：demos/doremifa-air/ の3ファイルを順に開く", content: "題材は架空の<strong>ドレミファエア社</strong>です。ドレミファソラシドの7路線を持つ中堅キャリア、その3月度の月次経営レポートを作成します。インプットは3つ——<strong>業績CSV・経営会議メモ・事業背景メモ</strong>。これらから経営者向けHTMLレポートを出力する、というシナリオで進めます。", reference: "demos/doremifa-air/financials.csv／board-notes.md／business-notes.md" },
+      { start: "2:30", end: "3:10", topic: "Skills Creatorの正体", direction: "スライド：表紙", content: "ここで<strong>Skills Creatorとは何か</strong>を整理します。これは<strong>「あなたの業務手順をClaudeに口頭で説明するだけで、SKILL.md仕様に変換してくれる対話型ツール」</strong>です。プロンプトエンジニアリングの知識は要りません。普段の業務をそのまま言葉で伝える——それだけでSkillが組み上がる、という設計になっています。", reference: "公式Skills Creator: https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md" },
+      { start: "3:10", end: "4:00", topic: "/skill-creator 起動と業務説明", direction: "画面収録：Claude Codeで/skill-creator 実行→対話", content: "<strong>/skill-creator</strong>を起動すると「あなたの業務手順を教えてください」と聞かれます。ここで経理手順を口頭で説明していきます——<strong>前年比計算・議事録からの関心事抽出・事業メモからの定性情報の取り込み・数字の背景ストーリーの組み立て・最終的なHTML出力</strong>、こうした手順を順番に伝えます。普段やっている作業をそのまま言葉にしていく感覚です。", reference: "" },
+      { start: "4:00", end: "4:40", topic: "SKILL.md自動生成と中身確認", direction: "画面収録：生成されたSKILL.mdを開く", content: "皆さんの説明が<strong>SKILL.mdというファイルに自動変換されていきます</strong>。中身を開いてみると——<strong>ロール・インプット条件・アウトプット条件</strong>が構造化されて並んでいる状態になります。Claudeが手順を理解できる形に整理された設計図、と思っていただいて構いません。", reference: "" },
+      { start: "4:40", end: "5:30", topic: "テスト実行→HTMLレポート", direction: "画面収録：3ファイルを渡してテスト実行→ブラウザでHTMLレポート確認", content: "では生成されたSkillをテストします。<strong>demos/doremifa-air/ の3ファイルを渡して実行</strong>すると、HTMLレポートが生成されます。ブラウザで開くと——「LCC参入で価格競争懸念」「新路線就航で四国需要の取り込み」といった<strong>背景付きの読まれるレポート</strong>が仕上がっています。数字だけではなく、その裏にある事業ストーリーまで含まれた経営者向けの一枚です。", reference: "" },
+      { start: "5:30", end: "6:10", topic: "対話で微調整・小さく始める", direction: "画面収録：「グラフが弱い」「示唆をもう1段」を対話で反映", content: "<strong>最初から完璧なSkillを作ろうとしないでください</strong>。現実には不可能ですし、書き始めた瞬間に手が止まります。「グラフが弱い」「示唆をもう1段踏み込みたい」と気づいたら、対話でSkillに反映していきます。<strong>1ヶ月分でまず回して、足りない箇所を追記する</strong>——この往復でSkillを育てていく形になります。", reference: "" },
+      { start: "6:10", end: "6:40", topic: "チーム共有と属人化解消", direction: "画面収録：SKILL.mdをチームに共有する想定", content: "ここがSkillの真骨頂です。<strong>このSkillをチームに共有すれば、他の経理メンバーも同じ品質でレポートを出せます</strong>。ベテラン経理の頭の中にしかなかった手順が、組織の資産に変わります。これは個人の業務効率化を超えて、<strong>組織全体の生産性が一段上がる</strong>変化になります。", reference: "" },
+      { start: "6:40", end: "7:10", topic: "クロージング", direction: "スライド：表紙", content: "今日はSkill化の作り手体験をしていただきました。<strong>次の動画からは、Skillとは別の角度で組織に入っていく仕組み——MCPを扱います</strong>。Slack・Notion・Figma・Xといった日常ツールにClaudeが手を伸ばす世界です。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S3-V3": {
+    meta: {
+      duration: "約7分",
+      mode: "画面収録（ターミナル＋Claude Code＋ブラウザ。スライドは表紙＋MCP概念図のみ）",
+      goal: "Slack MCPを接続し全チャンネル横断で日報・週報を自動生成できるようになる。MCPの定義と外部ツール連携の本質を理解する"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "MCP概念図（USB-C例示）", purpose: "MCPを共通規格として説明", timing: "序盤" },
+      { type: "ブラウザ", name: "公式MCPサーバーリポジトリ", purpose: "Slack実装の確認", timing: "中盤" },
+      { type: "画面収録", name: "Slackトークン取得", purpose: "Slack APIコンソールでトークン発行", timing: "中盤" },
+      { type: "画面収録", name: "config.json記述と接続テスト", purpose: "MCP接続の3ステップ実演", timing: "中盤" },
+      { type: "画面収録", name: "日報生成プロンプト→出力", purpose: "全チャンネルクロール→経営層向け日報", timing: "後半の動作確認" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではチームリーダー・マネージャーの方に向けて、<strong>Slack MCPで日報・週報を自動生成する方法</strong>をお伝えします。S3で初めて登場する<strong>MCP</strong>という概念も合わせて押さえていきます。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "毎日<strong>30分かけてSlackから日報を手作業で書いている</strong>チームは少なくないと思います。複数チャンネルを巡回して、営業活動・企画進捗・事務完了を集めて、上司向けにまとめる——これが日課になっている方も多いでしょう。<strong>この30分が30秒になる</strong>、それを実現するのがSlack MCPです。今日はその体験をしていただきます。", reference: "" },
+      { start: "1:10", end: "2:00", topic: "MCPの定義（USB-Cアナロジー）", direction: "スライド：MCP概念図", content: "<strong>MCPとは何か</strong>を整理します。MCPは<strong>Model Context Protocol＝モデル・コンテキスト・プロトコル</strong>の略で、AI（Claude）と外部ツールを繋ぐ共通規格です。日常の例で言えば<strong>USB-Cポート</strong>と同じ発想になります。メーカーが違う周辺機器でも、USB-Cという共通規格があるから繋がる——SlackもNotionもGmailもFigmaも、MCPという共通規格があるからClaudeに繋いで協調動作させられる、というわけです。", reference: "公式MCPサーバー: https://github.com/modelcontextprotocol/servers" },
+      { start: "2:00", end: "2:40", topic: "SkillsとMCPの違い", direction: "スライド：表紙", content: "ここで<strong>前回までのSkillsとMCPの違い</strong>を明確にしておきます。Skillsは「専門家の手順がパッケージ化されたもの」、MCPは「外部ツールへの接続口」——<strong>役割が異なります</strong>。Skillsが「やり方」を提供するのに対し、MCPは「触れる場所」を提供する。両方を組み合わせると、組織のあらゆる場所でAIが手を動かせるようになります。", reference: "" },
+      { start: "2:40", end: "3:20", topic: "公式リポジトリでSlack実装を確認", direction: "ブラウザ：modelcontextprotocol/serversを開く", content: "では実演に入ります。まず<strong>公式MCPサーバーリポジトリ</strong>を開き、Slack実装を確認します。公式が提供している実装なので、自分でゼロから書く必要はありません。READMEの手順に沿えば接続できる、という状態になっています。", reference: "https://github.com/modelcontextprotocol/servers" },
+      { start: "3:20", end: "4:00", topic: "接続①トークン取得", direction: "画面収録：Slack APIコンソール", content: "MCP接続は3ステップで完了します。<strong>1つ目がトークン取得</strong>です。Slack APIコンソールでアプリを作成し、必要なスコープを設定して、トークンを発行します。これがClaudeに「Slackを触っていいですよ」と認可する鍵になります。", reference: "" },
+      { start: "4:00", end: "4:40", topic: "接続②③ config.json記述と接続テスト", direction: "画面収録：config.json編集→接続テスト", content: "<strong>2つ目がconfig.jsonへの設定記述</strong>、<strong>3つ目が接続テスト</strong>です。MCP設定ファイルにSlackサーバーのエンドポイントとトークンを書き込み、Claude Codeを再起動して<code>/mcp</code>で接続状況を確認します。「接続完了」が表示されれば準備完了——たった3ステップでSlackがClaudeと繋がりました。", reference: "" },
+      { start: "4:40", end: "5:00", topic: "つまずきポイント補足", direction: "画面収録：エラー時のチェックリスト", content: "もし接続できない場合は<strong>トークンのスコープ不足・config.jsonのパス間違い・Claude Code再起動忘れ</strong>、この3つを順に確認してください。実務でつまずく箇所はだいたいこの範囲に収まります。", reference: "" },
+      { start: "5:00", end: "5:50", topic: "日報生成プロンプト→出力表示", direction: "画面収録：プロンプト送信→生成結果", content: "では実際に日報を生成します。「<strong>過去7日間のすべてのチャンネルのメッセージをクロールし、営業活動・企画進捗・事務完了を集約して経営層向けの日報を生成してください</strong>」と依頼します。Claudeが全チャンネルを巡回し、<strong>日付・チャンネル別活動サマリー・数字による成果指標・上司向けコメント</strong>まで含む日報を出力してくれます。", reference: "" },
+      { start: "5:50", end: "6:20", topic: "週報・HTML化への展開", direction: "画面収録：同じプロンプトで週報生成→HTML化", content: "同じプロンプトで「過去7日間」を「過去30日間」に変えれば<strong>週報・月報も同じ仕組みで生成可能</strong>です。さらに出力をHTML形式にすれば、経営層への共有もURLを送るだけで済みます。<strong>一度繋いでしまえば、応用範囲は使う側のアイデア次第</strong>になります。", reference: "" },
+      { start: "6:20", end: "7:00", topic: "クロージング", direction: "スライド：表紙", content: "今日はSlack MCPだけを扱いましたが、<strong>同じ仕組みでNotionの議事録・Figmaのデザイン・Xの投稿まで、すべてMCP経由でClaudeに触らせられます</strong>。次の動画ではNotion MCPで組織の記憶を横断する体験をしていただきます。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S3-V4": {
+    meta: {
+      duration: "約7分",
+      mode: "画面収録（Notion＋Claude Code＋ブラウザ。スライドは表紙のみ）",
+      goal: "Notion MCPを接続し、組織内に散在する議事録・プロジェクト情報・ナレッジを横断検索してHTML報告書やFAQに再構成できるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "Notion画面", name: "議事録DB（複数プロジェクト分）", purpose: "ダミー組織のNotion議事録を表示", timing: "中盤" },
+      { type: "画面収録", name: "Notion Integration作成→権限設定", purpose: "MCP接続の認証設定実演", timing: "中盤" },
+      { type: "画面収録", name: "経営課題抽出プロンプト→集約", purpose: "過去3ヶ月議事録から経営課題を抽出", timing: "後半の動作確認" },
+      { type: "出力成果物", name: "HTML経営課題ダッシュボード", purpose: "課題別議事録リンク・優先度スコア", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経営層・組織開発・人事の方に向けて、<strong>Notion MCPで組織の記憶を横断する方法</strong>をお伝えします。前回のSlack MCPに続くMCP第2弾です。", reference: "" },
+      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "表紙のまま", content: "人間の脳は<strong>個人の経験しか記憶できません</strong>。一方でNotionは、<strong>組織全体の知識が蓄積された図書館</strong>のような存在です。議事録・プロジェクト管理DB・ナレッジベース・顧客フィードバック——あらゆる組織情報がNotionに残されているのに、検索しても断片しか出てこず、結局人手で集めて回るという経験はないでしょうか。<strong>Notion MCPを繋ぐと、Claudeが図書館の司書として複数の情報源を一度に探索してくれる</strong>——今日はその体験をしていただきます。", reference: "Notion公式MCP: https://github.com/makenotion/notion-mcp-server" },
+      { start: "1:20", end: "1:50", topic: "Slackとの対比", direction: "スライド：表紙", content: "ここで前回のSlack MCPと位置付けを対比させてください。<strong>Slackは「流れる情報」「リアルタイム」</strong>、一方<strong>Notionは「蓄積された情報」「歴史」</strong>です。両方が揃って初めて、組織の意思決定速度と質が同時に上がります。今日はその「歴史」側を扱います。", reference: "" },
+      { start: "1:50", end: "2:30", topic: "題材紹介", direction: "画面収録：ダミー組織のNotionワークスペース", content: "題材は<strong>「経営層が現在の経営課題を把握したい」</strong>という日常ニーズです。組織内のNotionには、議事録・プロジェクト管理DB・ナレッジベース・顧客フィードバックが分散しています。従来は人手で情報を集めてExcelにまとめ直す——半日以上かかる作業でした。これをClaudeに任せます。", reference: "" },
+      { start: "2:30", end: "3:10", topic: "接続設定実演", direction: "画面収録：Notion Integration作成→権限→Claude認証", content: "Notion MCPの接続は<strong>3層の権限設定</strong>を押さえる必要があります。<strong>Notion Integration作成・データベース別の権限付与・Claude Codeでの認証</strong>、この順で進めます。Notion API側は権限が細かく分かれているので、必要な範囲だけを開ける、という運用にしてください。", reference: "Notion Databases: https://developers.notion.com/reference/database-query" },
+      { start: "3:10", end: "4:00", topic: "経営課題抽出プロンプト", direction: "画面収録：プロンプト送信→複数DB集約", content: "接続できたら依頼します。「<strong>過去3ヶ月の議事録を全検索し、経営課題に該当するキーワードを抽出してください</strong>」。Claudeが<strong>議事録DB・プロジェクト進捗DB・ナレッジベースを一度に巡回</strong>し、課題候補を集約してきます。複数のDBから一度に結果を取り出す、ここがNotion MCPの本領になります。", reference: "" },
+      { start: "4:00", end: "4:50", topic: "HTMLダッシュボード生成", direction: "画面収録：HTMLダッシュボード表示", content: "抽出した課題を<strong>HTMLダッシュボード</strong>に成形してもらいます。<strong>課題別の議事録リンク・発生日時・関連プロジェクト・優先度スコア</strong>が並んだ一枚が出来上がります。「この課題は3つの会議で繰り返し話題に上がっている」「これは特定プロジェクトに集中している」といった<strong>パターンが視覚的に掴めるレポート</strong>になります。", reference: "" },
+      { start: "4:50", end: "5:30", topic: "応用展開", direction: "画面収録：他のユースケースを口頭で紹介", content: "同じ仕組みは応用範囲が広いです。<strong>新人向けオンボーディング資料の自動生成・社内FAQの自動更新・週報の自動作成</strong>——いずれもNotionに蓄積された情報を再構成するパターンになります。一度Skill化してしまえば、毎週同じ品質のアウトプットがチームに届きます。", reference: "" },
+      { start: "5:30", end: "6:00", topic: "情報の民主化", direction: "スライド：表紙", content: "ここで一段視点を上げてお伝えします。Notion MCPの本質は<strong>「情報の民主化」</strong>です。これまで一部のベテランしか辿れなかった組織の記憶に、<strong>新人や他部門の人もClaude経由で同じ深さでアクセスできる</strong>ようになります。これは組織にとって大きな変化です。", reference: "" },
+      { start: "6:00", end: "6:30", topic: "リアルタイム＋歴史の統合", direction: "スライド：表紙", content: "前回のSlack MCPと組み合わせれば、<strong>「今起きている流れ」と「これまで積み上げてきた歴史」を一度に扱える</strong>状態になります。意思決定の質と速さが同時に上がる、その入口がここまで来ました。", reference: "" },
+      { start: "6:30", end: "7:00", topic: "クロージング", direction: "スライド：表紙", content: "次の動画では<strong>設計領域のMCP——Figma連携</strong>を扱います。デザイナーの頭の中にAIが入る、そういう体験です。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S3-V5": {
+    meta: {
+      duration: "約7分20秒",
+      mode: "画面収録（Figma＋Claude Code＋ブラウザ。スライドは表紙のみ）",
+      goal: "Figma MCPを接続し、デザインカンプから実装コードを生成しブラウザで動作確認できる。デザインと実装の翻訳コストが削減される体験を得る"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "Figmaファイル", name: "架空LP（コンポーネント・Variant・Design Token設定済み）", purpose: "実演用デザインカンプ", timing: "中盤" },
+      { type: "画面収録", name: "/mcp で接続確認", purpose: "Figma MCP接続状況を確認", timing: "中盤" },
+      { type: "画面収録", name: "get_design_context実行", purpose: "Figmaから設計データを抽出", timing: "中盤" },
+      { type: "画面収録", name: "コード生成→ブラウザ動作確認", purpose: "React+Tailwindコード生成→ブラウザでLP表示", timing: "後半の動作確認" },
+      { type: "画面収録", name: "Figma側で微調整→Canvas書き込み", purpose: "デザイン微修正→Claudeが差分検出→再生成", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではデザイナー・フロントエンドエンジニア・PMの方に向けて、<strong>Figma MCPでデザインカンプから実装コードを生成する方法</strong>をお伝えします。MCP第3弾です。", reference: "" },
+      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "表紙のまま", content: "デザイナーが「こう見せたい」とFigmaで示す、エンジニアが「それは技術的に難しい」と返す、営業マネージャーが「とにかく早く出して」と急かす——<strong>この不毛な往復が組織の毎日のコスト</strong>になっていないでしょうか。設計図と組立の関係性が現場では壊れていて、本来一発で進むはずの仕事に何度も折り返しが生まれています。今日扱うFigma MCPは、<strong>その壁の一部を取り除く道具</strong>です。", reference: "" },
+      { start: "1:20", end: "2:00", topic: "壁の正体は言語化ロス", direction: "スライド：表紙", content: "壁の正体を整理します。それは<strong>「言語化ロス」</strong>です。デザイナーがFigmaで示したものを、エンジニアがHTMLに訳す過程で、<strong>意図と実装に必ずズレが生まれます</strong>。レシピを日本語で説明し直すと細部が落ちるのと同じ現象です。Figma MCPはこの翻訳工程を省略します。", reference: "" },
+      { start: "2:00", end: "2:40", topic: "Figma MCPの正体", direction: "スライド：表紙", content: "<strong>Figma MCPとは「AIが構造化されたデザインシステムを直接読めるトンネル」</strong>です。Figmaは内部的に、コンポーネント・Variant・Design Tokenといった構造データを持っています。MCPはこの構造データをClaudeにそのまま渡します。<strong>「設計図を読める大工」「レシピを読める料理人」</strong>と同じ発想で、人間が間に入って翻訳する必要がなくなります。", reference: "Figma公式MCP: https://developers.figma.com/docs/figma-mcp-server/" },
+      { start: "2:40", end: "3:20", topic: "実演準備：LP用Figmaファイル", direction: "画面収録：Figmaで架空LPを開く", content: "実演に使うのは<strong>架空LPのFigmaファイル</strong>です。コンポーネント・Variant・Design Tokenが整備された、実務レベルのデザインカンプを用意してあります。<strong>Figma MCPの読み取り精度はファイルの構造化度合いに比例します</strong>ので、構造化が弱いと精度も落ちる、という前提を頭に置いてください。", reference: "" },
+      { start: "3:20", end: "4:00", topic: "接続確認とget_design_context", direction: "画面収録：/mcpで接続確認→get_design_context実行", content: "Claude Codeで<strong>/mcp</strong>を実行し、Figma MCPが繋がっていることを確認します。続いて<strong>get_design_context</strong>を実行し、FigmaファイルのURLを渡します。<strong>Figmaの構造情報がClaudeに丸ごと届きました</strong>——色・タイポグラフィ・スペーシング・コンポーネント階層、すべてがClaudeの手元にある状態です。", reference: "" },
+      { start: "4:00", end: "4:50", topic: "コード生成", direction: "画面収録：Claude Codeに「このデザインを実装して」と依頼→生成", content: "次に依頼します。<strong>「このデザインをReact+Tailwindで実装してください」</strong>——たった一行です。プロンプトエンジニアリングは要りません。設計書がすでに自動供給されているので、Claudeは迷わず実装に進みます。React+Tailwindのコードが自動で生成されていきます。", reference: "" },
+      { start: "4:50", end: "5:30", topic: "ブラウザ動作確認", direction: "画面収録：生成LPをブラウザで開く", content: "生成したコードを<strong>ブラウザで開いて動作確認</strong>します。色・タイポグラフィ・レイアウト・レスポンシブ——<strong>Figmaで設計したとおりに再現</strong>されています。デザイナーが想定していた見え方と、エンジニアが組んだ実装が、初手で一致している状態です。", reference: "" },
+      { start: "5:30", end: "6:20", topic: "Figmaで微調整→差分検出→再生成", direction: "画面収録：Figmaでパディング調整→Claudeで再生成", content: "実務では実装後にデザインが変わることもあります。Figmaで「このセクション、もう少し余白がほしい」と<strong>パディングを0.5rem増やす微調整</strong>を入れます。Claudeが<strong>差分を検出して更新コードを生成</strong>、ブラウザを更新すれば修正が反映されている——<strong>このループが1分で回ります</strong>。", reference: "" },
+      { start: "6:20", end: "6:50", topic: "人間の判断が必要な場面", direction: "スライド：表紙", content: "ここで誤解のないように補足します。Figma MCPが入っても、<strong>人間の判断が必要な場面はなくなりません</strong>。デザインガイドラインの解釈、例外的レイアウトの扱い、ブランド判断——こうした「翻訳」ではない判断は人間の領域として残ります。MCPは<strong>「機械的な翻訳」を肩代わりすることで、「本来の判断」に時間を使えるようにする</strong>道具、という位置付けになります。", reference: "" },
+      { start: "6:50", end: "7:20", topic: "クロージング", direction: "スライド：表紙", content: "Skills→Slack→Notion→Figma、<strong>S3で扱うMCPの世界が組織の設計領域まで届きました</strong>。次の動画ではS3最終回、<strong>X連携で組織の対外発信までAIが担う</strong>世界を扱います。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S3-V6": {
+    meta: {
+      duration: "約8分10秒",
+      mode: "画面収録（テスト用Xアカウント＋Claude Code＋ブラウザ。スライドは表紙＋S3全体構成図のみ）",
+      goal: "X MCPを接続し、投稿生成→投稿→反応分析→改善提案の一気通貫サイクルを実演できる。S3全体（Skills→Slack→Notion→Figma→X）の世界観を着地させる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "S3全体構成図（Skills→Slack→Notion→Figma→X）", purpose: "MCP連鎖の世界観を1枚で見せる", timing: "中盤" },
+      { type: "画面収録", name: "X MCP接続確認", purpose: "テスト用Xアカウントに接続→登録状況確認", timing: "中盤" },
+      { type: "画面収録", name: "週間投稿案生成", purpose: "投稿文・画像説明・最適時間帯を生成", timing: "中盤" },
+      { type: "画面収録", name: "X MCPで実投稿", purpose: "テスト用アカウントで投稿→完了ログ表示", timing: "中盤〜後半" },
+      { type: "画面収録", name: "反応分析", purpose: "いいね・リツイート・リプライ集計", timing: "後半の動作確認" },
+      { type: "画面収録", name: "改善提案", purpose: "次週の投稿戦略提案を生成", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではマーケター・個人発信者の方に向けて、<strong>X MCPでSNS運用を自動化する方法</strong>をお伝えします。S3最終回として、これまでのMCP連鎖をここで着地させます。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "マーケターや個人発信者の方は、<strong>毎日SNSチェックと投稿に30分以上</strong>を費やしているケースが多いと思います。気づけば戦略立案の時間が削られている、という声も少なくありません。一方でClaudeに投稿計画を任せれば、<strong>定時自動配信→反応分析→改善提案が24時間サイクルで回る</strong>世界が存在します。それを実現するのがX MCPです。", reference: "" },
+      { start: "1:10", end: "1:50", topic: "S3全体振り返り", direction: "スライド：S3全体構成図", content: "ここで<strong>S3全体を振り返ります</strong>。Skillsで「専門家の手順」を体験、Skills Creatorで「自分の業務をSkill化」、SlackでMCP第1弾、Notionで第2弾、Figmaで第3弾——<strong>すべてが「プラグインを入れるだけで動く」という同じ美学</strong>で繋がっています。今日のXは対外発信側、その最後のピースになります。", reference: "" },
+      { start: "1:50", end: "2:30", topic: "対外発信の従来課題", direction: "スライド：表紙", content: "対外発信の領域はこれまで<strong>X APIを手で叩く必要があった</strong>領域です。APIキー管理・エラーハンドリング・レート制限の対処——すべてを自分で背負う必要がありました。<strong>X公式がxmcpを提供した今、その手間から解放されます</strong>。MCPの本質「複雑なAPI認証から解放される」を、対外ツールでも体感していただきます。", reference: "" },
+      { start: "2:30", end: "3:00", topic: "X MCPの定義", direction: "スライド：表紙", content: "<strong>X MCPとはX公式提供のAIゲートウェイ</strong>です。投稿・検索・反応分析など<strong>119個のツールがFastMCP経由で提供</strong>されています。これだけのツール群を自分で実装したら数ヶ月仕事ですが、xmcpを入れるだけで全部使える状態になります。", reference: "xdevplatform/xmcp: https://github.com/xdevplatform/xmcp ／ X MCPセットアップ: https://engineer117.com/generative_ai/claude/x-official-mcp-xmcp-setup-guide/" },
+      { start: "3:00", end: "3:40", topic: "接続実演", direction: "画面収録：テスト用Xアカウントに接続", content: "ここからは<strong>テスト用Xアカウント</strong>で実演します。業務用や個人アカウントでいきなり実演すると意図しない投稿が出てしまうので、必ず実験用アカウントを別途用意してください。<code>/mcp</code>でX MCPの登録状況を確認、接続が確立されている状態を見せます。", reference: "" },
+      { start: "3:40", end: "4:30", topic: "週間投稿案生成", direction: "画面収録：プロンプト送信→週間計画", content: "Claudeに依頼します。「<strong>今週のSNSマーケティング投稿案を作ってください</strong>」。出力されるのは<strong>投稿文・画像説明・最適配信時間帯</strong>を含む週間計画です。「月曜日に業界トレンド投稿」「水曜日に自社事例紹介」「金曜日にエンゲージメント投稿」——曜日ごとに狙いの違う投稿が並びます。", reference: "" },
+      { start: "4:30", end: "5:10", topic: "X MCPで実投稿", direction: "画面収録：投稿実行→完了ログ", content: "次に<strong>X MCP経由で実際に投稿</strong>します。Claudeが投稿APIを呼び出し、テスト用アカウントに投稿が反映されます。完了ログが表示され、投稿IDが返ってきました。<strong>これまで手で打っていた投稿が、コマンド一つで配信されました</strong>。", reference: "" },
+      { start: "5:10", end: "6:00", topic: "反応分析", direction: "画面収録：いいね・リツイート・リプライ集計", content: "投稿後、<strong>反応データを集計</strong>します。「過去24時間の反応を分析してください」と依頼すれば、いいね・リツイート・リプライ・インプレッション数が一覧で出てきます。さらに<strong>「このテーマは関心が高い」「この時間帯は反応が早い」といったパターンの気づき</strong>まで自動で取り出してくれます。", reference: "" },
+      { start: "6:00", end: "6:50", topic: "改善提案", direction: "画面収録：来週の投稿戦略提案", content: "反応データに基づいて<strong>「来週の投稿戦略の提案をしてください」</strong>と依頼します。「前週反応の高かった業界トレンド系を月曜日に維持」「自社インサイト系は反応が良かったので木曜日に追加配信」など、<strong>具体的な改善案</strong>が返ってきます。データを見て改善案を出すサイクルが、人手を介さず回り始めます。", reference: "" },
+      { start: "6:50", end: "7:30", topic: "サイクルが完全自動で回る意義", direction: "スライド：表紙", content: "ここまでで<strong>「生成→投稿→分析→改善」のサイクルが人手を介さず回る</strong>状態が完成しました。マーケターの日常は<strong>「毎朝SNSチェック→手打ち投稿」から「週間計画→定時自動配信→反応分析は翌朝レポートで確認」</strong>へ変わります。空いた時間は本来の戦略立案に使える、というわけです。", reference: "" },
+      { start: "7:30", end: "8:10", topic: "S3全体着地・S5への布石・クロージング", direction: "スライド：S3全体構成図", content: "S3全体をまとめます。<strong>Skills→Slack→Notion→Figma→X、組織の内側から外側まで、すべての接点でAIが手を動かす世界観</strong>がここに完成しました。次のS5アプリ開発編では、<strong>さらに深い統合——データベース・CI/CD・テスト戦略まで含めたAI開発</strong>を扱います。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
   }
 };

@@ -830,5 +830,97 @@ var SCRIPTS = {
       { start: "6:20", end: "6:40", topic: "独り立ちメッセージ", direction: "スライド：表紙", content: "今日持ち帰ってほしい感覚は1つだけ、<strong>「もう自分で好きなSaaSを作れる」</strong>ということです。CLAUDE.mdとspec.mdを書いて、Claude Codeに依頼して、pushしてデプロイする——このフローさえ身につけば、<strong>どんなアプリでも同じ手順で作れます</strong>。これがS5のゴールです。", reference: "" },
       { start: "6:40", end: "7:00", topic: "クロージング", direction: "スライド：表紙に戻す", content: "次のS6では、今日の名刺管理アプリにデータベースを繋ぐところから始めます。<strong>ローカル完結のツールから、チームで使える本物のSaaSへ</strong>、質的な転換を一緒に体験しましょう。それでは次の動画でお会いしましょう。", reference: "" }
     ]
+  },
+  "S6-V1": {
+    meta: {
+      duration: "約7分",
+      mode: "画面収録（Supabase管理画面＋エディタ＋Claude Codeターミナル＋ブラウザ＋スマホ＋Vercelダッシュボード）",
+      goal: "前のセクションで作った名刺管理アプリのローカルストレージ保存をSupabase接続に置き換え、「ブラウザを閉じても別端末からも同じデータが見える」永続化を実装する。APIキーと.envの扱いもここで初めて実体験する"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "ローカル保存 vs クラウドDB 対比図", purpose: "冷蔵庫の付箋 vs 自宅ファイルのクラウド、用途の使い分けを1枚で整理", timing: "序盤" },
+      { type: "スライド", name: "contactsテーブル設計図", purpose: "id/name/company/email/phone/created_at の6列を1枚で提示", timing: "序盤" },
+      { type: "サンプルデータ", name: "demo/s6v1/schema.sql", purpose: "contactsテーブル定義（6列）", timing: "中盤" },
+      { type: "サンプルデータ", name: "demo/s6v1/.env.example", purpose: "SUPABASE_URL/SUPABASE_ANON_KEY の2行テンプレ", timing: "中盤" },
+      { type: "画面収録", name: "Supabase Table Editorでテーブル作成", purpose: "contactsテーブル作成→APIキー取得の実演", timing: "中盤" },
+      { type: "画面収録", name: "Claude Codeにローカルストレージ置き換え依頼", purpose: "CRUD4操作が一度に置き換わる様子", timing: "中盤〜後半" },
+      { type: "画面収録", name: "Vercel環境変数登録＋自動デプロイ＋スマホ確認", purpose: ".envとは別経路で本番に鍵を渡す流れ", timing: "後半の動作確認" },
+      { type: "出力成果物", name: "名刺管理アプリ永続化版（Vercel発行URL）", purpose: "スマホからも同じデータが見える本物のSaaS", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、前のセクションで自作したSaaS風アプリを本物にしていきたい方に向けて、<strong>名刺管理アプリをクラウドDBに接続して永続化する</strong>方法をお伝えします。S6の起点、3つのアプリを順に永続化していく1本目です。", reference: "" },
+      { start: "0:20", end: "1:15", topic: "なぜ扱うか", direction: "スライド：表紙", content: "前のセクションで3つのアプリを作りました。見た目は本物のSaaSでも、<strong>データは自分のブラウザの中だけ</strong>です。ブラウザを閉じるとスマホでは何も見えませんし、同僚とも共有できません。今日はその最後の壁を取り払います。<strong>名刺管理アプリにクラウドのデータベースを繋いで、「ブラウザを閉じても、別の端末でも、同じデータが見える」</strong>状態にします。前のセクションで「APIキーは環境変数で扱う」と布石を置いた話題も、今日実際のファイル操作として回収していきます。", reference: "" },
+      { start: "1:15", end: "1:55", topic: "ローカル保存とクラウドDBの対比", direction: "スライド：ローカル保存 vs クラウドDB 対比図", content: "まずローカル保存とクラウドDBを1枚で整理しておきます。<strong>ローカルストレージは冷蔵庫に貼った付箋</strong>、その家でしか見えません。<strong>クラウドDBは自宅のファイルをクラウドに上げる感覚</strong>、どの端末からでも同じ中身が見えます。優劣ではなく用途の使い分けで、試作は付箋で十分、本物として使うならクラウド、という分け方になります。", reference: "" },
+      { start: "1:55", end: "2:35", topic: "テーブル設計はExcelの列を決める感覚", direction: "スライド：contactsテーブル設計図", content: "次にテーブル設計です。ここは<strong>Excelの列を決める感覚</strong>で進められます。名刺アプリで既に入力している項目をそのまま列にするだけで、今回は<code>contacts</code>という1つのテーブルに<strong>id・name・company・email・phone・created_atの6列</strong>を用意します。アプリで扱っている項目を移すだけなので、設計で悩む必要はありません。", reference: "" },
+      { start: "2:35", end: "3:15", topic: "Supabaseでテーブル作成", direction: "画面収録：Supabase管理画面のTable Editorでcontactsテーブル作成", content: "Supabaseの管理画面に入って、Table Editorで<code>contacts</code>テーブルを作ります。列を1つずつ追加しながら、<strong>name・company・email・phoneはテキスト型、created_atは日付型</strong>、idはデフォルトで自動採番が効く設定にしておきます。この画面操作は1〜2分で終わります。", reference: "demo/s6v1/schema.sql" },
+      { start: "3:15", end: "4:05", topic: "APIキーと.envを用意する", direction: "画面収録：Settings→APIでURL/ANON KEYコピー→ローカルに.env新規作成→.gitignore確認", content: "続いてプロジェクトのSettings→APIから<strong>URL</strong>と<strong>ANON KEY</strong>をコピーします。ここで一言、この画面を動画で映しているのは説明のためで、<strong>撮影後にこのANON KEYは無効化します</strong>。ローカルに戻って<code>.env</code>というファイルを新規作成し、<code>SUPABASE_URL=</code>と<code>SUPABASE_ANON_KEY=</code>の2行を書きます。前のセクションでお伝えしたとおり、<strong>この1ファイルがすべての鍵</strong>ですので、<code>.gitignore</code>に<code>.env</code>が入っていることを必ず確認します。家の鍵をSNSに載せない感覚ですね。", reference: "demo/s6v1/.env.example" },
+      { start: "4:05", end: "4:55", topic: "Claude Codeに置き換えを依頼", direction: "画面収録：npm install @supabase/supabase-js→Claude Codeに依頼→差分確認", content: "<code>npm install @supabase/supabase-js</code>でSDKを追加して、Claude Codeに依頼します。<strong>「ローカルストレージの読み書きをSupabaseに置き換えて」</strong>——これだけです。Claude CodeはCRUDの4操作（登録・一覧・編集・削除）を一度に書き換えてくれて、<strong>画面側のコードはほぼ触らない</strong>まま、データの取得先だけが入れ替わります。", reference: "" },
+      { start: "4:55", end: "5:30", topic: "ローカル動作確認＋Table Editor確認", direction: "画面収録：ブラウザで名刺1件登録→Supabase Table Editorで行増加を確認", content: "ローカルで架空の名刺を1件登録してみます。画面に追加された直後に、Supabase管理画面のTable Editorを開くと、<strong>同じ行がクラウド側にも増えています</strong>。「ブラウザの外側にデータが出た」瞬間です。ここまで来れば、永続化の骨格は通ったと言えます。", reference: "" },
+      { start: "5:30", end: "6:10", topic: "GitHub push＋Vercel環境変数登録", direction: "画面収録：git push→Vercelダッシュボードの環境変数画面でURL/KEY登録→自動デプロイ", content: "GitHubにpushします。ここで<strong>1つだけ追加の作業</strong>が必要です。<code>.env</code>はGitには上がらない設定ですので、<strong>本番環境には別経路で鍵を渡します</strong>。Vercelのダッシュボード→Settings→Environment Variablesで<strong>URLとANON KEYを同じように登録</strong>します。登録したらpushをトリガーに自動デプロイが走って、1〜2分で完了します。", reference: "" },
+      { start: "6:10", end: "6:40", topic: "スマホから同じデータを確認", direction: "画面収録：発行URLをスマホで開く→PCで登録した名刺がそのまま見える", content: "発行URLをスマホで開きます。<strong>さっきPCで登録した名刺が、そのままスマホでも見えます</strong>。別の端末からも同じデータが見える——つまり「ブラウザを閉じても消えない、他の人とも共有できる」状態にたどり着きました。", reference: "" },
+      { start: "6:40", end: "7:00", topic: "クロージング", direction: "スライド：表紙に戻す", content: "これで名刺アプリは<strong>ローカル試作からクラウド本物に昇格</strong>しました。同じ流れを次の経費アプリ、その次のCRMでも反復します。認証や権限管理はこの3本では扱わず、後半の回でまとめて整理します。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S6-V2": {
+    meta: {
+      duration: "約6分",
+      mode: "画面収録（Supabase管理画面＋エディタ＋Claude Codeターミナル＋ブラウザ＋Vercelダッシュボード）",
+      goal: "フロント完結の経費アプリにSupabaseを接続し、経費データを端末を超えて残せるようにする。2回目の反復で「APIキー取得→テーブル作成→CRUD実装」の永続化の型を体得する"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "本講座の永続化の型 整理図", purpose: "集計クエリ・画像ストレージとの位置関係を1枚で整理", timing: "中盤〜後半" },
+      { type: "サンプルデータ", name: "demo/s6v2/schema.sql", purpose: "expensesテーブル定義（id/date/amount/category/memo/created_at）", timing: "序盤" },
+      { type: "サンプルデータ", name: "demo/s6v2/.env.example", purpose: "SUPABASE_URL/SUPABASE_ANON_KEY のテンプレ", timing: "序盤" },
+      { type: "画面収録", name: "Supabase管理画面でexpensesテーブル作成", purpose: "列ごとに型を選ぶ実演（数値型・日付型・文字列型）", timing: "序盤" },
+      { type: "画面収録", name: "Claude Codeに置き換え依頼", purpose: "グラフ描画を残したままデータ取得先だけDBに差し替わる様子", timing: "中盤" },
+      { type: "画面収録", name: "ブラウザで登録→閉じて開き直しで永続化体感", purpose: "「端末を超えて残る」の腹落ち", timing: "中盤〜後半" },
+      { type: "画面収録", name: "Vercel環境変数登録＋自動デプロイ", purpose: "前の動画と同じ流儀で本番反映", timing: "後半の動作確認" },
+      { type: "出力成果物", name: "経費管理アプリ永続化版（Vercel発行URL）", purpose: "端末を超えて経費が残る本物のアプリ", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、前のセクションで自作した経費アプリを本物にしていきたい方に向けて、<strong>経費アプリをクラウドDBに接続して永続化する</strong>方法をお伝えします。永続化シリーズの2本目、前の動画と同じ型を別ドメインで辿り直す回です。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "前の動画で名刺管理アプリを永続化しました。<strong>今日は同じ手順を経費アプリで辿り直します</strong>。2回目なので<strong>手が覚えにいくフェーズ</strong>、リズムを少し上げて進めます。メッセージは1つ、<strong>「1回目で型を学び、2回目で型を定着させる」</strong>。見終わる頃には、別ドメインのアプリでも同じ手順で接続できる自信を持ち帰っていただきます。", reference: "" },
+      { start: "1:10", end: "1:40", topic: "今日の完成形プレビュー", direction: "画面収録：経費を登録→ブラウザを閉じる→開き直しても残っている", content: "先に今日の完成形を30秒で見せます。経費を登録して、<strong>ブラウザを閉じて開き直しても経費が残っている</strong>、別タブで同じURLを開いても同じデータが見える——この状態に今日到達します。", reference: "" },
+      { start: "1:40", end: "2:30", topic: "expensesテーブル作成と型の選び方", direction: "画面収録：Supabase管理画面でexpensesテーブル作成", content: "Supabase側で<code>expenses</code>テーブルを作ります。列は<strong>id・date・amount・category・memo・created_at</strong>の6つ。ここで<strong>型の選び方</strong>を1行だけ添えます。<strong>金額は計算したくなるから数値型</strong>、<strong>日付は並び替えたくなるから日付型</strong>、カテゴリは文字列型、という基準で列ごとに型を選びます。この判断基準が身につくと、別のアプリでも迷わなくなります。", reference: "demo/s6v2/schema.sql" },
+      { start: "2:30", end: "3:00", topic: ".envにAPIキーを貼る", direction: "画面収録：Settings→APIからURL/キーをコピー→.env更新", content: "APIキーを<code>.env</code>に貼ります。ここは前の動画と同じ流儀ですので<strong>手早く通します</strong>。URLとANON KEYの2行、これだけです。<code>.gitignore</code>に入っていることも同じくチェックします。", reference: "demo/s6v2/.env.example" },
+      { start: "3:00", end: "3:50", topic: "Claude Codeに置き換え依頼", direction: "画面収録：Claude Codeに依頼→生成差分を確認", content: "Claude Codeに依頼します。<strong>「ローカルストレージ保存をSupabaseの<code>expenses</code>テーブルに置き換えて」</strong>——これだけです。生成された差分を見ると、前の動画と同じ箇所が同じ形で書き換わっています。<strong>フロント側のグラフ描画はそのまま残り、データ取得先だけDBに差し替わる</strong>構成です。", reference: "" },
+      { start: "3:50", end: "4:40", topic: "永続化の体感", direction: "画面収録：ブラウザで架空の経費登録→Table Editor確認→ブラウザ閉じる→開き直し", content: "ブラウザで架空の経費を数件登録します。会議費・交通費・消耗品費、それぞれ日付と金額を入れていきます。Supabase管理画面で<strong>行が増えたことを確認</strong>して、<strong>ブラウザを一度閉じます</strong>。開き直すと、<strong>経費がそのまま残っています</strong>。別タブで同じURLを開いても同じデータが見えます。ここで「型が定着した」と言える状態です。", reference: "" },
+      { start: "4:40", end: "5:15", topic: "集計クエリと画像ストレージの位置付け", direction: "スライド：本講座の永続化の型 整理図", content: "もう少し踏み込みたい方向けに、<strong>本講座ではどこまで扱うか</strong>を整理しておきます。Supabaseは集計クエリも組み合わせて実装できますが、<strong>本講座では永続化の骨格を揺るぎないものにする方を優先</strong>して、集計クエリには踏み込みません。レシート画像のクラウド保存も、Supabase Storageで実現できる選択肢ですが、同じ理由で次の機会に回します。<strong>今回は「データが端末を超えて残る」骨格を3回反復して完成させる</strong>、ここに集中します。", reference: "" },
+      { start: "5:15", end: "5:45", topic: "Vercelデプロイ＋本番確認", direction: "画面収録：git push→Vercel環境変数登録→自動デプロイ→発行URLで確認", content: "GitHubにpushします。前の動画でVercel側にもURLとANON KEYを登録する流れをお伝えしましたので、<strong>このプロジェクトでも同じように環境変数を登録</strong>してから自動デプロイを待ちます。1〜2分で発行URLが出て、本番でも同じように経費が端末を超えて残ります。", reference: "" },
+      { start: "5:45", end: "6:00", topic: "クロージング", direction: "スライド：表紙に戻す", content: "これで<strong>2つのアプリが端末を超えて残る</strong>ようになりました。次の動画では同じ型をCRMで3回目に辿ります。そこまで来れば永続化の型は自分の型になっています。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S6-V3": {
+    meta: {
+      duration: "約7分",
+      mode: "画面収録（Supabase管理画面＋エディタ＋Claude Codeターミナル＋ブラウザ＋スマホ＋Vercelダッシュボード）",
+      goal: "前のセクションで作ったCRMにSupabaseを接続し、顧客データと商談ステータスをクラウドで永続化する。DB接続3回目の反復で「もう自分で好きなSaaSのDB接続ができる」という独り立ち感覚を確立する"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "S6前半3アプリ完成後の全体像図", purpose: "名刺・経費・CRMが永続化された状態を1枚で俯瞰", timing: "クロージング直前" },
+      { type: "サンプルデータ", name: "demo/s6v3/schema.sql", purpose: "customersテーブル定義（7列）", timing: "序盤" },
+      { type: "サンプルデータ", name: "demo/s6v3/.env.example", purpose: "SUPABASE_URL/SUPABASE_ANON_KEY のテンプレ", timing: "序盤" },
+      { type: "画面収録", name: "Supabase管理画面でcustomersテーブル作成", purpose: "7カラム設計と「分けない」判断の言語化", timing: "序盤" },
+      { type: "画面収録", name: "Claude Codeに置き換え依頼", purpose: "3回目で依頼文が要点だけで通じる様子", timing: "中盤" },
+      { type: "画面収録", name: "顧客追加・パイプラインドラッグ・削除でCRUDを1周", purpose: "画面の見た目とDBの中身が同じことの2つの表現であることを実演", timing: "中盤〜後半" },
+      { type: "画面収録", name: "名刺・経費・CRMの3タブ並べて永続化ツアー", purpose: "S6前半到達点の言語化", timing: "クロージング直前" },
+      { type: "出力成果物", name: "CRM永続化版（Vercel発行URL）", purpose: "顧客・商談・パイプラインが端末を超えて残るSaaS風アプリ", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、前のセクションで自作したCRMを本物にしていきたい方に向けて、<strong>CRMをクラウドDBに接続して永続化する</strong>方法をお伝えします。永続化シリーズの3本目、S6前半の総まとめです。", reference: "" },
+      { start: "0:20", end: "1:15", topic: "なぜ扱うか", direction: "スライド：表紙", content: "前の2本で名刺と経費をクラウドに保存できるようにしました。残るは前のセクションの最後に作ったSalesforce風CRMです。<strong>3回目の今回はサクッと進めて、見終わる頃には「自分の普段使いのSaaSにもDB接続できる」</strong>という手応えを持ち帰っていただきます。自転車の乗り始めは補助輪付き、2回目で補助輪を外し、<strong>3回目でスイスイ走れる</strong>——この感覚を今日確立します。", reference: "" },
+      { start: "1:15", end: "2:00", topic: "customersテーブル作成と設計判断", direction: "画面収録：Supabase管理画面でcustomersテーブル作成", content: "Supabase側で<code>customers</code>テーブルを作ります。列は<strong>id・name・company・status・last_contact・memo・created_at</strong>の7つ。ここで設計判断を1文で言い切ります。<strong>顧客と商談は分けません。パイプラインのステータスも<code>status</code>カラム1つで表現します</strong>。複数テーブルと外部キーを使う設計は実務では登場しますが、<strong>今回はシンプルにデータが残ることを優先</strong>します。必要になった段階で分ければいい、という判断です。", reference: "demo/s6v3/schema.sql" },
+      { start: "2:00", end: "2:45", topic: "Claude Codeに依頼", direction: "画面収録：.env更新→Claude Codeに依頼→差分確認", content: "<code>.env</code>は前の2本と同じ流儀でAPIキーを貼ります。Claude Codeに依頼します。<strong>「ローカルストレージの読み書きを<code>customers</code>テーブルへのCRUDに置き換えて」</strong>——3回目なので<strong>依頼文も要点だけで通じる</strong>状態になっていると思います。差分が生成されるのを待ちます。", reference: "demo/s6v3/.env.example" },
+      { start: "2:45", end: "3:20", topic: "顧客追加→Table Editor確認", direction: "画面収録：ブラウザで顧客1件追加→Supabase Table Editorにレコードが届く", content: "ブラウザでCRMを開いて、架空の顧客を1件追加します。株式会社サンプル商事の担当者を見込み客として登録します。Supabaseの<strong>Table Editorにレコードが届いていることを確認</strong>します。", reference: "" },
+      { start: "3:20", end: "4:05", topic: "パイプラインドラッグ→UPDATE確認", direction: "画面収録：商談カードを「見込み」→「提案」へドラッグ→Supabaseでstatusカラム変化", content: "次にパイプラインのカードをドラッグします。<strong>「見込み」から「提案」へ</strong>動かして、Supabaseの画面に戻ると、<strong><code>status</code>カラムの値が<code>見込み</code>から<code>提案</code>にUPDATEされています</strong>。画面の見た目とDBの中身は<strong>同じことの2つの表現</strong>、ここが腹落ちする瞬間です。", reference: "" },
+      { start: "4:05", end: "4:35", topic: "削除でCRUDが1周する", direction: "画面収録：顧客削除→画面とTable Editor両方から消える", content: "顧客を1件削除してみます。<strong>画面から消えると同時にTable Editorからも消えます</strong>。他のデータは残り続けています。CRUDの4操作が揃って、<strong>画面とDBがピタッと一致する</strong>状態になりました。", reference: "" },
+      { start: "4:35", end: "5:10", topic: "GitHub push→Vercel→スマホ確認", direction: "画面収録：git push→Vercel環境変数登録→自動デプロイ→発行URLをスマホで開く", content: "GitHubにpushして、Vercel側に環境変数を登録し、自動デプロイを待ちます。発行URLをスマホで開くと、<strong>PCで登録した顧客がそのままスマホでも見えます</strong>。端末を超えて同じデータが見える状態に、今日もしっかり到達しました。", reference: "" },
+      { start: "5:10", end: "5:55", topic: "3アプリのブラウザツアー", direction: "画面収録：ブラウザのタブに名刺・経費・CRMの3つを並べて順に切り替え", content: "ここでS6前半の<strong>3つのアプリを並べて</strong>みます。ブラウザのタブに<strong>名刺管理アプリ、経費管理アプリ、CRM</strong>、それぞれ永続化版がタブで並んでいます。どのアプリも<strong>ブラウザを閉じても消えません</strong>し、スマホからも同じデータが見えます。<strong>前のセクションで作った3つのSaaS風アプリが、全て端末を超えて共有できる本物のアプリに昇格</strong>しました。", reference: "" },
+      { start: "5:55", end: "6:35", topic: "次セクションへの展望", direction: "スライド：S6前半3アプリ完成後の全体像図", content: "ここまで来たら、<strong>自分の普段使いのSaaSにも同じ手順でDB接続できます</strong>。次の2本では、プロの開発組織で実際にClaude Codeがどう活用されているか、BACKSTAGE社のリアルな開発フローを見ていきます。<strong>認証・権限管理・本番運用のような「プロダクトとして公開するときの別の層」</strong>も、そこでまとめて整理します。今日たどり着いた到達点が、プロの現場とどう地続きになっているかを比較する展望です。", reference: "" },
+      { start: "6:35", end: "7:00", topic: "クロージング", direction: "スライド：表紙に戻す", content: "今日のお土産は1つだけ、<strong>「もう自分で好きなSaaSを作ってDBに繋げる」</strong>という独り立ち感覚です。名刺・経費・CRMと3回反復して身についた永続化の型、これが持ち帰る技能です。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
   }
 };

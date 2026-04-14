@@ -259,5 +259,62 @@ var SCRIPTS = {
       { start: "6:45", end: "7:10", topic: "S5への布石", direction: "同上", content: "スペック駆動は、<strong>S5のアプリ開発編で本領を発揮</strong>します。データベースを持つSaaS風アプリを作る際、specなしで着手すると確実に迷子になります。<br><br>だからこそ今のうちに、<strong>今回のような既視の小さな成果物で習慣化</strong>しておきましょう。IR比較程度のスケールが、ちょうど良い練習台になります。", reference: "" },
       { start: "7:10", end: "7:40", topic: "クロージング", direction: "スライド：表紙", content: "まとめます。<strong>spec＝人間とAIの合意書であり、AIの記憶</strong>です。ヌケモレを先に潰し、作る前に目線合わせを済ませておく――それだけで、Claude Codeとの対話の精度は一段上がります。<br><br><strong>思いつきで依頼するVibeも、スペックを固めて依頼するSpec-Drivingも、ともに大事な道具</strong>。用途に応じて使い分けられるようになってください。それでは、次の動画でお会いしましょう。", reference: "" }
     ]
+  },
+  "S2-V6": {
+    meta: {
+      duration: "約8分20秒",
+      mode: "画面収録（ターミナル＋Claude Code＋ブラウザ。スライドは表紙＋権限3段階比較図のみ）",
+      goal: "権限3段階を使い分け、承認画面でCtrl+Eを押して解説を確認し、rm -rf等の破壊的コマンドを回避して、安全にClaude Codeを使えるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "スライド", name: "権限3段階比較図", purpose: "デフォルト／Auto-accept edits／フルオートの違いを1枚で見せる", timing: "序盤" },
+      { type: "画面収録", name: "権限モード切替", purpose: "Shift+Tabでデフォルト→Auto-accept edits→フルオートを巡回", timing: "序盤〜中盤" },
+      { type: "画面収録", name: "承認画面でCtrl+E実演", purpose: "ファイル編集承認画面でCtrl+Eを押して解説を表示", timing: "中盤" },
+      { type: "画面収録", name: "ダミーディレクトリでrm -rf挙動", purpose: "demo/sandbox-test/配下で破壊的コマンドが提案される様子を安全に再現", timing: "中盤〜後半" },
+      { type: "画面収録", name: "fetch経由プロンプトインジェクションの再現", purpose: "外部URL取得時の悪意ある指示混入デモ", timing: "後半の動作確認" },
+      { type: "画面収録", name: "利用金額上限設定", purpose: "Anthropicコンソールで月次予算上限を設定", timing: "クロージング直前" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではClaude Codeをこれから本格的に使い始める方に向けて、<strong>安全に使うための基本</strong>を扱います。S2の締めくくりとして、応用に進む前にここで土台を固めていきます。", reference: "" },
+      { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "表紙のまま", content: "Claude Codeは強力な道具です。<strong>一方でその強さは、使い方次第でファイル消失や情報漏洩に直結します</strong>。Returnキーを連打して全部承認してしまえば、知らないうちに大事なファイルが消えていた、ということも起こりえます。S3以降では権限や承認の判断を皆さん自身が下せる前提で話が進みますので、ここでその基本をしっかり押さえていきましょう。", reference: "" },
+      { start: "1:00", end: "1:50", topic: "権限3段階の全体像", direction: "スライド：権限3段階比較図", content: "Claude Codeには権限のモードが3段階あります。<strong>デフォルト、Auto-accept edits、そしてフルオート</strong>です。これは皆さんが普段スマホアプリを入れたときに「カメラへのアクセスを許可しますか？」と聞かれるのと同じ仕組みと思っていただいて構いません。<strong>何をどこまで自動で許すかを、自分で選べる</strong>作りになっています。", reference: "" },
+      { start: "1:50", end: "2:30", topic: "デフォルトモード", direction: "画面収録：Shift+Tabで切り替え→デフォルト動作確認", content: "まずデフォルトモードです。これは<strong>Claude Codeが何かを実行するたびに、毎回承認を求めてくる慎重なモード</strong>になります。ファイルを編集する、コマンドを実行する、外部から情報を取りに行く、そのつど画面に確認が出ます。最初はこのモードから入っていただくのが安心です。", reference: "" },
+      { start: "2:30", end: "3:10", topic: "Auto-accept edits", direction: "画面収録：Shift+TabでAuto-accept editsへ", content: "次にAuto-accept editsです。<strong>ファイルの編集だけは自動で進める、一方で破壊的な操作やコマンド実行は引き続き聞いてくる</strong>、というバランス型のモードになります。コードを書きながら細かい編集承認を毎回押すのが手間に感じてきたら、ここに上げるという運用が現実的です。", reference: "" },
+      { start: "3:10", end: "3:55", topic: "フルオートとサンドボックス", direction: "画面収録：Shift+Tabでフルオートへ", content: "最後がフルオートです。これは<strong>承認なしで全てを自動で進めるモード</strong>です。一見便利ですが、本番のフォルダでこれを使うと、Claude Codeが意図せず破壊的な操作を提案した瞬間に、止める手立てがなくなります。ですので<strong>フルオートはサンドボックス環境、つまり消えても困らない使い捨てのフォルダで使う</strong>のが鉄則になります。これは本講座のポリシー13「サンドボックス＝安全」として、これまでも繰り返しお伝えしてきた考え方です。", reference: "ポリシー13「サンドボックス＝安全」" },
+      { start: "3:55", end: "4:50", topic: "承認画面の読み方とCtrl+E", direction: "画面収録：承認画面でCtrl+Eを押下→解説表示", content: "ここで一番身につけていただきたい癖をお伝えします。<strong>承認画面が出たら、必ず一度Ctrl+Eを押してください</strong>。Ctrl+Eを押すと、Claude Codeが「なぜこの操作をしようとしているのか」「何が変わるのか」を解説してくれます。Returnを連打して全承認してしまうのは、利用規約を読まずに「同意する」を押す癖と同じと思っていただきたいです。一手間ですが、<strong>この癖が事故を防ぎます</strong>。", reference: "" },
+      { start: "4:50", end: "5:50", topic: "rm -rf等の破壊的コマンド", direction: "画面収録：demo/sandbox-test/配下で実演", content: "次に、AIが意図せず破壊的コマンドを提案するケースを実演します。<strong>本番のフォルダではなく、消えても困らないダミーフォルダで再現</strong>します。たとえば「不要なログを掃除して」という何気ない依頼に対し、Claude Codeが<code>rm -rf logs/</code>のような提案をしてくる場面があります。多くの場合は問題ないのですが、フォルダの指定を間違えると関係ないファイルまで消えます。<strong>「自分は注意しているから大丈夫」と思いがちですが、AIが提案する破壊的操作は、本人の注意深さとは別次元で発生します</strong>。だからこそ承認画面でCtrl+Eを押し、何が消えるのかを一度確認する癖が要ります。", reference: "" },
+      { start: "5:50", end: "6:40", topic: "fetch経由プロンプトインジェクション", direction: "画面収録：外部URLを取得→悪意ある指示が混入する例", content: "もう一つ知っておいていただきたいのが、外部URLを取得する場面です。Claude Codeに<strong>「このURLの内容を読んで要約して」と依頼すると、そのページに仕込まれた指示文をAIが命令と勘違いして実行してしまう</strong>ことがあります。これを<strong>プロンプトインジェクション</strong>と呼びます。信頼できないサイトの内容をそのまま読ませる場合は、後続の操作にAuto-acceptやフルオートを使わない、という運用で防げます。", reference: "" },
+      { start: "6:40", end: "7:20", topic: "利用金額上限設定", direction: "画面収録：Anthropicコンソール→利用上限設定", content: "最後に利用金額の上限設定です。Claude Codeは便利な一方で、長時間の自動実行で意図せぬ多額課金が発生することもありえます。<strong>Anthropicの管理画面で月次の上限を設定しておけば、その額を超えた瞬間に自動で止まります</strong>。心配せずに使うための保険として、最初に必ず設定しておきましょう。", reference: "Anthropic公式「Permissions」 https://docs.claude.com/en/docs/claude-code/iam" },
+      { start: "7:20", end: "7:50", topic: "S6への布石", direction: "スライド：表紙", content: "なお、<strong>環境変数やAPIキーの実体験は、S6でSupabaseに接続する場面で実際に扱います</strong>。今日はその手前の、権限・承認・破壊的操作・利用上限という土台を押さえる回でした。", reference: "" },
+      { start: "7:50", end: "8:20", topic: "クロージング", direction: "スライド：表紙", content: "まとめます。<strong>権限は3段階で使い分ける、承認画面ではCtrl+Eで意図を確認する、フルオートはサンドボックスでだけ使う、利用上限を最初に設定する</strong>——この4点を守れば、Claude Codeは安心して応用に持ち込めます。S2はここまで、次のS3からはSkillsとMCPを扱っていきます。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
+  },
+  "S2-V4": {
+    meta: {
+      duration: "約8分10秒",
+      mode: "画面収録（ターミナル＋Claude Code＋ブラウザ。スライドは表紙のみ）",
+      goal: "回転寿司大手3社の公開IR資料をClaude CodeのWebFetch機能で取得し、3指標の比較マトリクスHTMLを1回の依頼で生成できるようになる"
+    },
+    materials: [
+      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
+      { type: "ブラウザ", name: "3社IR情報ページ", purpose: "スシロー（FOOD & LIFE COMPANIES）／くら寿司／はま寿司（ゼンショーHD）の公開IRページ", timing: "序盤" },
+      { type: "画面収録", name: "Claude CodeへのWebFetch依頼", purpose: "3社の決算短信URLを渡して比較マトリクスHTMLを依頼", timing: "中盤" },
+      { type: "画面収録", name: "WebFetch機能で各社IR取得", purpose: "Claude Codeが順に決算短信を取りに行く様子", timing: "中盤〜後半" },
+      { type: "出力成果物", name: "demos/sushi-ir-comparison.html（比較マトリクスHTML）", purpose: "売上高・営業利益率・既存店売上前年比の3指標で3社を比較", timing: "後半の動作確認" }
+    ],
+    script: [
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではマーケター・経営企画・営業の方に向けて、<strong>Claude Codeをリサーチ業務に応用する方法</strong>をお伝えします。題材は誰もが知っている回転寿司大手3社、公開IR資料を一発で比較マトリクスHTMLにまとめる体験です。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "他社の動向を掴むためのリサーチは、多くの職種で時間を取られている業務だと思います。<strong>決算短信のPDFを開いて、売上や利益率の数字を拾って、Excelに転記して比較表を作る</strong>——一社あたり30分、3社で1時間半、5社なら半日仕事になります。一方で<strong>Claude CodeにWebFetchで各社IRのURLを渡せば、数分で比較マトリクスが手元に届きます</strong>。今日はその体験をしていただく回です。", reference: "" },
+      { start: "1:10", end: "1:50", topic: "題材紹介", direction: "画面収録：エディタを開く", content: "題材は<strong>回転寿司大手3社、スシロー・くら寿司・はま寿司</strong>を使います。誰でも知っている業界で、3社とも上場企業として公開IRが揃っているという、入門には最適な題材になります。皆さんが実務で使う際は、<strong>この3社を任意の業界の競合企業に置き換えていただければ、そのまま今日のやり方が使えます</strong>。", reference: "" },
+      { start: "1:50", end: "2:30", topic: "公開IR資料の場所確認", direction: "ブラウザ：3社のIR情報ページを順に開く", content: "まず3社の公開IRページを実際に開いて見ます。<strong>スシローはFOOD & LIFE COMPANIES、くら寿司は単独上場、はま寿司はゼンショーホールディングス傘下</strong>になります。各社のIR情報ページに、最新の決算短信PDFが必ず公開されています。<strong>これらは投資家向けに公開されている情報なので、誰でもアクセスできます</strong>。", reference: "スシロー: https://www.food-and-life.co.jp/ir/ ／ くら寿司: https://www.kurasushi.co.jp/ir/ ／ はま寿司: https://www.zensho.co.jp/jp/ir/" },
+      { start: "2:30", end: "3:10", topic: "WebFetch機能の説明", direction: "画面収録：Claude Codeの起動", content: "Claude Codeには<strong>WebFetch機能</strong>があります。これは<strong>URLを渡すと、Claude Codeがそのページの内容を読み取って解釈してくれる機能</strong>です。皆さんがブラウザでPDFを開いて目で読んでいた作業を、Claude Codeに代行してもらうイメージと思っていただいて構いません。<strong>公開情報なので、社外秘や個人情報を扱う場面とは性質が別物</strong>と整理いただければ、心理的な抵抗なく使えます。", reference: "" },
+      { start: "3:10", end: "4:00", topic: "Claude Codeに依頼", direction: "画面収録：Claude Codeのプロンプト入力欄", content: "ではClaude Codeに依頼します。「<strong>この3社の最新決算短信を取得して、売上高・営業利益率・既存店売上前年比の3指標で比較マトリクスHTMLにしてください</strong>」と、3社のIR情報ページのURLを並べて自然な日本語で依頼します。<strong>これは典型的なVibe Codingです</strong>。仕様書を書かずに、ざっくりと依頼して素早く形にする、という進め方になります。", reference: "" },
+      { start: "4:00", end: "5:30", topic: "WebFetchで各社IR取得", direction: "画面収録：Claude CodeがWebFetchで決算短信を順に取得（タイムラプス）", content: "Claude CodeがWebFetch機能で<strong>3社の決算短信PDFを順に取りに行きます</strong>。スシロー、くら寿司、はま寿司、それぞれの最新決算から売上高・営業利益率・既存店売上前年比の数字を抽出してくれます。生成には少し時間がかかりますので、実際の業務では他の作業をしながら待っていただく形になります。", reference: "" },
+      { start: "5:30", end: "6:20", topic: "比較マトリクスHTML確認", direction: "画面収録：demos/sushi-ir-comparison.htmlをブラウザで開く", content: "完成しました。<strong>demos/sushi-ir-comparison.htmlをブラウザで開く</strong>と、3社×3指標のマトリクスが表示されます。売上高はスシローが最大、営業利益率はくら寿司が最も高い、既存店売上前年比は3社とも前年超え——といった<strong>差が一目で分かる仕上がり</strong>になります。これを一から手作業でやれば一時間以上かかる作業が、依頼から数分で形になりました。", reference: "demos/sushi-ir-comparison.html" },
+      { start: "6:20", end: "7:00", topic: "Vibe Codingの特徴を中立に整理", direction: "画面収録：生成されたHTMLを表示しながら", content: "ここで一つ整理させてください。今日の進め方は<strong>Vibe Codingの典型例</strong>です。仕様書を書かずに、ざっくり依頼して素早く形にする——<strong>コンテキスト量が少なく、入門として最適なアプローチ</strong>になります。一方で精度や再現性、デザインの統一性を求める場面では別のアプローチが向きます。<strong>優劣の話ではなく、用途で使い分けるという整理</strong>になります。次の動画では、まさにこの対比を体感していただきます。", reference: "" },
+      { start: "7:00", end: "7:30", topic: "応用可能性", direction: "画面収録：HTMLを表示しながら", content: "今日の進め方は、<strong>題材の3社を任意の業界の競合企業に置き換えれば、どの職種でも今日から使えます</strong>。マーケターなら自社カテゴリの上位3社、経営企画なら同業界の上場企業、営業なら担当業界のキープレイヤー——皆さんのドメイン知識と組み合わせれば、競合分析の初手として強い武器になります。", reference: "" },
+      { start: "7:30", end: "8:10", topic: "クロージング・次回への布石", direction: "スライド：表紙", content: "まとめます。<strong>Claude CodeのWebFetch機能で公開IR資料を取得し、1回の依頼で比較マトリクスHTMLが手元に届く</strong>——リサーチ業務にClaude Codeを応用する第一歩を体験していただきました。<strong>次の動画では、同じ3社IRを題材に、今度は投資家向けレポートとしてスペック駆動で作り直します</strong>。同じ題材でコンテキスト量を増やすと成果物がどう変わるか、その対比をぜひ体感してください。それでは次の動画でお会いしましょう。", reference: "" }
+    ]
   }
 };

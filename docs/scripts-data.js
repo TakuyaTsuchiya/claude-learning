@@ -403,29 +403,28 @@ var SCRIPTS = {
   },
   "S3-V4": {
     meta: {
-      duration: "約7分",
-      mode: "画面収録（Notion＋Claude Code＋ブラウザ。スライドは表紙のみ）",
-      goal: "Notion MCPを接続し、組織内に散在する議事録・プロジェクト情報・ナレッジを横断検索してHTML報告書やFAQに再構成できるようになる"
+      duration: "約5分",
+      mode: "画面収録（ターミナル＋Claude Code＋Notion＋ブラウザ。スライドは表紙のみ）",
+      goal: "Notion公式Claude Codeプラグインを1〜2コマンドで接続し、議事録とプロジェクト情報を横断して経営課題を抽出、HTMLダッシュボードに再構成できるようになる。組織に蓄積された記憶をClaudeが司書として横断する力学を体感する"
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "Notion画面", name: "議事録DB（複数プロジェクト分）", purpose: "ダミー組織のNotion議事録を表示", timing: "中盤" },
-      { type: "画面収録", name: "Notion Integration作成→権限設定", purpose: "MCP接続の認証設定実演", timing: "中盤" },
-      { type: "画面収録", name: "経営課題抽出プロンプト→集約", purpose: "過去3ヶ月議事録から経営課題を抽出", timing: "後半の動作確認" },
-      { type: "出力成果物", name: "HTML経営課題ダッシュボード", purpose: "課題別議事録リンク・優先度スコア", timing: "クロージング直前" }
+      { type: "ブラウザ", name: "Notion公式Claude Codeプラグインリポジトリ（makenotion/claude-code-notion-plugin）", purpose: "現行パスが公式提供であることを確認", timing: "中盤" },
+      { type: "画面収録", name: "/plugin marketplace add → /plugin install", purpose: "公式プラグインを2コマンドで導入する実演", timing: "中盤" },
+      { type: "画面収録", name: "/mcp でOAuth認証", purpose: "ブラウザでワークスペース選択→許可までの流れを実演", timing: "中盤" },
+      { type: "Notion画面", name: "ダミー組織の議事録DB＋プロジェクト管理DB", purpose: "横断対象のNotion構造を提示", timing: "中盤" },
+      { type: "画面収録", name: "経営課題抽出プロンプト→HTML出力", purpose: "過去3ヶ月議事録の横断検索→HTMLダッシュボード生成", timing: "後半の動作確認" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経営層・組織開発・人事の方に向けて、<strong>Notion MCPで組織の記憶を横断する方法</strong>をお伝えします。前回のSlack MCPに続くMCP第2弾です。", reference: "" },
-      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "表紙のまま", content: "人間の脳は<strong>個人の経験しか記憶できません</strong>。一方でNotionは、<strong>組織全体の知識が蓄積された図書館</strong>のような存在です。議事録・プロジェクト管理DB・ナレッジベース・顧客フィードバック——あらゆる組織情報がNotionに残されているのに、検索しても断片しか出てこず、結局人手で集めて回るという経験はないでしょうか。<strong>Notion MCPを繋ぐと、Claudeが図書館の司書として複数の情報源を一度に探索してくれる</strong>——今日はその体験をしていただきます。", reference: "Notion公式MCP: https://github.com/makenotion/notion-mcp-server" },
-      { start: "1:20", end: "1:50", topic: "Slackとの対比", direction: "スライド：表紙", content: "ここで前回のSlack MCPと位置付けを対比させてください。<strong>Slackは「流れる情報」「リアルタイム」</strong>、一方<strong>Notionは「蓄積された情報」「歴史」</strong>です。両方が揃って初めて、組織の意思決定速度と質が同時に上がります。今日はその「歴史」側を扱います。", reference: "" },
-      { start: "1:50", end: "2:30", topic: "題材紹介", direction: "画面収録：ダミー組織のNotionワークスペース", content: "題材は<strong>「経営層が現在の経営課題を把握したい」</strong>という日常ニーズです。組織内のNotionには、議事録・プロジェクト管理DB・ナレッジベース・顧客フィードバックが分散しています。従来は人手で情報を集めてExcelにまとめ直す——半日以上かかる作業でした。これをClaudeに任せます。", reference: "" },
-      { start: "2:30", end: "3:10", topic: "接続設定実演", direction: "画面収録：Notion Integration作成→権限→Claude認証", content: "Notion MCPの接続は<strong>3層の権限設定</strong>を押さえる必要があります。<strong>Notion Integration作成・データベース別の権限付与・Claude Codeでの認証</strong>、この順で進めます。Notion API側は権限が細かく分かれているので、必要な範囲だけを開ける、という運用にしてください。", reference: "Notion Databases: https://developers.notion.com/reference/database-query" },
-      { start: "3:10", end: "4:00", topic: "経営課題抽出プロンプト", direction: "画面収録：プロンプト送信→複数DB集約", content: "接続できたら依頼します。「<strong>過去3ヶ月の議事録を全検索し、経営課題に該当するキーワードを抽出してください</strong>」。Claudeが<strong>議事録DB・プロジェクト進捗DB・ナレッジベースを一度に巡回</strong>し、課題候補を集約してきます。複数のDBから一度に結果を取り出す、ここがNotion MCPの本領になります。", reference: "" },
-      { start: "4:00", end: "4:50", topic: "HTMLダッシュボード生成", direction: "画面収録：HTMLダッシュボード表示", content: "抽出した課題を<strong>HTMLダッシュボード</strong>に成形してもらいます。<strong>課題別の議事録リンク・発生日時・関連プロジェクト・優先度スコア</strong>が並んだ一枚が出来上がります。「この課題は3つの会議で繰り返し話題に上がっている」「これは特定プロジェクトに集中している」といった<strong>パターンが視覚的に掴めるレポート</strong>になります。", reference: "" },
-      { start: "4:50", end: "5:30", topic: "応用展開", direction: "画面収録：他のユースケースを口頭で紹介", content: "同じ仕組みは応用範囲が広いです。<strong>新人向けオンボーディング資料の自動生成・社内FAQの自動更新・週報の自動作成</strong>——いずれもNotionに蓄積された情報を再構成するパターンになります。一度Skill化してしまえば、毎週同じ品質のアウトプットがチームに届きます。", reference: "" },
-      { start: "5:30", end: "6:00", topic: "情報の民主化", direction: "スライド：表紙", content: "ここで一段視点を上げてお伝えします。Notion MCPの本質は<strong>「情報の民主化」</strong>です。これまで一部のベテランしか辿れなかった組織の記憶に、<strong>新人や他部門の人もClaude経由で同じ深さでアクセスできる</strong>ようになります。これは組織にとって大きな変化です。", reference: "" },
-      { start: "6:00", end: "6:30", topic: "リアルタイム＋歴史の統合", direction: "スライド：表紙", content: "前回のSlack MCPと組み合わせれば、<strong>「今起きている流れ」と「これまで積み上げてきた歴史」を一度に扱える</strong>状態になります。意思決定の質と速さが同時に上がる、その入口がここまで来ました。", reference: "" },
-      { start: "6:30", end: "7:00", topic: "クロージング", direction: "スライド：表紙", content: "次の動画では<strong>設計領域のMCP——Figma連携</strong>を扱います。デザイナーの頭の中にAIが入る、そういう体験です。それでは次の動画でお会いしましょう。", reference: "" }
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経営層・組織開発・人事の方に向けて、<strong>Notion MCPで組織の記憶を横断する方法</strong>をお伝えします。MCP第2弾です。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "人の脳は<strong>個人の経験しか記憶できません</strong>。一方でNotionには<strong>組織全体の議事録・プロジェクト情報・ナレッジが蓄積</strong>されているのに、検索しても断片しか出てこず、結局人手で集めて回った経験はないでしょうか。<strong>Notion MCPを繋ぐと、Claudeが司書として複数の情報源を一度に巡回してくれます</strong>。その結果、<strong>過去の議論から経営課題を拾い直す作業が格段に効率的になります</strong>。", reference: "" },
+      { start: "1:10", end: "1:30", topic: "Slackとの対比", direction: "スライド：表紙", content: "位置付けを対比させてください。<strong>Slackは「流れる情報」</strong>、<strong>Notionは「蓄積された記憶」</strong>です。両方が揃って、組織の意思決定の速度と質が同時に上がります。", reference: "" },
+      { start: "1:30", end: "1:50", topic: "Notion公式プラグインの確認", direction: "ブラウザ：makenotion/claude-code-notion-pluginを開く", content: "では実演に入ります。まず<strong>Notion公式のClaude Codeプラグイン</strong>を確認します。<strong>MCPサーバーに加えて、Skillsやスラッシュコマンドまでバンドル</strong>されています。", reference: "https://github.com/makenotion/claude-code-notion-plugin" },
+      { start: "1:50", end: "2:25", topic: "2コマンドでインストール", direction: "画面収録：/plugin marketplace add → /plugin install を実行", content: "接続は<strong>2コマンドだけ</strong>です。まず<code>/plugin marketplace add</code>でマーケットプレイスを登録し、続けて<code>/plugin install</code>でインストールします。Claude Codeを再起動すればプラグインが有効化されます。", reference: "" },
+      { start: "2:25", end: "3:10", topic: "OAuth認証で接続", direction: "画面収録：/mcp → Authenticate → ブラウザでOAuth許可", content: "再起動後、<code>/mcp</code>でNotionの状態を確認します。「認証が必要」と表示されるので、<strong>Authenticateを選ぶとブラウザが自動で開きます</strong>。<strong>対象のワークスペースを選び、「アクセスを許可」</strong>をクリックしてください。Claude Codeに戻ると<strong>connectedと表示され、検索・ページ取得・DB操作のツールが有効になります</strong>。", reference: "" },
+      { start: "3:10", end: "4:00", topic: "経営課題抽出プロンプト", direction: "画面収録：ダミー組織のNotionを開いて構造を見せ、プロンプト送信", content: "題材は<strong>架空組織の議事録DBとプロジェクト管理DB</strong>です。ここに<strong>過去3ヶ月分の経営会議・事業部会議・顧客面談の議事録</strong>が並んでいます。Claudeに依頼します。「<strong>過去3ヶ月の議事録を横断して経営課題に該当するトピックを抽出し、関連プロジェクトと紐付けてください</strong>」。<strong>Claudeが議事録DBとプロジェクト管理DBを一度に巡回し、課題を集約してきます</strong>。", reference: "" },
+      { start: "4:00", end: "4:30", topic: "HTMLダッシュボード生成", direction: "画面収録：HTMLダッシュボード表示", content: "抽出した課題を<strong>HTMLダッシュボード</strong>に成形してもらいます。<strong>課題別の議事録リンク・関連プロジェクト・優先度スコア</strong>が並んだ一枚が出来上がります。「この課題は3つの会議で繰り返し議論されている」といった<strong>パターンが視覚的に掴める経営課題マップ</strong>になります。", reference: "" },
+      { start: "4:30", end: "5:00", topic: "クロージング", direction: "スライド：表紙", content: "同じ仕組みで<strong>社内FAQの更新や週報作成</strong>など、Notionに蓄積された情報の再構成に広く応用できます。Slack＋Notionが揃えば<strong>「流れ」と「記憶」の両方</strong>にClaudeが手を伸ばせます。次の動画ではFigma MCPを扱います。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
   "S3-V5": {

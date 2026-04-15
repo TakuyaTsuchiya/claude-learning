@@ -377,7 +377,7 @@ var SCRIPTS = {
   },
   "S3-V3": {
     meta: {
-      duration: "約7分",
+      duration: "約5分",
       mode: "画面収録（ターミナル＋Claude Code＋ブラウザ。スライドは表紙＋MCP概念図のみ）",
       goal: "Slack公式MCPプラグインを1コマンドで接続し、全チャンネル横断で日報・週報をHTML形式で自動生成できるようになる。MCPの本質と、公式プラグインによるセットアップの簡潔さを理解する"
     },
@@ -390,17 +390,15 @@ var SCRIPTS = {
       { type: "画面収録", name: "日報生成プロンプト→HTML出力", purpose: "全チャンネルクロール→経営層向けHTML日報の生成", timing: "後半の動作確認" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではチームリーダー・マネージャーの方に向けて、<strong>Slack MCPで日報・週報をHTML形式で自動生成する方法</strong>をお伝えします。S3で初めて登場する<strong>MCP</strong>という概念も合わせて押さえていきます。", reference: "" },
-      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "毎日<strong>30分かけてSlackから日報を手作業で書いている</strong>チームは少なくないと思います。複数チャンネルを巡回して、営業活動・企画進捗・事務完了を集めて、上司向けにまとめる——これが日課になっている方も多いでしょう。<strong>この30分が30秒になる</strong>、それを実現するのがSlack MCPです。今日はその体験をしていただきます。", reference: "" },
-      { start: "1:10", end: "2:00", topic: "MCPの定義（USB-Cアナロジー）", direction: "スライド：MCP概念図", content: "<strong>MCPとは何か</strong>を整理します。MCPは<strong>Model Context Protocol＝モデル・コンテキスト・プロトコル</strong>の略で、AI（Claude）と外部ツールを繋ぐ共通規格です。日常の例で言えば<strong>USB-Cポート</strong>と同じ発想になります。メーカーが違う周辺機器でも、USB-Cという共通規格があるから繋がる——SlackもNotionもGmailもFigmaも、MCPという共通規格があるからClaudeに繋いで協調動作させられる、というわけです。", reference: "" },
-      { start: "2:00", end: "2:40", topic: "SkillsとMCPの違い", direction: "スライド：表紙", content: "ここで<strong>前回までのSkillsとMCPの違い</strong>を明確にしておきます。Skillsは「専門家の手順がパッケージ化されたもの」、MCPは「外部ツールへの接続口」——<strong>役割が異なります</strong>。Skillsが「やり方」を提供するのに対し、MCPは「触れる場所」を提供する。両方を組み合わせると、組織のあらゆる場所でAIが手を動かせるようになります。", reference: "" },
-      { start: "2:40", end: "3:20", topic: "Slack公式プラグインの確認", direction: "ブラウザ：slackapi/slack-mcp-pluginを開く", content: "では実演に入ります。まず<strong>Slack公式が提供するMCPプラグイン</strong>を確認します。<strong>Slack社自身がプラグインを公開している</strong>ので、自分でトークンを発行したり設定ファイルを書いたりする必要はありません。READMEに1行のインストールコマンドが書かれている——これが現行の推奨パスになります。", reference: "https://github.com/slackapi/slack-mcp-plugin" },
-      { start: "3:20", end: "3:50", topic: "1コマンドでインストール", direction: "画面収録：claude plugin install slack を実行", content: "接続は<strong>1コマンドだけ</strong>です。<code>claude plugin install slack</code>を実行すると、プラグインがインストールされ、MCP設定も自動で配置されます。<strong>手作業で編集するファイルは一つもありません</strong>。Claude Codeを再起動すればプラグインが有効化されます。", reference: "" },
-      { start: "3:50", end: "4:40", topic: "OAuth認証で接続", direction: "画面収録：/mcp → Authenticate → ブラウザでOAuth許可", content: "再起動後、<code>/mcp</code>コマンドでSlackの状態を確認します。「認証が必要」と表示されるので、<strong>Authenticateを選ぶとブラウザが自動で開きます</strong>。Slackのログイン画面が表示されるので、<strong>対象のワークスペースを選んで「許可する」</strong>をクリックしてください。Claude Codeに戻ると<strong>connectedと表示され、Slackの13種類のツールが有効になります</strong>。", reference: "" },
-      { start: "4:40", end: "5:00", topic: "つまずきポイント補足", direction: "画面収録：ワークスペース選択ドロップダウンとClear authenticationの場所", content: "つまずく箇所は2つあります。<strong>1つ目はワークスペース選択ミス</strong>——ブラウザで複数のSlackにログインしていると、意図しないワークスペースが初期選択される場合があります。<strong>許可する前にドロップダウンで対象ワークスペースを切り替えてください</strong>。<strong>2つ目は再起動忘れ</strong>です。間違えた場合は<code>/mcp</code>の「Clear authentication」でやり直せます。", reference: "" },
-      { start: "5:00", end: "5:50", topic: "日報生成プロンプト→HTML出力", direction: "画面収録：プロンプト送信→HTMLダッシュボード表示", content: "では実際に日報を生成していきます。「<strong>Slackの営業・企画・事務チャンネルの直近投稿を読んで、経営層向けの日報をHTMLで出してください</strong>」と依頼します。Claudeが全チャンネルを巡回し、<strong>KPIバッジ・顧客別フェーズ表・失注の赤字アラート・経営サマリーまで含むHTML日報</strong>を出力してくれます。スタイリングまで自動で整えてくれるので、そのまま共有できる品質になります。", reference: "" },
-      { start: "5:50", end: "6:20", topic: "週報・応用展開", direction: "画面収録：期間指定を変えて週報生成", content: "同じプロンプトで「直近投稿」を「過去30日間」に変えれば<strong>週報・月報も同じ仕組みで生成可能</strong>です。HTMLファイルとして保存すれば、経営層への共有もURLを送るだけで済みます。<strong>一度繋いでしまえば、応用範囲は使う側のアイデア次第</strong>になります。", reference: "" },
-      { start: "6:20", end: "7:00", topic: "クロージング", direction: "スライド：表紙", content: "今日はSlack MCPだけを扱いましたが、<strong>同じ仕組みでNotionの議事録・Figmaのデザイン・Xの投稿まで、すべてMCP経由でClaudeに触らせられます</strong>。次の動画ではNotion MCPで組織の記憶を横断する体験をしていただきます。それでは次の動画でお会いしましょう。", reference: "" }
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではチームリーダー・マネージャーの方に向けて、<strong>Slack MCPで日報・週報をHTML形式で自動生成する方法</strong>をお伝えします。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "チームリーダーとして、<strong>日報を書かせたり、自分で情報を集めて整理したりする作業</strong>に負担を感じることはないでしょうか。Slackには雑多な情報が流れるので、そこから日報を作るのは意外と手間がかかります。<strong>Slack MCPを繋ぐと、AIがSlackを巡回して自動で整理してくれます</strong>。その結果、<strong>現状の把握や問題の発見が格段に効率的になる</strong>——それが今日扱うものです。", reference: "" },
+      { start: "1:10", end: "1:40", topic: "MCPの定義（USB-Cアナロジー）", direction: "スライド：MCP概念図", content: "MCPは<strong>モデル・コンテキスト・プロトコル</strong>の略で、AIとSlackやNotionなどの外部ツールを繋ぐ<strong>共通規格</strong>です。深く考えず、<strong>AIが使うUSB-Cポート</strong>みたいなものだと思ってください。", reference: "" },
+      { start: "1:40", end: "1:50", topic: "Slack公式プラグインの確認", direction: "ブラウザ：slackapi/slack-mcp-pluginを開く", content: "では実演に入ります。まず<strong>Slack公式が提供するMCPプラグイン</strong>を確認します。", reference: "https://github.com/slackapi/slack-mcp-plugin" },
+      { start: "1:50", end: "2:20", topic: "1コマンドでインストール", direction: "画面収録：claude plugin install slack を実行", content: "接続は<strong>1コマンドだけ</strong>です。<code>claude plugin install slack</code>を実行すると、プラグインがインストールされ、MCP設定も自動で配置されます。Claude Codeを再起動すればプラグインが有効化されます。", reference: "" },
+      { start: "2:20", end: "3:10", topic: "OAuth認証で接続", direction: "画面収録：/mcp → Authenticate → ブラウザでOAuth許可", content: "再起動後、<code>/mcp</code>コマンドでSlackの状態を確認します。「認証が必要」と表示されるので、<strong>Authenticateを選ぶとブラウザが自動で開きます</strong>。Slackのログイン画面が表示されるので、<strong>対象のワークスペースを選んで「許可する」</strong>をクリックしてください。Claude Codeに戻ると<strong>connectedと表示され、Slackの13種類のツールが有効になります</strong>。", reference: "" },
+      { start: "3:10", end: "4:00", topic: "日報生成プロンプト→HTML出力", direction: "画面収録：プロンプト送信→HTMLダッシュボード表示", content: "では実際に日報を生成していきます。「<strong>Slackの営業・企画・事務チャンネルの直近投稿を読んで、経営層向けの日報をHTMLで出してください</strong>」と依頼します。Claudeが全チャンネルを巡回し、<strong>KPIバッジ・顧客別フェーズ表・失注の赤字アラート・経営サマリーまで含むHTML日報</strong>を出力してくれます。スタイリングまで自動で整えてくれるので、そのまま共有できる品質になります。", reference: "" },
+      { start: "4:00", end: "4:30", topic: "週報・応用展開", direction: "画面収録：期間指定を変えて週報生成", content: "同じプロンプトで「直近投稿」を「過去30日間」に変えれば<strong>週報・月報も同じ仕組みで生成可能</strong>です。HTMLファイルとして保存すれば、経営層への共有もURLを送るだけで済みます。<strong>一度繋いでしまえば、応用範囲は使う側のアイデア次第</strong>になります。", reference: "" },
+      { start: "4:30", end: "5:00", topic: "クロージング", direction: "スライド：表紙", content: "<strong>同じ仕組みでNotionの議事録・Figmaのデザイン・Xの投稿まで、すべてMCP経由でClaudeに操作させられます</strong>。次の動画ではNotion MCPで組織の記憶を横断する体験をしていただきます。", reference: "" }
     ]
   },
   "S3-V4": {

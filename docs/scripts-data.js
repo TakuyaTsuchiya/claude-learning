@@ -391,7 +391,7 @@ var SCRIPTS = {
     ],
     script: [
       { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではチームリーダー・マネージャーの方に向けて、<strong>Slack MCPで日報・週報をHTML形式で自動生成する方法</strong>をお伝えします。", reference: "" },
-      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "チームリーダーとして、<strong>日報を書かせたり、自分で情報を集めて整理したりする作業</strong>に負担を感じることはないでしょうか。Slackには雑多な情報が流れるので、そこから日報を作るのは意外と手間がかかります。<strong>Slack MCPを繋ぐと、AIがSlackを巡回して自動で整理してくれます</strong>。その結果、<strong>現状の把握や問題の発見が格段に効率的になる</strong>——それが今日扱うものです。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "チームリーダーとして、<strong>日報を書かせたり、自分で情報を集めて整理したりする作業</strong>に負担を感じることはないでしょうか。Slackには雑多な情報が流れるので、そこから日報を作るのは意外と手間がかかります。<strong>Slack MCPを繋ぐと、AIがSlackを巡回して自動で整理してくれます</strong>。その結果、<strong>現状の把握や問題の発見が格段に効率的になります</strong>。", reference: "" },
       { start: "1:10", end: "1:40", topic: "MCPの定義（USB-Cアナロジー）", direction: "スライド：MCP概念図", content: "MCPは<strong>モデル・コンテキスト・プロトコル</strong>の略で、AIとSlackやNotionなどの外部ツールを繋ぐ<strong>共通規格</strong>です。深く考えず、<strong>AIが使うUSB-Cポート</strong>みたいなものだと思ってください。", reference: "" },
       { start: "1:40", end: "1:50", topic: "Slack公式プラグインの確認", direction: "ブラウザ：slackapi/slack-mcp-pluginを開く", content: "では実演に入ります。まず<strong>Slack公式が提供するMCPプラグイン</strong>を確認します。", reference: "https://github.com/slackapi/slack-mcp-plugin" },
       { start: "1:50", end: "2:20", topic: "1コマンドでインストール", direction: "画面収録：claude plugin install slack を実行", content: "接続は<strong>1コマンドだけ</strong>です。<code>claude plugin install slack</code>を実行すると、プラグインがインストールされ、MCP設定も自動で配置されます。Claude Codeを再起動すればプラグインが有効化されます。", reference: "" },

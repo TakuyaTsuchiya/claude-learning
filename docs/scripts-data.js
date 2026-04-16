@@ -452,37 +452,7 @@ var SCRIPTS = {
       { start: "4:50", end: "5:30", topic: "ブラウザ動作確認", direction: "画面収録：生成LPをブラウザで開く", content: "生成したコードを<strong>ブラウザで開いて動作確認</strong>します。色・タイポグラフィ・レイアウト・レスポンシブ——<strong>Figmaで設計したとおりに再現</strong>されています。デザイナーが想定していた見え方と、エンジニアが組んだ実装が、初手で一致している状態です。", reference: "" },
       { start: "5:30", end: "6:20", topic: "Figmaで微調整→差分検出→再生成", direction: "画面収録：Figmaでパディング調整→Claudeで再生成", content: "実務では実装後にデザインが変わることもあります。Figmaで「このセクション、もう少し余白がほしい」と<strong>パディングを0.5rem増やす微調整</strong>を入れます。Claudeが<strong>差分を検出して更新コードを生成</strong>、ブラウザを更新すれば修正が反映されている——<strong>このループが1分で回ります</strong>。", reference: "" },
       { start: "6:20", end: "6:50", topic: "人間の判断が必要な場面", direction: "スライド：表紙", content: "ここで誤解のないように補足します。Figma MCPが入っても、<strong>人間の判断が必要な場面はなくなりません</strong>。デザインガイドラインの解釈、例外的レイアウトの扱い、ブランド判断——こうした「翻訳」ではない判断は人間の領域として残ります。MCPは<strong>「機械的な翻訳」を肩代わりすることで、「本来の判断」に時間を使えるようにする</strong>道具、という位置付けになります。", reference: "" },
-      { start: "6:50", end: "7:20", topic: "クロージング", direction: "スライド：表紙", content: "Skills→Slack→Notion→Figma、<strong>S3で扱うMCPの世界が組織の設計領域まで届きました</strong>。次の動画ではS3最終回、<strong>X連携で組織の対外発信までAIが担う</strong>世界を扱います。それでは次の動画でお会いしましょう。", reference: "" }
-    ]
-  },
-  "S3-V6": {
-    meta: {
-      duration: "約8分10秒",
-      mode: "画面収録（テスト用Xアカウント＋Claude Code＋ブラウザ。スライドは表紙＋S3全体構成図のみ）",
-      goal: "X MCPを接続し、投稿生成→投稿→反応分析→改善提案の一気通貫サイクルを実演できる。S3全体（Skills→Slack→Notion→Figma→X）の世界観を着地させる"
-    },
-    materials: [
-      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "スライド", name: "S3全体構成図（Skills→Slack→Notion→Figma→X）", purpose: "MCP連鎖の世界観を1枚で見せる", timing: "中盤" },
-      { type: "画面収録", name: "X MCP接続確認", purpose: "テスト用Xアカウントに接続→登録状況確認", timing: "中盤" },
-      { type: "画面収録", name: "週間投稿案生成", purpose: "投稿文・画像説明・最適時間帯を生成", timing: "中盤" },
-      { type: "画面収録", name: "X MCPで実投稿", purpose: "テスト用アカウントで投稿→完了ログ表示", timing: "中盤〜後半" },
-      { type: "画面収録", name: "反応分析", purpose: "いいね・リツイート・リプライ集計", timing: "後半の動作確認" },
-      { type: "画面収録", name: "改善提案", purpose: "次週の投稿戦略提案を生成", timing: "クロージング直前" }
-    ],
-    script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではマーケター・個人発信者の方に向けて、<strong>X MCPでSNS運用を自動化する方法</strong>をお伝えします。S3最終回として、これまでのMCP連鎖をここで着地させます。", reference: "" },
-      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "マーケターや個人発信者の方は、<strong>毎日SNSチェックと投稿に30分以上</strong>を費やしているケースが多いと思います。気づけば戦略立案の時間が削られている、という声も少なくありません。一方でClaudeに投稿計画を任せれば、<strong>定時自動配信→反応分析→改善提案が24時間サイクルで回る</strong>世界が存在します。それを実現するのがX MCPです。", reference: "" },
-      { start: "1:10", end: "1:50", topic: "S3全体振り返り", direction: "スライド：S3全体構成図", content: "ここで<strong>S3全体を振り返ります</strong>。Skillsで「専門家の手順」を体験、Skills Creatorで「自分の業務をSkill化」、SlackでMCP第1弾、Notionで第2弾、Figmaで第3弾——<strong>すべてが「プラグインを入れるだけで動く」という同じ美学</strong>で繋がっています。今日のXは対外発信側、その最後のピースになります。", reference: "" },
-      { start: "1:50", end: "2:30", topic: "対外発信の従来課題", direction: "スライド：表紙", content: "対外発信の領域はこれまで<strong>X APIを手で叩く必要があった</strong>領域です。APIキー管理・エラーハンドリング・レート制限の対処——すべてを自分で背負う必要がありました。<strong>X公式がxmcpを提供した今、その手間から解放されます</strong>。MCPの本質「複雑なAPI認証から解放される」を、対外ツールでも体感していただきます。", reference: "" },
-      { start: "2:30", end: "3:00", topic: "X MCPの定義", direction: "スライド：表紙", content: "<strong>X MCPとはX公式提供のAIゲートウェイ</strong>です。投稿・検索・反応分析など<strong>119個のツールがFastMCP経由で提供</strong>されています。これだけのツール群を自分で実装したら数ヶ月仕事ですが、xmcpを入れるだけで全部使える状態になります。", reference: "xdevplatform/xmcp: https://github.com/xdevplatform/xmcp ／ X MCPセットアップ: https://engineer117.com/generative_ai/claude/x-official-mcp-xmcp-setup-guide/" },
-      { start: "3:00", end: "3:40", topic: "接続実演", direction: "画面収録：テスト用Xアカウントに接続", content: "ここからは<strong>テスト用Xアカウント</strong>で実演します。業務用や個人アカウントでいきなり実演すると意図しない投稿が出てしまうので、必ず実験用アカウントを別途用意してください。<code>/mcp</code>でX MCPの登録状況を確認、接続が確立されている状態を見せます。", reference: "" },
-      { start: "3:40", end: "4:30", topic: "週間投稿案生成", direction: "画面収録：プロンプト送信→週間計画", content: "Claudeに依頼します。「<strong>今週のSNSマーケティング投稿案を作ってください</strong>」。出力されるのは<strong>投稿文・画像説明・最適配信時間帯</strong>を含む週間計画です。「月曜日に業界トレンド投稿」「水曜日に自社事例紹介」「金曜日にエンゲージメント投稿」——曜日ごとに狙いの違う投稿が並びます。", reference: "" },
-      { start: "4:30", end: "5:10", topic: "X MCPで実投稿", direction: "画面収録：投稿実行→完了ログ", content: "次に<strong>X MCP経由で実際に投稿</strong>します。Claudeが投稿APIを呼び出し、テスト用アカウントに投稿が反映されます。完了ログが表示され、投稿IDが返ってきました。<strong>これまで手で打っていた投稿が、コマンド一つで配信されました</strong>。", reference: "" },
-      { start: "5:10", end: "6:00", topic: "反応分析", direction: "画面収録：いいね・リツイート・リプライ集計", content: "投稿後、<strong>反応データを集計</strong>します。「過去24時間の反応を分析してください」と依頼すれば、いいね・リツイート・リプライ・インプレッション数が一覧で出てきます。さらに<strong>「このテーマは関心が高い」「この時間帯は反応が早い」といったパターンの気づき</strong>まで自動で取り出してくれます。", reference: "" },
-      { start: "6:00", end: "6:50", topic: "改善提案", direction: "画面収録：来週の投稿戦略提案", content: "反応データに基づいて<strong>「来週の投稿戦略の提案をしてください」</strong>と依頼します。「前週反応の高かった業界トレンド系を月曜日に維持」「自社インサイト系は反応が良かったので木曜日に追加配信」など、<strong>具体的な改善案</strong>が返ってきます。データを見て改善案を出すサイクルが、人手を介さず回り始めます。", reference: "" },
-      { start: "6:50", end: "7:30", topic: "サイクルが完全自動で回る意義", direction: "スライド：表紙", content: "ここまでで<strong>「生成→投稿→分析→改善」のサイクルが人手を介さず回る</strong>状態が完成しました。マーケターの日常は<strong>「毎朝SNSチェック→手打ち投稿」から「週間計画→定時自動配信→反応分析は翌朝レポートで確認」</strong>へ変わります。空いた時間は本来の戦略立案に使える、というわけです。", reference: "" },
-      { start: "7:30", end: "8:10", topic: "S3全体着地・S5への布石・クロージング", direction: "スライド：S3全体構成図", content: "S3全体をまとめます。<strong>Skills→Slack→Notion→Figma→X、組織の内側から外側まで、すべての接点でAIが手を動かす世界観</strong>がここに完成しました。次のS5アプリ開発編では、<strong>さらに深い統合——データベース・CI/CD・テスト戦略まで含めたAI開発</strong>を扱います。それでは次の動画でお会いしましょう。", reference: "" }
+      { start: "6:50", end: "7:20", topic: "クロージング", direction: "スライド：表紙", content: "Skills→Slack→Notion→Figma——<strong>S3で扱ったMCPの世界が、手順パッケージから社内コミュニケーション、組織の記憶、そして設計・実装の領域まで広がりました</strong>。AIが組織のあらゆる場所に入る、その世界観がここに完成しました。次のセクションでは、さらに深い統合——アプリ開発の世界へ進みます。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
   "S4-V1": {

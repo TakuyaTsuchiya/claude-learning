@@ -485,7 +485,7 @@ var SCRIPTS = {
   },
   "S4-V2": {
     meta: {
-      duration: "約8分",
+      duration: "約8分10秒",
       mode: "画面収録（エディタ＋Claude Codeターミナル＋ブラウザ。スライドは表紙・データポリシー・クロージングの3枚）",
       goal: "バックオフィス担当者が、タイムカードExcelと勤怠申請Excelの突合をClaude Codeで自動化し、HTMLチェックレポートを数分で受け取れるようになる"
     },
@@ -495,7 +495,7 @@ var SCRIPTS = {
       { type: "サンプルデータ", name: "demos/kintai-check/timecard.xlsx", purpose: "タイムカード10名×1ヶ月分、架空データ", timing: "中盤" },
       { type: "サンプルデータ", name: "demos/kintai-check/applications.xlsx", purpose: "勤怠申請10件（有給5・残業3・休日出勤2）", timing: "中盤" },
       { type: "画面収録", name: "Claude Codeでの突合", purpose: "対話依頼→両Excel読み取り→HTMLレポート生成", timing: "中盤〜後半" },
-      { type: "出力成果物", name: "demos/kintai-check/output/check-report.html", purpose: "承認可6件・要確認4件の仕分けと差分根拠を載せたレポート", timing: "後半の動作確認" }
+      { type: "出力成果物", name: "demos/kintai-check/output/check-report.html", purpose: "承認可8件・要確認2件＋申請漏れ疑い1件の仕分けと差分根拠を載せたレポート（PoC実走済）", timing: "後半の動作確認" }
     ],
     script: [
       { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経理・人事・総務のバックオフィス担当の方に向けて、<strong>勤怠申請の突合チェックをClaude Codeで自動化する</strong>方法をお伝えします。題材は月100件超の勤怠突合、AI一次チェックと人間最終判定のハイブリッド運用です。", reference: "" },
@@ -504,10 +504,10 @@ var SCRIPTS = {
       { start: "2:25", end: "3:10", topic: "題材フォルダ", direction: "画面収録：demos/kintai-check/をエディタで開く", content: "題材フォルダを開きます。<code>demos/kintai-check/</code>配下に2つのExcelがあります。<code>timecard.xlsx</code>が<strong>タイムカード10名分・1ヶ月分の出退勤記録</strong>、<code>applications.xlsx</code>が<strong>勤怠申請10件、有給5件・残業3件・休日出勤2件</strong>の内訳です。登場人物は<strong>田中太郎さん・山田花子さん・グエン・ティ・ハンさん</strong>を含む架空10名、前の動画と揃えた架空データです。", reference: "demos/kintai-check/" },
       { start: "3:10", end: "3:40", topic: "対話依頼", direction: "画面収録：Claude Codeのプロンプト欄", content: "Claude Codeに依頼します。<strong>「このフォルダのタイムカードと勤怠申請を突合し、不整合があれば時間差・日付差・重複を具体的に挙げてHTMLレポートにまとめてください」</strong>——自然な日本語でそのまま伝える形です。", reference: "" },
       { start: "3:40", end: "4:10", topic: "読み取り進捗", direction: "画面収録：Claude Codeの処理ログ", content: "Claude Codeが両Excelを読み、<strong>日付・時刻・申請種別</strong>を抽出していく進捗をログで追います。<strong>構造化されたExcelなので読み取りは安定</strong>していて、数秒で突合判定に進みます。", reference: "" },
-      { start: "4:10", end: "5:10", topic: "HTMLレポート確認", direction: "画面収録：生成HTMLをブラウザで開く", content: "生成されたHTMLレポートをブラウザで開きます。<strong>✅承認可が6件、⚠️要確認が4件</strong>で仕分けされています。要確認の行には差分根拠が並んでいて、<strong>「有給申請日に出勤打刻あり（9:00-18:00）」「残業申請2時間 vs 実打刻30分」「休日出勤申請なしで打刻あり」</strong>のように、時間・日付・有無がセットで示されます。<strong>差分の出し方が具体的だから、人間側の最終判定が短時間で済む</strong>、という設計です。", reference: "demos/kintai-check/output/check-report.html" },
-      { start: "5:10", end: "5:40", topic: "バックオフィス2大柱", direction: "画面収録：スライド表紙に戻す", content: "前のセクションで扱った<strong>Skills Creatorによる月次レポート自動化</strong>と、この動画の<strong>日次の申請処理自動化</strong>を組み合わせると、バックオフィスの業務が<strong>月次集約と日次申請処理の両側から挟み撃ち</strong>になります。属人化と目視地獄の両方が、AIで解けていく絵です。", reference: "" },
-      { start: "5:40", end: "6:20", topic: "100%自動化は幻想", direction: "画面収録：スライド表紙のまま", content: "中立化のメッセージを1つ置いておきます。<strong>100%自動化は幻想、80%自動化が現実解</strong>です。AIが担うのは<strong>除外とフラグ立て、最終承認印は人が押す</strong>——迷惑メールフィルタと同じ発想で運用するのがしっくりきます。月100件×5分の500分が、<strong>要確認数件×6分で30分</strong>に圧縮される、という時間の姿に変わります。", reference: "" },
-      { start: "6:20", end: "8:00", topic: "アプリ化との棲み分け・クロージング", direction: "スライド：クロージング", content: "最後に対話ツール完結型と業務アプリ化の<strong>棲み分け</strong>を明示して閉じます。<strong>月100件までなら対話ツール一人完結で十分に回せる規模感</strong>です。一方で<strong>ワークフロー承認・監査ログ・複数ユーザーの同時運用</strong>まで踏み込む段階からはWebアプリ化の番、という境界があります。勤怠突合も規模が大きくなるほど社内システム化の方が自然、というのが順当な発展です。アプリ化はこのあとのセクションで扱います。今日の感覚をまとめておくと、<strong>AIは除外とフラグ立てを引き受け、最終承認印は人が押す</strong>——役割分担を崩さない運用こそが、現場で長く使える自動化の基本形です。個人情報配慮を軽く保ったまま、現実的なところから着実に進めていきましょう。それでは次の動画でお会いしましょう。", reference: "" }
+      { start: "4:10", end: "5:20", topic: "HTMLレポート確認", direction: "画面収録：生成HTMLをブラウザで開く", content: "生成されたHTMLレポートをブラウザで開きます。<strong>✅承認可が8件、⚠️要確認が2件</strong>で仕分けされ、<strong>別枠で申請漏れ疑いが1件</strong>、打刻側からも自動で拾われています。要確認の行には差分根拠が並んでいて、<strong>「有給申請日に出勤打刻あり（田中太郎さん3/10、9:00-18:00の実打刻）」「残業2時間申請 vs 実打刻30分超過（山田花子さん3/12、差90分）」</strong>、申請漏れは<strong>「土曜日に申請なしで9:00-14:00の打刻あり（渡辺さくらさん3/14）」</strong>のように、時間・日付・有無がセットで示されます。<strong>差分の出し方が具体的だから、人間側の最終判定が短時間で済む</strong>、という設計です。", reference: "demos/kintai-check/output/check-report.html" },
+      { start: "5:20", end: "5:50", topic: "バックオフィス2大柱", direction: "画面収録：スライド表紙に戻す", content: "前のセクションで扱った<strong>Skills Creatorによる月次レポート自動化</strong>と、この動画の<strong>日次の申請処理自動化</strong>を組み合わせると、バックオフィスの業務が<strong>月次集約と日次申請処理の両側から挟み撃ち</strong>になります。属人化と目視地獄の両方が、AIで解けていく絵です。", reference: "" },
+      { start: "5:50", end: "6:30", topic: "100%自動化は幻想", direction: "画面収録：スライド表紙のまま", content: "中立化のメッセージを1つ置いておきます。<strong>100%自動化は幻想、80%自動化が現実解</strong>です。AIが担うのは<strong>除外とフラグ立て、最終承認印は人が押す</strong>——迷惑メールフィルタと同じ発想で運用するのがしっくりきます。月100件×5分の500分が、<strong>要確認数件×6分で30分</strong>に圧縮される、という時間の姿に変わります。", reference: "" },
+      { start: "6:30", end: "8:10", topic: "アプリ化との棲み分け・クロージング", direction: "スライド：クロージング", content: "最後に対話ツール完結型と業務アプリ化の<strong>棲み分け</strong>を明示して閉じます。<strong>月100件までなら対話ツール一人完結で十分に回せる規模感</strong>です。一方で<strong>ワークフロー承認・監査ログ・複数ユーザーの同時運用</strong>まで踏み込む段階からはWebアプリ化の番、という境界があります。勤怠突合も規模が大きくなるほど社内システム化の方が自然、というのが順当な発展です。アプリ化はこのあとのセクションで扱います。今日の感覚をまとめておくと、<strong>AIは除外とフラグ立てを引き受け、最終承認印は人が押す</strong>——役割分担を崩さない運用こそが、現場で長く使える自動化の基本形です。個人情報配慮を軽く保ったまま、現実的なところから着実に進めていきましょう。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
   "S4-V3": {

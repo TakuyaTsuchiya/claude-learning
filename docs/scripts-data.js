@@ -431,28 +431,29 @@ var SCRIPTS = {
     meta: {
       duration: "約7分20秒",
       mode: "画面収録（Figma＋Claude Code＋ブラウザ。スライドは表紙のみ）",
-      goal: "Figma MCPを接続し、デザインカンプから実装コードを生成しブラウザで動作確認できる。デザインと実装の翻訳コストが削減される体験を得る"
+      goal: "Figma公式プラグインをOAuth認証で接続し、架空LP「ミゾリーチ」をClaudeがFigmaに新規作成→デザインデータからコードを自動生成しブラウザで動作確認できる。Figmaの価値を最大化する双方向MCP連携を体験する"
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "Figmaファイル", name: "架空LP（コンポーネント・Variant・Design Token設定済み）", purpose: "実演用デザインカンプ", timing: "中盤" },
-      { type: "画面収録", name: "/mcp で接続確認", purpose: "Figma MCP接続状況を確認", timing: "中盤" },
-      { type: "画面収録", name: "get_design_context実行", purpose: "Figmaから設計データを抽出", timing: "中盤" },
-      { type: "画面収録", name: "コード生成→ブラウザ動作確認", purpose: "React+Tailwindコード生成→ブラウザでLP表示", timing: "後半の動作確認" },
-      { type: "画面収録", name: "Figma側で微調整→Canvas書き込み", purpose: "デザイン微修正→Claudeが差分検出→再生成", timing: "クロージング直前" }
+      { type: "画面収録", name: "プラグインインストール＋OAuth認証", purpose: "claude plugin install → /reload-plugins → authenticate → ブラウザOAuth承認", timing: "序盤" },
+      { type: "画面収録", name: "whoami実行", purpose: "認証確認（アカウント名・Starter・View seat表示）", timing: "序盤" },
+      { type: "画面収録", name: "create_new_file実行", purpose: "Figmaに新規デザインファイル作成", timing: "中盤" },
+      { type: "画面収録", name: "use_figma実行", purpose: "ミゾリーチLP（6セクション）をPlugin APIで構築", timing: "中盤" },
+      { type: "画面収録", name: "get_design_context実行", purpose: "デザインデータからReact+Tailwindコード＋スクリーンショット自動生成", timing: "中盤〜後半" },
+      { type: "画面収録", name: "ブラウザ動作確認", purpose: "生成HTMLをブラウザで開きダーク×ゴールド配色・レスポンシブ確認", timing: "後半の動作確認" },
+      { type: "Figmaファイル", name: "ミゾリーチLP", purpose: "PoC生成済みデザイン（ダーク×ゴールド配色・6セクション）", timing: "中盤" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではデザイナー・フロントエンドエンジニア・PMの方に向けて、<strong>Figma MCPでデザインカンプから実装コードを生成する方法</strong>をお伝えします。MCP第3弾です。", reference: "" },
-      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "表紙のまま", content: "デザイナーが「こう見せたい」とFigmaで示す、エンジニアが「それは技術的に難しい」と返す、営業マネージャーが「とにかく早く出して」と急かす——<strong>この不毛な往復が組織の毎日のコスト</strong>になっていないでしょうか。設計図と組立の関係性が現場では壊れていて、本来一発で進むはずの仕事に何度も折り返しが生まれています。今日扱うFigma MCPは、<strong>その壁の一部を取り除く道具</strong>です。", reference: "" },
-      { start: "1:20", end: "2:00", topic: "壁の正体は言語化ロス", direction: "スライド：表紙", content: "壁の正体を整理します。それは<strong>「言語化ロス」</strong>です。デザイナーがFigmaで示したものを、エンジニアがHTMLに訳す過程で、<strong>意図と実装に必ずズレが生まれます</strong>。レシピを日本語で説明し直すと細部が落ちるのと同じ現象です。Figma MCPはこの翻訳工程を省略します。", reference: "" },
-      { start: "2:00", end: "2:40", topic: "Figma MCPの正体", direction: "スライド：表紙", content: "<strong>Figma MCPとは「AIが構造化されたデザインシステムを直接読めるトンネル」</strong>です。Figmaは内部的に、コンポーネント・Variant・Design Tokenといった構造データを持っています。MCPはこの構造データをClaudeにそのまま渡します。<strong>「設計図を読める大工」「レシピを読める料理人」</strong>と同じ発想で、人間が間に入って翻訳する必要がなくなります。", reference: "Figma公式MCP: https://developers.figma.com/docs/figma-mcp-server/" },
-      { start: "2:40", end: "3:20", topic: "実演準備：LP用Figmaファイル", direction: "画面収録：Figmaで架空LPを開く", content: "実演に使うのは<strong>架空LPのFigmaファイル</strong>です。コンポーネント・Variant・Design Tokenが整備された、実務レベルのデザインカンプを用意してあります。<strong>Figma MCPの読み取り精度はファイルの構造化度合いに比例します</strong>ので、構造化が弱いと精度も落ちる、という前提を頭に置いてください。", reference: "" },
-      { start: "3:20", end: "4:00", topic: "接続確認とget_design_context", direction: "画面収録：/mcpで接続確認→get_design_context実行", content: "Claude Codeで<strong>/mcp</strong>を実行し、Figma MCPが繋がっていることを確認します。続いて<strong>get_design_context</strong>を実行し、FigmaファイルのURLを渡します。<strong>Figmaの構造情報がClaudeに丸ごと届きました</strong>——色・タイポグラフィ・スペーシング・コンポーネント階層、すべてがClaudeの手元にある状態です。", reference: "" },
-      { start: "4:00", end: "4:50", topic: "コード生成", direction: "画面収録：Claude Codeに「このデザインを実装して」と依頼→生成", content: "次に依頼します。<strong>「このデザインをReact+Tailwindで実装してください」</strong>——たった一行です。プロンプトエンジニアリングは要りません。設計書がすでに自動供給されているので、Claudeは迷わず実装に進みます。React+Tailwindのコードが自動で生成されていきます。", reference: "" },
-      { start: "4:50", end: "5:30", topic: "ブラウザ動作確認", direction: "画面収録：生成LPをブラウザで開く", content: "生成したコードを<strong>ブラウザで開いて動作確認</strong>します。色・タイポグラフィ・レイアウト・レスポンシブ——<strong>Figmaで設計したとおりに再現</strong>されています。デザイナーが想定していた見え方と、エンジニアが組んだ実装が、初手で一致している状態です。", reference: "" },
-      { start: "5:30", end: "6:20", topic: "Figmaで微調整→差分検出→再生成", direction: "画面収録：Figmaでパディング調整→Claudeで再生成", content: "実務では実装後にデザインが変わることもあります。Figmaで「このセクション、もう少し余白がほしい」と<strong>パディングを0.5rem増やす微調整</strong>を入れます。Claudeが<strong>差分を検出して更新コードを生成</strong>、ブラウザを更新すれば修正が反映されている——<strong>このループが1分で回ります</strong>。", reference: "" },
-      { start: "6:20", end: "6:50", topic: "人間の判断が必要な場面", direction: "スライド：表紙", content: "ここで誤解のないように補足します。Figma MCPが入っても、<strong>人間の判断が必要な場面はなくなりません</strong>。デザインガイドラインの解釈、例外的レイアウトの扱い、ブランド判断——こうした「翻訳」ではない判断は人間の領域として残ります。MCPは<strong>「機械的な翻訳」を肩代わりすることで、「本来の判断」に時間を使えるようにする</strong>道具、という位置付けになります。", reference: "" },
-      { start: "6:50", end: "7:20", topic: "クロージング", direction: "スライド：表紙", content: "Skills→Slack→Notion→Figma——<strong>S3で扱ったMCPの世界が、手順パッケージから社内コミュニケーション、組織の記憶、そして設計・実装の領域まで広がりました</strong>。AIが組織のあらゆる場所に入る、その世界観がここに完成しました。次のセクションでは、さらに深い統合——アプリ開発の世界へ進みます。それでは次の動画でお会いしましょう。", reference: "" }
+      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではデザイナー・フロントエンドエンジニア・PMの方に向けて、<strong>Figma MCPでデザインとコードを双方向につなぐ方法</strong>をお伝えします。S3最終回です。", reference: "" },
+      { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "デザインをコードに落とし込むとき、スクショを渡して「これっぽく作って」と頼む方法があります。スクショ経由だとAIは見た目を推測するしかなく、精度に限界があります。<strong>Figma MCPは、ノード構造・色・フォント・Auto Layoutの構造化データをClaudeが直接読み取ります</strong>。精度が段違いです。Figmaをなくすのではなく、<strong>Figmaの価値を最大化する道具</strong>——デザイン資産がそのままコードに変わり、設計と実装の往復コストが格段に減ります。", reference: "" },
+      { start: "1:10", end: "2:10", topic: "プラグインインストール＋OAuth認証", direction: "画面収録：ターミナルでプラグインインストール→ブラウザOAuth", content: "Figma MCPの接続から始めます。<code>claude plugin install figma@claude-plugins-official</code>でClaude公式プラグインをインストールし、<code>/reload-plugins</code>でプラグインを読み込みます。続けて<code>authenticate</code>を実行するとブラウザが開き、FigmaのOAuth認証画面が表示されます。「許可」を押せば接続完了です。<code>whoami</code>で確認すると、アカウント名・プラン（Starter）・seat種別（View）が返ってきます。<strong>Starter無料プラン</strong>でこのまま進めます。", reference: "" },
+      { start: "2:10", end: "2:50", topic: "create_new_file＋双方向性", direction: "画面収録：create_new_file実行→Figmaで空ファイル確認", content: "ここからが驚きのポイントです。<code>create_new_file</code>を実行すると、<strong>ClaudeがFigmaに空のデザインファイルを新規作成しました</strong>。Figma MCPは読み取り専用ではなく、Claudeからデザインを書き込める双方向の接続です。ここからミゾリーチLP——ビズリーチ風の架空ハイクラス転職サービスを、Claudeに作ってもらいます。", reference: "" },
+      { start: "2:50", end: "4:00", topic: "use_figmaでデザイン構築", direction: "画面収録：use_figma実行→Figmaでデザイン構築の進行を追う", content: "<code>use_figma</code>でPlugin APIのJavaScriptをClaudeが実行し、デザインを組み上げていきます。題材はミゾリーチ、<strong>ダーク×ゴールドのプレミアム配色</strong>です。Header、Heroセクション、Stats Bar、Features 3カード、Bottom CTA、Footer——<strong>6セクションが自動で構築</strong>されていく様子を追います。Auto Layout・フォント・色・ドロップシャドウまで、Claudeが1つずつ指定しながらFigma上にレイアウトを組んでいます。完全に白紙の状態から、LPのデザインが数分で出来上がりました。", reference: "" },
+      { start: "4:00", end: "4:40", topic: "get_design_contextでコード生成", direction: "画面収録：get_design_context実行→React+Tailwindコード生成", content: "デザインが完成したら、読み取り側です。<code>get_design_context</code>にファイルキーとノードIDを渡すと、<strong>デザインデータからReact+Tailwindのコードとスクリーンショットが自動生成</strong>されます。Claudeが書いて、読んで、コードにする——この<strong>双方向の流れがFigma MCPの核心</strong>です。", reference: "" },
+      { start: "4:40", end: "5:20", topic: "ブラウザ動作確認", direction: "画面収録：生成HTMLをブラウザで開く", content: "生成されたコードをブラウザで開きます。<strong>ダーク×ゴールドの配色、Heroセクションのレイアウト、Features 3カードの並び</strong>——Figmaで構築したデザインがそのままHTMLに再現されています。構造化データから生成しているので、スクショベースの推測とは仕上がりの精度が違うことが見て取れます。", reference: "" },
+      { start: "5:20", end: "6:00", topic: "Starter制限と本格運用", direction: "画面収録：スライド表紙に戻す", content: "実用面を補足します。<strong>今回はStarter無料プランで完走しました</strong>が、ツールコールは月6回の制限があります。日常的にデザインワークフローに組み込むなら<strong>Proプランを推奨します</strong>。デザインシステムが整っていればMCPの精度はさらに上がりますが、今回のようにゼロからでも完走できる、という事実も押さえておいてください。", reference: "" },
+      { start: "6:00", end: "6:40", topic: "人間の判断が必要な場面", direction: "スライド：表紙", content: "Figma MCPが入っても、<strong>人間の判断が必要な場面はなくなりません</strong>。デザインガイドラインの解釈、例外的レイアウトの扱い、ブランド判断——こうした構造データに載らない判断は人間の領域です。MCPは<strong>機械的な変換を肩代わりすることで、本来の判断に時間を使えるようにする</strong>道具、という位置付けです。", reference: "" },
+      { start: "6:40", end: "7:20", topic: "クロージング", direction: "スライド：表紙", content: "Skills、Slack、Notion、そしてFigma——<strong>S3で扱ったMCPの世界が、手順パッケージから社内コミュニケーション、組織の記憶、設計・実装の領域まで広がりました</strong>。AIが組織のあらゆる場所に入る世界観がここに完成しました。次のセクションでは業務効率化の実践に進みます。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
   "S4-V1": {

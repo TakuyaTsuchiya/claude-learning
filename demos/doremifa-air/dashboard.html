@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ドレミファエア 経営課題ダッシュボード（2026年1〜3月）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 4px; color: #0f172a; }
+  .subtitle { color: #64748b; font-size: 0.875rem; margin-bottom: 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .card { background: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .card-full { grid-column: 1 / -1; }
+  .card h2 { font-size: 1.1rem; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
+  .badge-critical { background: #dc2626; color: white; }
+  .badge-high { background: #f59e0b; color: #1e293b; }
+  .badge-medium { background: #3b82f6; color: white; }
+  .badge-resolved { background: #22c55e; color: #1e293b; }
+  .issue-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .mention-count { color: #94a3b8; font-size: 0.8rem; }
+  .timeline { display: flex; gap: 0; margin: 12px 0; }
+  .timeline-item { flex: 1; padding: 8px 12px; background: #f1f5f9; border: 1px solid #e2e8f0; font-size: 0.75rem; }
+  .timeline-item:first-child { border-radius: 8px 0 0 8px; }
+  .timeline-item:last-child { border-radius: 0 8px 8px 0; }
+  .timeline-item .month { color: #475569; font-weight: 600; }
+  .timeline-item .event { color: #334155; margin-top: 2px; }
+  .sources { margin-top: 12px; }
+  .source-tag { display: inline-block; font-size: 0.7rem; padding: 2px 8px; margin: 2px 4px 2px 0; border-radius: 4px; background: #f1f5f9; color: #475569; }
+  .source-tag.keiei { border-left: 3px solid #3b82f6; }
+  .source-tag.jigyobu { border-left: 3px solid #22c55e; }
+  .source-tag.kokyaku { border-left: 3px solid #f59e0b; }
+  .source-tag.project { border-left: 3px solid #a855f7; }
+  .impact { color: #dc2626; font-weight: 600; font-size: 0.85rem; margin-top: 8px; }
+  .decision { color: #16a34a; font-size: 0.85rem; margin-top: 4px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .summary-card { background: #ffffff; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .summary-card .number { font-size: 2rem; font-weight: 700; color: #0f172a; }
+  .summary-card .label { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
+  .legend { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 4px; font-size: 0.75rem; color: #64748b; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .cross-ref { margin-top: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0; }
+  .cross-ref h3 { font-size: 0.85rem; color: #64748b; margin-bottom: 8px; }
+  .cross-line { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 0.8rem; }
+  .cross-line .arrow { color: #94a3b8; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  th { text-align: left; padding: 8px; color: #475569; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px; border-bottom: 1px solid #f1f5f9; }
+  .footer { text-align: center; color: #94a3b8; font-size: 0.7rem; margin-top: 24px; padding-top: 16px; border-top: 1px solid #e2e8f0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>ドレミファエア 経営課題ダッシュボード</h1>
+<p class="subtitle">Notion議事録DB＋プロジェクト管理DB 横断分析 ── 2026年1月〜3月（10件の議事録 + 4プロジェクト）</p>
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="number">5</div>
+    <div class="label">抽出された経営課題</div>
+  </div>
+  <div class="summary-card">
+    <div class="number">10</div>
+    <div class="label">横断した議事録</div>
+  </div>
+  <div class="summary-card">
+    <div class="number">4</div>
+    <div class="label">関連プロジェクト</div>
+  </div>
+  <div class="summary-card">
+    <div class="number">3</div>
+    <div class="label">対象月数</div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div>経営会議</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div>事業部会議</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>顧客面談</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#a855f7"></div>プロジェクト</div>
+</div>
+
+<!-- 課題1: LCC参入 -->
+<div class="grid">
+<div class="card card-full">
+  <div class="issue-header">
+    <h2><span class="badge badge-critical">最重要</span> 課題1：LCC参入による価格競争リスク</h2>
+    <span class="mention-count">言及 7件 / 10議事録</span>
+  </div>
+  <p style="color:#cbd5e1; font-size:0.85rem;">競合A社がLCCブランドで7月にド（羽田-札幌）路線参入を発表。片道15,000円前後の低価格設定。最悪シナリオで営業利益-2億円のインパクト。</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="month">1月</div><div class="event">（未認知）</div></div>
+    <div class="timeline-item"><div class="month">2月</div><div class="event">業界紙で報道 → 情報収集チーム編成</div></div>
+    <div class="timeline-item"><div class="month">3月</div><div class="event">正式発表 → 差別化路線を基本方針に承認</div></div>
+  </div>
+  <div class="impact">影響試算：営業利益 -2億円（客単価15%下落時）。予備費から充当可能（佐藤CFO）</div>
+  <div class="decision">✅ 決定：価格追随せず差別化路線。緊急対応プランを4月中に策定</div>
+  <div class="sources">
+    <span class="source-tag keiei">2月経営会議</span>
+    <span class="source-tag keiei">3月経営会議</span>
+    <span class="source-tag jigyobu">3月事業部会議</span>
+    <span class="source-tag kokyaku">顧客C社面談</span>
+    <span class="source-tag project">PJ: LCC対抗施策</span>
+  </div>
+</div>
+
+<!-- 課題2: 燃油費 -->
+<div class="card">
+  <div class="issue-header">
+    <h2><span class="badge badge-high">高</span> 課題2：燃油費の継続的上昇</h2>
+    <span class="mention-count">言及 5件</span>
+  </div>
+  <p style="color:#cbd5e1; font-size:0.85rem;">3ヶ月連続で経営会議の議題。12.8→13.5→13.2億円。通期利益見通しを下方修正。</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="month">1月</div><div class="event">12.8億 想定比+2億</div></div>
+    <div class="timeline-item"><div class="month">2月</div><div class="event">13.5億 ヘッジ60%承認</div></div>
+    <div class="timeline-item"><div class="month">3月</div><div class="event">13.2億 機材更新で根本対応</div></div>
+  </div>
+  <div class="decision">✅ 決定：ヘッジ比率60%（4月適用）+ 省燃費機3年計画で全機入替</div>
+  <div class="sources">
+    <span class="source-tag keiei">1月経営会議</span>
+    <span class="source-tag keiei">2月経営会議</span>
+    <span class="source-tag keiei">3月経営会議</span>
+    <span class="source-tag jigyobu">2月事業部(第2回)</span>
+    <span class="source-tag project">PJ: 機材更新計画</span>
+  </div>
+</div>
+
+<!-- 課題3: Wi-Fi -->
+<div class="card">
+  <div class="issue-header">
+    <h2><span class="badge badge-high">高</span> 課題3：機内Wi-Fi導入への圧力</h2>
+    <span class="mention-count">言及 6件</span>
+  </div>
+  <p style="color:#cbd5e1; font-size:0.85rem;">顧客面談2社＋CSレポート＋競合B社の動きが合流。3ヶ月で120件の要望。</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="month">1月</div><div class="event">CS: 要望120件/3ヶ月 顧客A社不満</div></div>
+    <div class="timeline-item"><div class="month">2月</div><div class="event">競合B社4月無料化 導入費3億+月500万</div></div>
+    <div class="timeline-item"><div class="month">3月</div><div class="event">機材更新と同時導入に決定 顧客C社にも回答</div></div>
+  </div>
+  <div class="decision">✅ 決定：2026年秋の機材更新で同時導入（新機材に標準搭載）</div>
+  <div class="sources">
+    <span class="source-tag jigyobu">1月事業部会議</span>
+    <span class="source-tag kokyaku">顧客A社面談</span>
+    <span class="source-tag keiei">2月経営会議</span>
+    <span class="source-tag keiei">3月経営会議</span>
+    <span class="source-tag kokyaku">顧客C社面談</span>
+    <span class="source-tag project">PJ: 機材更新計画</span>
+  </div>
+</div>
+
+<!-- 課題4: 採用 -->
+<div class="card">
+  <div class="issue-header">
+    <h2><span class="badge badge-medium">中</span> 課題4：人材採用難</h2>
+    <span class="mention-count">言及 4件</span>
+  </div>
+  <p style="color:#cbd5e1; font-size:0.85rem;">パイロット・整備士の充足率が低く、GW臨時便の制約にも波及。</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="month">1月</div><div class="event">応募数 前年比-30%</div></div>
+    <div class="timeline-item"><div class="month">2月</div><div class="event">初任給5%UP+支度金30万を承認</div></div>
+    <div class="timeline-item"><div class="month">3月</div><div class="event">応募回復傾向 CA夏まで解消見込み</div></div>
+  </div>
+  <div class="decision">✅ 決定：技術職から初任給引上げ＋支度金適用。大学説明会を4月から強化</div>
+  <div class="sources">
+    <span class="source-tag keiei">1月経営会議</span>
+    <span class="source-tag keiei">2月経営会議</span>
+    <span class="source-tag keiei">3月経営会議</span>
+  </div>
+</div>
+
+<!-- 課題5: シ路線 -->
+<div class="card">
+  <div class="issue-header">
+    <h2><span class="badge badge-medium">中</span> 課題5：シ路線就航の全社横断調整</h2>
+    <span class="mention-count">言及 8件</span>
+  </div>
+  <p style="color:#cbd5e1; font-size:0.85rem;">運航・営業・マーケ・CS・法務が関与する最大プロジェクト。6/1就航確定。</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="month">1月</div><div class="event">就航申請済 GH2社比較開始</div></div>
+    <div class="timeline-item"><div class="month">2月</div><div class="event">GH委託先B社決定 ダイヤ1日2往復</div></div>
+    <div class="timeline-item"><div class="month">3月</div><div class="event">認可取得 プロモ予算1,200万申請</div></div>
+  </div>
+  <div class="decision">✅ 決定：6/1就航確定。4月下旬からプロモ開始（予算承認待ち）</div>
+  <div class="sources">
+    <span class="source-tag keiei">1月経営会議</span>
+    <span class="source-tag jigyobu">1月事業部会議</span>
+    <span class="source-tag jigyobu">2月事業部(第2回)</span>
+    <span class="source-tag jigyobu">3月事業部会議</span>
+    <span class="source-tag kokyaku">顧客B社面談</span>
+    <span class="source-tag kokyaku">顧客C社面談</span>
+    <span class="source-tag project">PJ: シ路線就航</span>
+  </div>
+</div>
+</div>
+
+<!-- 課題間の関連 -->
+<div class="card card-full" style="margin-bottom:24px;">
+  <h2>課題間の連鎖関係</h2>
+  <div class="cross-ref">
+    <div class="cross-line"><strong>LCC参入</strong> <span class="arrow">→</span> ドレミマイル強化で対抗 <span class="arrow">→</span> <strong>マイルリニューアル</strong>（改修費2,400万・4月着手必須）</div>
+    <div class="cross-line"><strong>燃油費上昇</strong> <span class="arrow">→</span> 根本対応として <span class="arrow">→</span> <strong>機材更新</strong>（120億・3年計画）<span class="arrow">→</span> Wi-Fi同時搭載で <span class="arrow">→</span> <strong>Wi-Fi要望</strong>も解決</div>
+    <div class="cross-line"><strong>採用難</strong> <span class="arrow">→</span> パイロット不足が <span class="arrow">→</span> <strong>GW臨時便</strong>の制約に <span class="arrow">→</span> <strong>シ路線</strong>のシフト調整にも影響</div>
+    <div class="cross-line"><strong>シ路線就航</strong> <span class="arrow">→</span> 顧客B社が四国ツアー打診 + 顧客C社が法人利用検討 <span class="arrow">→</span> <strong>新規売上機会</strong></div>
+  </div>
+</div>
+
+<!-- プロジェクト一覧 -->
+<div class="card card-full" style="margin-bottom:24px;">
+  <h2>関連プロジェクト一覧</h2>
+  <table>
+    <thead>
+      <tr><th>プロジェクト</th><th>ステータス</th><th>担当</th><th>期限</th><th>優先度</th><th>関連課題</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>シ（羽田-松山）新路線就航</td><td><span class="badge" style="background:#3b82f6;color:white">進行中</span></td><td>田中・鈴木・伊藤</td><td>2026/06/01</td><td><span class="badge badge-critical">高</span></td><td>課題5</td></tr>
+      <tr><td>機材更新計画（省燃費機入替）</td><td><span class="badge" style="background:#64748b;color:white">計画中</span></td><td>鈴木・佐藤</td><td>2029/03/31</td><td><span class="badge badge-critical">高</span></td><td>課題2, 3</td></tr>
+      <tr><td>ドレミマイル リニューアル</td><td><span class="badge" style="background:#64748b;color:white">計画中</span></td><td>伊藤</td><td>2026/07/01</td><td><span class="badge badge-high">中</span></td><td>課題1</td></tr>
+      <tr><td>LCC対抗施策</td><td><span class="badge" style="background:#3b82f6;color:white">進行中</span></td><td>田中・伊藤・渡辺</td><td>2026/06/30</td><td><span class="badge badge-critical">高</span></td><td>課題1</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  このダッシュボードはClaude Code × Notion MCPにより自動生成されました。<br>
+  データソース：ドレミファエア社 Notion議事録DB（10件）＋プロジェクト管理DB（4件）｜分析対象期間：2026年1月〜3月
+</div>
+
+</div>
+</body>
+</html>

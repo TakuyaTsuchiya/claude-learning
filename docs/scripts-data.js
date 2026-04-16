@@ -542,7 +542,7 @@ var SCRIPTS = {
   },
   "S4-V4": {
     meta: {
-      duration: "約9分30秒",
+      duration: "約7分",
       mode: "画面収録（Claude Codeターミナル＋エディタ＋ブラウザ。スライドは表紙と5工程フロー図の2枚）",
       goal: "SEO記事制作フローを5工程に分割し、工程間をMarkdownファイルで疎結合につなぐ設計で、YMYL高額商材でも再現性高く高品質記事を生成できるようになる"
     },
@@ -558,16 +558,16 @@ var SCRIPTS = {
     ],
     script: [
       { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではマーケ担当・オウンドメディア運営の方に向けて、<strong>SEO記事制作を5工程に分割してClaude Codeで高品質に生成する</strong>方法をお伝えします。題材はYMYL高額商材『屋上防水工事 費用相場』です。", reference: "" },
-      { start: "0:20", end: "1:30", topic: "なぜ扱うか・コアメッセージ", direction: "スライド：表紙", content: "マーケ担当の方は、<strong>毎月「高品質なSEO記事」に追われている</strong>場面が多いと思います。テーマを決めてAIに一発依頼する手軽さは魅力ですが、<strong>YMYL領域では浅い記事では絶対に上位が取れない</strong>のが現実です。競合も豊富で、SEO投資も大きい。ここでコアメッセージを一度打っておきます。<strong>工程分割で80%の再現性を確保し、残り20%の監修・一次情報・現場写真は人間の役割</strong>——この20%こそGoogleが評価するE-E-A-Tの核です。", reference: "" },
-      { start: "1:30", end: "2:00", topic: "E-E-A-T解説", direction: "スライド：表紙", content: "E-E-A-Tは<strong>Experience・Expertise・Authoritativeness・Trustworthiness＝経験・専門性・権威性・信頼性</strong>の略です。<strong>AI下書きと人間監修の組み合わせがこの要件を満たす現実解</strong>、と断言して通過します。「AI記事はペナルティ」という話への長い反論はしません。", reference: "" },
-      { start: "2:00", end: "2:30", topic: "題材提示", direction: "画面収録：エディタで作業ディレクトリ準備", content: "題材は架空建設会社『<strong>○△建設</strong>』のオウンドメディア記事、キーワードは<strong>「屋上防水工事 費用相場」</strong>です。V2（申請書類チェック校閲）と同じ架空会社のマーケ部門、という連続設定で進めます。", reference: "demos/s4-v5/" },
-      { start: "2:30", end: "3:30", topic: "第1工程：競合分析", direction: "画面収録：WebSearchで上位10記事取得→01.md保存", content: "最初の工程は<strong>競合分析</strong>です。Claude CodeのWebSearchで上位10記事を取得し、<strong>見出し構成・含まれるトピック・各記事の強み</strong>をMarkdown比較表に整理します。動画内の表示は<strong>「競合A社」「競合B社」</strong>で伏字、実在サービス名は出しません。結果を<code>01-competitor-analysis.md</code>に保存します。", reference: "demos/s4-v5/01-competitor-analysis.md" },
-      { start: "3:30", end: "4:15", topic: "第2工程：ユーザーニーズ分析", direction: "画面収録：02.md生成", content: "次の工程は<strong>ユーザーニーズ分析</strong>です。比較表を読み込み、<strong>競合が見落としているギャップと、マンション・ビルオーナー・小規模リフォーム会社が本当に知りたいこと</strong>を深掘りします。<code>02-user-needs.md</code>に保存、という流れです。", reference: "demos/s4-v5/02-user-needs.md" },
-      { start: "4:15", end: "5:00", topic: "第3工程：構成案作成", direction: "画面収録：03.md生成", content: "次は<strong>構成案作成</strong>、H2/H3の見出し体系を設計します。<strong>ウレタン・シート・FRP・アスファルトの4工法比較、費用内訳、業者選びチェックリスト</strong>を差別化見出しとして組み込む、という作り方です。<code>03-outline.md</code>に保存します。", reference: "demos/s4-v5/03-outline.md" },
-      { start: "5:00", end: "6:00", topic: "第4工程：本文執筆", direction: "画面収録：04.md生成", content: "<strong>本文執筆</strong>の工程です。構成に沿ってセクション別に深掘りし、<code>04-body.md</code>に保存します。ここでの前提表記は<strong>「2026年4月時点の全国平均」「地域差あり」</strong>と撮影時点と対象範囲を明記しておきます。<strong>WebSearch・Claude・人間監修の三位一体</strong>で、一次情報の精度を担保する、というスタンスです。", reference: "demos/s4-v5/04-body.md" },
-      { start: "6:00", end: "6:30", topic: "第5工程：メタ生成", direction: "画面収録：05.md生成", content: "最後は<strong>メタ生成</strong>です。タイトルタグ・メタディスクリプション・OGP設定を<code>05-meta.md</code>に保存します。これで5工程が出揃いました。", reference: "demos/s4-v5/05-meta.md" },
-      { start: "6:30", end: "7:30", topic: "Markdownプレビュー・品質差確認", direction: "画面収録：最終記事をMarkdownプレビュー", content: "最終記事をMarkdownプレビューで確認します。<strong>5工程のファイル受け渡しで毎回同品質が再現される</strong>、という感触をここで言葉にしておきます。一発執筆のアウトプットとは、粒度と構造で明確な差が出ます。", reference: "" },
-      { start: "7:30", end: "9:30", topic: "Skill化接続・コアメッセージ再打ち・クロージング", direction: "スライド：表紙", content: "最後にSkill化への接続です。<strong>前のセクションで扱ったSkills Creatorを使えば、この5工程を<code>/seo [キーワード]</code>という一発Skillに変換</strong>できます。別キーワードでも同じパイプラインが動く、という状態です。冒頭のコアメッセージをもう一度打っておきます——<strong>80%の再現性＋20%の人間監修</strong>、この20%こそE-E-A-Tの核で、AIと人間の役割分担の原則です。工程全体をパイプライン化する発想は、次のアプリ開発セクションでさらに深まります。それでは次の動画でお会いしましょう。", reference: "" }
+      { start: "0:25", end: "1:25", topic: "なぜ扱うか・コアメッセージ", direction: "スライド：表紙", content: "マーケ担当の方は、<strong>毎月「高品質なSEO記事」に追われている</strong>場面が多いと思います。テーマを決めてAIに一発依頼する手軽さは魅力ですが、<strong>YMYL領域では浅い記事では絶対に上位が取れない</strong>のが現実です。競合も豊富で、SEO投資も大きい。ここでコアメッセージを一度打っておきます。<strong>工程分割で80%の再現性を確保し、残り20%の監修・一次情報・現場写真は人間の役割</strong>——この20%こそGoogleが評価するE-E-A-Tの核です。", reference: "" },
+      { start: "1:25", end: "2:05", topic: "E-E-A-T解説", direction: "スライド：表紙", content: "E-E-A-Tは<strong>Experience・Expertise・Authoritativeness・Trustworthiness＝経験・専門性・権威性・信頼性</strong>の略です。<strong>AI下書きと人間監修の組み合わせがこの要件を満たす現実解</strong>、と断言して通過します。「AI記事はペナルティ」という話への長い反論はしません。", reference: "" },
+      { start: "2:05", end: "2:30", topic: "題材提示", direction: "画面収録：エディタで作業ディレクトリ準備", content: "題材は架空建設会社『<strong>○△建設</strong>』のオウンドメディア記事、キーワードは<strong>「屋上防水工事 費用相場」</strong>です。V2（申請書類チェック校閲）と同じ架空会社のマーケ部門、という連続設定で進めます。", reference: "demos/s4-v5/" },
+      { start: "2:30", end: "3:15", topic: "第1工程：競合分析", direction: "画面収録：WebSearchで上位10記事取得→01.md保存", content: "最初の工程は<strong>競合分析</strong>です。Claude CodeのWebSearchで上位10記事を取得し、<strong>見出し構成・含まれるトピック・各記事の強み</strong>をMarkdown比較表に整理します。動画内の表示は<strong>「競合A社」「競合B社」</strong>で伏字、実在サービス名は出しません。結果を<code>01-competitor-analysis.md</code>に保存します。", reference: "demos/s4-v5/01-competitor-analysis.md" },
+      { start: "3:15", end: "3:45", topic: "第2工程：ユーザーニーズ分析", direction: "画面収録：02.md生成", content: "次の工程は<strong>ユーザーニーズ分析</strong>です。比較表を読み込み、<strong>競合が見落としているギャップと、マンション・ビルオーナー・小規模リフォーム会社が本当に知りたいこと</strong>を深掘りします。<code>02-user-needs.md</code>に保存、という流れです。", reference: "demos/s4-v5/02-user-needs.md" },
+      { start: "3:45", end: "4:15", topic: "第3工程：構成案作成", direction: "画面収録：03.md生成", content: "次は<strong>構成案作成</strong>、H2/H3の見出し体系を設計します。<strong>ウレタン・シート・FRP・アスファルトの4工法比較、費用内訳、業者選びチェックリスト</strong>を差別化見出しとして組み込む、という作り方です。<code>03-outline.md</code>に保存します。", reference: "demos/s4-v5/03-outline.md" },
+      { start: "4:15", end: "4:55", topic: "第4工程：本文執筆", direction: "画面収録：04.md生成", content: "<strong>本文執筆</strong>の工程です。構成に沿ってセクション別に深掘りし、<code>04-body.md</code>に保存します。ここでの前提表記は<strong>「2026年4月時点の全国平均」「地域差あり」</strong>と撮影時点と対象範囲を明記しておきます。<strong>WebSearch・Claude・人間監修の三位一体</strong>で、一次情報の精度を担保する、というスタンスです。", reference: "demos/s4-v5/04-body.md" },
+      { start: "4:55", end: "5:15", topic: "第5工程：メタ生成", direction: "画面収録：05.md生成", content: "最後は<strong>メタ生成</strong>です。タイトルタグ・メタディスクリプション・OGP設定を<code>05-meta.md</code>に保存します。これで5工程が出揃いました。", reference: "demos/s4-v5/05-meta.md" },
+      { start: "5:15", end: "5:45", topic: "Markdownプレビュー・品質差確認", direction: "画面収録：最終記事をMarkdownプレビュー", content: "最終記事をMarkdownプレビューで確認します。<strong>5工程のファイル受け渡しで毎回同品質が再現される</strong>、という感触をここで言葉にしておきます。一発執筆のアウトプットとは、粒度と構造で明確な差が出ます。", reference: "" },
+      { start: "5:45", end: "6:55", topic: "Skill化接続・コアメッセージ再打ち・クロージング", direction: "スライド：表紙", content: "最後にSkill化への接続です。<strong>前のセクションで扱ったSkills Creatorを使えば、この5工程を<code>/seo [キーワード]</code>という一発Skillに変換</strong>できます。別キーワードでも同じパイプラインが動く、という状態です。冒頭のコアメッセージをもう一度打っておきます——<strong>80%の再現性＋20%の人間監修</strong>、この20%こそE-E-A-Tの核で、AIと人間の役割分担の原則です。工程全体をパイプライン化する発想は、次のアプリ開発セクションでさらに深まります。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
   "S5-V1": {

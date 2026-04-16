@@ -570,37 +570,6 @@ var SCRIPTS = {
       { start: "7:30", end: "9:30", topic: "Skill化接続・コアメッセージ再打ち・クロージング", direction: "スライド：表紙", content: "最後にSkill化への接続です。<strong>前のセクションで扱ったSkills Creatorを使えば、この5工程を<code>/seo [キーワード]</code>という一発Skillに変換</strong>できます。別キーワードでも同じパイプラインが動く、という状態です。冒頭のコアメッセージをもう一度打っておきます——<strong>80%の再現性＋20%の人間監修</strong>、この20%こそE-E-A-Tの核で、AIと人間の役割分担の原則です。工程全体をパイプライン化する発想は、次のアプリ開発セクションでさらに深まります。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
-  "S4-V5": {
-    meta: {
-      duration: "約9分",
-      mode: "画面収録（ブラウザ＋Claude Codeターミナル＋Excel。スライドは表紙・法令配慮・クロージングの3枚）",
-      goal: "BtoB営業・インサイドセールスが、Sansan事例ページの公開情報を題材にrobots.txt確認→一覧クロール→個別ページ抽出→CSV出力までの多段階ワークフローをClaude Code1本で回せるようになる"
-    },
-    materials: [
-      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "スライド", name: "法令配慮", purpose: "robots.txt・利用規約・個人情報保護法の3点要約", timing: "序盤" },
-      { type: "画面収録", name: "robots.txt確認", purpose: "curlで/case/の許可を目視確認", timing: "序盤" },
-      { type: "画面収録", name: "Sansan事例ページ構造", purpose: "一覧ページの構造をブラウザで見せる", timing: "中盤" },
-      { type: "画面収録", name: "素のプロンプト実行", purpose: "URLパターン推定の揺れを短く見せる", timing: "中盤" },
-      { type: "画面収録", name: "ドメイン知識追加", purpose: "URLパターン候補を1行足して安定させる", timing: "中盤" },
-      { type: "画面収録", name: "2段階スクレイピング", purpose: "一覧→個別の階層を自律的に辿る様子", timing: "中盤〜後半" },
-      { type: "出力成果物", name: "demos/s4-v6/attack_list.csv", purpose: "会社名・部署・役職・氏名・業界の5列CSV", timing: "後半の動作確認" }
-    ],
-    script: [
-      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではBtoB営業・インサイドセールスの方に向けて、<strong>Claude Codeで決裁者アタックリストをWebスクレイピングで自動生成する</strong>方法をお伝えします。題材はSansan事例ページの公開情報、多段階ワークフローの実践編です。", reference: "" },
-      { start: "0:25", end: "1:25", topic: "なぜ扱うか", direction: "スライド：表紙", content: "BtoB営業の新規開拓は、<strong>稟議や契約の承認権限を持つ決裁者に直接届かないと商談が進みません</strong>。100社分の決裁者アタックリストを手作業で作ると、<strong>会社名・部署・役職・氏名・業界の転記だけで8時間</strong>が溶ける、という場面が多いと思います。この動画では、<strong>Sansan事例ページの公開情報を題材に8時間を数分に圧縮</strong>し、空いた時間を営業戦略・顧客関係構築という高付加価値業務に振り向ける感覚を体得していただきます。", reference: "" },
-      { start: "1:20", end: "1:40", topic: "決裁者の用語中立化", direction: "スライド：表紙", content: "用語を1つだけ揃えておきます。<strong>「決裁者」は稟議・契約の承認権限者、営業業界の標準用語</strong>です。「決済者」は代金支払い者を指す別の意味なので、営業領域では誤用にあたります。SansanやSaaS各社も「決裁者」で統一しています。", reference: "" },
-      { start: "1:40", end: "2:40", topic: "法令配慮", direction: "スライド：法令配慮→画面収録：curlでrobots.txt確認", content: "スクレイピングに着手する前の<strong>法令配慮</strong>を先に固めます。まず<code>curl https://jp.sansan.com/robots.txt | grep -i case</code>で<strong><code>/case/</code>パスが許可されている</strong>ことを目で確認します。次に<strong>Sansan利用規約・公開情報・スクレイピング許可の3点</strong>を口頭で押さえ、<strong>個人情報保護法と特定商取引法</strong>の橋渡しを短く入れておきます。「着手前にrobots.txtと利用規約を読む」という習慣を、営業職の法令リテラシーとして位置付けます。", reference: "https://jp.sansan.com/robots.txt" },
-      { start: "2:40", end: "3:10", topic: "題材ページ構造", direction: "画面収録：https://jp.sansan.com/case/ をブラウザで開く", content: "題材ページ<code>https://jp.sansan.com/case/</code>をブラウザで開きます。<strong>事例一覧ページから各企業の個別事例ページへのリンク</strong>が並んでいます。この一覧からクロールを始める、という見通しを共有しておきます。", reference: "https://jp.sansan.com/case/" },
-      { start: "3:10", end: "4:00", topic: "素のプロンプトで実行", direction: "画面収録：Claude Codeで一覧URLを渡して依頼", content: "まずは素のプロンプトで依頼してみます。<strong>「この一覧ページの事例から会社名・部署・役職・氏名・業界を抽出してください」</strong>とだけ渡します。すると<strong>企業ロゴやリンクからURLパターンを手探りで推測する</strong>様子が対話ログに出ます。抽出は走るものの、精度が少し揺れる感触があります。", reference: "" },
-      { start: "4:00", end: "4:50", topic: "ドメイン知識で安定させる", direction: "画面収録：プロンプトに1行追加", content: "ここで<strong>ドメイン知識をプロンプトに差し込みます</strong>。<strong>「URLパターンの候補は<code>case</code>、<code>cases</code>、<code>customers</code>です」</strong>という1行を足します。するとその瞬間に、個別ページへの到達精度が安定します。<strong>人間のドメイン知識がAI精度を上げる</strong>——この講座で繰り返しお伝えしてきたメッセージが、ここでも再現される形です。", reference: "demos/s4-v6/prompt.md" },
-      { start: "4:50", end: "5:50", topic: "2段階スクレイピング", direction: "画面収録：対話ログで一覧→個別の階層を辿る", content: "Claude Codeが<strong>一覧→個別ページの2段階を自律的に辿ります</strong>。一覧からリンクを拾い、個別事例ページへ降りて会社名・部署・役職・氏名・業界を1件ずつ抽出、最後にまとめてJSON→CSVに整える、という階層処理です。<strong>多段階ワークフローの核心</strong>がここで見えます。", reference: "" },
-      { start: "5:50", end: "6:30", topic: "CSV現物検証", direction: "画面収録：attack_list.csvをExcelで開く→Sansan公式を別タブで突き合わせ", content: "生成された<code>attack_list.csv</code>をExcelで開きます。<strong>会社名・部署・役職・氏名・業界の5列</strong>が揃っています。現物検証として、Sansan公式の事例ページ3〜4件をブラウザ別タブで開き、抽出データが<strong>公開情報と一致する</strong>ことを目で突き合わせます。この一手間を省かない、というのがリスト運用の姿勢です。", reference: "demos/s4-v6/attack_list.csv" },
-      { start: "6:30", end: "7:00", topic: "8時間 vs 数分", direction: "スライド：表紙", content: "<strong>手作業100社8時間 vs Claude Code数分</strong>の対比で時間を締めます。時間差の正体は<strong>「人間が1社ずつ読む作業の自動化」</strong>です。手作業が劣るという話ではなく、人間の時間を高付加価値業務に振り向け直す発想が本質です。営業目的で利用する前には、対象者のプライバシー設定や公開許諾範囲を再確認する責任が営業側にある、という一文もここに添えておきます。", reference: "" },
-      { start: "7:00", end: "7:40", topic: "S4俯瞰", direction: "スライド：表紙", content: "このセクションをここで俯瞰します。前の5本は単機能の効率化で並んできましたが、この動画は初めて<strong>「取得→加工→出力」の多段階ワークフロー</strong>を扱いました。<strong>小さな局所最適化から、事業全体を視野に入れた戦略的自動化への卒業地点</strong>、という位置付けです。", reference: "" },
-      { start: "7:40", end: "9:00", topic: "次セクションへの質的転換・クロージング", direction: "スライド：クロージング", content: "最後に次のアプリ開発セクションへの橋渡しを置いて閉じます。今回作ったのは<strong>CSVをローカルで開く個人ツール</strong>、次のセクションでは<strong>同じ決裁者アタックリストを複数人で共有し、データベースに永続化し、Webインターフェースからリアルタイム更新するSaaSへ質的に変わります</strong>。「今はCSVをローカル、次はチームで共有する段階」——この境界がこの動画の立ち位置です。それでは次の動画でお会いしましょう。", reference: "" }
-    ]
-  },
   "S5-V1": {
     meta: {
       duration: "約6分30秒",

@@ -74,7 +74,7 @@ var SCRIPTS = {
       { type: "画面収録", name: "/statusline設定", purpose: "ステータスラインの2行表示設定", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではClaude Codeを使い始める皆さんに向けて、<strong>Claude CodeとCursorのインストール、そして初回のステータスライン設定</strong>までをお伝えします。Mac・Windows両方の手順を押さえていきます。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではClaude Codeを使い始める皆さんに向けて、<strong>Claude CodeとCursorのインストール、そして初回のステータスライン設定</strong>までをお伝えします。Mac・Windows両方の手順を押さえていきます。", reference: "" },
       { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "表紙のまま", content: "環境構築は、多くの方が挫折するポイントと言われています。特に<strong>PATHを通す作業と、WindowsユーザーのGit for Windowsインストール</strong>の2つでつまずく方が多いです。ここを丁寧に整えておけば、<strong>この先の全動画が皆さんのPC上で再現できる</strong>状態になります。手順はやや多めですが、一度だけの作業ですので、このタイミングでしっかり終わらせてしまいましょう。", reference: "" },
       { start: "1:00", end: "1:30", topic: "ネイティブインストーラー推奨", direction: "画面収録：公式セットアップページを開く", content: "Claude Code本体のインストール方法は複数ありますが、<strong>公式のネイティブインストーラー</strong>を使う方法をおすすめします。npm経由のインストールも可能ですが、Node.jsの環境整備が別途必要になります。ネイティブインストーラーならダブルクリックで完結しますので、非エンジニアの方はこちらが確実になります。", reference: "https://docs.claude.com/en/docs/claude-code/setup" },
       { start: "1:30", end: "2:30", topic: "Mac：Claude Codeインストール", direction: "画面収録：公式サイトからmacOS用インストーラーをダウンロード→実行→ターミナルで確認", content: "まずMac向けの手順です。公式サイトから<strong>macOS用インストーラー</strong>をダウンロードします。ダブルクリックで実行すると、自動で必要な場所にインストールされます。インストール後、ターミナルを開いて<code>claude --version</code>と打ちます。バージョン番号が表示されればインストール成功です。もし<code>command not found</code>と出る場合は、<strong>PATHがまだ通っていない</strong>状態ですので、ターミナルを一度閉じて開き直してください。", reference: "https://docs.claude.com/en/docs/claude-code/setup" },
@@ -132,7 +132,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "見積書.xlsx（エクスポート結果）", purpose: "ツールから出力される見積書Excel", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では営業職の方に向けて、自動見積り作成ツールをClaude Codeで作っていきます。題材はホテルに備品を納入するBtoB営業、お客様への見積書をぱっと出せる実務ツールを一緒に組み立てます。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では営業職の方に向けて、自動見積り作成ツールをClaude Codeで作っていきます。題材はホテルに備品を納入するBtoB営業、お客様への見積書をぱっと出せる実務ツールを一緒に組み立てます。", reference: "" },
       { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "表紙のまま", content: "見積作成は、多くの営業担当の方が時間を取られている業務だと思います。ここで大事なのは、<strong>皆さん自身の会社のカタログや過去の見積書を渡すだけで、明日から使える実務ツールが手に入る</strong>ということです。まだ環境構築のセクションですが、<strong>もうこの段階で実用的なものが作れる</strong>——その体験をしていただきたい回になります。", reference: "" },
       { start: "1:00", end: "2:00", topic: "サンプルデータ紹介", direction: "画面収録：demo/s1v4/ の3ファイルを順にエディタで開いて見せる", content: "まず用意したサンプルデータ3点を見ていきます。<strong>製品カタログCSV</strong>は、テレビ5メーカー・Wi-Fi機器・配線部材・工事費まで全33品目、原価と単価の両方が入っています。<strong>商談メモ</strong>は、ザ・パークビューホテル東京との打ち合わせ記録で、客室82室・2026年秋リニューアル・予算1200万円といった条件が書かれています。<strong>過去の成約見積書</strong>は、出力したい形式のお手本としてClaude Codeに参考にしてもらいます。", reference: "demo/s1v4/product_catalog.csv／demo/s1v4/meeting_memo.md／demo/s1v4/past_quote.xlsx" },
       { start: "2:00", end: "2:45", topic: "要件依頼", direction: "画面収録：ターミナルでClaude Code起動→要件入力", content: "この3点をClaude Codeに渡して依頼します。「<strong>この3つのファイルをもとに、商談メモから見積書を自動生成するHTMLツールを作ってください。商品はプルダウンで差し替え可能、備考は定型文のチェックボックス形式、利益率を常時表示して20%を下回ったらアラート、値引き機能、Excelエクスポートまでお願いします</strong>」と、自然な日本語でそのまま伝えます。", reference: "" },
@@ -159,7 +159,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "index.html（社内会議用ワンページサイト）", purpose: "ブラウザで開くだけ／URL1本で配布できる会議資料", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではオフィスワーカーの方に向けて、<strong>社内会議用の資料をHTMLサイトでつくる方法</strong>をお伝えします。アジェンダのMarkdown1枚をClaude Codeに渡すだけで、URLで配布できる会議資料が仕上がる、そんな作り方です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではオフィスワーカーの方に向けて、<strong>社内会議用の資料をHTMLサイトでつくる方法</strong>をお伝えします。アジェンダのMarkdown1枚をClaude Codeに渡すだけで、URLで配布できる会議資料が仕上がる、そんな作り方です。", reference: "" },
       { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "表紙のまま", content: "会議資料をスライドで作ると、<strong>テキストボックスのレイアウト調整・表のセル幅合わせ・画像の位置決め</strong>に時間を取られて、気づけば中身より体裁に手がかかっている、ということが起こりがちです。一方でHTMLサイトなら、レイアウトはClaude Codeが整えてくれますし、<strong>URLを1本送るだけで配布も完了</strong>します。HTML自体の知識は要らない前提で進めますので、アジェンダさえ用意すれば明日の会議にそのまま出せる資料が手に入る——その体験をしていただく回になります。", reference: "" },
       { start: "1:00", end: "1:40", topic: "題材紹介", direction: "画面収録：エディタでdemo/s1v5/agenda.mdを開く", content: "まず今回の題材です。架空のディスカウントストア<strong>『驚安堂』の夏新商品リリース説明会</strong>を例に進めていきます。マーケティング本部から全営業部・店舗運営部・海外事業部に向けた、PB新商品10品目のお披露目会、というシナリオになります。", reference: "demo/s1v5/agenda.md" },
       { start: "1:40", end: "2:30", topic: "アジェンダの中身を見せる", direction: "画面収録：agenda.mdをゆっくりスクロール", content: "アジェンダのMarkdownがこちらです。日時・参加者・市場背景、そして<strong>新商品10品目の表、販売チャネル、SNS施策、KPI、スケジュール、各部へのアクションアイテム</strong>——情報量はかなり多いですね。これをスライドで作ると20枚以上になりますし、レイアウト調整だけで半日仕事になってしまいます。", reference: "demo/s1v5/agenda.md" },
@@ -184,7 +184,7 @@ var SCRIPTS = {
       { type: "画面収録", name: "Planモード実演", purpose: "Shift+Tab×2で切替→plan mode on→計画表示→承認で実装", timing: "後半" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、Claude Codeの<strong>基本コマンドとPlanモードの使い方</strong>をお伝えします。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、Claude Codeの<strong>基本コマンドとPlanモードの使い方</strong>をお伝えします。", reference: "" },
       { start: "0:20", end: "0:50", topic: "フォルダ作りはClaude Codeの外でやる", direction: "画面収録：Claude Codeから exit して抜ける", content: "まずはプロジェクト用のフォルダを作って、そこに移動します。<strong>これが一番大事です</strong>。ちなみにこの作業は<strong>Claude Codeの外で行います</strong>。もしClaude Codeが起動していたら、一旦 <strong>exit</strong> で抜けてください。", reference: "" },
       { start: "0:50", end: "1:35", topic: "mkdir / cd でプロジェクト作成・移動", direction: "画面収録：Documents配下でmkdir→cd", content: "Documentsの配下で <strong>mkdir my-project</strong>。これで「my-project」というフォルダが作れました。そこに移動しましょう。<strong>cd my-project</strong> で、今このプロジェクトフォルダの中に入った状態です。", reference: "" },
       { start: "1:35", end: "1:55", topic: "claudeコマンドで起動", direction: "画面収録：ターミナルで claude 実行", content: "ここで <strong>claude</strong> というコマンドを打つと、このディレクトリの中で作業ができるようになります。Claude Codeは<strong>今いるフォルダの中で働く道具</strong>なので、新しい仕事を始めるときは最初にフォルダを作る、と覚えてください。", reference: "" },
@@ -219,7 +219,7 @@ var SCRIPTS = {
       { type: "サンプルファイル", name: "demo/s2v2/CLAUDE_lv2.md", purpose: "業務に馴染ませた育てた版（参照・リンク集・禁止事項）", timing: "Lv.2 育てた版紹介" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではClaude Codeを使う皆さんに向けて、<strong>Claude Codeが毎回読み込む取扱説明書『CLAUDE.md』の書き方</strong>をお伝えします。非エンジニアの方でも書ける、入門レベルで進めていきます。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではClaude Codeを使う皆さんに向けて、<strong>Claude Codeが毎回読み込む取扱説明書『CLAUDE.md』の書き方</strong>をお伝えします。非エンジニアの方でも書ける、入門レベルで進めていきます。", reference: "" },
       { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "表紙のまま／または画面収録でCLAUDE.mdを開く", content: "CLAUDE.mdを書いておくと、<strong>会社の業務ルール・ファイル配置・出力の好みを、Claude Codeに毎回説明し直さずに済む</strong>ようになります。新しいアシスタントを迎えるたびに業務をゼロから教える手間、と言えば近いでしょうか。前回 <strong>/init</strong> を打って自動生成されたこのファイルを、今回は<strong>自分の仕事仕様に育てていく</strong>、そのための書き方を扱っていきます。", reference: "" },
       { start: "1:00", end: "1:40", topic: "CLAUDE.mdは毎ターン送信される", direction: "画面収録：CLAUDE.md→会話欄のイメージ図", content: "まず仕組みのポイントです。CLAUDE.mdは<strong>セッションの最初に一度読み込まれて、そのあと毎ターンの会話と一緒にAIへ送信され続ける</strong>ファイルです。前動画で「Claude Codeは毎ターン会話全文を送り直している」とお話ししましたが、<strong>CLAUDE.mdはその先頭に毎回乗っかる</strong>イメージになります。だからClaude Codeは、毎セッションで一貫した振る舞いをしてくれるわけです。", reference: "" },
       { start: "1:40", end: "2:00", topic: "書きすぎ注意の伏線", direction: "同上", content: "裏を返すと、CLAUDE.mdに書きすぎると<strong>毎ターンの入力コストがずっと大きくなる</strong>ということになります。これは後ほど効いてくる話ですので、頭の片隅に置いておいてください。", reference: "" },
@@ -276,7 +276,7 @@ var SCRIPTS = {
       { type: "画面収録", name: "利用金額上限設定", purpose: "Anthropicコンソールで月次予算上限を設定", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではClaude Codeをこれから本格的に使い始める方に向けて、<strong>安全に使うための基本</strong>を扱います。S2の締めくくりとして、応用に進む前にここで土台を固めていきます。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではClaude Codeをこれから本格的に使い始める方に向けて、<strong>安全に使うための基本</strong>を扱います。S2の締めくくりとして、応用に進む前にここで土台を固めていきます。", reference: "" },
       { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "表紙のまま", content: "Claude Codeは強力な道具です。<strong>一方でその強さは、使い方次第でファイル消失や情報漏洩に直結します</strong>。Returnキーを連打して全部承認してしまえば、知らないうちに大事なファイルが消えていた、ということも起こりえます。S3以降では権限や承認の判断を皆さん自身が下せる前提で話が進みますので、ここでその基本をしっかり押さえていきましょう。", reference: "" },
       { start: "1:00", end: "1:50", topic: "権限3段階の全体像", direction: "スライド：権限3段階比較図", content: "Claude Codeには権限のモードが3段階あります。<strong>デフォルト、Auto-accept edits、そしてフルオート</strong>です。これは皆さんが普段スマホアプリを入れたときに「カメラへのアクセスを許可しますか？」と聞かれるのと同じ仕組みと思っていただいて構いません。<strong>何をどこまで自動で許すかを、自分で選べる</strong>作りになっています。", reference: "" },
       { start: "1:50", end: "2:30", topic: "デフォルトモード", direction: "画面収録：Shift+Tabで切り替え→デフォルト動作確認", content: "まずデフォルトモードです。これは<strong>Claude Codeが何かを実行するたびに、毎回承認を求めてくる慎重なモード</strong>になります。ファイルを編集する、コマンドを実行する、外部から情報を取りに行く、そのつど画面に確認が出ます。最初はこのモードから入っていただくのが安心です。", reference: "" },
@@ -304,7 +304,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "demos/sushi-ir-comparison.html（比較マトリクスHTML）", purpose: "売上高・営業利益率・既存店売上前年比の3指標で3社を比較", timing: "後半の動作確認" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではマーケター・経営企画・営業の方に向けて、<strong>Claude Codeをリサーチ業務に応用する方法</strong>をお伝えします。題材は誰もが知っている回転寿司大手3社、公開IR資料を一発で比較マトリクスHTMLにまとめる体験です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではマーケター・経営企画・営業の方に向けて、<strong>Claude Codeをリサーチ業務に応用する方法</strong>をお伝えします。題材は誰もが知っている回転寿司大手3社、公開IR資料を一発で比較マトリクスHTMLにまとめる体験です。", reference: "" },
       { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "他社の動向を掴むためのリサーチは、多くの職種で時間を取られている業務だと思います。<strong>決算短信のPDFを開いて、売上や利益率の数字を拾って、Excelに転記して比較表を作る</strong>——一社あたり30分、3社で1時間半、5社なら半日仕事になります。一方で<strong>Claude CodeにWebFetchで各社IRのURLを渡せば、数分で比較マトリクスが手元に届きます</strong>。今日はその体験をしていただく回です。", reference: "" },
       { start: "1:10", end: "1:50", topic: "題材紹介", direction: "画面収録：エディタを開く", content: "題材は<strong>回転寿司大手3社、スシロー・くら寿司・はま寿司</strong>を使います。誰でも知っている業界で、3社とも上場企業として公開IRが揃っているという、入門には最適な題材になります。皆さんが実務で使う際は、<strong>この3社を任意の業界の競合企業に置き換えていただければ、そのまま今日のやり方が使えます</strong>。", reference: "" },
       { start: "1:50", end: "2:30", topic: "公開IR資料の場所確認", direction: "ブラウザ：3社のIR情報ページを順に開く", content: "まず3社の公開IRページを実際に開いて見ます。<strong>スシローはFOOD & LIFE COMPANIES、くら寿司は単独上場、はま寿司はゼンショーホールディングス傘下</strong>になります。各社のIR情報ページに、最新の決算短信PDFが必ず公開されています。<strong>これらは投資家向けに公開されている情報なので、誰でもアクセスできます</strong>。", reference: "スシロー: https://www.food-and-life.co.jp/ir/ ／ くら寿司: https://www.kurasushi.co.jp/ir/ ／ はま寿司: https://www.zensho.co.jp/jp/ir/" },
@@ -319,7 +319,7 @@ var SCRIPTS = {
   },
   "S3-V1": {
     meta: {
-      duration: "約7分30秒",
+      duration: "約8分",
       mode: "画面収録（ターミナル＋Claude Code＋ブラウザ。スライドは表紙のみ）",
       goal: "shinkokuをインストールして確定申告の一連の流れを実演し、Skills＝専門家の手順がパッケージ化されたものという概念を理解する。自分の業務をSkill化する発想を得る"
     },
@@ -333,7 +333,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "PL/BSと還付額レポート", purpose: "決算書と所得税の還付額表示", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では業務効率化に取り組みたい全職種の方に向けて、<strong>Skills</strong>という機能をお伝えします。題材は確定申告、税理士の専門手順を丸ごとパッケージ化した<strong>shinkoku</strong>を実際にインストールして動かしていきます。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では業務効率化に取り組みたい全職種の方に向けて、<strong>Skills</strong>という機能をお伝えします。題材は確定申告、税理士の専門手順を丸ごとパッケージ化した<strong>shinkoku</strong>を実際にインストールして動かしていきます。", reference: "" },
       { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "皆さんは普段、Claude Codeに何かを依頼するとき<strong>毎回プロンプトを書き直して</strong>いないでしょうか。同じような依頼でも品質がブレる、チームのメンバーに同じ仕事を頼んでも自分のようには進まない、自分の頭の中の手順を共有できない——こうした課題はSkillsを使うことでまとめて解決できます。<strong>Skills＝職人の手順をパッケージ化したもの</strong>、これがS3で扱う最初のキーワードです。", reference: "" },
       { start: "1:10", end: "1:50", topic: "題材紹介：shinkoku", direction: "画面収録：shinkokuのGitHubリポジトリを表示", content: "題材は<strong>確定申告</strong>です。確定申告は税理士が長年の経験で身につけた判断手順、<strong>帳簿の付け方・決算整理・税額計算・電子申告までの一連の判断</strong>がぎっしり詰まった業務になります。この税理士の手順を丸ごとパッケージ化したのが、今日扱う<strong>shinkoku</strong>です。", reference: "shinkoku: https://github.com/kazukinagata/shinkoku" },
       { start: "1:50", end: "2:30", topic: "Skillsの定義", direction: "スライド：表紙", content: "ここで<strong>Skillsとは何か</strong>を整理します。日常の例で言えば<strong>「資格」や「免許」</strong>と同じ発想です。資格を持っている人が職場に来れば、その瞬間から即戦力として動ける——Skillsもそれと同じで、<strong>インストールするだけで専門家の手順が動き出す</strong>仕組みになります。さらにSkillsは<strong>SKILL.mdというオープン標準</strong>で書かれているので、Claude Codeだけでなく40以上のAIエージェントで共通して動く——そういう普遍性を持っています。", reference: "Anthropic公式Skills: https://github.com/anthropics/skills" },
@@ -362,8 +362,8 @@ var SCRIPTS = {
       { type: "画面収録", name: "対話で微調整", purpose: "「グラフが弱い」「示唆をもう1段」をSkillに反映", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経理・管理部門の方に向けて、<strong>毎月の月次レポート作成をSkill化する方法</strong>をお伝えします。Skills Creatorという機能を使い、自分の業務を組織誰もが再現できる仕組みに変えていきます。", reference: "" },
-      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "表紙のまま", content: "月末の業績集計、議事録の読み直し、パワポへの転記——多くの経理担当の方が<strong>毎月10〜30時間を月次レポート作成</strong>に費やしています。一方で経営会議に出すと「数字の羅列」で読まれずに終わる、というケースも少なくないと思います。これをSkill化すれば、<strong>同じ手順を毎月Claude Codeが回してくれる、しかも背景・ストーリー・示唆まで含めた読まれるレポート</strong>に進化させられます。今日はその体験をしていただく回になります。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経理・管理部門の方に向けて、<strong>毎月の月次レポート作成をSkill化する方法</strong>をお伝えします。Skills Creatorという機能を使い、自分の業務を組織誰もが再現できる仕組みに変えていきます。", reference: "" },
+      { start: "0:25", end: "1:25", topic: "なぜ扱うか", direction: "表紙のまま", content: "月末の業績集計、議事録の読み直し、パワポへの転記——多くの経理担当の方が<strong>毎月10〜30時間を月次レポート作成</strong>に費やしています。一方で経営会議に出すと「数字の羅列」で読まれずに終わる、というケースも少なくないと思います。これをSkill化すれば、<strong>同じ手順を毎月Claude Codeが回してくれる、しかも背景・ストーリー・示唆まで含めた読まれるレポート</strong>に進化させられます。今日はその体験をしていただく回になります。", reference: "" },
       { start: "1:20", end: "1:50", topic: "前回からの転換（受動→能動）", direction: "表紙のまま", content: "前回の動画では、他者が作ったshinkokuを使う「受動的な体験」をしていただきました。<strong>今日は皆さん自身が作り手に回ります</strong>。受け取る側から能動的に設計する側へ、その転換を可能にするのがSkills Creatorです。", reference: "" },
       { start: "1:50", end: "2:30", topic: "題材紹介：ドレミファエア社", direction: "画面収録：demos/doremifa-air/ の3ファイルを順に開く", content: "題材は架空の<strong>ドレミファエア社</strong>です。ドレミファソラシドの7路線を持つ中堅キャリア、その3月度の月次経営レポートを作成します。インプットは3つ——<strong>業績CSV・経営会議メモ・事業背景メモ</strong>。これらから経営者向けHTMLレポートを出力する、というシナリオで進めます。", reference: "demos/doremifa-air/financials.csv／board-notes.md／business-notes.md" },
       { start: "2:30", end: "3:10", topic: "Skills Creatorの正体", direction: "スライド：表紙", content: "ここで<strong>Skills Creatorとは何か</strong>を整理します。これは<strong>「あなたの業務手順をClaudeに口頭で説明するだけで、SKILL.md仕様に変換してくれる対話型ツール」</strong>です。プロンプトエンジニアリングの知識は要りません。普段の業務をそのまま言葉で伝える——それだけでSkillが組み上がる、という設計になっています。", reference: "公式Skills Creator: https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md" },
@@ -390,7 +390,7 @@ var SCRIPTS = {
       { type: "画面収録", name: "日報生成プロンプト→HTML出力", purpose: "全チャンネルクロール→経営層向けHTML日報の生成", timing: "後半の動作確認" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではチームリーダー・マネージャーの方に向けて、<strong>Slack MCPで日報・週報をHTML形式で自動生成する方法</strong>をお伝えします。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではチームリーダー・マネージャーの方に向けて、<strong>Slack MCPで日報・週報をHTML形式で自動生成する方法</strong>をお伝えします。", reference: "" },
       { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "チームリーダーとして、<strong>日報を書かせたり、自分で情報を集めて整理したりする作業</strong>に負担を感じることはないでしょうか。Slackには雑多な情報が流れるので、そこから日報を作るのは意外と手間がかかります。<strong>Slack MCPを繋ぐと、AIがSlackを巡回して自動で整理してくれます</strong>。その結果、<strong>現状の把握や問題の発見が格段に効率的になります</strong>。", reference: "" },
       { start: "1:10", end: "1:40", topic: "MCPの定義（USB-Cアナロジー）", direction: "スライド：MCP概念図", content: "MCPは<strong>モデル・コンテキスト・プロトコル</strong>の略で、AIとSlackやNotionなどの外部ツールを繋ぐ<strong>共通規格</strong>です。深く考えず、<strong>AIが使うUSB-Cポート</strong>みたいなものだと思ってください。", reference: "" },
       { start: "1:40", end: "1:50", topic: "Slack公式プラグインの確認", direction: "ブラウザ：slackapi/slack-mcp-pluginを開く", content: "では実演に入ります。まず<strong>Slack公式が提供するMCPプラグイン</strong>を確認します。", reference: "https://github.com/slackapi/slack-mcp-plugin" },
@@ -416,7 +416,7 @@ var SCRIPTS = {
       { type: "画面収録", name: "経営課題抽出プロンプト→HTML出力", purpose: "過去3ヶ月議事録の横断検索→HTMLダッシュボード生成", timing: "後半の動作確認" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経営層・組織開発・人事の方に向けて、<strong>Notion MCPで組織の記憶を横断する方法</strong>をお伝えします。MCP第2弾です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経営層・組織開発・人事の方に向けて、<strong>Notion MCPで組織の記憶を横断する方法</strong>をお伝えします。MCP第2弾です。", reference: "" },
       { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "表紙のまま", content: "人の脳は<strong>個人の経験しか記憶できません</strong>。一方でNotionには<strong>組織全体の議事録・プロジェクト情報・ナレッジが蓄積</strong>されているのに、検索しても断片しか出てこず、結局人手で集めて回った経験はないでしょうか。<strong>Notion MCPを繋ぐと、Claudeが司書として複数の情報源を一度に巡回してくれます</strong>。その結果、<strong>過去の議論から経営課題を拾い直す作業が格段に効率的になります</strong>。", reference: "" },
       { start: "1:10", end: "1:30", topic: "Slackとの対比", direction: "スライド：表紙", content: "位置付けを対比させてください。<strong>Slackは「流れる情報」</strong>、<strong>Notionは「蓄積された記憶」</strong>です。両方が揃って、組織の意思決定の速度と質が同時に上がります。", reference: "" },
       { start: "1:30", end: "1:50", topic: "Notion公式プラグインの確認", direction: "ブラウザ：makenotion/claude-code-notion-pluginを開く", content: "では実演に入ります。まず<strong>Notion公式のClaude Codeプラグイン</strong>を確認します。<strong>MCPサーバーに加えて、Skillsやスラッシュコマンドまでバンドル</strong>されています。", reference: "https://github.com/makenotion/claude-code-notion-plugin" },
@@ -444,7 +444,7 @@ var SCRIPTS = {
       { type: "Figmaファイル", name: "ミゾリーチLP", purpose: "PoC生成済みデザイン（ダーク×ゴールド配色・6セクション）", timing: "中盤" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではデザイナー・フロントエンドエンジニア・PMの方に向けて、<strong>Figma MCPでデザインとコードを双方向につなぐ方法</strong>をお伝えします。S3最終回です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではデザイナー・フロントエンドエンジニア・PMの方に向けて、<strong>Figma MCPでデザインとコードを双方向につなぐ方法</strong>をお伝えします。S3最終回です。", reference: "" },
       { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "デザインをコードに落とし込むとき、スクショを渡して「これっぽく作って」と頼む方法があります。スクショ経由だとAIは見た目を推測するしかなく、精度に限界があります。<strong>Figma MCPは、ノード構造・色・フォント・Auto Layoutの構造化データをClaudeが直接読み取ります</strong>。精度が段違いです。Figmaをなくすのではなく、<strong>Figmaの価値を最大化する道具</strong>——デザイン資産がそのままコードに変わり、設計と実装の往復コストが格段に減ります。", reference: "" },
       { start: "1:10", end: "2:10", topic: "プラグインインストール＋OAuth認証", direction: "画面収録：ターミナルでプラグインインストール→ブラウザOAuth", content: "Figma MCPの接続から始めます。<code>claude plugin install figma@claude-plugins-official</code>でClaude公式プラグインをインストールし、<code>/reload-plugins</code>でプラグインを読み込みます。続けて<code>authenticate</code>を実行するとブラウザが開き、FigmaのOAuth認証画面が表示されます。「許可」を押せば接続完了です。<code>whoami</code>で確認すると、アカウント名・プラン（Starter）・seat種別（View）が返ってきます。<strong>Starter無料プラン</strong>でこのまま進めます。", reference: "" },
       { start: "2:10", end: "2:50", topic: "create_new_file＋双方向性", direction: "画面収録：create_new_file実行→Figmaで空ファイル確認", content: "ここからが驚きのポイントです。<code>create_new_file</code>を実行すると、<strong>ClaudeがFigmaに空のデザインファイルを新規作成しました</strong>。Figma MCPは読み取り専用ではなく、Claudeからデザインを書き込める双方向の接続です。ここからミゾリーチLP——ビズリーチ風の架空ハイクラス転職サービスを、Claudeに作ってもらいます。", reference: "" },
@@ -470,8 +470,8 @@ var SCRIPTS = {
       { type: "出力成果物", name: "demos/hotel-cleaning-lms/index.html", purpose: "受講者ポータル＋受講ダッシュボード", timing: "後半の動作確認" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では人事・研修担当の方に向けて、<strong>現場職向けの社内eラーニングシステム</strong>をClaude Codeで自作していきます。題材は架空ホテル『シーサイドホテル』の清掃スタッフ育成LMS、10分で動くガワを一緒に組み上げます。", reference: "" },
-      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "スライド：課題設定", content: "宿泊業やサービス業の現場は、<strong>外国人スタッフの増加・OJT負担の集中・高い離職率</strong>といった課題を抱えているケースが多いと思います。「せっかく教えた人が辞めて、また一から教え直し」という循環も珍しくありません。一方でeラーニングというと専用SaaSの契約が前提、というイメージをお持ちかもしれません。この動画では、<strong>最低限のスペック駆動開発でHTML1枚の受講者ポータルを自作する</strong>方法をお伝えします。自社の教材タイトルと受講者名を入れ替えるだけで自部署に持ち込める、そんな作り方です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では人事・研修担当の方に向けて、<strong>現場職向けの社内eラーニングシステム</strong>をClaude Codeで自作していきます。題材は架空ホテル『シーサイドホテル』の清掃スタッフ育成LMS、10分で動くガワを一緒に組み上げます。", reference: "" },
+      { start: "0:25", end: "1:25", topic: "なぜ扱うか", direction: "スライド：課題設定", content: "宿泊業やサービス業の現場は、<strong>外国人スタッフの増加・OJT負担の集中・高い離職率</strong>といった課題を抱えているケースが多いと思います。「せっかく教えた人が辞めて、また一から教え直し」という循環も珍しくありません。一方でeラーニングというと専用SaaSの契約が前提、というイメージをお持ちかもしれません。この動画では、<strong>最低限のスペック駆動開発でHTML1枚の受講者ポータルを自作する</strong>方法をお伝えします。自社の教材タイトルと受講者名を入れ替えるだけで自部署に持ち込める、そんな作り方です。", reference: "" },
       { start: "1:20", end: "1:50", topic: "アウトプット像", direction: "画面収録：完成index.htmlを30秒早送りで試写", content: "まず今日のゴールを先にお見せします。完成した<code>index.html</code>はこのような形です。<strong>3カテゴリ×3教材、受講ダッシュボードまで含めて1枚のHTMLに収まっている</strong>のがポイントです。このガワを10分で作る、という目標で進めていきます。", reference: "demos/hotel-cleaning-lms/index.html" },
       { start: "1:50", end: "2:25", topic: "コンテンツ構造の図解", direction: "画面収録：コンテンツ構造を図示", content: "題材の中身を整理します。カテゴリは<strong>客室清掃・浴場清掃・共用部清掃の3つ</strong>、各カテゴリに教材が3本、合計9教材という構造です。受講者は田中さん・山田さん・グエンさんの架空3名で、<strong>実在ホテル名・実在スタッフ名は一切使わない</strong>方針で進めます。", reference: "" },
       { start: "2:25", end: "3:05", topic: "最低限のスペック駆動の導入", direction: "画面収録：エディタに切り替え", content: "ここでのスペック駆動は、前のセクションで扱った仕様書作りを<strong>最小構成で適用する</strong>形で進めます。書き込むのは<strong>階層構造・画面数・ダミーデータの3点だけ</strong>、他は思い切って載せません。仕様書は数行で済みます。", reference: "" },
@@ -485,62 +485,32 @@ var SCRIPTS = {
   },
   "S4-V2": {
     meta: {
-      duration: "約9分",
-      mode: "画面収録（エディタ＋Claude Codeターミナル＋ブラウザ。スライドは表紙・個人情報配慮・クロージングの3枚）",
-      goal: "経理・人事・総務のバックオフィス担当者が、申請書Excel10件＋添付PDF・画像の混在ファイルをClaude Codeで仕分けしHTMLチェックレポートを10分で受け取れるようになる"
+      duration: "約8分",
+      mode: "画面収録（エディタ＋Claude Codeターミナル＋ブラウザ。スライドは表紙・データポリシー・クロージングの3枚）",
+      goal: "バックオフィス担当者が、タイムカードExcelと勤怠申請Excelの突合をClaude Codeで自動化し、HTMLチェックレポートを数分で受け取れるようになる"
     },
     materials: [
       { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "スライド", name: "Anthropicデータポリシー要約", purpose: "個人情報配慮の冒頭シーンで使用", timing: "序盤" },
-      { type: "スライド", name: "ガードレール4項目", purpose: "個人情報配慮の締めで使用", timing: "序盤" },
-      { type: "サンプルデータ", name: "demos/shinsei-check/applications/", purpose: "申請書Excel10件（経費5・通勤手当3・育児休業2、架空データ）", timing: "中盤" },
-      { type: "サンプルデータ", name: "demos/shinsei-check/attachments/", purpose: "領収書・印字PDF・スキャン・定期券・母子手帳コピーの混在添付", timing: "中盤" },
-      { type: "画面収録", name: "mask.pyデモ", purpose: "氏名・生年月日・口座のマスキング実装デモ", timing: "序盤" },
-      { type: "画面収録", name: "Claude Codeでの突合", purpose: "対話依頼→読み取り進捗→HTMLレポート生成", timing: "中盤〜後半" },
-      { type: "出力成果物", name: "demos/shinsei-check/output/check-report.html", purpose: "承認可6件・要確認4件の仕分けと差分根拠を載せたレポート", timing: "後半の動作確認" }
+      { type: "スライド", name: "Anthropicデータポリシー要約", purpose: "個人情報配慮の冒頭シーンで使用（約60秒の軽量版）", timing: "序盤" },
+      { type: "サンプルデータ", name: "demos/kintai-check/timecard.xlsx", purpose: "タイムカード10名×1ヶ月分、架空データ", timing: "中盤" },
+      { type: "サンプルデータ", name: "demos/kintai-check/applications.xlsx", purpose: "勤怠申請10件（有給5・残業3・休日出勤2）", timing: "中盤" },
+      { type: "画面収録", name: "Claude Codeでの突合", purpose: "対話依頼→両Excel読み取り→HTMLレポート生成", timing: "中盤〜後半" },
+      { type: "出力成果物", name: "demos/kintai-check/output/check-report.html", purpose: "承認可6件・要確認4件の仕分けと差分根拠を載せたレポート", timing: "後半の動作確認" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経理・人事・総務のバックオフィス担当の方に向けて、<strong>申請書類のチェック校閲をClaude Codeで自動化する</strong>方法をお伝えします。題材は月100件超の申請突合、AI一次チェックと人間最終判定のハイブリッド運用です。", reference: "" },
-      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "スライド：表紙", content: "バックオフィスの現場は、<strong>経費精算・通勤手当・育児休業の申請処理が毎月100件超</strong>、というケースも珍しくありません。1件5分の目視突合で合計500分、月次で丸1日以上が消えていきます。一方で100%自動化は現実的ではなく、<strong>80%をAIで自動仕分け、残り20%を人間が最終判定する</strong>ハイブリッドが現実解です。500分を30分に圧縮する感覚を、この動画で体得していただきます。", reference: "" },
-      { start: "1:20", end: "2:30", topic: "個人情報ガードレール", direction: "スライド：Anthropicデータポリシー→画面収録：mask.py実行→スライド：ガードレール4項目", content: "実演に入る前に、<strong>個人情報の扱い</strong>を先に固めます。まず<strong>Anthropicのデータポリシー</strong>：API経由のデータは学習に使われない、という前提を押さえます。次に<strong>マスキングの実装デモ</strong>、<code>mask.py</code>で氏名はA氏、生年月日は年代、口座は下4桁に置き換わります。<strong>マイナンバーは設計段階から処理対象に入れない</strong>方針です。ガードレールは<strong>利用目的の通知・マスキング・機微情報の除外・社内ポリシーとの整合</strong>の4項目、という整理で入口条件を揃えておきます。", reference: "demos/shinsei-check/mask.py" },
-      { start: "2:30", end: "3:10", topic: "題材フォルダ", direction: "画面収録：demos/shinsei-check/をエディタで開く", content: "題材フォルダを開きます。<code>demos/shinsei-check/applications/</code>に申請書Excel10件、<strong>経費精算5・通勤手当3・育児休業2</strong>の内訳です。<code>attachments/</code>側には領収書画像・印字PDF・スキャン画像・定期券写真・母子手帳コピーのPDFが混在します。登場人物は<strong>田中太郎さん・山田花子さん・グエン・ティ・ハンさん</strong>、完全架空データで前の動画と揃えています。", reference: "demos/shinsei-check/applications/" },
-      { start: "3:10", end: "3:40", topic: "対話依頼", direction: "画面収録：Claude Codeのプロンプト欄", content: "Claude Codeに依頼します。<strong>「このフォルダの申請10件と添付を突合し、不整合があれば差額・差日数・経路不一致を具体的に挙げてHTMLレポートにまとめてください」</strong>——自然な日本語でそのまま伝える形です。", reference: "" },
-      { start: "3:40", end: "4:30", topic: "読み取り進捗", direction: "画面収録：Claude Codeの処理ログ", content: "Claude Codeが印字PDFとスキャン画像を順に読み、金額と日付を抽出していく進捗をログで追います。ここは少し時間がかかる部分で、<strong>読み取り精度は素材で変わります</strong>。目安としては<strong>印字PDFがほぼ100%、スキャン画像が90〜95%、手書きやFAX紙が60〜80%</strong>といった水準です。", reference: "" },
-      { start: "4:30", end: "5:30", topic: "HTMLレポート確認", direction: "画面収録：生成HTMLをブラウザで開く", content: "生成されたHTMLレポートをブラウザで開きます。<strong>✅承認可が6件、⚠️要確認が4件</strong>で仕分けされています。要確認の行には差分根拠が並んでいて、<strong>「¥12,300 vs ¥12,500、200円差」「出産予定日 申請5/15 vs 母子手帳5/12、3日差」「経路不一致」</strong>のように、数値と根拠がセットで示されます。<strong>差分の出し方が具体的だから、人間側の最終判定が短時間で済む</strong>、という設計です。", reference: "demos/shinsei-check/output/check-report.html" },
-      { start: "5:30", end: "6:10", topic: "精度の正直な開示", direction: "画面収録：手書き領収書が要確認に落ちる行", content: "ここで<strong>読み取り精度の限界を正直にお伝えします</strong>。手書きの不鮮明な領収書は、自動で⚠️要確認に落ちます。これは<strong>精度の限界がそのまま運用ガードレールに転化している</strong>状態で、怪しいものは人間に回す、という切り分けが仕組みの中に織り込まれています。", reference: "" },
-      { start: "6:10", end: "6:40", topic: "バックオフィス2大柱", direction: "画面収録：スライド表紙に戻す", content: "前のセクションで扱った<strong>Skills Creatorによる月次レポート自動化</strong>と、この動画の<strong>日次の申請処理自動化</strong>を組み合わせると、バックオフィスの業務が<strong>月次集約と日次申請処理の両側から挟み撃ち</strong>になります。属人化と目視地獄の両方が、AIで解けていく絵です。", reference: "" },
-      { start: "6:40", end: "7:20", topic: "100%自動化は幻想", direction: "画面収録：スライド表紙のまま", content: "中立化のメッセージを1つ置いておきます。<strong>100%自動化は幻想、80%自動化が現実解</strong>です。AIが担うのは<strong>除外とフラグ立て、最終承認印は人が押す</strong>——迷惑メールフィルタと同じ発想で運用するのがしっくりきます。月100件×5分の500分が、<strong>要確認数件×6分で30分</strong>に圧縮される、という時間の姿に変わります。", reference: "" },
-      { start: "7:20", end: "9:00", topic: "アプリ化との棲み分け・クロージング", direction: "スライド：クロージング", content: "最後に対話ツール完結型と業務アプリ化の<strong>棲み分け</strong>を明示して閉じます。<strong>月100件までなら対話ツール一人完結、ワークフロー承認・監査ログ・複数ユーザー同時運用まで踏み込む段階からはWebアプリ化の番</strong>、という境界です。アプリ化はこのあとのセクションで扱います。個人情報のガードレールを入口に据えて、現実的な自動化を着実に進めていきましょう。それでは次の動画でお会いしましょう。", reference: "" }
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経理・人事・総務のバックオフィス担当の方に向けて、<strong>勤怠申請の突合チェックをClaude Codeで自動化する</strong>方法をお伝えします。題材は月100件超の勤怠突合、AI一次チェックと人間最終判定のハイブリッド運用です。", reference: "" },
+      { start: "0:25", end: "1:25", topic: "なぜ扱うか", direction: "スライド：表紙", content: "バックオフィスの現場は、<strong>有給・残業・休日出勤の申請処理が毎月100件超</strong>、というケースも珍しくありません。1件5分の目視突合で合計500分、月次で丸1日以上が消えていきます。一方で100%自動化は現実的ではなく、<strong>80%をAIで自動仕分け、残り20%を人間が最終判定する</strong>ハイブリッドが現実解です。500分を30分に圧縮する感覚を、この動画で体得していただきます。", reference: "" },
+      { start: "1:25", end: "2:25", topic: "個人情報配慮（軽量版）", direction: "スライド：Anthropicデータポリシー", content: "実演に入る前に、<strong>個人情報の扱い</strong>を先に固めます。まず<strong>Anthropicのデータポリシー</strong>：API経由のデータは学習に使われない、という前提を押さえます。次に<strong>利用目的を社内ポリシーと整合させて通知</strong>、勤怠突合目的に限定する形です。今回の題材は氏名と時刻のみで、<strong>マイナンバー・住所・生年月日は題材から除外</strong>しています。入口条件を軽く揃えて、すぐ実演に入ります。", reference: "" },
+      { start: "2:25", end: "3:10", topic: "題材フォルダ", direction: "画面収録：demos/kintai-check/をエディタで開く", content: "題材フォルダを開きます。<code>demos/kintai-check/</code>配下に2つのExcelがあります。<code>timecard.xlsx</code>が<strong>タイムカード10名分・1ヶ月分の出退勤記録</strong>、<code>applications.xlsx</code>が<strong>勤怠申請10件、有給5件・残業3件・休日出勤2件</strong>の内訳です。登場人物は<strong>田中太郎さん・山田花子さん・グエン・ティ・ハンさん</strong>を含む架空10名、前の動画と揃えた架空データです。", reference: "demos/kintai-check/" },
+      { start: "3:10", end: "3:40", topic: "対話依頼", direction: "画面収録：Claude Codeのプロンプト欄", content: "Claude Codeに依頼します。<strong>「このフォルダのタイムカードと勤怠申請を突合し、不整合があれば時間差・日付差・重複を具体的に挙げてHTMLレポートにまとめてください」</strong>——自然な日本語でそのまま伝える形です。", reference: "" },
+      { start: "3:40", end: "4:10", topic: "読み取り進捗", direction: "画面収録：Claude Codeの処理ログ", content: "Claude Codeが両Excelを読み、<strong>日付・時刻・申請種別</strong>を抽出していく進捗をログで追います。<strong>構造化されたExcelなので読み取りは安定</strong>していて、数秒で突合判定に進みます。", reference: "" },
+      { start: "4:10", end: "5:10", topic: "HTMLレポート確認", direction: "画面収録：生成HTMLをブラウザで開く", content: "生成されたHTMLレポートをブラウザで開きます。<strong>✅承認可が6件、⚠️要確認が4件</strong>で仕分けされています。要確認の行には差分根拠が並んでいて、<strong>「有給申請日に出勤打刻あり（9:00-18:00）」「残業申請2時間 vs 実打刻30分」「休日出勤申請なしで打刻あり」</strong>のように、時間・日付・有無がセットで示されます。<strong>差分の出し方が具体的だから、人間側の最終判定が短時間で済む</strong>、という設計です。", reference: "demos/kintai-check/output/check-report.html" },
+      { start: "5:10", end: "5:40", topic: "バックオフィス2大柱", direction: "画面収録：スライド表紙に戻す", content: "前のセクションで扱った<strong>Skills Creatorによる月次レポート自動化</strong>と、この動画の<strong>日次の申請処理自動化</strong>を組み合わせると、バックオフィスの業務が<strong>月次集約と日次申請処理の両側から挟み撃ち</strong>になります。属人化と目視地獄の両方が、AIで解けていく絵です。", reference: "" },
+      { start: "5:40", end: "6:20", topic: "100%自動化は幻想", direction: "画面収録：スライド表紙のまま", content: "中立化のメッセージを1つ置いておきます。<strong>100%自動化は幻想、80%自動化が現実解</strong>です。AIが担うのは<strong>除外とフラグ立て、最終承認印は人が押す</strong>——迷惑メールフィルタと同じ発想で運用するのがしっくりきます。月100件×5分の500分が、<strong>要確認数件×6分で30分</strong>に圧縮される、という時間の姿に変わります。", reference: "" },
+      { start: "6:20", end: "8:00", topic: "アプリ化との棲み分け・クロージング", direction: "スライド：クロージング", content: "最後に対話ツール完結型と業務アプリ化の<strong>棲み分け</strong>を明示して閉じます。<strong>月100件までなら対話ツール一人完結で十分に回せる規模感</strong>です。一方で<strong>ワークフロー承認・監査ログ・複数ユーザーの同時運用</strong>まで踏み込む段階からはWebアプリ化の番、という境界があります。勤怠突合も規模が大きくなるほど社内システム化の方が自然、というのが順当な発展です。アプリ化はこのあとのセクションで扱います。今日の感覚をまとめておくと、<strong>AIは除外とフラグ立てを引き受け、最終承認印は人が押す</strong>——役割分担を崩さない運用こそが、現場で長く使える自動化の基本形です。個人情報配慮を軽く保ったまま、現実的なところから着実に進めていきましょう。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
   "S4-V3": {
-    meta: {
-      duration: "約7分",
-      mode: "画面収録（Claude Codeターミナル＋ブラウザ。スライドは表紙のみ）",
-      goal: "人事担当者が架空中小企業『○△商事』の新人受け入れ業務を題材に、5部署分のチェックリストHTMLを対話プロンプト1回で一気に自作できるようになる"
-    },
-    materials: [
-      { type: "スライド", name: "表紙", purpose: "動画タイトル表示", timing: "冒頭・クロージング" },
-      { type: "画面収録", name: "Claude Codeで一括生成", purpose: "対話プロンプト1回で5部署分のHTMLを生成", timing: "中盤" },
-      { type: "画面収録", name: "5部署のHTML確認", purpose: "営業・エンジニア・経理・マーケ・CSを順に開く", timing: "後半" },
-      { type: "画面収録", name: "印刷プレビュー・スマホ幅", purpose: "静的HTMLでも印刷とスマホが賄える確認", timing: "後半" },
-      { type: "画面収録", name: "修正デモ", purpose: "プロンプト1行追加で営業HTMLのみ差分更新", timing: "クロージング直前" },
-      { type: "出力成果物", name: "demos/onboarding/checklist-*.html", purpose: "5部署分のチェックリストHTML", timing: "クロージング直前" }
-    ],
-    script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では人事担当の方に向けて、<strong>新人受け入れチェックリストをClaude Codeで自作する</strong>方法をお伝えします。題材は架空中小企業『○△商事』、5部署分のチェックリストHTMLをプロンプト1回で組み上げます。", reference: "" },
-      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "スライド：表紙", content: "中小企業の人事担当の方は、<strong>採用翌月に部署ごとのやることが全く違う</strong>のに、毎年同じ段取りを頭の中で組み直している、という場面が多いと思います。営業にはCRMと名刺、エンジニアにはGitHubと開発環境、経理には経費精算の登録、と部署ごとに準備物が違う。この負担は意外と可視化されにくい領域です。この動画では、<strong>Claude Codeへの対話プロンプト1回で5部署分のチェックリストHTMLを一気に自作する</strong>方法をお伝えします。CSVも動的生成も使わない、完全に静的なHTML5枚を作る最小構成で進めます。", reference: "" },
-      { start: "1:20", end: "1:45", topic: "扱う範囲の明示", direction: "スライド：表紙", content: "扱うのは<strong>静的HTML5枚、チェックボックス付き、印刷対応、スマホ対応、スタイル統一</strong>までです。共同編集や更新通知・権限管理はスコープ外、ここは最後に触れます。", reference: "" },
-      { start: "1:45", end: "2:15", topic: "Notion手作りとの使い分け", direction: "画面収録：Notionとの比較表を図示", content: "Notionで手作りするやり方との比較を短く挟んでおきます。<strong>Notionが悪いわけではなく、用途の使い分け</strong>です。<strong>初期構築とスタイル統一、印刷までやりたい場面はHTML、共同編集と日々更新が中心になるならNotion</strong>、という整理が現場感に合います。", reference: "" },
-      { start: "2:15", end: "2:55", topic: "題材と個人情報作法", direction: "画面収録：エディタで要件メモを開く", content: "題材の設定です。架空中小企業『○△商事』、5部署は<strong>営業・エンジニア・経理・マーケ・カスタマーサクセス</strong>、各部署10〜15項目、新人は田中・山田・グエンの架空3名で前の動画と統一します。<strong>マイナンバー確認は項目タイトルのみ、実入力欄は設けずに手動・オフライン処理</strong>と注釈を入れておく、というのがここでの個人情報の扱い方です。", reference: "" },
-      { start: "2:55", end: "3:40", topic: "対話プロンプト1回依頼", direction: "画面収録：Claude Codeのプロンプト欄", content: "Claude Codeに依頼します。<strong>「○△商事の新人受け入れチェックリストを5部署分、静的HTML・チェックボックス付き・印刷対応・スマホ対応・スタイル統一でお願いします」</strong>と、5部署分の項目を1プロンプトにまとめて渡します。<strong>プロンプト1回だけ</strong>がこの動画の手触りの核です。", reference: "" },
-      { start: "3:40", end: "4:40", topic: "5部署のHTML確認", direction: "画面収録：ブラウザで5枚を順に開く", content: "数十秒で5枚のHTMLが出揃いました。<strong>営業→エンジニア→経理→マーケ→CS</strong>の順に開いていきます。部署ごとに項目が違うこと、そして<strong>デザインは5枚で統一されている</strong>ことが確認できます。", reference: "demos/onboarding/checklist-sales.html" },
-      { start: "4:40", end: "5:10", topic: "印刷プレビュー・スマホ幅", direction: "画面収録：印刷プレビュー→開発者ツールでスマホ幅", content: "印刷プレビューに切り替えるとA4で綺麗に収まります。続けて開発者ツールでスマホ幅に切り替えても、レイアウトが崩れずに縦積みで読める状態です。<strong>HTML1枚で印刷・PDF・スマホが全部賄える</strong>、という事実を押さえておきます。", reference: "" },
-      { start: "5:10", end: "5:50", topic: "修正デモ", direction: "画面収録：プロンプト1行追加→営業HTMLのみ再生成", content: "修正の容易さも見ておきます。<strong>「営業のチェックリストに『携帯電話契約』の項目を追加してください」</strong>と1行足すだけで、営業HTMLだけ差分更新、他4部署はそのままです。<strong>プロンプト1行追加で部分修正</strong>、という手応えを印象付けておきます。", reference: "" },
-      { start: "5:50", end: "7:00", topic: "クロージング・次セクションへの布石", direction: "スライド：表紙", content: "ここまでで、<strong>ドメイン知識のプロダクト化を人事ドメインに応用した最小実装例</strong>が手に入りました。前の動画のホテル清掃LMSが「新人が学ぶ側」の人事題材だったのに対し、この動画は「新人を受け入れる側」——<strong>研修と採用の人事ペア</strong>として機能します。一方で共同編集・更新通知・権限管理まで進めたくなった段階では、HTML単品では届きません。この続きはアプリ開発のセクションで受け止めます。それでは次の動画でお会いしましょう。", reference: "" }
-    ]
-  },
-  "S4-V4": {
     meta: {
       duration: "約8分30秒",
       mode: "画面収録（Claude Codeターミナル＋ブラウザ。スライドは表紙のみ）",
@@ -556,7 +526,7 @@ var SCRIPTS = {
       { type: "画面収録", name: "比較デモ", purpose: "明示指示なしで走らせた場合の偏りを短く提示", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経営者・事業部長・中間管理層の方に向けて、<strong>Slack MCPとNotion MCPを同時に動かし、CEO向け週次サマリーを自動生成する</strong>方法をお伝えします。個別MCPから複合MCPへ、点から線・面への質的転換を実演で体感していただきます。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では経営者・事業部長・中間管理層の方に向けて、<strong>Slack MCPとNotion MCPを同時に動かし、CEO向け週次サマリーを自動生成する</strong>方法をお伝えします。個別MCPから複合MCPへ、点から線・面への質的転換を実演で体感していただきます。", reference: "" },
       { start: "0:20", end: "1:20", topic: "月曜朝7時の描写", direction: "スライド：表紙", content: "経営層や事業責任者の方は、<strong>月曜朝にコーヒーを片手に「先週は何が起きたのか」を掴みたい</strong>場面が多いと思います。一方でSlackをチャネル横断でスクロールし、Notionの議事録を探し、頭の中で時系列に並べ直す作業は現実には厳しいものです。この動画でお伝えする価値は2軸です。経営層にとっては<strong>有能な秘書が先週の全体像を月曜朝に用意してくれる</strong>、中間管理層やメンバーにとっては<strong>週次報告資料作成の繰り返しから解放される</strong>——経営者と現場の両方が得する構図で整理していきます。", reference: "" },
       { start: "1:20", end: "2:00", topic: "点→線・面への対比", direction: "スライド：表紙", content: "前のセクションでは、Slack単体とNotion単体の扱い方を別々にお伝えしました。この動画では、<strong>Slack MCPとNotion MCPを同時に起動し、LLMが自律的にツールを呼び分ける</strong>複合MCPの世界に踏み込みます。1つの情報源から複数の情報源へ、点から線・面への質的転換、という位置付けです。", reference: "" },
       { start: "2:00", end: "2:30", topic: "Skills vs 複合MCPの棲み分け", direction: "スライド：表紙", content: "前のセクションで扱った<strong>月次レポートのSkill化</strong>との棲み分けも整理しておきます。<strong>固定フローで月次を集約する場面はSkills、動的に週次リアルタイムで束ねる場面は複合MCP</strong>——扱う時間軸の違いで選ぶ、というのが使い分けの指針になります。", reference: "" },
@@ -570,7 +540,7 @@ var SCRIPTS = {
       { start: "7:20", end: "8:30", topic: "クロージング・次セクションへの布石", direction: "スライド：表紙", content: "この動画では、<strong>組織の意思決定スピードと現場の資料作成負担を同時に変える</strong>体験をしていただきました。今回束ねたのはSlackとNotionの2本ですが、<strong>営業ツール・財務データ・顧客DBも同じやり方で束ねれば、組織のあらゆる判断が高速化</strong>していきます。「複数入力を束ねて統合出力」という思考パターンは、次のアプリ開発セクションで扱うデータベース設計・非同期処理の基盤になります。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
-  "S4-V5": {
+  "S4-V4": {
     meta: {
       duration: "約9分30秒",
       mode: "画面収録（Claude Codeターミナル＋エディタ＋ブラウザ。スライドは表紙と5工程フロー図の2枚）",
@@ -587,10 +557,10 @@ var SCRIPTS = {
       { type: "出力成果物", name: "demos/s4-v5/01〜05.md", purpose: "各工程の出力Markdown（疎結合の受け渡し物）", timing: "中盤〜後半" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではマーケ担当・オウンドメディア運営の方に向けて、<strong>SEO記事制作を5工程に分割してClaude Codeで高品質に生成する</strong>方法をお伝えします。題材はYMYL高額商材『屋上防水工事 費用相場』です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではマーケ担当・オウンドメディア運営の方に向けて、<strong>SEO記事制作を5工程に分割してClaude Codeで高品質に生成する</strong>方法をお伝えします。題材はYMYL高額商材『屋上防水工事 費用相場』です。", reference: "" },
       { start: "0:20", end: "1:30", topic: "なぜ扱うか・コアメッセージ", direction: "スライド：表紙", content: "マーケ担当の方は、<strong>毎月「高品質なSEO記事」に追われている</strong>場面が多いと思います。テーマを決めてAIに一発依頼する手軽さは魅力ですが、<strong>YMYL領域では浅い記事では絶対に上位が取れない</strong>のが現実です。競合も豊富で、SEO投資も大きい。ここでコアメッセージを一度打っておきます。<strong>工程分割で80%の再現性を確保し、残り20%の監修・一次情報・現場写真は人間の役割</strong>——この20%こそGoogleが評価するE-E-A-Tの核です。", reference: "" },
       { start: "1:30", end: "2:00", topic: "E-E-A-T解説", direction: "スライド：表紙", content: "E-E-A-Tは<strong>Experience・Expertise・Authoritativeness・Trustworthiness＝経験・専門性・権威性・信頼性</strong>の略です。<strong>AI下書きと人間監修の組み合わせがこの要件を満たす現実解</strong>、と断言して通過します。「AI記事はペナルティ」という話への長い反論はしません。", reference: "" },
-      { start: "2:00", end: "2:30", topic: "題材提示", direction: "画面収録：エディタで作業ディレクトリ準備", content: "題材は架空建設会社『<strong>○△建設</strong>』のオウンドメディア記事、キーワードは<strong>「屋上防水工事 費用相場」</strong>です。前の動画と同じ架空会社のマーケ部門、という連続設定で進めます。", reference: "demos/s4-v5/" },
+      { start: "2:00", end: "2:30", topic: "題材提示", direction: "画面収録：エディタで作業ディレクトリ準備", content: "題材は架空建設会社『<strong>○△建設</strong>』のオウンドメディア記事、キーワードは<strong>「屋上防水工事 費用相場」</strong>です。V2（申請書類チェック校閲）と同じ架空会社のマーケ部門、という連続設定で進めます。", reference: "demos/s4-v5/" },
       { start: "2:30", end: "3:30", topic: "第1工程：競合分析", direction: "画面収録：WebSearchで上位10記事取得→01.md保存", content: "最初の工程は<strong>競合分析</strong>です。Claude CodeのWebSearchで上位10記事を取得し、<strong>見出し構成・含まれるトピック・各記事の強み</strong>をMarkdown比較表に整理します。動画内の表示は<strong>「競合A社」「競合B社」</strong>で伏字、実在サービス名は出しません。結果を<code>01-competitor-analysis.md</code>に保存します。", reference: "demos/s4-v5/01-competitor-analysis.md" },
       { start: "3:30", end: "4:15", topic: "第2工程：ユーザーニーズ分析", direction: "画面収録：02.md生成", content: "次の工程は<strong>ユーザーニーズ分析</strong>です。比較表を読み込み、<strong>競合が見落としているギャップと、マンション・ビルオーナー・小規模リフォーム会社が本当に知りたいこと</strong>を深掘りします。<code>02-user-needs.md</code>に保存、という流れです。", reference: "demos/s4-v5/02-user-needs.md" },
       { start: "4:15", end: "5:00", topic: "第3工程：構成案作成", direction: "画面収録：03.md生成", content: "次は<strong>構成案作成</strong>、H2/H3の見出し体系を設計します。<strong>ウレタン・シート・FRP・アスファルトの4工法比較、費用内訳、業者選びチェックリスト</strong>を差別化見出しとして組み込む、という作り方です。<code>03-outline.md</code>に保存します。", reference: "demos/s4-v5/03-outline.md" },
@@ -600,7 +570,7 @@ var SCRIPTS = {
       { start: "7:30", end: "9:30", topic: "Skill化接続・コアメッセージ再打ち・クロージング", direction: "スライド：表紙", content: "最後にSkill化への接続です。<strong>前のセクションで扱ったSkills Creatorを使えば、この5工程を<code>/seo [キーワード]</code>という一発Skillに変換</strong>できます。別キーワードでも同じパイプラインが動く、という状態です。冒頭のコアメッセージをもう一度打っておきます——<strong>80%の再現性＋20%の人間監修</strong>、この20%こそE-E-A-Tの核で、AIと人間の役割分担の原則です。工程全体をパイプライン化する発想は、次のアプリ開発セクションでさらに深まります。それでは次の動画でお会いしましょう。", reference: "" }
     ]
   },
-  "S4-V6": {
+  "S4-V5": {
     meta: {
       duration: "約9分",
       mode: "画面収録（ブラウザ＋Claude Codeターミナル＋Excel。スライドは表紙・法令配慮・クロージングの3枚）",
@@ -617,8 +587,8 @@ var SCRIPTS = {
       { type: "出力成果物", name: "demos/s4-v6/attack_list.csv", purpose: "会社名・部署・役職・氏名・業界の5列CSV", timing: "後半の動作確認" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではBtoB営業・インサイドセールスの方に向けて、<strong>Claude Codeで決裁者アタックリストをWebスクレイピングで自動生成する</strong>方法をお伝えします。題材はSansan事例ページの公開情報、多段階ワークフローの実践編です。", reference: "" },
-      { start: "0:20", end: "1:20", topic: "なぜ扱うか", direction: "スライド：表紙", content: "BtoB営業の新規開拓は、<strong>稟議や契約の承認権限を持つ決裁者に直接届かないと商談が進みません</strong>。100社分の決裁者アタックリストを手作業で作ると、<strong>会社名・部署・役職・氏名・業界の転記だけで8時間</strong>が溶ける、という場面が多いと思います。この動画では、<strong>Sansan事例ページの公開情報を題材に8時間を数分に圧縮</strong>し、空いた時間を営業戦略・顧客関係構築という高付加価値業務に振り向ける感覚を体得していただきます。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画ではBtoB営業・インサイドセールスの方に向けて、<strong>Claude Codeで決裁者アタックリストをWebスクレイピングで自動生成する</strong>方法をお伝えします。題材はSansan事例ページの公開情報、多段階ワークフローの実践編です。", reference: "" },
+      { start: "0:25", end: "1:25", topic: "なぜ扱うか", direction: "スライド：表紙", content: "BtoB営業の新規開拓は、<strong>稟議や契約の承認権限を持つ決裁者に直接届かないと商談が進みません</strong>。100社分の決裁者アタックリストを手作業で作ると、<strong>会社名・部署・役職・氏名・業界の転記だけで8時間</strong>が溶ける、という場面が多いと思います。この動画では、<strong>Sansan事例ページの公開情報を題材に8時間を数分に圧縮</strong>し、空いた時間を営業戦略・顧客関係構築という高付加価値業務に振り向ける感覚を体得していただきます。", reference: "" },
       { start: "1:20", end: "1:40", topic: "決裁者の用語中立化", direction: "スライド：表紙", content: "用語を1つだけ揃えておきます。<strong>「決裁者」は稟議・契約の承認権限者、営業業界の標準用語</strong>です。「決済者」は代金支払い者を指す別の意味なので、営業領域では誤用にあたります。SansanやSaaS各社も「決裁者」で統一しています。", reference: "" },
       { start: "1:40", end: "2:40", topic: "法令配慮", direction: "スライド：法令配慮→画面収録：curlでrobots.txt確認", content: "スクレイピングに着手する前の<strong>法令配慮</strong>を先に固めます。まず<code>curl https://jp.sansan.com/robots.txt | grep -i case</code>で<strong><code>/case/</code>パスが許可されている</strong>ことを目で確認します。次に<strong>Sansan利用規約・公開情報・スクレイピング許可の3点</strong>を口頭で押さえ、<strong>個人情報保護法と特定商取引法</strong>の橋渡しを短く入れておきます。「着手前にrobots.txtと利用規約を読む」という習慣を、営業職の法令リテラシーとして位置付けます。", reference: "https://jp.sansan.com/robots.txt" },
       { start: "2:40", end: "3:10", topic: "題材ページ構造", direction: "画面収録：https://jp.sansan.com/case/ をブラウザで開く", content: "題材ページ<code>https://jp.sansan.com/case/</code>をブラウザで開きます。<strong>事例一覧ページから各企業の個別事例ページへのリンク</strong>が並んでいます。この一覧からクロールを始める、という見通しを共有しておきます。", reference: "https://jp.sansan.com/case/" },
@@ -646,7 +616,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "GitHubリポジトリ（my-first-repo）", purpose: "ブラウザから反映確認できるクラウド保管庫", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>GitHubのアカウント作成と初めてのリポジトリ作成</strong>をお伝えします。セクション全体の出発点となる回です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>GitHubのアカウント作成と初めてのリポジトリ作成</strong>をお伝えします。セクション全体の出発点となる回です。", reference: "" },
       { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "いきなり結論をお伝えします。<strong>SansanやSalesforceに月額何万円も払っているツール、実は自分で作れるとしたら</strong>——そんな体験をするのがこのセクションです。ただしいきなりアプリ作りには入らず、<strong>まずV1〜V3の3本で道具箱を整えます</strong>。V1がGitHub、V2がVercel、V3がSupabase、この3つのアカウントと使い方を先に押さえてしまえば、V4以降は実装に集中できます。今日はその1本目、<strong>コードを置いておく場所としてのGitHub</strong>を作ります。", reference: "" },
       { start: "1:10", end: "1:50", topic: "GitHubとは", direction: "スライド：表紙", content: "GitHubという名前は聞いたことがある方が多いと思います。一言で言うと<strong>「コードのクラウド保管庫」</strong>です。身近な例で言えば、<strong>Google Driveのコード版</strong>と考えていただくと近いです。自分のパソコンの中だけにコードを置いておくと、消えたら終わり、他の端末から見られない、という状態になります。クラウドに置けば<strong>どこからでもアクセスできて、履歴も残り、消えない</strong>——これがGitHubの価値です。", reference: "" },
       { start: "1:50", end: "2:30", topic: "コミット／プッシュ／プル", direction: "スライド：コミット／プッシュ／プル概念図", content: "GitHubで覚えてほしい操作は3つだけです。<strong>コミットは「保存ポイントを作る」</strong>、ゲームのセーブポイントのイメージです。<strong>プッシュは「クラウドに送る」</strong>、コミットしたものをGitHubにアップロードする動きです。<strong>プルは「クラウドから持ってくる」</strong>、逆方向の動きです。「Gitは難しい」という先入観をお持ちの方もいらっしゃると思いますが、<strong>Claude Codeが操作してくれるので、手元で覚えるコマンドはほぼ不要</strong>です。", reference: "" },
@@ -673,7 +643,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "Vercel発行URL（xxx.vercel.app）", purpose: "誰でもアクセスできる公開Webページ", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>Vercelのアカウント作成と初めてのデプロイ</strong>をお伝えします。V1で作ったリポジトリを、世界に公開するところまで一気通貫で扱います。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>Vercelのアカウント作成と初めてのデプロイ</strong>をお伝えします。V1で作ったリポジトリを、世界に公開するところまで一気通貫で扱います。", reference: "" },
       { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "スライド：表紙", content: "V1でGitHubにコードを置くことができました。一方で、<strong>今の状態では誰もWebブラウザで見られません</strong>。コードが保管庫に置かれているだけの状態です。ここから<strong>コードをWebサイトに変えて世界に公開する仕組み</strong>が必要になります。それを担ってくれるのが<strong>Vercel</strong>というサービスです。今日はこのVercelをGitHubと連携して、URLを1本発行するところまで進めます。", reference: "" },
       { start: "1:00", end: "1:45", topic: "Vercelとは", direction: "スライド：GitHub→Vercel連携図", content: "Vercelを一言で言うと<strong>「GitHubのコードを自動でWebサイトにしてくれるサービス」</strong>です。身近な例で言えば、<strong>noteやTumblrに記事を書くと公開URLができる</strong>、あの感覚に近いです。記事ではなくコードを置いておくと、その瞬間にWebサイトとして公開してくれる、という役割分担です。GitHubが<strong>コードの保管庫</strong>、Vercelが<strong>世界に公開する窓口</strong>、この2つがセットで動くイメージで進めてください。", reference: "" },
       { start: "1:45", end: "2:30", topic: "Vercelアカウント作成", direction: "画面収録：vercel.com でサインアップ", content: "それでは実際に進めます。ブラウザで<code>vercel.com</code>にアクセスして、<strong>「Sign Up」から「Continue with GitHub」</strong>を選びます。V1で作ったGitHubアカウントでそのままログインできるので、メールアドレスを別途入れる手間はありません。無料プランで、個人利用なら十分な容量があります。", reference: "https://vercel.com/" },
@@ -700,7 +670,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "Supabaseプロジェクト（my-first-project）", purpose: "S6で接続して使う空のプロジェクト", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>Supabaseのアカウント作成とプロジェクト作成</strong>をお伝えします。V1・V2に続く、セットアップ3本目の締めくくりです。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>Supabaseのアカウント作成とプロジェクト作成</strong>をお伝えします。V1・V2に続く、セットアップ3本目の締めくくりです。", reference: "" },
       { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "スライド：表紙", content: "V1でGitHub、V2でVercelを揃えました。3つ目の道具、<strong>データベース（Supabase）</strong>もここで揃えておきます。S6で実際に接続して使いますので、そのときに慌てないよう<strong>今のうちにアカウントとプロジェクトだけ作っておく</strong>、というのが今日のゴールです。触ってみるだけの回ではありますが、<strong>データベースという概念に最初に触れる回</strong>でもあるので、全体像を押さえながら進めていきます。", reference: "" },
       { start: "1:00", end: "1:45", topic: "Supabaseとは", direction: "スライド：S5フロント／S6バックエンド全体像図", content: "Supabaseを一言で言うと<strong>「クラウドにあるExcelの表＋認証機能」</strong>です。身近な例で言えば、<strong>Googleスプレッドシートをアプリから読み書きできるようにしたイメージ</strong>が近いです。表にデータを貯めておいて、ログイン機能も付けられる——この2つがセットで手に入ります。本格的なデータベースサービスは触ったことがない方が多いと思いますが、<strong>概念はExcelとほぼ同じ</strong>なので、恐れる必要はありません。", reference: "" },
       { start: "1:45", end: "2:30", topic: "Supabaseアカウント作成", direction: "画面収録：supabase.com でサインアップ", content: "それでは進めます。ブラウザで<code>supabase.com</code>にアクセスして、<strong>「Start your project」からGitHubアカウントでサインアップ</strong>します。V1で作ったGitHubアカウントをそのまま使えるので、メールアドレスは別途いりません。ダッシュボード画面に到達すれば、ここからが本番です。", reference: "https://supabase.com/" },
@@ -728,7 +698,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "名刺管理アプリ（Vercel発行URL）", purpose: "スマホからもアクセスできるSaaS風Webアプリ", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>名刺管理アプリをSansan風に自作する</strong>方法をお伝えします。S5の核となる回、実際にSaaSを自分で作る体験の1本目です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>名刺管理アプリをSansan風に自作する</strong>方法をお伝えします。S5の核となる回、実際にSaaSを自分で作る体験の1本目です。", reference: "" },
       { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "今日のメッセージから先にお伝えします。<strong>「Sansanのような名刺管理SaaSに月額数千円払っている会社は多いです。一方で、Claude Codeとスペック駆動があれば、同等の機能を短時間で作れます」</strong>——これを今日体感していただきます。V1〜V3で道具は揃いましたので、今日は<strong>CLAUDE.md→スペック駆動→実装→push→デプロイ</strong>という一気通貫のフローを、ひとつ実際に回してみる回になります。この流れがV5・V6でも繰り返されるので、ここで手を動かして覚えることが、このあとの学びを楽にします。", reference: "" },
       { start: "1:10", end: "2:10", topic: "アプリ開発用CLAUDE.md", direction: "画面収録：demo/s5v4/CLAUDE.mdを開く", content: "まずは<strong>アプリ開発用のCLAUDE.md</strong>から整備します。CLAUDE.mdの書き方は以前の動画で<strong>基礎編</strong>をお伝えしましたが、アプリ開発はもう一段スケールが大きくなります。具体的には、<strong>技術スタック（HTML／CSS／JavaScript）・ディレクトリ構造（index.html、js/、css/）・コーディング規約（命名ルール・コメントの書き方）</strong>、この3つをCLAUDE.mdに書いておきます。こう書いておけば、Claude Codeが毎回同じルールで書いてくれます。", reference: "demo/s5v4/CLAUDE.md" },
       { start: "2:10", end: "3:00", topic: "スペック駆動をアプリ開発スケールへ", direction: "画面収録：demo/s5v4/spec.mdを開く", content: "次に<strong>スペック駆動開発</strong>、これも以前の動画で単一HTMLで体験していただいた内容ですが、<strong>アプリ開発スケールに拡張</strong>します。複数画面があるアプリは、要件を先にまとめておかないとClaude Codeが迷子になります。<code>spec.md</code>に<strong>名刺管理アプリの要件——一覧／詳細／検索／新規登録／編集／削除</strong>、いわゆるCRUD（クラッド）と呼ばれる4機能を書いておきます。ここで<strong>ローカルストレージ保存</strong>という前提も入れておきます。", reference: "demo/s5v4/spec.md" },
@@ -757,7 +727,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "経費管理アプリ（Vercel発行URL）", purpose: "月次集計グラフ付きのSaaS風Webアプリ", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>freee風の経費管理アプリを自作する</strong>方法をお伝えします。V4で学んだフローを別ドメインで反復する、S5の2本目です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>freee風の経費管理アプリを自作する</strong>方法をお伝えします。V4で学んだフローを別ドメインで反復する、S5の2本目です。", reference: "" },
       { start: "0:20", end: "1:00", topic: "なぜ扱うか", direction: "スライド：表紙", content: "V4で名刺管理アプリを作りました。今日はfreee風の経費アプリを作ります。同じ題材を繰り返すのではなく、<strong>同じフロー（CLAUDE.md→スペック駆動→push→デプロイ）でまったく違うアプリが作れる</strong>、この再現性を体感するのが今日の目的です。さらに今日は、V4にはなかった<strong>グラフ描画と画像アップロード</strong>という要素も自然に組み込みます。「2回目だから楽になる」を体で感じていただく回です。", reference: "" },
       { start: "1:00", end: "1:40", topic: "経費アプリ用のCLAUDE.mdとspec.md", direction: "画面収録：demo/s5v5/のCLAUDE.mdとspec.mdを開く", content: "V4で作ったCLAUDE.mdをコピーして、経費アプリ用にカスタマイズします。技術スタックとディレクトリ構造はV4とほぼ同じ、<strong>コーディング規約の部分だけ経費データ用に少し書き換える</strong>、という程度で済みます。<code>spec.md</code>には経費アプリの要件を書いておきます。<strong>経費入力・カテゴリ分類・月次集計グラフ・レシート画像アップロード</strong>、この4つがメイン要件です。", reference: "demo/s5v5/CLAUDE.md／demo/s5v5/spec.md" },
       { start: "1:40", end: "2:20", topic: "新要素の予告", direction: "画面収録：spec.mdの該当箇所を強調", content: "V4になかった要素を先に整理しておきます。1つ目は<strong>カテゴリ分類</strong>、ドロップダウンで複数選択できる形です。2つ目は<strong>月次集計グラフ</strong>、Chart.jsのようなグラフライブラリで棒グラフを描きます。3つ目は<strong>レシート画像のアップロード</strong>、ブラウザのローカルストレージに画像を保存します。どれも難しそうに聞こえますが、<strong>Claude Codeが適切なライブラリを選んで組み込んでくれる</strong>ので、こちらからの指示は一言で済みます。", reference: "" },
@@ -786,7 +756,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "CRM（Vercel発行URL）", purpose: "顧客・商談・パイプラインを管理できるSaaS風Webアプリ", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>Salesforce風のCRMを自作する</strong>方法をお伝えします。S5の総まとめの回です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、これからClaude Codeでアプリ開発を始めたい方に向けて、<strong>Salesforce風のCRMを自作する</strong>方法をお伝えします。S5の総まとめの回です。", reference: "" },
       { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "V4で名刺、V5で経費を作りました。今日は3つ目の<strong>Salesforce風CRM</strong>を作ります。同じフローを3回繰り返すことで、<strong>「もう自分で好きなSaaSが作れる」という独り立ちの感覚</strong>を今日持ち帰っていただきます。今日はもうフローの説明はしません。「3回目、手が慣れている」という状態で、そのまま実装に入ります。3つのSaaS風アプリが完成した状態でS5を閉じる、というのが今日のマイルストーンです。", reference: "" },
       { start: "1:10", end: "2:00", topic: "CRM要件とCLAUDE.mdの準備", direction: "画面収録：demo/s5v6/のCLAUDE.mdとspec.mdを開く", content: "CLAUDE.mdはV5のものをコピーしてCRM用に書き換えます。<code>spec.md</code>のCRM要件はこうです。<strong>顧客一覧・商談管理・パイプラインステータス（見込み→提案→成約）・フォローアップメモ</strong>。CRM特有の要素として、<strong>顧客と商談の紐付け</strong>（1人の顧客に対して複数の商談がぶら下がる構造）、そして<strong>パイプラインのステータス遷移</strong>（カードを見込みから提案へ、提案から成約へと動かす操作）、この2つが入ります。", reference: "demo/s5v6/CLAUDE.md／demo/s5v6/spec.md" },
       { start: "2:00", end: "2:40", topic: "ドラッグ操作の予告", direction: "画面収録：spec.mdの該当箇所を強調", content: "一番の新要素は<strong>ドラッグでステータスを動かす操作</strong>です。Trelloのようなカード形式のボード画面で、商談カードを<strong>「見込み」から「提案」へ、「提案」から「成約」へ</strong>と動かせるようにします。難しそうに聞こえますが、<strong>「ドラッグで動かせるようにして」と一言伝えるだけ</strong>で、Claude Codeが適切な仕組みを選んで実装します。", reference: "" },
@@ -817,7 +787,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "名刺管理アプリ永続化版（Vercel発行URL）", purpose: "スマホからも同じデータが見える本物のSaaS", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、前のセクションで自作したSaaS風アプリを本物にしていきたい方に向けて、<strong>名刺管理アプリをクラウドDBに接続して永続化する</strong>方法をお伝えします。S6の起点、3つのアプリを順に永続化していく1本目です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、前のセクションで自作したSaaS風アプリを本物にしていきたい方に向けて、<strong>名刺管理アプリをクラウドDBに接続して永続化する</strong>方法をお伝えします。S6の起点、3つのアプリを順に永続化していく1本目です。", reference: "" },
       { start: "0:20", end: "1:15", topic: "なぜ扱うか", direction: "スライド：表紙", content: "前のセクションで3つのアプリを作りました。見た目は本物のSaaSでも、<strong>データは自分のブラウザの中だけ</strong>です。ブラウザを閉じるとスマホでは何も見えませんし、同僚とも共有できません。今日はその最後の壁を取り払います。<strong>名刺管理アプリにクラウドのデータベースを繋いで、「ブラウザを閉じても、別の端末でも、同じデータが見える」</strong>状態にします。前のセクションで「APIキーは環境変数で扱う」と布石を置いた話題も、今日実際のファイル操作として回収していきます。", reference: "" },
       { start: "1:15", end: "1:55", topic: "ローカル保存とクラウドDBの対比", direction: "スライド：ローカル保存 vs クラウドDB 対比図", content: "まずローカル保存とクラウドDBを1枚で整理しておきます。<strong>ローカルストレージは冷蔵庫に貼った付箋</strong>、その家でしか見えません。<strong>クラウドDBは自宅のファイルをクラウドに上げる感覚</strong>、どの端末からでも同じ中身が見えます。優劣ではなく用途の使い分けで、試作は付箋で十分、本物として使うならクラウド、という分け方になります。", reference: "" },
       { start: "1:55", end: "2:35", topic: "テーブル設計はExcelの列を決める感覚", direction: "スライド：contactsテーブル設計図", content: "次にテーブル設計です。ここは<strong>Excelの列を決める感覚</strong>で進められます。名刺アプリで既に入力している項目をそのまま列にするだけで、今回は<code>contacts</code>という1つのテーブルに<strong>id・name・company・email・phone・created_atの6列</strong>を用意します。アプリで扱っている項目を移すだけなので、設計で悩む必要はありません。", reference: "" },
@@ -848,7 +818,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "経費管理アプリ永続化版（Vercel発行URL）", purpose: "端末を超えて経費が残る本物のアプリ", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、前のセクションで自作した経費アプリを本物にしていきたい方に向けて、<strong>経費アプリをクラウドDBに接続して永続化する</strong>方法をお伝えします。永続化シリーズの2本目、前の動画と同じ型を別ドメインで辿り直す回です。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、前のセクションで自作した経費アプリを本物にしていきたい方に向けて、<strong>経費アプリをクラウドDBに接続して永続化する</strong>方法をお伝えします。永続化シリーズの2本目、前の動画と同じ型を別ドメインで辿り直す回です。", reference: "" },
       { start: "0:20", end: "1:10", topic: "なぜ扱うか", direction: "スライド：表紙", content: "前の動画で名刺管理アプリを永続化しました。<strong>今日は同じ手順を経費アプリで辿り直します</strong>。2回目なので<strong>手が覚えにいくフェーズ</strong>、リズムを少し上げて進めます。メッセージは1つ、<strong>「1回目で型を学び、2回目で型を定着させる」</strong>。見終わる頃には、別ドメインのアプリでも同じ手順で接続できる自信を持ち帰っていただきます。", reference: "" },
       { start: "1:10", end: "1:40", topic: "今日の完成形プレビュー", direction: "画面収録：経費を登録→ブラウザを閉じる→開き直しても残っている", content: "先に今日の完成形を30秒で見せます。経費を登録して、<strong>ブラウザを閉じて開き直しても経費が残っている</strong>、別タブで同じURLを開いても同じデータが見える——この状態に今日到達します。", reference: "" },
       { start: "1:40", end: "2:30", topic: "expensesテーブル作成と型の選び方", direction: "画面収録：Supabase管理画面でexpensesテーブル作成", content: "Supabase側で<code>expenses</code>テーブルを作ります。列は<strong>id・date・amount・category・memo・created_at</strong>の6つ。ここで<strong>型の選び方</strong>を1行だけ添えます。<strong>金額は計算したくなるから数値型</strong>、<strong>日付は並び替えたくなるから日付型</strong>、カテゴリは文字列型、という基準で列ごとに型を選びます。この判断基準が身につくと、別のアプリでも迷わなくなります。", reference: "demo/s6v2/schema.sql" },
@@ -878,7 +848,7 @@ var SCRIPTS = {
       { type: "出力成果物", name: "CRM永続化版（Vercel発行URL）", purpose: "顧客・商談・パイプラインが端末を超えて残るSaaS風アプリ", timing: "クロージング直前" }
     ],
     script: [
-      { start: "0:00", end: "0:20", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、前のセクションで自作したCRMを本物にしていきたい方に向けて、<strong>CRMをクラウドDBに接続して永続化する</strong>方法をお伝えします。永続化シリーズの3本目、S6前半の総まとめです。", reference: "" },
+      { start: "0:00", end: "0:25", topic: "オープニング", direction: "スライド：表紙", content: "この動画では、前のセクションで自作したCRMを本物にしていきたい方に向けて、<strong>CRMをクラウドDBに接続して永続化する</strong>方法をお伝えします。永続化シリーズの3本目、S6前半の総まとめです。", reference: "" },
       { start: "0:20", end: "1:15", topic: "なぜ扱うか", direction: "スライド：表紙", content: "前の2本で名刺と経費をクラウドに保存できるようにしました。残るは前のセクションの最後に作ったSalesforce風CRMです。<strong>3回目の今回はサクッと進めて、見終わる頃には「自分の普段使いのSaaSにもDB接続できる」</strong>という手応えを持ち帰っていただきます。自転車の乗り始めは補助輪付き、2回目で補助輪を外し、<strong>3回目でスイスイ走れる</strong>——この感覚を今日確立します。", reference: "" },
       { start: "1:15", end: "2:00", topic: "customersテーブル作成と設計判断", direction: "画面収録：Supabase管理画面でcustomersテーブル作成", content: "Supabase側で<code>customers</code>テーブルを作ります。列は<strong>id・name・company・status・last_contact・memo・created_at</strong>の7つ。ここで設計判断を1文で言い切ります。<strong>顧客と商談は分けません。パイプラインのステータスも<code>status</code>カラム1つで表現します</strong>。複数テーブルと外部キーを使う設計は実務では登場しますが、<strong>今回はシンプルにデータが残ることを優先</strong>します。必要になった段階で分ければいい、という判断です。", reference: "demo/s6v3/schema.sql" },
       { start: "2:00", end: "2:45", topic: "Claude Codeに依頼", direction: "画面収録：.env更新→Claude Codeに依頼→差分確認", content: "<code>.env</code>は前の2本と同じ流儀でAPIキーを貼ります。Claude Codeに依頼します。<strong>「ローカルストレージの読み書きを<code>customers</code>テーブルへのCRUDに置き換えて」</strong>——3回目なので<strong>依頼文も要点だけで通じる</strong>状態になっていると思います。差分が生成されるのを待ちます。", reference: "demo/s6v3/.env.example" },
